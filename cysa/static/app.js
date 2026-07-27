@@ -57,11 +57,27 @@
             modalAction = type;
             const titles = { exam: 'End exam?', pbq: 'End PBQ exam?', flashcard: 'End session?', acronym: 'End session?' };
             const messages = {
-                exam: 'Your progress will be lost. Are you sure?',
-                pbq: 'Your progress on this PBQ exam will be lost. Are you sure?',
                 flashcard: 'Your session will end. Continue?',
                 acronym: 'Your session will end. Continue?'
             };
+            const confirmBtn = document.getElementById('modal-confirm');
+            confirmBtn.textContent = 'End session';
+
+            if (type === 'exam') {
+                const n = answeredCount();
+                messages.exam = n
+                    ? `You'll go straight to your results for the ${n} question${n === 1 ? '' : 's'} you've answered — section breakdown and missed-question review included. The ${examQuestions.length - n} you haven't reached won't count against you.`
+                    : "You haven't answered anything yet, so there's nothing to score. Leave the exam?";
+                confirmBtn.textContent = n ? 'End & see results' : 'Leave exam';
+            }
+            if (type === 'pbq') {
+                const n = pbqGraded.filter(Boolean).length;
+                messages.pbq = n
+                    ? `You'll go straight to your results for the ${n} PBQ${n === 1 ? '' : 's'} you've submitted. The ${pbqQuiz.length - n} you haven't reached won't count against you.`
+                    : "You haven't submitted any PBQs yet, so there's nothing to score. Leave the exam?";
+                confirmBtn.textContent = n ? 'End & see results' : 'Leave exam';
+            }
+
             document.getElementById('modal-title').textContent = titles[type];
             document.getElementById('modal-message').textContent = messages[type];
             document.getElementById('modal-overlay').classList.add('show');
@@ -78,15 +94,27 @@
             }
         }
 
+        function navHighlight(label) {
+            document.querySelectorAll('.ez-nav-btn').forEach(function (b) {
+                b.classList.toggle('is-active', b.textContent.trim() === label);
+            });
+        }
+
         function confirmModal() {
+            // Read the action BEFORE hideModal(), which clears modalAction.
+            const action = modalAction;
             hideModal();
-            showScreen('home-screen');
-            var menu = document.querySelector('.ez-nav-btn[data-go="__menu__"]');
-            if (menu) {
-                document.querySelectorAll('.ez-nav-btn').forEach(function (b) {
-                    b.classList.toggle('is-active', b === menu);
-                });
+            // Ending an exam early should still show what you earned, not bin it.
+            if (action === 'exam' && answeredCount() > 0) {
+                showExamResults(true);
+                return;
             }
+            if (action === 'pbq' && pbqGraded.filter(Boolean).length > 0) {
+                showPbqResults(true);
+                return;
+            }
+            showScreen('home-screen');
+            navHighlight('Hub menu');
         }
 
         // EXAM FUNCTIONS
@@ -273,16 +301,35 @@
             }
         }
 
-        function showExamResults() {
-            const total = examQuestions.length;
-            const percentage = Math.round((correctCount / total) * 100);
+        // Count of questions actually graded. domainStats is only incremented in
+        // submitAnswer, so this is the honest denominator when an exam is ended
+        // early — scoring 8 correct out of a planned 75 would read as 11%.
+        function answeredCount() {
+            return Object.values(domainStats).reduce((a, s) => a + s.t, 0);
+        }
+
+        function showExamResults(endedEarly) {
+            const total = answeredCount();
+            const planned = examQuestions.length;
+            const percentage = total ? Math.round((correctCount / total) * 100) : 0;
+
+            document.getElementById('results-heading').textContent =
+                endedEarly ? 'Exam Ended Early' : 'Exam Complete';
+            const note = document.getElementById('results-note');
+            if (endedEarly) {
+                note.textContent = `Scored on the ${total} question${total === 1 ? '' : 's'} you answered, out of the ${planned} in this exam.`;
+                note.classList.remove('hidden');
+            } else {
+                note.classList.add('hidden');
+            }
 
             document.getElementById('results-score').textContent = `${percentage}%`;
             document.getElementById('results-correct').textContent = correctCount;
             document.getElementById('results-total').textContent = total;
             document.getElementById('stat-correct').textContent = correctCount;
             document.getElementById('stat-incorrect').textContent = total - correctCount;
-            document.getElementById('exam-progress').style.width = '100%';
+            document.getElementById('exam-progress').style.width =
+                (endedEarly && planned ? Math.round((total / planned) * 100) : 100) + '%';
 
             // --- per-domain breakdown ---
             let rows = '';
@@ -543,23 +590,40 @@
             else displayPbq();
         }
 
-        function showPbqResults() {
+        function showPbqResults(endedEarly) {
+            // Only graded PBQs count toward the denominator, so ending early does
+            // not penalise you for the ones you never saw.
+            const done = pbqGraded.filter(Boolean).length;
             const score = pbqGraded.reduce((a, g) => a + (g ? g.score : 0), 0);
-            const max = pbqGraded.reduce((a, g, i) => a + (g ? g.max : pbqGrade(pbqQuiz[i], pbqBlank(pbqQuiz[i])).max), 0);
+            const max = pbqGraded.reduce((a, g) => a + (g ? g.max : 0), 0);
             const pct = max ? Math.round((score / max) * 100) : 0;
+
+            document.getElementById('pbq-results-heading').textContent =
+                endedEarly ? 'PBQ Exam Ended Early' : 'PBQ Exam Complete';
+            const pnote = document.getElementById('pbq-results-note');
+            if (endedEarly) {
+                pnote.textContent = `Scored on the ${done} PBQ${done === 1 ? '' : 's'} you submitted, out of the ${pbqQuiz.length} in this exam.`;
+                pnote.classList.remove('hidden');
+            } else {
+                pnote.classList.add('hidden');
+            }
             document.getElementById('pbq-score').textContent = `${pct}%`;
             document.getElementById('pbq-correct').textContent = score;
             document.getElementById('pbq-total').textContent = max;
             document.getElementById('pbq-stat-full').textContent = pbqGraded.filter(g => g && g.correct).length;
-            document.getElementById('pbq-stat-partial').textContent = pbqGraded.filter(g => !g || !g.correct).length;
-            document.getElementById('pbq-progress').style.width = '100%';
+            document.getElementById('pbq-stat-partial').textContent = done - pbqGraded.filter(g => g && g.correct).length;
+            document.getElementById('pbq-progress').style.width =
+                (endedEarly && pbqQuiz.length ? Math.round((done / pbqQuiz.length) * 100) : 100) + '%';
 
             document.getElementById('pbq-list').innerHTML = pbqQuiz.map((q, i) => {
-                const g = pbqGraded[i] || { score: 0, max: 1 };
+                const g = pbqGraded[i];
+                const head = `<div><div class="pbq-row-name">${esc(q.title)}</div>
+                    <div class="pbq-row-sub">${q.domain}.0 ${esc(q.domainName)} · source question #${q.source}</div></div>`;
+                if (!g) {
+                    return `<div class="pbq-row">${head}<div class="section-empty">not attempted</div></div>`;
+                }
                 const p = Math.round((g.score / g.max) * 100);
-                return `<div class="pbq-row">
-                    <div><div class="pbq-row-name">${esc(q.title)}</div>
-                    <div class="pbq-row-sub">${q.domain}.0 ${esc(q.domainName)} · source question #${q.source}</div></div>
+                return `<div class="pbq-row">${head}
                     <div class="section-score"><strong style="color:${p === 100 ? 'var(--secondary)' : p >= 50 ? 'var(--warning)' : 'var(--danger)'}">${g.score}/${g.max}</strong> · ${p}%</div>
                 </div>`;
             }).join('');
@@ -570,8 +634,9 @@
         function showPbqReview() {
             const c = document.getElementById('pbq-review-container');
             if (!c.classList.contains('hidden')) { c.classList.add('hidden'); return; }
-            document.getElementById('pbq-review-list').innerHTML = pbqQuiz.map((q, i) => {
-                const g = pbqGraded[i] || { score: 0, max: 1 };
+            document.getElementById('pbq-review-list').innerHTML = pbqQuiz.filter((q, i) => pbqGraded[i]).map((q) => {
+                const i = pbqQuiz.indexOf(q);
+                const g = pbqGraded[i];
                 return `<div class="missed-question-item">
                     <div class="missed-head">
                         <span class="pbq-row-name">${esc(q.title)}</span>

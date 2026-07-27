@@ -110,9 +110,10 @@
         <div id="exam-results" class="screen">
             <a class="back-btn" onclick="showScreen('home-screen')">‹ Back to modes</a>
             <div class="results-card">
-                <h2 style="margin-bottom: 1.5rem;">Exam Complete</h2>
+                <h2 style="margin-bottom: 1.5rem;" id="results-heading">Exam Complete</h2>
                 <div class="results-score" id="results-score">0%</div>
                 <div class="results-label">You got <span id="results-correct">0</span> of <span id="results-total">0</span> correct</div>
+                <div class="results-note hidden" id="results-note"></div>
                 <div class="results-stats">
                     <div class="stat">
                         <div class="stat-value correct" id="stat-correct">0</div>
@@ -185,9 +186,10 @@
         <div id="pbq-results" class="screen">
             <a class="back-btn" onclick="showScreen('home-screen')">‹ Back to modes</a>
             <div class="results-card">
-                <h2 style="margin-bottom: 1.5rem;">PBQ Exam Complete</h2>
+                <h2 style="margin-bottom: 1.5rem;" id="pbq-results-heading">PBQ Exam Complete</h2>
                 <div class="results-score" id="pbq-score">0%</div>
                 <div class="results-label">You scored <span id="pbq-correct">0</span> of <span id="pbq-total">0</span> sub-answers</div>
+                <div class="results-note hidden" id="pbq-results-note"></div>
                 <div class="results-stats">
                     <div class="stat"><div class="stat-value correct" id="pbq-stat-full">0</div><div class="stat-label">Fully correct</div></div>
                     <div class="stat"><div class="stat-value incorrect" id="pbq-stat-partial">0</div><div class="stat-label">Partial or missed</div></div>
