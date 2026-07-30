@@ -48,6 +48,22 @@
         return Promise.resolve(bank);
       }
     },
+    az104: {
+      name: "Azure Administrator AZ-104",
+      minutes: 100,
+      total: 54,            // real exam: ~50-55 questions in 100 min
+      passPct: 70,          // 700 / 1000 (scaled)
+      mcq: function () {
+        return fetch("data/questions.json").then(function (r) { return r.json(); })
+          .then(function (list) { return list.map(normStdMcq); });
+      },
+      pbq: function () {
+        var bank = (window.PBQ_TEST || []).filter(function (p) {
+          return p.type === "grid" || p.type === "dragdrop";
+        });
+        return Promise.resolve(bank);
+      }
+    },
     cysa: {
       name: "CySA+ CS0-003",
       minutes: 165,

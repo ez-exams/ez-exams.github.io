@@ -27,6 +27,8 @@
       --secplus-soft: oklch(0.28 0.05 280);
       --azure: oklch(0.66 0.14 240);        /* azure blue */
       --azure-soft: oklch(0.28 0.05 240);
+      --az104: oklch(0.68 0.13 262);        /* azure admin violet-blue */
+      --az104-soft: oklch(0.28 0.05 262);
       --cysa: oklch(0.7 0.14 165);          /* emerald */
       --cysa-soft: oklch(0.27 0.05 165);
     }
@@ -287,6 +289,7 @@
 
     .card.secplus { --tint: var(--secplus); --tint-soft: var(--secplus-soft); }
     .card.azure   { --tint: var(--azure);   --tint-soft: var(--azure-soft); }
+    .card.az104   { --tint: var(--az104);   --tint-soft: var(--az104-soft); }
     .card.cysa    { --tint: var(--cysa);    --tint-soft: var(--cysa-soft); }
 
     footer {
@@ -333,12 +336,13 @@
     <nav class="site-nav" aria-label="Study hubs">
       <a href="security-plus/">Security+</a>
       <a href="az-900/">AZ-900</a>
+      <a href="az-104/">AZ-104</a>
       <a href="cysa/">CySA+</a>
     </nav>
   </header>
   <div class="wrap">
     <header class="hero">
-      <h1>One place. <span class="grad">Three certs.</span></h1>
+      <h1>One place. <span class="grad">Four certs.</span></h1>
       <p class="source-note">Question pools are sourced from the <a href="https://www.examtopics.com/" target="_blank" rel="noopener noreferrer">ExamTopics</a> community dumps, with explanations drawn from the highest-voted discussion on each item.</p>
     </header>
 
@@ -371,6 +375,22 @@
           <li>266 PBQs — Yes/No, dropdown, drag &amp; drop</li>
           <li>Exam flashcards over the full pool</li>
           <li>Skills-at-a-glance section scoring</li>
+        </ul>
+        <span class="go">Open Study Hub <span class="arrow">→</span></span>
+      </a>
+
+      <a class="card az104" href="az-104/">
+        <div class="badge-row">
+          <span class="icon">🛠️</span>
+          <span class="code">AZ-104</span>
+        </div>
+        <h2>Azure Administrator</h2>
+        <div class="vendor">Microsoft · Azure administration</div>
+        <ul>
+          <li>276 verified practice questions with explanations</li>
+          <li>116 PBQs — HOTSPOT dropdowns, Yes/No &amp; drag-and-drop</li>
+          <li>Exam flashcards over the full pool</li>
+          <li>Per-domain score breakdown (1–5)</li>
         </ul>
         <span class="go">Open Study Hub <span class="arrow">→</span></span>
       </a>
