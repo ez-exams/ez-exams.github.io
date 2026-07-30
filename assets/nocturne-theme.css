@@ -1,0 +1,393 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   NOCTURNE THEME · EZ Exam Study Hubs
+   ─────────────────────────────────────────────────────────────────────────
+   A drop-in restyle. Changes look only — no markup, no behaviour, no copy.
+   Link it AFTER each hub's own stylesheet (or anywhere in <head> for the
+   landing page — the :root:root selectors outrank the inline tokens).
+
+     <link rel="stylesheet" href="../assets/nocturne-theme.css" />
+
+   Works on all four hubs (they share two token sets) and the landing page.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── 1 · Token remap ─────────────────────────────────────────────────────
+   Doubled :root raises specificity so this wins regardless of load order. */
+:root:root {
+  /* Nocturne ground + ramps */
+  --noc-bg: #161826;
+  --noc-bg-soft: #1c1e2c;
+  --noc-surface: #232532;
+  --noc-surface-2: #2b2e3d;
+  --noc-border: #3f424d;
+  --noc-border-soft: #33363f;
+  --noc-text: #e9e9ed;
+  --noc-muted: #9397ab;
+  --noc-dim: #75798c;
+  --noc-accent: #9184d9;
+  --noc-accent-lt: #b5abfc;
+  --noc-accent-dk: #796cbf;
+  --noc-accent-tint: color-mix(in srgb, #9184d9 12%, transparent);
+  --noc-accent-fill: #2b2741;
+  --noc-good: oklch(0.74 0.13 152);
+  --noc-bad: oklch(0.68 0.17 25);
+  --noc-warn: oklch(0.80 0.13 85);
+
+  /* — hub token set (security-plus / az-900 / az-104 / landing) — */
+  --bg: var(--noc-bg);
+  --bg-soft: var(--noc-bg-soft);
+  --surface: var(--noc-surface);
+  --surface-2: var(--noc-surface-2);
+  --border: var(--noc-border);
+  --text: var(--noc-text);
+  --text-muted: var(--noc-muted);
+  --accent: var(--noc-accent);
+  --accent-strong: var(--noc-accent-lt);
+  --accent-bg: var(--noc-accent-fill);
+  --success: var(--noc-good);
+  --success-bg: color-mix(in srgb, var(--noc-good) 14%, var(--noc-bg));
+  --error: var(--noc-bad);
+  --error-bg: color-mix(in srgb, var(--noc-bad) 14%, var(--noc-bg));
+  --warning: var(--noc-warn);
+  --radius: 14px;
+  --shadow: 0 8px 26px -8px rgba(0, 0, 0, 0.6);
+  --focus-ring: 0 0 0 2px var(--noc-accent);
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* — CySA+ token set — */
+  --primary: var(--noc-accent);
+  --primary-dark: var(--noc-accent-dk);
+  --primary-light: var(--noc-accent-lt);
+  --secondary: var(--noc-good);
+  --secondary-dark: var(--noc-good);
+  --danger: var(--noc-bad);
+  --danger-dark: var(--noc-bad);
+  --bg-dark: var(--noc-bg);
+  --bg-card: var(--noc-surface);
+  --bg-card-hover: var(--noc-surface-2);
+  --text-primary: var(--noc-text);
+  --text-secondary: var(--noc-muted);
+  --border-color: var(--noc-border);
+
+  /* — landing-page hub tints: one family, stepped through the accent ramp
+       so the four cards stay tellable apart without leaving the palette — */
+  --secplus: #9184d9;
+  --secplus-soft: #2b2741;
+  --azure: #b5abfc;
+  --azure-soft: #322d4d;
+  --az104: #a79ce8;
+  --az104-soft: #2e2947;
+  --cysa: #8e8ac9;
+  --cysa-soft: #282840;
+  --pylab: #c4bdf2;
+  --pylab-soft: #363159;
+
+  /* — live-exam overlay (assets/exam-mode.js) — */
+  --lab-bg: var(--noc-bg);
+  --lab-bg-soft: var(--noc-bg);
+  --lab-surface: var(--noc-surface);
+  --lab-border: var(--noc-border);
+  --lab-text: var(--noc-text);
+  --lab-muted: var(--noc-muted);
+  --lab-accent: var(--noc-accent);
+  --lab-accent-strong: var(--noc-accent-lt);
+  --lab-accent-deep: var(--noc-accent-dk);
+  --lab-accent-bg: var(--noc-accent-tint);
+  --lab-ink: var(--noc-bg);
+}
+
+/* ── 1b · Python Lab (PyLearn) — a light theme, so it needs its own set ── */
+:root:root,
+body.impeccable-v1,
+body.impeccable-v2 {
+  --bg-card: var(--noc-surface);
+  --bg-code: #12141f;
+  --bg-sidebar: var(--noc-bg-soft);
+  --bg-hover: var(--noc-surface-2);
+  --bg-active: color-mix(in srgb, var(--noc-accent) 14%, var(--noc-surface));
+  --text-secondary: var(--noc-muted);
+  --border-light: var(--noc-border-soft);
+  --accent-hover: var(--noc-accent-lt);
+  --accent-light: color-mix(in srgb, var(--noc-accent) 16%, var(--noc-bg));
+  --success-light: color-mix(in srgb, var(--noc-good) 14%, var(--noc-bg));
+  --warning-light: color-mix(in srgb, var(--noc-warn) 14%, var(--noc-bg));
+  --error-light: color-mix(in srgb, var(--noc-bad) 14%, var(--noc-bg));
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 26px -8px rgba(0, 0, 0, 0.6);
+}
+body.impeccable-v1,
+body.impeccable-v2 {
+  --bg: var(--noc-bg);
+  --text: var(--noc-text);
+  --text-muted: var(--noc-dim);
+  --border: var(--noc-border);
+  --accent: var(--noc-accent);
+  --focus-ring: 0 0 0 2px var(--noc-accent);
+}
+
+/* ── 1c · Python Lab — hard-coded light gradients ────────────────────── */
+body.impeccable-v1 .header,
+body.impeccable-v2 .header {
+  background: color-mix(in srgb, var(--noc-bg) 88%, transparent) !important;
+}
+body.impeccable-v1 .hero,
+body.impeccable-v1 .hero-card,
+body.impeccable-v1 .welcome-section,
+body.impeccable-v2 .hero,
+body.impeccable-v2 .hero-card,
+body.impeccable-v2 .welcome-section {
+  background: radial-gradient(circle at 95% 5%,
+    color-mix(in srgb, var(--noc-accent) 18%, var(--noc-surface)) 0%,
+    var(--noc-surface) 45%) !important;
+  border-color: var(--noc-border) !important;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.6) !important;
+}
+/* the run-output panel and the runtime splash are hard-coded near-white */
+body.impeccable-v1 .output-content,
+body.impeccable-v2 .output-content {
+  background: var(--bg-code) !important;
+  color: var(--noc-text);
+}
+body.impeccable-v1 .loading-overlay,
+body.impeccable-v2 .loading-overlay {
+  background: color-mix(in srgb, var(--noc-bg) 92%, transparent) !important;
+  color: var(--noc-text);
+}
+/* filled accent/success buttons carry `color: white` — outline them instead */
+body.impeccable-v1 .try-btn,
+body.impeccable-v1 .btn-success,
+body.impeccable-v2 .try-btn,
+body.impeccable-v2 .btn-success {
+  background: transparent !important;
+  border: 1px solid currentColor !important;
+}
+body.impeccable-v1 .try-btn,
+body.impeccable-v2 .try-btn { color: var(--noc-accent) !important; }
+body.impeccable-v1 .btn-success,
+body.impeccable-v2 .btn-success { color: var(--noc-good) !important; }
+body.impeccable-v1 .try-btn:hover,
+body.impeccable-v2 .try-btn:hover { background: var(--noc-accent-tint) !important; }
+body.impeccable-v1 .btn-success:hover,
+body.impeccable-v2 .btn-success:hover {
+  background: color-mix(in srgb, var(--noc-good) 14%, transparent) !important;
+}
+
+/* ── 2 · Ground and type ─────────────────────────────────────────────── */
+html, body {
+  background: var(--noc-bg);
+  color: var(--noc-text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+b, strong { font-weight: 600; }
+a { color: var(--noc-accent); text-underline-offset: 3px; }
+a:hover { color: var(--noc-accent-lt); }
+::selection { background: color-mix(in srgb, var(--noc-accent) 30%, transparent); }
+:focus-visible {
+  outline: 2px solid var(--noc-accent) !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+/* ── 3 · Surfaces — the rounded boxes ────────────────────────────────── */
+.card,
+.setup,
+.mode-btn,
+.pbq-cat,
+.flashcard-face,
+.missed-item,
+.section-breakdown-list > *,
+.pbqx-review > *,
+.ezx-card,
+.ezx-rev,
+.ezx-modal,
+.modal {
+  border-radius: 14px;
+}
+.card {
+  background: var(--noc-surface);
+  border: 1px solid var(--noc-border);
+  box-shadow: var(--shadow);
+}
+.slider-row,
+.pbqx-body,
+.q-context,
+.feedback {
+  border-radius: 12px;
+}
+
+/* ── 4 · Buttons — Nocturne outlines the primary, never fills it ─────── */
+button {
+  border-radius: 10px;
+  font-weight: 500;
+}
+button.primary,
+.btn-primary,
+.ezx-begin,
+.ezx-btn.pri {
+  background: transparent !important;
+  color: var(--noc-accent) !important;
+  border: 1px solid var(--noc-accent) !important;
+  font-weight: 600;
+}
+button.primary:not(:disabled):hover,
+.btn-primary:not(:disabled):hover,
+.ezx-begin:hover,
+.ezx-btn.pri:hover {
+  background: var(--noc-accent-tint) !important;
+  color: var(--noc-accent-lt) !important;
+  border-color: var(--noc-accent-lt) !important;
+}
+button.primary:not(:disabled):active,
+.btn-primary:not(:disabled):active,
+.ezx-btn.pri:active {
+  background: color-mix(in srgb, var(--noc-accent) 22%, transparent) !important;
+}
+button.ghost,
+.ezx-btn,
+.ezx-submit {
+  background: transparent;
+  color: var(--noc-muted);
+  border: 1px solid var(--noc-border);
+}
+button.ghost:hover,
+.ezx-btn:hover,
+.ezx-submit:hover {
+  color: var(--noc-text);
+  background: color-mix(in srgb, var(--noc-text) 7%, transparent);
+  border-color: var(--noc-accent);
+}
+button:disabled { opacity: 0.45; }
+
+/* ── 5 · Brand chip — an accent outline, not a fill ──────────────────── */
+.brand-mark {
+  background: transparent;
+  color: var(--noc-accent);
+  border: 1px solid var(--noc-accent);
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.ez-nav-home,
+.ez-nav-btn.is-active,
+.ezx-live {
+  background: transparent !important;
+  color: var(--noc-accent) !important;
+  border: 1px solid var(--noc-accent) !important;
+}
+.ez-nav-home:hover { background: var(--noc-accent-tint) !important; filter: none; }
+.slider-row output {
+  background: transparent;
+  color: var(--noc-accent);
+  border: 1px solid var(--noc-accent);
+}
+
+/* ── 6 · Section / domain badges — one family, low chroma ────────────── */
+.domain-badge,
+.domain-badge[data-domain],
+.pbqx-domain,
+.section-badge {
+  background: color-mix(in srgb, var(--noc-accent) 14%, transparent) !important;
+  color: var(--noc-accent-lt) !important;
+  border: 1px solid color-mix(in srgb, var(--noc-accent) 40%, transparent) !important;
+  font-weight: 500 !important;
+}
+
+/* ── 7 · Correct / incorrect — kept semantic, pulled down in chroma ──── */
+.option.correct,
+.options li.correct,
+.pbqx-correct,
+.ezx-rev.good {
+  border-color: var(--noc-good) !important;
+}
+.option.incorrect,
+.options li.incorrect,
+.pbqx-incorrect,
+.ezx-rev.bad {
+  border-color: var(--noc-bad) !important;
+}
+.feedback.correct .feedback-icon,
+.pbqx-feedback-icon.is-correct { color: var(--noc-good); }
+.feedback.incorrect .feedback-icon,
+.pbqx-feedback-icon.is-incorrect { color: var(--noc-bad); }
+
+/* icons and letter chips are outlined marks, not solid fills */
+.feedback-icon,
+.pbqx-feedback-icon {
+  background: transparent !important;
+  border: 1.5px solid currentColor;
+  font-weight: 600;
+}
+.feedback.correct .feedback-icon { color: var(--noc-good) !important; }
+.feedback.incorrect .feedback-icon { color: var(--noc-bad) !important; }
+.option.correct { background: color-mix(in srgb, var(--noc-good) 10%, var(--noc-bg)) !important; }
+.option.incorrect { background: color-mix(in srgb, var(--noc-bad) 10%, var(--noc-bg)) !important; }
+.option.correct .letter {
+  background: transparent !important;
+  color: var(--noc-good) !important;
+  border: 1px solid var(--noc-good);
+}
+.option.incorrect .letter {
+  background: transparent !important;
+  color: var(--noc-bad) !important;
+  border: 1px solid var(--noc-bad);
+}
+.option.selected .letter {
+  background: transparent !important;
+  color: var(--noc-accent) !important;
+  border: 1px solid var(--noc-accent);
+}
+
+/* ── 8 · Rules fade at their ends — the Nocturne signature ───────────── */
+.topbar,
+.ez-nav,
+.ezx-top,
+.footer,
+.ez-foot {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  background-image: linear-gradient(to right,
+    transparent, color-mix(in srgb, var(--noc-text) 16%, transparent) 48px,
+    color-mix(in srgb, var(--noc-text) 16%, transparent) calc(100% - 48px), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+}
+.topbar, .ez-nav, .ezx-top { background-position: bottom; }
+.footer, .ez-foot { background-position: top; }
+.topbar, .ez-nav { background-color: var(--noc-bg); }
+
+/* ── 9 · Landing page ────────────────────────────────────────────────── */
+.hero-mark, .logo, .brand-badge { border-radius: 12px; }
+.card.secplus, .card.azure, .card.az104, .card.cysa { border-radius: 16px; }
+
+/* the sticky bar carries a hard-coded ground; bring it back to Nocturne */
+.site-header {
+  background-color: color-mix(in srgb, var(--noc-bg) 88%, transparent) !important;
+}
+
+/* Nocturne is mono — the three-hue text gradient becomes one accent sweep */
+.brand-name .ez,
+.hero h1 .grad {
+  background-image: linear-gradient(100deg, var(--noc-accent), var(--noc-accent-lt) 60%, #d2cefd) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}
+
+/* the seal mark: same, applied to the SVG gradient stops */
+#sealGrad stop:nth-child(1) { stop-color: #9184d9; }
+#sealGrad stop:nth-child(2) { stop-color: #a79ce8; }
+#sealGrad stop:nth-child(3) { stop-color: #d2cefd; }
+
+/* ── 10 · Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

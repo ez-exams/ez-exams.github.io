@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyLearn - Impeccable V1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="impeccable-variants.css">
+    <link rel="stylesheet" href="../assets/nocturne-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+</head>
+<body class="impeccable-v1">
+    <header class="header">
+        <div class="header-left">
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="logo">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#3b82f6" opacity="0.15"/>
+                    <path d="M9.5 8.5L14.5 12L9.5 15.5V8.5Z" fill="#3b82f6"/>
+                </svg>
+                <span class="logo-text">Py<span class="logo-accent">Learn</span></span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="progress-bar-container" title="Overall progress">
+                <div class="progress-bar" id="overall-progress">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">0%</span>
+            </div>
+            <button class="btn-icon" id="reset-progress" title="Reset all progress">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav" id="sidebar-nav"></nav>
+        </aside>
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <main class="main-content" id="main-content">
+            <section class="view" id="dashboard-view">
+                <div class="dashboard">
+                    <div class="welcome-section">
+                        <h1>Learn Python In Focused, Practical Sprints</h1>
+                        <p class="welcome-subtitle">
+                            This Impeccable V1 layout refines your original PyLearn experience: clearer hierarchy, stronger readability,
+                            and cleaner progress visibility while keeping all existing interactions intact.
+                        </p>
+                    </div>
+
+                    <div class="stats-row" id="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-number" id="stat-lessons">0</div>
+                            <div class="stat-label">Lessons Done</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="stat-labs">0</div>
+                            <div class="stat-label">Labs Passed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="stat-total">0</div>
+                            <div class="stat-label">Total Items</div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title">Learning Path</h2>
+                    <div class="modules-grid" id="modules-grid"></div>
+                </div>
+            </section>
+
+            <section class="view hidden" id="lesson-view">
+                <div class="lesson-container">
+                    <div class="breadcrumb" id="lesson-breadcrumb"></div>
+                    <div class="lesson-content" id="lesson-content"></div>
+                    <div class="lesson-nav">
+                        <button class="btn btn-secondary" id="prev-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                            Previous
+                        </button>
+                        <button class="btn btn-primary" id="complete-lesson-btn">Mark Complete</button>
+                        <button class="btn btn-secondary" id="next-btn">
+                            Next
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view hidden" id="lab-view">
+                <div class="lab-container">
+                    <div class="breadcrumb" id="lab-breadcrumb"></div>
+                    <div class="lab-layout">
+                        <div class="lab-instructions-panel">
+                            <div class="lab-header">
+                                <h1 id="lab-title"></h1>
+                                <span class="badge badge-lab">Lab</span>
+                            </div>
+                            <div class="lab-objective" id="lab-objective"></div>
+                            <div class="lab-tasks" id="lab-tasks"></div>
+                            <div class="lab-hints-section">
+                                <button class="btn btn-outline" id="hint-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                    Show Hint
+                                </button>
+                                <div class="hints-container" id="hints-container"></div>
+                            </div>
+                        </div>
+                        <div class="lab-editor-panel">
+                            <div class="editor-toolbar">
+                                <span class="editor-label">editor.py</span>
+                                <div class="editor-actions">
+                                    <button class="btn btn-sm btn-outline" id="reset-code-btn" title="Reset to starter code">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                        Reset
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" id="run-code-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                        Run
+                                    </button>
+                                    <button class="btn btn-sm btn-success" id="check-code-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                        Check
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="editor-wrapper" id="lab-editor"></div>
+                            <div class="output-panel">
+                                <div class="output-header">
+                                    <span>Output</span>
+                                    <button class="btn-icon btn-sm" id="clear-output-btn" title="Clear output">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </button>
+                                </div>
+                                <pre class="output-content" id="output-content"></pre>
+                            </div>
+                            <div class="test-results hidden" id="test-results"></div>
+                        </div>
+                    </div>
+                    <div class="lesson-nav lab-nav">
+                        <button class="btn btn-secondary" id="lab-prev-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                            Previous
+                        </button>
+                        <button class="btn btn-secondary" id="lab-next-btn">
+                            Next
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading Python environment...</p>
+    </div>
+
+    <div class="example-runner-modal hidden" id="example-runner">
+        <div class="example-runner-content">
+            <div class="editor-toolbar">
+                <span class="editor-label">Try it out</span>
+                <div class="editor-actions">
+                    <button class="btn btn-sm btn-outline" id="example-reset-btn">Reset</button>
+                    <button class="btn btn-sm btn-primary" id="example-run-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Run
+                    </button>
+                    <button class="btn btn-sm btn-outline" id="example-close-btn">Close</button>
+                </div>
+            </div>
+            <div id="example-editor"></div>
+            <pre class="output-content" id="example-output"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+    <script src="lessons.js"></script>
+    <script src="editor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

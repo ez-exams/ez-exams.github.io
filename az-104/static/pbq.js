@@ -574,22 +574,25 @@
   }
 
   function showResults() {
+    // Only tasks you actually submitted are scored and reviewed — ending a
+    // set early never pads the results with questions you never reached.
+    const done = [];
+    T.quiz.forEach((q, i) => { if (T.graded[i]) done.push(i); });
     let full = 0, totScore = 0, totMax = 0;
-    T.quiz.forEach((q, i) => {
-      const g = T.graded[i] || grade(q, T.answers[i]);
-      T.graded[i] = g;
+    done.forEach((i) => {
+      const g = T.graded[i];
       if (g.correct) full++;
       totScore += g.score;
       totMax += g.max;
     });
     const pct = totMax ? Math.round((totScore / totMax) * 100) : 0;
 
-    pbq.xScore.textContent = `${full} / ${T.quiz.length}`;
+    pbq.xScore.textContent = `${full} / ${done.length}`;
     pbq.xPercent.textContent = `${pct}%`;
     pbq.xBar.style.width = pct + "%";
     pbq.xBar.className = "pbqx-bar-fill " + (pct >= 80 ? "good" : pct >= 60 ? "ok" : "low");
     pbq.xVerdict.textContent =
-      full === T.quiz.length
+      done.length > 0 && full === done.length
         ? "Perfect score — you nailed every task."
         : pct >= 80
         ? "Strong work. Review the misses below and you're exam-ready."
@@ -600,14 +603,15 @@
     renderPbqSectionBreakdown();
 
     pbq.xReview.innerHTML = "";
-    T.quiz.forEach((q, i) => {
+    done.forEach((i, n) => {
+      const q = T.quiz[i];
       const g = T.graded[i];
       const item = document.createElement("div");
       item.className = "pbqx-review-item " + (g.correct ? "ok" : g.score > 0 ? "partial" : "bad");
       const tag = g.correct ? "Correct" : g.score > 0 ? `Partial ${g.score}/${g.max}` : "Incorrect";
       const head =
         `<div class="pbqx-review-head">` +
-        `<span class="pbqx-review-num">Q${i + 1}</span>` +
+        `<span class="pbqx-review-num">Q${n + 1}</span>` +
         `<span class="pbqx-review-title">${esc(q.title || "PBQ")}</span>` +
         (q.domain ? domainBadge(q.domain) : "") +
         `<span class="pbqx-review-badge">${tag}</span></div>`;

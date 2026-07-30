@@ -6,6 +6,7 @@
   <title>EZ Exam — Certification Study Hub</title>
   <meta name="description" content="EZ Exam: free practice exams, PBQs, and flashcards for CompTIA Security+ SY0-701, Microsoft Azure AZ-900, and CompTIA CySA+ CS0-003." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b8cf8'/%3E%3Cstop offset='.5' stop-color='%235aa7f0'/%3E%3Cstop offset='1' stop-color='%2334d399'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 3 L57 11.5 V29 C57 45.5 46 57 32 62 C18 57 7 45.5 7 29 V11.5 Z' fill='url(%23g)'/%3E%3Ctext x='32' y='40.5' font-family='Arial,sans-serif' font-weight='800' font-size='24' text-anchor='middle' fill='%23141627'%3EEZ%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/nocturne-theme.css" />
   <style>
     :root {
       --bg: oklch(0.18 0.02 270);
@@ -31,6 +32,8 @@
       --az104-soft: oklch(0.28 0.05 262);
       --cysa: oklch(0.7 0.14 165);          /* emerald */
       --cysa-soft: oklch(0.27 0.05 165);
+      --pylab: oklch(0.72 0.13 150);       /* python green */
+      --pylab-soft: oklch(0.27 0.05 150);
     }
     * { box-sizing: border-box; }
     html, body {
@@ -291,6 +294,7 @@
     .card.azure   { --tint: var(--azure);   --tint-soft: var(--azure-soft); }
     .card.az104   { --tint: var(--az104);   --tint-soft: var(--az104-soft); }
     .card.cysa    { --tint: var(--cysa);    --tint-soft: var(--cysa-soft); }
+    .card.pylab   { --tint: var(--pylab);   --tint-soft: var(--pylab-soft); }
 
     footer {
       text-align: center;
@@ -338,11 +342,12 @@
       <a href="az-900/">AZ-900</a>
       <a href="az-104/">AZ-104</a>
       <a href="cysa/">CySA+</a>
+        <a href="python-lab/">Python Lab</a>
     </nav>
   </header>
   <div class="wrap">
     <header class="hero">
-      <h1>One place. <span class="grad">Four certs.</span></h1>
+      <h1>One place. <span class="grad">Four certs, one lab.</span></h1>
       <p class="source-note">Question pools are sourced from the <a href="https://www.examtopics.com/" target="_blank" rel="noopener noreferrer">ExamTopics</a> community dumps, with explanations drawn from the highest-voted discussion on each item.</p>
     </header>
 
@@ -410,10 +415,26 @@
         </ul>
         <span class="go">Open Study Hub <span class="arrow">→</span></span>
       </a>
+
+      <a class="card pylab" href="python-lab/">
+        <div class="badge-row">
+          <span class="icon">🐍</span>
+          <span class="code">PYTHON</span>
+        </div>
+        <h2>Python Lab</h2>
+        <div class="vendor">PyLearn · Hands-on coding</div>
+        <ul>
+          <li>20 lessons across guided daily sprints</li>
+          <li>In-browser editor — write and run real Python</li>
+          <li>Practical labs with pass/fail checks</li>
+          <li>Progress tracking across every sprint</li>
+        </ul>
+        <span class="go">Open Python Lab <span class="arrow">→</span></span>
+      </a>
     </main>
 
     <footer>
-      <span class="tip">🛡️ EZ Exam — free practice for SY0-701, AZ-900 &amp; CS0-003. Study hard, test EZ.</span>
+      <span class="tip">🛡️ EZ Exam — free practice for SY0-701, AZ-900, AZ-104 &amp; CS0-003, plus a hands-on Python Lab. Study hard, test EZ.</span>
     </footer>
   </div>
 </body>

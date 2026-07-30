@@ -553,7 +553,9 @@
           } else {
             var s = document.createElement("select");
             s.setAttribute("aria-label", c.label + " for row " + (ri + 1));
-            s.innerHTML = '<option value="">—</option>' + (c.options || []).map(function (o) {
+            // dropdown PBQs carry their choices per row, not per column
+            var optList = (row.options && row.options[c.key]) || c.options || [];
+            s.innerHTML = '<option value="">—</option>' + optList.map(function (o) {
               return '<option value="' + esc(o) + '">' + esc(o) + "</option>";
             }).join("");
             s.value = r.cells[ri][c.key] || "";
@@ -728,9 +730,14 @@
     state.active = false;
     window.removeEventListener("beforeunload", unloadGuard);
 
+    // Only questions you actually answered are scored and reviewed —
+    // submitting early never pads the results with items you never reached.
+    var skipped = state.items.filter(function (it) { return !isAnswered(it); }).length;
+    state.items = state.items.filter(isAnswered);
+
     var scores = state.items.map(gradeItem);
     var earned = scores.reduce(function (a, b) { return a + b; }, 0);
-    var pct = Math.round((earned / state.items.length) * 100);
+    var pct = state.items.length ? Math.round((earned / state.items.length) * 100) : 0;
     var pass = pct >= P.passPct;
     var usedSec = Math.min(P.minutes * 60, Math.round((Date.now() - state.startedAt) / 1000));
     var pbqCount = state.items.filter(function (i) { return i.kind === "pbq"; }).length;
@@ -755,6 +762,7 @@
       "<span><b>" + mcqRight + "</b> / " + (state.items.length - pbqCount) + " MCQs correct</span>" +
       "<span><b>" + pbqEarned.toFixed(1) + "</b> / " + pbqCount + " PBQ credit</span>" +
       "<span><b>" + fmtTime(usedSec) + "</b> used of " + fmtTime(P.minutes * 60) + "</span>" +
+      (skipped ? "<span><b>" + skipped + "</b> left unanswered · not scored</span>" : "") +
       "</div>" +
       '<p class="ezx-kicker">Review</p>' +
       '<div id="ezx-review"></div>' +

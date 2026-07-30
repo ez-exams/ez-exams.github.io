@@ -528,14 +528,19 @@ function hideSectionBreakdown() {
 }
 
 function showExamResults() {
-  const total = state.quiz.length;
+  // Only what you answered is scored. Ending an exam early never counts
+  // questions you never reached against you.
+  const total = state.results.length;
+  const planned = state.quiz.length;
+  const skipped = planned - total;
   const score = state.correctCount;
   const pct = total === 0 ? 0 : Math.round((score / total) * 100);
 
   els.resultsEyebrow.textContent = "Exam complete";
   els.resultsHeadline.innerHTML = `You got <span>${score}</span> of <span>${total}</span> correct.`;
   els.resultPercent.textContent = `${pct}%`;
-  els.resultVerdict.textContent = examVerdict(pct);
+  els.resultVerdict.textContent = examVerdict(pct) +
+    (skipped > 0 ? ` (${skipped} of ${planned} left unanswered — not scored)` : "");
   els.reviewLabel.textContent = "Review missed questions";
 
   animateBar(pct, 70);
