@@ -1,557 +1,599 @@
-const app = (() => {
-    const STORAGE_KEY = 'pylearn_progress';
-    let progress = {};
-    let currentItem = null;
-    let currentModuleId = null;
-    let currentHintIndex = 0;
-    let currentExampleCode = '';
+/* ============================================================
+   Python Lab — app engine
+   Renders the curriculum, runs Python via Pyodide, checks labs.
+   ============================================================ */
+(function () {
+  "use strict";
 
-    function init() {
-        loadProgress();
-        renderSidebar();
-        renderDashboard();
-        bindEvents();
-        showView('dashboard');
+  // ---------- State ----------
+  const PROGRESS_KEY = "pylab-progress-v1";
+  const state = {
+    pyodide: null,
+    pyReady: false,
+    pyFailed: false,
+    readyResolvers: [],
+    currentLessonId: null,
+    running: false,
+  };
+  let stdoutBuf = [];
+
+  const flatLessons = [];
+  CURRICULUM.forEach((mod) => mod.lessons.forEach((l) => flatLessons.push({ mod, lesson: l })));
+
+  // ---------- Progress ----------
+  function loadProgress() {
+    try { return JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveProgress(p) {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch (e) { /* private mode */ }
+  }
+  let progress = loadProgress();
+  function isDone(id) { return !!progress[id]; }
+  function markDone(id) { progress[id] = true; saveProgress(progress); refreshProgressUI(); }
+
+  // ---------- Pyodide ----------
+  async function initPyodide() {
+    const statusEl = document.getElementById("py-status");
+    const statusText = document.getElementById("py-status-text");
+    try {
+      const py = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/" });
+      py.setStdout({ batched: (s) => stdoutBuf.push(s) });
+      py.setStderr({ batched: (s) => stdoutBuf.push(s) });
+      // Make input() work via a browser popup, echoing like a terminal would.
+      py.runPython(
+        "import builtins, js\n" +
+        "def _pylab_input(prompt=''):\n" +
+        "    r = js.window.prompt(str(prompt))\n" +
+        "    r = '' if r is None else str(r)\n" +
+        "    print(str(prompt) + r)\n" +
+        "    return r\n" +
+        "builtins.input = _pylab_input\n"
+      );
+      py.runPython(STYLE_SRC); // install the spacing checker
+      state.pyodide = py;
+      state.pyReady = true;
+      statusEl.className = "py-status ready";
+      statusText.textContent = "Python ready";
+      state.readyResolvers.forEach((r) => r());
+      state.readyResolvers = [];
+    } catch (e) {
+      console.error("Pyodide failed to load:", e);
+      state.pyFailed = true;
+      statusEl.className = "py-status error";
+      statusText.textContent = "Python failed to load — check connection & refresh";
+    }
+  }
+  function whenPyReady() {
+    if (state.pyReady) return Promise.resolve();
+    if (state.pyFailed) return Promise.reject(new Error("Python runtime failed to load. Refresh the page to retry."));
+    return new Promise((resolve) => state.readyResolvers.push(resolve));
+  }
+
+  // ---------- Error explanations ----------
+  const ERROR_EXPLAIN = {
+    SyntaxError: "Python couldn't read this line — the \"grammar\" is off. Look for a missing colon :, a missing quote, a missing comma, or an unmatched ( ). The ^ arrow points near the confusing spot. (Tip: the real mistake is sometimes on the line ABOVE the one reported.)",
+    IndentationError: "The spacing at the start of a line is wrong. Lines inside if / for / while / def blocks must be indented exactly 4 spaces, and lines in the same block must line up perfectly.",
+    TabError: "This code mixes tabs and spaces for indentation. Use spaces only — 4 per level.",
+    NameError: "You used a name Python doesn't know. Check the spelling and capitalization, and make sure the variable or function is created BEFORE the line that uses it.",
+    UnboundLocalError: "You used a variable inside a function before giving it a value there. Assigning inside a function creates a new local variable — pass values in as parameters, or assign the variable before using it.",
+    TypeError: "An operation received the wrong TYPE of value — like adding text to a number, or calling a function with the wrong number of arguments. Convert with int(), float() or str(), or double-check the function call.",
+    ValueError: "The type was right but the VALUE wasn't usable — like int(\"hello\"). Check the value you're converting or passing in.",
+    IndexError: "You asked for a position that doesn't exist in the list or string. Positions start at 0, so the last item is at len(x) - 1 (or use -1).",
+    KeyError: "That key doesn't exist in the dictionary. Check the key's spelling and capitalization — or use .get(key), which returns None instead of crashing.",
+    AttributeError: "That value doesn't have the method or attribute you asked for. It's often a typo (like .appendd), or the variable isn't the type you think it is.",
+    ZeroDivisionError: "You divided by zero. Check the bottom of your division — a variable might be 0, or an empty list made len() return 0.",
+    RecursionError: "A function kept calling itself and never stopped. Make sure there's a condition that ends the chain of calls.",
+    ModuleNotFoundError: "Python can't find that module. Check the spelling — only Python's standard library is available on this site.",
+    ImportError: "Python couldn't import that. Check the module and name spelling — only Python's standard library is available on this site.",
+    AssertionError: "An assert statement found something untrue. Read its message to see which expectation failed.",
+  };
+  function explainError(errText) {
+    const matches = String(errText).match(/\b[A-Z][a-zA-Z]*Error\b/g);
+    if (!matches) return null;
+    const name = matches[matches.length - 1];
+    return ERROR_EXPLAIN[name] ? { name: name, text: ERROR_EXPLAIN[name] } : null;
+  }
+
+  // ---------- Style (spacing) checker — runs inside Python via tokenize ----------
+  const STYLE_SRC = [
+    "import tokenize as _tok, io as _sio, json as _sjson",
+    "def _pylab_style_issues(code):",
+    "    issues = []",
+    "    lines = code.split('\\n')",
+    "    for _i, _ln in enumerate(lines, start=1):",
+    "        _indent = _ln[:len(_ln) - len(_ln.lstrip())]",
+    "        if '\\t' in _indent:",
+    "            issues.append(f'Line {_i}: indent with spaces (4 per level), not tabs - mixing them causes TabError.')",
+    "    _CMP = {'==', '!=', '<', '>', '<=', '>='}",
+    "    _AUG = {'+=', '-=', '*=', '/=', '//=', '%=', '**='}",
+    "    _depth = 0",
+    "    try:",
+    "        _toks = list(_tok.generate_tokens(_sio.StringIO(code).readline))",
+    "    except Exception:",
+    "        return issues",
+    "    for _t in _toks:",
+    "        if _t.type != _tok.OP:",
+    "            continue",
+    "        _s = _t.string",
+    "        if _s in '([{':",
+    "            _depth += 1",
+    "            continue",
+    "        if _s in ')]}':",
+    "            _depth -= 1",
+    "            continue",
+    "        _row, _col = _t.start",
+    "        _erow, _ecol = _t.end",
+    "        _line = lines[_row - 1] if _row - 1 < len(lines) else ''",
+    "        _before = (_col == 0) or (_line[_col - 1] == ' ')",
+    "        _after = (_ecol >= len(_line)) or (_line[_ecol] == ' ')",
+    "        if _s == ',':",
+    "            if _ecol < len(_line) and _line[_ecol] not in ' )]}':",
+    "                issues.append(f'Line {_row}: add a space after the comma - write (a, b) not (a,b).')",
+    "        elif _s == '=' and _depth == 0:",
+    "            if not (_before and _after):",
+    "                issues.append(f'Line {_row}: put one space on each side of = when assigning - write x = 5, not x=5.')",
+    "        elif _s in _CMP:",
+    "            if not (_before and _after):",
+    "                issues.append(f'Line {_row}: put one space on each side of {_s} - write a {_s} b.')",
+    "        elif _s in _AUG and _depth == 0:",
+    "            if not (_before and _after):",
+    "                issues.append(f'Line {_row}: put one space on each side of {_s} - write total {_s} x.')",
+    "    _seen = set()",
+    "    _out = []",
+    "    for _m in issues:",
+    "        if _m not in _seen:",
+    "            _seen.add(_m)",
+    "            _out.append(_m)",
+    "    return _out",
+    "def _pylab_style_json(code):",
+    "    return _sjson.dumps(_pylab_style_issues(code))",
+  ].join("\n");
+
+  function checkStyle(code) {
+    try {
+      state.pyodide.globals.set("_pylab_code", code);
+      const res = state.pyodide.runPython("_pylab_style_json(_pylab_code)");
+      return JSON.parse(res) || [];
+    } catch (e) {
+      console.warn("style check unavailable:", e);
+      return [];
+    }
+  }
+
+  function formatPyError(err) {
+    let msg = (err && err.message) ? String(err.message) : String(err);
+    const lines = msg.split("\n");
+    // Show from the first frame that refers to the user's code onward.
+    let start = lines.findIndex((l) => l.includes('File "<exec>"'));
+    if (start === -1) start = Math.max(0, lines.length - 4);
+    const kept = lines.slice(start).filter((l) => !l.includes("pyodide") && !l.includes("_pyodide"));
+    let out = kept.join("\n").trim();
+    if (out.length > 1500) out = out.slice(0, 1500) + "\n…";
+    return out || msg.slice(-500);
+  }
+
+  // Run code in a fresh namespace. Returns {out, error, ns} — caller must ns.destroy() when done.
+  async function runPython(code) {
+    await whenPyReady();
+    const py = state.pyodide;
+    stdoutBuf = [];
+    const ns = py.globals.get("dict")();
+    let error = null;
+    try {
+      py.runPython(code, { globals: ns });
+    } catch (e) {
+      error = formatPyError(e);
+    }
+    return { out: stdoutBuf.join("\n"), error, ns };
+  }
+
+  // Run a lab's tests against the namespace produced by the user's code.
+  function runTests(testCode, ns, capturedOut, userCode) {
+    const py = state.pyodide;
+    try {
+      ns.set("_stdout", capturedOut);
+      ns.set("_code", userCode);
+      stdoutBuf = []; // don't leak test prints into the user's output panel
+      py.runPython(testCode, { globals: ns });
+      return { passed: true, message: "All checks passed. Great work!" };
+    } catch (e) {
+      const raw = (e && e.message) ? String(e.message) : String(e);
+      const m = raw.match(/AssertionError:\s*([\s\S]*?)\s*$/);
+      if (m && m[1]) return { passed: false, message: m[1].trim() };
+      if (/AssertionError/.test(raw)) return { passed: false, message: "A check failed — look at your output and try again." };
+      return { passed: false, message: "The checker hit an error while testing your code:\n" + formatPyError(e) };
+    }
+  }
+
+  // ---------- Rendering helpers ----------
+  function el(tag, className, html) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (html !== undefined) node.innerHTML = html;
+    return node;
+  }
+
+  function makeEditor(parent, code, { readOnly = false } = {}) {
+    const ta = document.createElement("textarea");
+    ta.value = code;
+    parent.appendChild(ta);
+    const cm = CodeMirror.fromTextArea(ta, {
+      mode: "python",
+      theme: "material-darker",
+      lineNumbers: true,
+      indentUnit: 4,
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      readOnly: readOnly,
+      viewportMargin: Infinity,
+      extraKeys: {
+        Tab: (cm) => {
+          if (cm.somethingSelected()) cm.indentSelection("add");
+          else cm.replaceSelection("    ", "end");
+        },
+      },
+    });
+    return cm;
+  }
+
+  function setOutput(outEl, text, { error = null } = {}) {
+    outEl.classList.remove("empty");
+    let html = '<span class="out-label">Output</span>';
+    const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (text) html += esc(text);
+    if (text && error) html += "\n";
+    if (error) {
+      html += '<span class="err">' + esc(error) + "</span>";
+      const ex = explainError(error);
+      if (ex) {
+        html += '<span class="err-explain">💡 <strong>What ' + ex.name + " means:</strong> " + esc(ex.text) + "</span>";
+      }
+    }
+    if (!text && !error) {
+      html += "(no output — did you forget to print something?)";
+      outEl.classList.add("empty");
+    }
+    outEl.innerHTML = html;
+  }
+
+  function renderBlocks(container, blocks) {
+    (blocks || []).forEach((b) => {
+      if (b.h) container.appendChild(el("div", "content-block", "<h3>" + b.h + "</h3>"));
+      else if (b.p) container.appendChild(el("div", "content-block", "<p>" + b.p + "</p>"));
+      else if (b.list) container.appendChild(el("div", "content-block", "<ul>" + b.list.map((i) => "<li>" + i + "</li>").join("") + "</ul>"));
+      else if (b.tip) container.appendChild(el("div", "callout tip", '<span class="callout-label">💡 Tip:</span>' + b.tip));
+      else if (b.warn) container.appendChild(el("div", "callout warn", '<span class="callout-label">⚠️ Watch out:</span>' + b.warn));
+      else if (b.code) {
+        const pre = el("div", "static-code");
+        pre.textContent = b.code;
+        container.appendChild(pre);
+      } else if (b.run) {
+        container.appendChild(buildRunnable(b.run));
+      }
+    });
+  }
+
+  function buildRunnable(code) {
+    const card = el("div", "example");
+    const bar = el("div", "example-toolbar");
+    bar.appendChild(el("span", "label", "Try it — edit freely, then run"));
+    const runBtn = el("button", "btn primary small", "▶ Run");
+    const resetBtn = el("button", "btn ghost small", "Reset");
+    bar.appendChild(resetBtn);
+    bar.appendChild(runBtn);
+    card.appendChild(bar);
+    const cm = makeEditor(card, code);
+    const outEl = el("div", "output empty", "Run the code to see its output here.");
+    card.appendChild(outEl);
+
+    async function doRun() {
+      if (state.running) return;
+      state.running = true;
+      runBtn.disabled = true; runBtn.textContent = "Running…";
+      try {
+        const res = await runPython(cm.getValue());
+        setOutput(outEl, res.out, { error: res.error });
+        res.ns.destroy();
+      } catch (e) {
+        setOutput(outEl, "", { error: String(e.message || e) });
+      }
+      runBtn.disabled = false; runBtn.textContent = "▶ Run";
+      state.running = false;
+    }
+    runBtn.addEventListener("click", doRun);
+    resetBtn.addEventListener("click", () => { cm.setValue(code); outEl.className = "output empty"; outEl.textContent = "Run the code to see its output here."; });
+    cm.setOption("extraKeys", Object.assign({}, cm.getOption("extraKeys"), { "Ctrl-Enter": doRun, "Cmd-Enter": doRun }));
+    return card;
+  }
+
+  // ---------- Views ----------
+  function findLesson(id) {
+    return flatLessons.find((x) => x.lesson.id === id) || null;
+  }
+  function lessonIndex(id) {
+    return flatLessons.findIndex((x) => x.lesson.id === id);
+  }
+
+  function renderHome() {
+    state.currentLessonId = null;
+    const c = document.getElementById("lesson-container");
+    c.innerHTML = "";
+    const hero = el("div", "home-hero");
+    hero.appendChild(el("h1", null, "Learn Python by <em>writing</em> Python 🐍"));
+    hero.appendChild(el("p", "sub",
+      "An interactive course that runs entirely in your browser. Read a short tutorial, then prove it in a lab — " +
+      "your code is executed and checked instantly. Start from absolute zero and work your way up to writing clean, " +
+      "reusable functions."));
+    c.appendChild(hero);
+
+    const grid = el("div", "module-grid");
+    CURRICULUM.forEach((mod, i) => {
+      const total = mod.lessons.length;
+      const done = mod.lessons.filter((l) => isDone(l.id)).length;
+      const card = el("div", "module-card");
+      card.appendChild(el("h3", null, "Module " + (i + 1) + " · " + mod.title));
+      card.appendChild(el("p", null, mod.blurb));
+      card.appendChild(el("div", "mod-progress" + (done === total ? " full" : ""), done + " / " + total + " lessons" + (done === total ? " ✓" : "")));
+      card.addEventListener("click", () => navigate(mod.lessons[0].id));
+      grid.appendChild(card);
+    });
+    c.appendChild(grid);
+    updateLessonNavButtons();
+    renderSidebar();
+  }
+
+  function renderLesson(id) {
+    const found = findLesson(id);
+    if (!found) { renderHome(); return; }
+    state.currentLessonId = id;
+    const { mod, lesson } = found;
+    const c = document.getElementById("lesson-container");
+    c.innerHTML = "";
+
+    const modIndex = CURRICULUM.indexOf(mod) + 1;
+    c.appendChild(el("div", "lesson-kicker", "Module " + modIndex + " · " + mod.title));
+    c.appendChild(el("h1", "lesson-title", lesson.title));
+    const meta = el("div", "lesson-meta");
+    meta.innerHTML = '<span class="badge ' + lesson.type + '">' + (lesson.type === "lab" ? "🧪 Lab" : "📖 Tutorial") + "</span>" +
+      (lesson.minutes ? "~" + lesson.minutes + " min" : "");
+    c.appendChild(meta);
+
+    if (lesson.type === "lab") renderLab(c, lesson);
+    else renderTutorial(c, lesson);
+
+    updateLessonNavButtons();
+    renderSidebar();
+    window.scrollTo({ top: 0 });
+  }
+
+  function renderTutorial(c, lesson) {
+    renderBlocks(c, lesson.content);
+    const row = el("div", "done-row");
+    if (isDone(lesson.id)) {
+      row.appendChild(el("span", "completed-flag", "✓ Completed"));
+    }
+    const btn = el("button", "btn success", isDone(lesson.id) ? "Continue →" : "Mark complete & continue →");
+    btn.addEventListener("click", () => {
+      markDone(lesson.id);
+      goNext();
+    });
+    row.appendChild(btn);
+    c.appendChild(row);
+  }
+
+  function renderLab(c, lesson) {
+    const obj = el("div", "objective", '<span class="obj-label">🎯 Your mission:</span>' + lesson.objective);
+    c.appendChild(obj);
+    renderBlocks(c, lesson.content);
+
+    // Editor card
+    const card = el("div", "lab-editor-card");
+    const bar = el("div", "lab-toolbar");
+    bar.appendChild(el("span", "label", "Your code (Ctrl+Enter to run)"));
+    const resetBtn = el("button", "btn ghost small", "Reset");
+    const runBtn = el("button", "btn primary", "▶ Run");
+    const checkBtn = el("button", "btn success", "✓ Check my work");
+    bar.appendChild(resetBtn); bar.appendChild(runBtn); bar.appendChild(checkBtn);
+    card.appendChild(bar);
+    const cm = makeEditor(card, lesson.starter || "");
+    const outEl = el("div", "output empty", "Run your code to see its output here.");
+    card.appendChild(outEl);
+    const banner = el("div", "check-banner");
+    card.appendChild(banner);
+    c.appendChild(card);
+
+    async function doRun() {
+      if (state.running) return;
+      state.running = true;
+      runBtn.disabled = true; checkBtn.disabled = true; runBtn.textContent = "Running…";
+      banner.className = "check-banner";
+      try {
+        const res = await runPython(cm.getValue());
+        setOutput(outEl, res.out, { error: res.error });
+        res.ns.destroy();
+      } catch (e) {
+        setOutput(outEl, "", { error: String(e.message || e) });
+      }
+      runBtn.disabled = false; checkBtn.disabled = false; runBtn.textContent = "▶ Run";
+      state.running = false;
     }
 
-    // --- Progress Management ---
-
-    function loadProgress() {
-        try {
-            progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-        } catch {
-            progress = {};
-        }
-    }
-
-    function saveProgress() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-    }
-
-    function markComplete(itemId) {
-        progress[itemId] = true;
-        saveProgress();
-        updateProgressUI();
-        renderSidebar();
-    }
-
-    function resetAllProgress() {
-        if (confirm('Reset all progress? This cannot be undone.')) {
-            progress = {};
-            saveProgress();
-            updateProgressUI();
-            renderSidebar();
-            renderDashboard();
-            showView('dashboard');
-        }
-    }
-
-    function getCompletedCount() {
-        return Object.keys(progress).length;
-    }
-
-    function getTotalCount() {
-        return MODULES.reduce((sum, m) => sum + m.items.length, 0);
-    }
-
-    function getModuleProgress(mod) {
-        const done = mod.items.filter(i => progress[i.id]).length;
-        return { done, total: mod.items.length, percent: Math.round((done / mod.items.length) * 100) };
-    }
-
-    function updateProgressUI() {
-        const done = getCompletedCount();
-        const total = getTotalCount();
-        const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-
-        document.getElementById('progress-fill').style.width = pct + '%';
-        document.getElementById('progress-text').textContent = pct + '%';
-
-        const lessonsCompleted = MODULES.reduce((sum, m) =>
-            sum + m.items.filter(i => i.type === 'lesson' && progress[i.id]).length, 0);
-        const labsCompleted = MODULES.reduce((sum, m) =>
-            sum + m.items.filter(i => i.type === 'lab' && progress[i.id]).length, 0);
-
-        const statLessons = document.getElementById('stat-lessons');
-        const statLabs = document.getElementById('stat-labs');
-        const statTotal = document.getElementById('stat-total');
-        if (statLessons) statLessons.textContent = lessonsCompleted;
-        if (statLabs) statLabs.textContent = labsCompleted;
-        if (statTotal) statTotal.textContent = total;
-    }
-
-    // --- Sidebar ---
-
-    function renderSidebar() {
-        const nav = document.getElementById('sidebar-nav');
-        nav.innerHTML = '';
-
-        const homeItem = document.createElement('div');
-        homeItem.className = 'nav-item' + (!currentItem ? ' active' : '');
-        homeItem.innerHTML = `
-            <span class="item-icon lesson-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </span>
-            Dashboard
-        `;
-        homeItem.onclick = () => {
-            currentItem = null;
-            currentModuleId = null;
-            renderSidebar();
-            renderDashboard();
-            showView('dashboard');
-        };
-        nav.appendChild(homeItem);
-
-        MODULES.forEach(mod => {
-            const group = document.createElement('div');
-            group.className = 'module-group';
-
-            const modProgress = getModuleProgress(mod);
-            const header = document.createElement('div');
-            header.className = 'module-header';
-            header.innerHTML = `
-                <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                <span>${mod.title}</span>
-            `;
-
-            const items = document.createElement('div');
-            items.className = 'module-items';
-
-            header.onclick = () => {
-                header.classList.toggle('collapsed');
-                items.classList.toggle('collapsed');
-            };
-
-            mod.items.forEach(item => {
-                const navItem = document.createElement('div');
-                const isActive = currentItem && currentItem.id === item.id;
-                const isDone = progress[item.id];
-                navItem.className = `nav-item${isActive ? ' active' : ''}${isDone ? ' completed' : ''}`;
-
-                const iconClass = item.type === 'lab' ? 'lab-icon' : 'lesson-icon';
-                const icon = item.type === 'lab'
-                    ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v2H9zM7 5l-2 14h14L17 5z"/><path d="M8 12h8"/></svg>`
-                    : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`;
-                const checkSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-
-                navItem.innerHTML = `
-                    <span class="item-icon check-icon">${checkSvg}</span>
-                    <span class="item-icon ${iconClass}">${icon}</span>
-                    <span>${item.title}</span>
-                `;
-
-                navItem.onclick = () => navigate(mod.id, item.id);
-                items.appendChild(navItem);
-            });
-
-            items.style.maxHeight = items.scrollHeight + 200 + 'px';
-
-            group.appendChild(header);
-            group.appendChild(items);
-            nav.appendChild(group);
-        });
-    }
-
-    // --- Dashboard ---
-
-    function renderDashboard() {
-        updateProgressUI();
-
-        const grid = document.getElementById('modules-grid');
-        grid.innerHTML = '';
-
-        MODULES.forEach(mod => {
-            const p = getModuleProgress(mod);
-            let badgeHtml = '';
-            if (p.percent === 100) {
-                badgeHtml = '<span class="module-card-badge complete">Complete</span>';
-            } else if (p.done > 0) {
-                badgeHtml = `<span class="module-card-badge in-progress">${p.done}/${p.total}</span>`;
+    async function doCheck() {
+      if (state.running) return;
+      state.running = true;
+      runBtn.disabled = true; checkBtn.disabled = true; checkBtn.textContent = "Checking…";
+      banner.className = "check-banner";
+      try {
+        const code = cm.getValue();
+        const res = await runPython(code);
+        setOutput(outEl, res.out, { error: res.error });
+        if (res.error) {
+          banner.className = "check-banner fail";
+          banner.textContent = "Your code raised an error — fix it, then check again.";
+        } else {
+          const t = runTests(lesson.tests, res.ns, res.out, code);
+          if (t.passed) {
+            const issues = checkStyle(code);
+            if (issues.length) {
+              banner.className = "check-banner style";
+              banner.textContent =
+                "So close! Your code WORKS, but clean spacing is required — it keeps code readable and prevents sneaky errors:\n• " +
+                issues.slice(0, 4).join("\n• ") +
+                (issues.length > 4 ? "\n• …and " + (issues.length - 4) + " more" : "");
+            } else {
+              banner.className = "check-banner pass";
+              banner.textContent = t.message;
+              if (!isDone(lesson.id)) {
+                markDone(lesson.id);
+                renderSidebar();
+              }
             }
-
-            const card = document.createElement('div');
-            card.className = 'module-card';
-            card.innerHTML = `
-                <div class="module-card-header">
-                    <span class="module-number">Module ${MODULES.indexOf(mod) + 1}</span>
-                    ${badgeHtml}
-                </div>
-                <h3>${mod.title}</h3>
-                <p>${mod.description}</p>
-                <div class="module-card-progress">
-                    <div class="module-card-progress-fill" style="width: ${p.percent}%"></div>
-                </div>
-            `;
-
-            card.onclick = () => {
-                const firstIncomplete = mod.items.find(i => !progress[i.id]) || mod.items[0];
-                navigate(mod.id, firstIncomplete.id);
-            };
-
-            grid.appendChild(card);
-        });
-    }
-
-    // --- Navigation ---
-
-    function navigate(moduleId, itemId) {
-        const mod = MODULES.find(m => m.id === moduleId);
-        if (!mod) return;
-        const item = mod.items.find(i => i.id === itemId);
-        if (!item) return;
-
-        currentItem = item;
-        currentModuleId = moduleId;
-        currentHintIndex = 0;
-
-        closeSidebar();
-
-        if (item.type === 'lesson') {
-            renderLesson(mod, item);
-            showView('lesson');
-        } else if (item.type === 'lab') {
-            renderLab(mod, item);
-            showView('lab');
+          } else {
+            banner.className = "check-banner fail";
+            banner.textContent = t.message;
+          }
         }
-
-        renderSidebar();
-        window.scrollTo(0, 0);
-        document.getElementById('main-content').scrollTo(0, 0);
+        res.ns.destroy();
+      } catch (e) {
+        banner.className = "check-banner fail";
+        banner.textContent = String(e.message || e);
+      }
+      runBtn.disabled = false; checkBtn.disabled = false; checkBtn.textContent = "✓ Check my work";
+      state.running = false;
     }
 
-    function showView(view) {
-        document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
-        document.getElementById(view + '-view').classList.remove('hidden');
+    runBtn.addEventListener("click", doRun);
+    checkBtn.addEventListener("click", doCheck);
+    resetBtn.addEventListener("click", () => {
+      if (confirm("Reset the editor back to the starter code?")) cm.setValue(lesson.starter || "");
+    });
+    cm.setOption("extraKeys", Object.assign({}, cm.getOption("extraKeys"), { "Ctrl-Enter": doRun, "Cmd-Enter": doRun }));
+
+    // Hints
+    if (lesson.hints && lesson.hints.length) {
+      const hints = el("div", "hints");
+      hints.appendChild(el("div", "content-block", "<h3>Stuck?</h3>"));
+      lesson.hints.forEach((h, i) => {
+        const btn = el("button", "btn ghost small hint-toggle", "💡 Hint " + (i + 1));
+        const body = el("div", "hint-body", h);
+        btn.addEventListener("click", () => body.classList.toggle("shown"));
+        hints.appendChild(btn);
+        hints.appendChild(body);
+      });
+      c.appendChild(hints);
     }
 
-    function getAdjacentItem(direction) {
-        if (!currentItem || !currentModuleId) return null;
-
-        const allItems = MODULES.flatMap(m => m.items.map(i => ({ moduleId: m.id, item: i })));
-        const idx = allItems.findIndex(a => a.item.id === currentItem.id);
-
-        const newIdx = idx + direction;
-        if (newIdx < 0 || newIdx >= allItems.length) return null;
-        return allItems[newIdx];
+    // Solution
+    if (lesson.solution) {
+      const det = el("details", "solution");
+      det.appendChild(el("summary", null, "🔓 Show a solution (try the hints first!)"));
+      const pre = el("div", "static-code");
+      pre.textContent = lesson.solution;
+      det.appendChild(pre);
+      c.appendChild(det);
     }
 
-    function navigateAdjacent(direction) {
-        const target = getAdjacentItem(direction);
-        if (target) {
-            navigate(target.moduleId, target.item.id);
-        }
+    if (isDone(lesson.id)) {
+      const row = el("div", "done-row");
+      row.appendChild(el("span", "completed-flag", "✓ Lab completed"));
+      c.appendChild(row);
     }
-
-    // --- Lesson Rendering ---
-
-    function renderLesson(mod, item) {
-        const breadcrumb = document.getElementById('lesson-breadcrumb');
-        breadcrumb.innerHTML = `
-            <a onclick="app.goHome()">Home</a>
-            <span class="separator">›</span>
-            <span>${mod.title}</span>
-            <span class="separator">›</span>
-            <span>${item.title}</span>
-        `;
-
-        document.getElementById('lesson-content').innerHTML = item.content;
-
-        const completeBtn = document.getElementById('complete-lesson-btn');
-        if (progress[item.id]) {
-            completeBtn.textContent = 'Completed ✓';
-            completeBtn.disabled = true;
-            completeBtn.classList.remove('btn-primary');
-            completeBtn.classList.add('btn-outline');
-        } else {
-            completeBtn.textContent = 'Mark Complete';
-            completeBtn.disabled = false;
-            completeBtn.classList.add('btn-primary');
-            completeBtn.classList.remove('btn-outline');
-        }
-
-        const prev = getAdjacentItem(-1);
-        const next = getAdjacentItem(1);
-        document.getElementById('prev-btn').style.visibility = prev ? 'visible' : 'hidden';
-        document.getElementById('next-btn').style.visibility = next ? 'visible' : 'hidden';
-    }
-
-    // --- Lab Rendering ---
-
-    function renderLab(mod, item) {
-        const breadcrumb = document.getElementById('lab-breadcrumb');
-        breadcrumb.innerHTML = `
-            <a onclick="app.goHome()">Home</a>
-            <span class="separator">›</span>
-            <span>${mod.title}</span>
-            <span class="separator">›</span>
-            <span>${item.title}</span>
-        `;
-
-        document.getElementById('lab-title').textContent = item.title;
-        document.getElementById('lab-objective').textContent = item.objective;
-        document.getElementById('lab-tasks').innerHTML = item.instructions;
-
-        document.getElementById('hints-container').innerHTML = '';
-        currentHintIndex = 0;
-
-        const hintBtn = document.getElementById('hint-btn');
-        if (item.hints && item.hints.length > 0) {
-            hintBtn.style.display = 'inline-flex';
-            hintBtn.textContent = `Show Hint (${item.hints.length} available)`;
-        } else {
-            hintBtn.style.display = 'none';
-        }
-
-        document.getElementById('output-content').textContent = '';
-        document.getElementById('test-results').classList.add('hidden');
-        document.getElementById('test-results').innerHTML = '';
-
-        PyEditor.destroyLabEditor();
-
-        const editorContainer = document.getElementById('lab-editor');
-        editorContainer.innerHTML = '';
-        PyEditor.initLabEditor(editorContainer, item.starterCode);
-
-        const prev = getAdjacentItem(-1);
-        const next = getAdjacentItem(1);
-        document.getElementById('lab-prev-btn').style.visibility = prev ? 'visible' : 'hidden';
-        document.getElementById('lab-next-btn').style.visibility = next ? 'visible' : 'hidden';
-    }
-
-    // --- Example Runner ---
-
-    function openExample(btn) {
-        const codeBlock = btn.closest('.code-block');
-        const code = codeBlock.querySelector('code').textContent;
-        currentExampleCode = code;
-
-        const modal = document.getElementById('example-runner');
-        modal.classList.remove('hidden');
-
-        const container = document.getElementById('example-editor');
-        PyEditor.initExampleEditor(container, code);
-
-        document.getElementById('example-output').textContent = '';
-    }
-
-    async function runExample() {
-        const editor = PyEditor.getExampleEditor();
-        if (!editor) return;
-
-        const output = document.getElementById('example-output');
-        output.textContent = 'Running...';
-
-        const result = await PyEditor.runCode(editor.getValue());
-        if (result.success) {
-            output.innerHTML = result.output || '<span class="text-muted">(No output)</span>';
-        } else {
-            let text = '';
-            if (result.output) text += result.output + '\n';
-            text += `<span class="error">${escapeHtml(result.error)}</span>`;
-            output.innerHTML = text;
-        }
-    }
-
-    function closeExample() {
-        document.getElementById('example-runner').classList.add('hidden');
-        PyEditor.destroyExampleEditor();
-    }
-
-    function resetExample() {
-        const editor = PyEditor.getExampleEditor();
-        if (editor) {
-            editor.setValue(currentExampleCode);
-        }
-        document.getElementById('example-output').textContent = '';
-    }
-
-    // --- Lab Actions ---
-
-    async function runLabCode() {
-        const editor = PyEditor.getLabEditor();
-        if (!editor) return;
-
-        const btn = document.getElementById('run-code-btn');
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loading-spinner" style="width:14px;height:14px;border-width:2px;display:inline-block;vertical-align:middle;"></span> Running...';
-
-        const output = document.getElementById('output-content');
-        output.textContent = 'Running...';
-        document.getElementById('test-results').classList.add('hidden');
-
-        const result = await PyEditor.runCode(editor.getValue());
-
-        if (result.success) {
-            output.innerHTML = result.output || '<span style="color:var(--text-muted)">(No output)</span>';
-        } else {
-            let text = '';
-            if (result.output) text += escapeHtml(result.output) + '\n';
-            text += `<span class="error">${escapeHtml(result.error)}</span>`;
-            output.innerHTML = text;
-        }
-
-        btn.disabled = false;
-        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Run`;
-    }
-
-    async function checkLabCode() {
-        if (!currentItem || currentItem.type !== 'lab') return;
-
-        const editor = PyEditor.getLabEditor();
-        if (!editor) return;
-
-        const btn = document.getElementById('check-code-btn');
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loading-spinner" style="width:14px;height:14px;border-width:2px;display:inline-block;vertical-align:middle;"></span> Checking...';
-
-        const output = document.getElementById('output-content');
-        output.textContent = 'Running tests...';
-
-        const results = await PyEditor.runTests(editor.getValue(), currentItem.tests);
-
-        let capturedOutput = '';
-        const codeResult = await PyEditor.runCode(editor.getValue());
-        if (codeResult.success && codeResult.output) {
-            output.innerHTML = escapeHtml(codeResult.output);
-        }
-
-        const testPanel = document.getElementById('test-results');
-        testPanel.classList.remove('hidden');
-
-        const passed = results.filter(r => r.passed).length;
-        const total = results.length;
-        const allPassed = passed === total;
-
-        let html = results.map(r => `
-            <div class="test-result-item ${r.passed ? 'test-pass' : 'test-fail'}">
-                <span>${r.passed ? '✓' : '✗'}</span>
-                <span>${r.name}${r.passed ? '' : ' — ' + escapeHtml(r.message)}</span>
-            </div>
-        `).join('');
-
-        html += `<div class="test-summary ${allPassed ? 'all-pass' : 'has-fail'}">
-            ${allPassed ? '🎉 All tests passed!' : `${passed}/${total} tests passed`}
-        </div>`;
-
-        testPanel.innerHTML = html;
-
-        if (allPassed && !progress[currentItem.id]) {
-            markComplete(currentItem.id);
-            output.innerHTML += '\n<span class="success">Lab completed! Great work!</span>';
-        }
-
-        btn.disabled = false;
-        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Check`;
-    }
-
-    function resetLabCode() {
-        if (!currentItem || currentItem.type !== 'lab') return;
-        const editor = PyEditor.getLabEditor();
-        if (editor) {
-            editor.setValue(currentItem.starterCode);
-        }
-        document.getElementById('output-content').textContent = '';
-        document.getElementById('test-results').classList.add('hidden');
-    }
-
-    function showHint() {
-        if (!currentItem || !currentItem.hints) return;
-
-        if (currentHintIndex >= currentItem.hints.length) return;
-
-        const container = document.getElementById('hints-container');
-        const hint = document.createElement('div');
-        hint.className = 'hint-item';
-        hint.innerHTML = `<strong>Hint ${currentHintIndex + 1}:</strong> ${currentItem.hints[currentHintIndex]}`;
-        container.appendChild(hint);
-
-        currentHintIndex++;
-
-        const btn = document.getElementById('hint-btn');
-        const remaining = currentItem.hints.length - currentHintIndex;
-        if (remaining > 0) {
-            btn.textContent = `Show Hint (${remaining} remaining)`;
-        } else {
-            btn.textContent = 'No more hints';
-            btn.disabled = true;
-        }
-    }
-
-    function clearOutput() {
-        document.getElementById('output-content').textContent = '';
-    }
-
-    // --- Event Binding ---
-
-    function bindEvents() {
-        document.getElementById('reset-progress').onclick = resetAllProgress;
-
-        document.querySelector('.logo').onclick = () => {
-            currentItem = null;
-            currentModuleId = null;
-            renderSidebar();
-            renderDashboard();
-            showView('dashboard');
-        };
-
-        document.getElementById('complete-lesson-btn').onclick = () => {
-            if (currentItem) {
-                markComplete(currentItem.id);
-                renderLesson(
-                    MODULES.find(m => m.id === currentModuleId),
-                    currentItem
-                );
-            }
-        };
-
-        document.getElementById('prev-btn').onclick = () => navigateAdjacent(-1);
-        document.getElementById('next-btn').onclick = () => navigateAdjacent(1);
-        document.getElementById('lab-prev-btn').onclick = () => navigateAdjacent(-1);
-        document.getElementById('lab-next-btn').onclick = () => navigateAdjacent(1);
-
-        document.getElementById('run-code-btn').onclick = runLabCode;
-        document.getElementById('check-code-btn').onclick = checkLabCode;
-        document.getElementById('reset-code-btn').onclick = resetLabCode;
-        document.getElementById('clear-output-btn').onclick = clearOutput;
-        document.getElementById('hint-btn').onclick = showHint;
-
-        document.getElementById('example-run-btn').onclick = runExample;
-        document.getElementById('example-close-btn').onclick = closeExample;
-        document.getElementById('example-reset-btn').onclick = resetExample;
-
-        document.getElementById('sidebar-toggle').onclick = toggleSidebar;
-        document.getElementById('sidebar-overlay').onclick = closeSidebar;
-    }
-
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('sidebar-overlay').classList.toggle('active');
-    }
-
-    function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('sidebar-overlay').classList.remove('active');
-    }
-
-    function goHome() {
-        currentItem = null;
-        currentModuleId = null;
-        renderSidebar();
-        renderDashboard();
-        showView('dashboard');
-    }
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
-
-    return {
-        openExample,
-        goHome
-    };
+  }
+
+  // ---------- Sidebar & progress ----------
+  function renderSidebar() {
+    const list = document.getElementById("module-list");
+    list.innerHTML = "";
+    const currentMod = state.currentLessonId ? findLesson(state.currentLessonId).mod : null;
+    CURRICULUM.forEach((mod, i) => {
+      const modEl = el("div", "module" + ((mod === currentMod || (!currentMod && i === 0)) ? " open" : ""));
+      const total = mod.lessons.length;
+      const done = mod.lessons.filter((l) => isDone(l.id)).length;
+      const header = el("button", "module-header");
+      header.innerHTML = "<span>" + (i + 1) + ". " + mod.title + "</span>" +
+        (done === total ? '<span class="mod-done">✓</span>' : '<span class="mod-done" style="color:var(--text-dim)">' + done + "/" + total + "</span>") +
+        '<span class="chev">▶</span>';
+      header.addEventListener("click", () => modEl.classList.toggle("open"));
+      modEl.appendChild(header);
+      const lessonsEl = el("div", "module-lessons");
+      mod.lessons.forEach((l) => {
+        const link = el("button", "lesson-link" + (l.id === state.currentLessonId ? " active" : ""));
+        link.innerHTML = '<span class="status ' + (isDone(l.id) ? "done" : "todo") + '">' + (isDone(l.id) ? "✓" : "○") + "</span>" +
+          "<span>" + l.title + '</span><span class="ltype ' + l.type + '" style="margin-left:auto">' + (l.type === "lab" ? "lab" : "read") + "</span>";
+        link.addEventListener("click", () => { navigate(l.id); closeSidebarOnMobile(); });
+        lessonsEl.appendChild(link);
+      });
+      modEl.appendChild(lessonsEl);
+      list.appendChild(modEl);
+    });
+    refreshProgressUI();
+  }
+
+  function refreshProgressUI() {
+    const total = flatLessons.length;
+    const done = flatLessons.filter((x) => isDone(x.lesson.id)).length;
+    document.getElementById("progress-count").textContent = done;
+    document.getElementById("progress-total").textContent = total;
+    document.getElementById("progress-fill").style.width = (total ? (100 * done / total) : 0) + "%";
+  }
+
+  // ---------- Navigation ----------
+  function navigate(id) {
+    if (id) location.hash = id;
+    else { history.pushState(null, "", location.pathname); route(); }
+  }
+  function goNext() {
+    const i = lessonIndex(state.currentLessonId);
+    if (i >= 0 && i < flatLessons.length - 1) navigate(flatLessons[i + 1].lesson.id);
+    else navigate(null);
+  }
+  function goPrev() {
+    const i = lessonIndex(state.currentLessonId);
+    if (i > 0) navigate(flatLessons[i - 1].lesson.id);
+    else navigate(null);
+  }
+  function updateLessonNavButtons() {
+    const prev = document.getElementById("prev-btn");
+    const next = document.getElementById("next-btn");
+    const i = state.currentLessonId ? lessonIndex(state.currentLessonId) : -1;
+    prev.style.visibility = i <= 0 ? "hidden" : "visible";
+    if (i === -1) { next.textContent = "Start learning →"; }
+    else if (i >= flatLessons.length - 1) { next.textContent = "Back to overview"; }
+    else { next.textContent = "Next →"; }
+  }
+  function route() {
+    const id = location.hash.replace("#", "");
+    if (id && findLesson(id)) renderLesson(id);
+    else renderHome();
+  }
+
+  function closeSidebarOnMobile() {
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("sidebar-backdrop").classList.remove("show");
+  }
+
+  // ---------- Boot ----------
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("next-btn").addEventListener("click", () => {
+      if (state.currentLessonId === null) navigate(flatLessons[0].lesson.id);
+      else goNext();
+    });
+    document.getElementById("prev-btn").addEventListener("click", goPrev);
+    document.getElementById("nav-toggle").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("sidebar-backdrop").classList.toggle("show");
+    });
+    document.getElementById("sidebar-backdrop").addEventListener("click", closeSidebarOnMobile);
+    document.getElementById("reset-progress").addEventListener("click", () => {
+      if (confirm("Erase all completion progress on this device?")) {
+        progress = {};
+        saveProgress(progress);
+        route();
+      }
+    });
+    window.addEventListener("hashchange", route);
+    route();
+    initPyodide();
+  });
 })();

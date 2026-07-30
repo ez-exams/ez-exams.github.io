@@ -1,2208 +1,1844 @@
-const MODULES = [
-    // =====================================================================
-    // DAY 1: PYTHON FOUNDATIONS (Udemy 100 Days of Python - Days 1, 2 & 3)
-    // =====================================================================
-    {
-        id: 'day1',
-        title: 'Day 1: Python Foundations',
-        description: 'Start from zero - printing, input, variables, data types, math operations, and conditionals.',
-        items: [
-            // --- LESSON 1: Printing, Input & Strings ---
-            {
-                id: 'day1-lesson1',
-                type: 'lesson',
-                title: 'Printing, Input & Strings',
-                content: `
-<h1>Printing, Input & Strings</h1>
-<p>Every Python journey starts with putting text on the screen. The <code>print()</code> function is your window into what your program is doing.</p>
-
-<h2>The <code>print()</code> Function</h2>
-<p>Use <code>print()</code> to display text, numbers, and results:</p>
-
-<div class="code-block" data-example="d1l1_print">
-<code>print("Hello, World!")
-print("Welcome to 100 Days of Python!")
-print("Let's get started!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Why "Hello, World!"?</strong>
-It's a tradition! Almost every programmer's first line of code in a new language is printing "Hello, World!" - you're now part of the club.
-</div>
-
-<h2>Strings - Text in Python</h2>
-<p>Text in Python is called a <strong>string</strong>. Wrap it in quotes - single <code>'</code> or double <code>"</code> both work:</p>
-
-<div class="code-block" data-example="d1l1_strings">
-<code>print("Double quotes work")
-print('Single quotes also work')
-
-# Use the other quote type to include quotes in text
-print("It's a beautiful day")
-print('She said "hello"')
-
-# String concatenation - gluing strings together with +
-print("Hello" + " " + "World")
-
-# String multiplication
-print("Python " * 3)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The <code>input()</code> Function</h2>
-<p><code>input()</code> asks the user to type something and gives you back a <strong>string</strong>. This is how your programs become interactive:</p>
-
-<div class="code-block" data-example="d1l1_input">
-<code># In PyCharm, this will actually pause and wait for you to type
-# In this browser, we simulate the input
-name = "Angela"  # In PyCharm: name = input("What is your name? ")
-print("Hello, " + name + "!")
-
-city = "London"  # In PyCharm: city = input("What city do you live in? ")
-print("You live in " + city)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>PyCharm vs Browser</strong>
-In this web app, we simulate <code>input()</code> with hardcoded values. When you run these in <strong>PyCharm</strong>, replace the hardcoded values with real <code>input()</code> calls and the program will actually wait for you to type!
-</div>
-
-<h2>The <code>len()</code> Function</h2>
-<p><code>len()</code> tells you how many characters are in a string (or items in a list):</p>
-
-<div class="code-block" data-example="d1l1_len">
-<code>name = "Angela"
-print(len(name))  # 6
-
-print(len("Hello World"))  # 11 (space counts!)
-
-# Useful for validation
-password = "abc123"
-print(f"Password length: {len(password)} characters")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>String Manipulation</h2>
-<p>Strings have powerful built-in methods for transforming text:</p>
-
-<div class="code-block" data-example="d1l1_strmanip">
-<code>text = "Hello, World"
-
-print(text.upper())       # HELLO, WORLD
-print(text.lower())       # hello, world
-print(text.title())       # Hello, World
-print(text.count("l"))    # 3
-print(text.replace("World", "Python"))  # Hello, Python
-
-# Stripping whitespace
-messy = "   extra spaces   "
-print(messy.strip())      # "extra spaces"</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Comments</h2>
-<p>Comments are notes for humans - Python ignores them. Use <code>#</code>:</p>
-
-<div class="code-block" data-example="d1l1_comments">
-<code># This is a comment - Python skips it
-print("This runs!")  # Inline comment
-
-# Use comments to explain WHY, not WHAT
-# Good: Convert to Fahrenheit because the API returns Celsius
-# Bad: Print the number</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Debugging with <code>print()</code></h2>
-<p>When your code isn't working, sprinkle in <code>print()</code> calls to see what's happening:</p>
-
-<div class="code-block" data-example="d1l1_debug">
-<code>word = "Python"
-letter_count = len(word)
-print(f"DEBUG: letter_count = {letter_count}")
-
-# Common beginner bug: printing vs using a value
-result = len("hello")  # Stores 5 in result
-print(result)           # Now we see it</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-<code>print()</code> shows output, <code>input()</code> gets user text (always a string), <code>len()</code> counts characters. Master these three and you're off to a great start.
-</div>
-`
-            },
-
-            // --- LESSON 2: Variables, Data Types & Math ---
-            {
-                id: 'day1-lesson2',
-                type: 'lesson',
-                title: 'Variables, Data Types & Math',
-                content: `
-<h1>Variables, Data Types & Math</h1>
-<p>Variables store data so you can use it later. Python has several built-in data types, and you can do math with numbers effortlessly.</p>
-
-<h2>Creating Variables</h2>
-<p>Use <code>=</code> to assign a value to a name:</p>
-
-<div class="code-block" data-example="d1l2_vars">
-<code>name = "Alice"
-age = 25
-height = 5.7
-is_student = True
-
-print(name)
-print(age)
-print(height)
-print(is_student)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Variable Naming Rules</strong>
-<ul>
-<li>Must start with a letter or underscore</li>
-<li>Can contain letters, numbers, underscores</li>
-<li>Case-sensitive (<code>Name</code> != <code>name</code>)</li>
-<li>Use <code>snake_case</code> by convention: <code>user_name</code>, <code>birth_year</code></li>
-<li>Cannot use Python keywords like <code>if</code>, <code>for</code>, <code>print</code></li>
-</ul>
-</div>
-
-<h2>Python's Data Types</h2>
-<p>Every value has a type. The four fundamental types are:</p>
-<ul>
-    <li><code>int</code> - Whole numbers: <code>42</code>, <code>-7</code>, <code>0</code></li>
-    <li><code>float</code> - Decimal numbers: <code>3.14</code>, <code>-0.5</code>, <code>100.0</code></li>
-    <li><code>str</code> - Text (strings): <code>"hello"</code>, <code>'world'</code></li>
-    <li><code>bool</code> - True or False: <code>True</code>, <code>False</code></li>
-</ul>
-
-<div class="code-block" data-example="d1l2_types">
-<code># Check types with type()
-print(type(42))        # <class 'int'>
-print(type(3.14))      # <class 'float'>
-print(type("hello"))   # <class 'str'>
-print(type(True))      # <class 'bool'>
-
-# Important: input() ALWAYS returns a string!
-age_input = "25"       # Simulating input()
-print(type(age_input)) # <class 'str'> - it's text, not a number!</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Type Conversion (Casting)</h2>
-<p>Since <code>input()</code> always gives you a string, you often need to convert types:</p>
-
-<div class="code-block" data-example="d1l2_casting">
-<code># String to Integer
-age_text = "25"
-age = int(age_text)
-print(age + 5)        # 30 (math works now!)
-
-# String to Float
-price_text = "19.99"
-price = float(price_text)
-print(price * 2)      # 39.98
-
-# Number to String
-score = 100
-message = "Score: " + str(score)
-print(message)
-
-# Float to Integer (truncates - cuts off decimal)
-print(int(9.7))   # 9 (not rounded!)
-print(int(3.2))   # 3</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Mathematical Operators</h2>
-<p>Python supports all standard math operations, plus a few extras:</p>
-
-<div class="code-block" data-example="d1l2_math">
-<code>print(10 + 3)    # 13  - Addition
-print(10 - 3)    # 7   - Subtraction
-print(10 * 3)    # 30  - Multiplication
-print(10 / 3)    # 3.333... - Division (always returns float)
-print(10 // 3)   # 3   - Floor Division (rounds down)
-print(10 % 3)    # 1   - Modulo (remainder)
-print(10 ** 3)   # 1000 - Exponentiation (power)
-
-# PEMDAS / Order of Operations
-# Parentheses -> Exponents -> Multiply/Divide -> Add/Subtract
-print(3 + 5 * 2)       # 13 (not 16!)
-print((3 + 5) * 2)     # 16 (parentheses first)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The <code>round()</code> Function</h2>
-<div class="code-block" data-example="d1l2_round">
-<code>pi = 3.14159265
-
-print(round(pi))       # 3 (nearest integer)
-print(round(pi, 2))    # 3.14 (2 decimal places)
-print(round(pi, 4))    # 3.1416
-
-# Useful for money calculations
-total = 24.991
-dollar = "$"
-print(f"Total: {dollar}{round(total, 2)}")  # Total: $24.99</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>f-Strings - Modern String Formatting</h2>
-<p>F-strings let you embed variables and expressions directly inside strings. They start with <code>f</code> before the quote:</p>
-
-<div class="code-block" data-example="d1l2_fstrings">
-<code>name = "Alice"
-age = 25
-gpa = 3.856
-
-# Embed variables
-print(f"My name is {name}")
-print(f"{name} is {age} years old")
-
-# Embed expressions
-print(f"In 10 years: {age + 10}")
-print(f"Name in caps: {name.upper()}")
-
-# Format numbers
-print(f"GPA: {gpa:.2f}")        # 3.86 (2 decimal places)
-print(f"Big number: {1000000:,}") # 1,000,000</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Shorthand Operators</h2>
-<div class="code-block" data-example="d1l2_shorthand">
-<code>score = 0
-score += 10   # Same as: score = score + 10
-print(score)  # 10
-
-score -= 3    # score = score - 3
-print(score)  # 7
-
-score *= 2    # score = score * 2
-print(score)  # 14
-
-score /= 7    # score = score / 7
-print(score)  # 2.0</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-<code>input()</code> always returns a <strong>string</strong>. Use <code>int()</code> or <code>float()</code> to convert when you need to do math. F-strings (<code>f"..."</code>) are the cleanest way to mix variables into text.
-</div>
-`
-            },
-
-            // --- LESSON 3: Conditionals & Logic ---
-            {
-                id: 'day1-lesson3',
-                type: 'lesson',
-                title: 'Conditionals & Logic',
-                content: `
-<h1>Conditionals & Logic</h1>
-<p>Programs need to make decisions. Python uses <code>if</code>, <code>elif</code>, and <code>else</code> to run different code depending on conditions.</p>
-
-<h2>The <code>if</code> Statement</h2>
-<p>The simplest decision: do something <em>only if</em> a condition is true:</p>
-
-<div class="code-block" data-example="d1l3_if">
-<code>temperature = 35
-
-if temperature > 30:
-    print("It's hot outside!")
-    print("Stay hydrated!")
-
-print("Have a good day!")  # Always runs (not indented under if)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>Indentation Is Everything!</strong>
-Python uses indentation (4 spaces) to group code. Everything indented under the <code>if</code> only runs when the condition is true. Get the indentation wrong and your program breaks!
-</div>
-
-<h2>Comparison Operators</h2>
-<p>These operators compare values and produce <code>True</code> or <code>False</code>:</p>
-<ul>
-    <li><code>==</code> Equal to (note: double equals!)</li>
-    <li><code>!=</code> Not equal to</li>
-    <li><code>&gt;</code> Greater than</li>
-    <li><code>&lt;</code> Less than</li>
-    <li><code>&gt;=</code> Greater than or equal</li>
-    <li><code>&lt;=</code> Less than or equal</li>
-</ul>
-
-<div class="code-block" data-example="d1l3_compare">
-<code>print(10 == 10)   # True
-print(10 != 5)    # True
-print(10 > 20)    # False
-print(5 <= 5)     # True
-
-# Common beginner mistake: = vs ==
-# = is assignment:  x = 5 (sets x to 5)
-# == is comparison: x == 5 (checks if x equals 5)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2><code>if / else</code></h2>
-<p>Do one thing if true, another thing if false:</p>
-
-<div class="code-block" data-example="d1l3_ifelse">
-<code>age = 16
-
-if age >= 18:
-    print("You can vote!")
-else:
-    print("Sorry, you're too young to vote")
-    years_left = 18 - age
-    print(f"Come back in {years_left} years")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2><code>if / elif / else</code></h2>
-<p>Check multiple conditions in order. Only the <strong>first</strong> matching branch runs:</p>
-
-<div class="code-block" data-example="d1l3_elif">
-<code>score = 85
-
-if score >= 90:
-    grade = "A"
-    print("Outstanding!")
-elif score >= 80:
-    grade = "B"
-    print("Great job!")
-elif score >= 70:
-    grade = "C"
-    print("Not bad")
-elif score >= 60:
-    grade = "D"
-    print("Needs improvement")
-else:
-    grade = "F"
-    print("Please see the teacher")
-
-print(f"Score: {score} -> Grade: {grade}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Nested <code>if</code> Statements</h2>
-<p>Put an <code>if</code> inside another <code>if</code> for more complex logic:</p>
-
-<div class="code-block" data-example="d1l3_nested">
-<code>has_ticket = True
-age = 15
-
-if has_ticket:
-    if age >= 18:
-        print("You may ride the rollercoaster!")
-    elif age >= 12:
-        print("You may ride, but with a parent")
+/* ============================================================
+   Python Lab — curriculum
+   Modules of tutorials (read + try) and labs (write + check).
+   Lab `tests` run in the same namespace as the learner's code.
+   Inside tests: _stdout = captured print output, _code = source.
+   ============================================================ */
+const CURRICULUM = [
+
+// ================================================================
+// MODULE 1 — FIRST STEPS
+// ================================================================
+{
+  id: "m1",
+  title: "First Steps",
+  blurb: "What Python is, how to run it, and your very first lines of code.",
+  lessons: [
+  {
+    id: "m1l1",
+    type: "tutorial",
+    title: "Hello, Python!",
+    minutes: 5,
+    content: [
+      { p: "Welcome! 👋 Python is one of the most popular programming languages in the world — it runs websites, analyzes data, automates boring work, and powers AI. It's also famously beginner-friendly, because its code reads almost like English." },
+      { p: "A program is just a list of instructions the computer follows from top to bottom. The most fundamental instruction is <code>print()</code> — it displays something on the screen." },
+      { run: "print(\"Hello, world!\")" },
+      { p: "Click <strong>▶ Run</strong> above (or press <strong>Ctrl+Enter</strong> inside the editor). The text between the quotes gets printed below the code. Every code box on this site is live — you can edit it and re-run it as many times as you like." },
+      { h: "Anatomy of that one line" },
+      { list: [
+        "<code>print</code> — the name of a built-in <em>function</em> (a reusable command). You'll write your own functions later in this course!",
+        "<code>( )</code> — parentheses hold what you give to the function.",
+        "<code>\"Hello, world!\"</code> — text in quotes is called a <em>string</em>. Python treats it as data, not as instructions."
+      ]},
+      { h: "Programs run top to bottom" },
+      { run: "print(\"First\")\nprint(\"Second\")\nprint(\"Third\")" },
+      { tip: "Try reordering the three lines and running again. The output order always follows the code order — computers do exactly what you say, in the sequence you say it." },
+      { warn: "Spelling and symbols matter. <code>Print(\"hi\")</code> with a capital P is an error — try it and read the error message. Learning to read errors calmly is a programming superpower." }
+    ]
+  },
+  {
+    id: "m1l2",
+    type: "tutorial",
+    title: "Quotes, comments & common errors",
+    minutes: 6,
+    content: [
+      { h: "Single or double quotes — both work" },
+      { run: "print('single quotes work')\nprint(\"double quotes work too\")\nprint(\"it's easiest to use double quotes when the text has an apostrophe\")" },
+      { h: "Comments: notes for humans" },
+      { p: "A line starting with <code>#</code> is a <em>comment</em>. Python ignores it completely — it exists to explain your code to humans (including future you)." },
+      { run: "# This whole line is ignored by Python\nprint(\"But this line runs\")  # comments can also sit at the end of a line" },
+      { h: "Printing several things at once" },
+      { p: "Give <code>print()</code> multiple items separated by commas and it prints them with spaces in between:" },
+      { run: "print(\"Python\", \"is\", \"fun\")\nprint(\"2 + 2 is\", 2 + 2)" },
+      { p: "Notice the second line: <code>2 + 2</code> has no quotes, so Python <em>calculates</em> it instead of printing it literally. Quotes = text. No quotes = something Python evaluates." },
+      { h: "Meet your first errors" },
+      { p: "Errors are not failures — they're feedback. Run this broken line and read the message:" },
+      { run: "print(\"oops — this string never ends" },
+      { p: "Python says <code>SyntaxError</code> and points near the problem. Fix it by adding the closing quote and parenthesis, then run again. You just debugged your first program. 🐛" }
+    ]
+  },
+  {
+    id: "m1l3",
+    type: "lab",
+    title: "Lab: Your name card",
+    minutes: 5,
+    objective: "Use <code>print()</code> three times to introduce yourself: your name, where you're from, and one thing you want to build with Python.",
+    content: [
+      { p: "Write <strong>three separate print statements</strong>, each producing one line of output. For example:" },
+      { code: "My name is Ada\nI am from London\nI want to build a weather app" },
+      { p: "The exact words are up to you — the checker just verifies you printed <strong>at least 3 non-empty lines</strong> using three print calls." }
+    ],
+    starter: "# Line 1: your name\n\n# Line 2: where you're from\n\n# Line 3: something you want to build\n",
+    tests: `
+_lines = [l for l in _stdout.split("\\n") if l.strip()]
+assert len(_lines) >= 3, f"I only see {len(_lines)} non-empty line(s) of output — print three lines, one per print()."
+assert _code.count("print") >= 3, "Use three separate print() calls, one for each line."
+`,
+    hints: [
+      "Each <code>print(\"...\")</code> produces exactly one line of output.",
+      "Make sure your text is inside quotes: <code>print(\"My name is Sam\")</code>."
+    ],
+    solution: "print(\"My name is Sam\")\nprint(\"I am from Ohio\")\nprint(\"I want to build a game\")"
+  },
+  {
+    id: "m1l4",
+    type: "lab",
+    title: "Lab: Fix the bugs",
+    minutes: 6,
+    objective: "The program below has <strong>three bugs</strong>. Fix them all so it prints exactly: <code>I am learning Python</code> and <code>Debugging makes me stronger</code>.",
+    content: [
+      { p: "Run the code first and <em>read the error message</em> — it tells you the line number and what confused Python. Fix one bug, run again, repeat. This run-read-fix loop is exactly how professionals work." },
+      { list: [
+        "Bug 1: Python is case-sensitive — the print function is all lowercase.",
+        "Bug 2: strings need matching opening <em>and</em> closing quotes.",
+        "Bug 3: every opening parenthesis needs a closing one."
+      ]}
+    ],
+    starter: "Print(\"I am learning Python\")\nprint(\"Debugging makes me stronger)\nprint(\"Almost there\"\n",
+    tests: `
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert "I am learning Python" in _lines, 'Line 1 should print exactly: I am learning Python'
+assert "Debugging makes me stronger" in _lines, 'Line 2 should print exactly: Debugging makes me stronger'
+`,
+    hints: [
+      "<code>Print</code> ➜ <code>print</code> (lowercase p).",
+      "The second line is missing a closing double quote before the parenthesis.",
+      "The third line is missing its closing parenthesis <code>)</code>."
+    ],
+    solution: "print(\"I am learning Python\")\nprint(\"Debugging makes me stronger\")\nprint(\"Almost there\")"
+  }
+  ]
+},
+
+// ================================================================
+// MODULE 2 — VARIABLES & DATA TYPES
+// ================================================================
+{
+  id: "m2",
+  title: "Variables & Data Types",
+  blurb: "Store information in named boxes and learn the four core types of data.",
+  lessons: [
+  {
+    id: "m2l1",
+    type: "tutorial",
+    title: "Variables: naming your data",
+    minutes: 7,
+    content: [
+      { p: "A <em>variable</em> is a name that points to a value — like a labeled box you can store things in. You create one with <code>=</code>, which means <strong>\"assign\"</strong> (not \"equals\" like in math)." },
+      { run: "name = \"Ada\"\nage = 36\n\nprint(name)\nprint(age)" },
+      { p: "Once a value has a name, you can use that name anywhere. Notice <code>print(name)</code> has no quotes — we want the <em>value inside the box</em>, not the literal text \"name\"." },
+      { h: "Variables can change" },
+      { run: "score = 0\nprint(score)\n\nscore = 10        # the box now holds 10\nprint(score)\n\nscore = score + 5  # take the current value, add 5, store it back\nprint(score)" },
+      { p: "That last line is worth staring at: <code>score = score + 5</code>. Python first works out the right side (<code>10 + 5</code>), then stores the result back into <code>score</code>." },
+      { h: "Naming rules" },
+      { list: [
+        "Use letters, numbers and underscores: <code>first_name</code>, <code>player2</code>.",
+        "Can't start with a number: <code>2player</code> ❌",
+        "No spaces — use underscores: <code>high score</code> ❌ ➜ <code>high_score</code> ✅",
+        "Case matters: <code>Name</code> and <code>name</code> are different variables.",
+        "Pick names that describe the data. <code>x = 19.99</code> works, but <code>price = 19.99</code> tells a story."
+      ]},
+      { warn: "Using a variable before creating it causes a <code>NameError</code>. Try running just <code>print(points)</code> — Python has no box called <code>points</code> yet." },
+      { h: "Spacing matters (yes, really)" },
+      { p: "Professional Python has a style guide (PEP 8), and its first habit is <strong>clean spacing</strong>: one space on each side of <code>=</code> and comparison signs, and a space after every comma. So <code>x = 5</code>, not <code>x=5</code>; <code>(a, b)</code>, not <code>(a,b)</code>. Indentation is always <strong>4 spaces</strong> — never tabs." },
+      { tip: "The labs on this site <em>require</em> this spacing — the checker will point out exactly which line to tidy. It's not just cosmetic: consistent spacing makes bugs visible and prevents indentation errors before they happen." }
+    ]
+  },
+  {
+    id: "m2l2",
+    type: "tutorial",
+    title: "The four core data types",
+    minutes: 8,
+    content: [
+      { p: "Every value in Python has a <em>type</em>. The four you'll use constantly:" },
+      { list: [
+        "<code>str</code> — a string: text in quotes, like <code>\"hello\"</code>",
+        "<code>int</code> — an integer: a whole number, like <code>42</code>",
+        "<code>float</code> — a decimal number, like <code>3.14</code>",
+        "<code>bool</code> — a boolean: <code>True</code> or <code>False</code> (capitalized!)"
+      ]},
+      { p: "The built-in <code>type()</code> function tells you what type a value is:" },
+      { run: "print(type(\"hello\"))\nprint(type(42))\nprint(type(3.14))\nprint(type(True))" },
+      { h: "Why types matter" },
+      { p: "The same operator can behave differently depending on type. <code>+</code> adds numbers but <em>joins</em> strings:" },
+      { run: "print(2 + 2)          # numbers: addition\nprint(\"2\" + \"2\")      # strings: joined together!\nprint(\"ha\" * 3)       # strings can even be repeated" },
+      { h: "Converting between types" },
+      { p: "Use <code>int()</code>, <code>float()</code>, and <code>str()</code> to convert:" },
+      { run: "text = \"25\"\nnumber = int(text)      # \"25\" (string) -> 25 (int)\nprint(number + 5)\n\nprice = 19.99\nlabel = str(price)      # 19.99 (float) -> \"19.99\" (string)\nprint(\"Price: \" + label)" },
+      { warn: "Mixing types incorrectly is a classic beginner error. Try <code>print(\"Age: \" + 25)</code> — Python refuses to glue a string to an int. Convert first: <code>print(\"Age: \" + str(25))</code>. (The next lesson shows a much nicer way.)" }
+    ]
+  },
+  {
+    id: "m2l3",
+    type: "tutorial",
+    title: "f-strings: text + variables, beautifully",
+    minutes: 6,
+    content: [
+      { p: "You'll constantly want to mix variables into text. The modern Python way is the <em>f-string</em>: put an <code>f</code> before the opening quote, then drop variables inside curly braces <code>{ }</code>." },
+      { run: "name = \"Ada\"\nlanguage = \"Python\"\n\nprint(f\"Hi {name}, welcome to {language}!\")" },
+      { p: "Python replaces each <code>{...}</code> with the variable's value. No plus signs, no <code>str()</code> conversions — it just works, even with numbers:" },
+      { run: "apples = 3\nprice = 0.5\n\nprint(f\"{apples} apples cost {apples * price} dollars\")" },
+      { p: "Yes — you can put whole expressions like <code>apples * price</code> inside the braces." },
+      { h: "Formatting numbers" },
+      { p: "Add <code>:.2f</code> inside the braces to show a number with exactly 2 decimal places (perfect for money):" },
+      { run: "total = 7.5\nprint(f\"Total: ${total:.2f}\")" },
+      { tip: "Forgot the <code>f</code>? Then the braces print literally: <code>\"Hi {name}\"</code>. If you ever see curly braces in your output, check for a missing <code>f</code>." }
+    ]
+  },
+  {
+    id: "m2l4",
+    type: "lab",
+    title: "Lab: About-me variables",
+    minutes: 7,
+    objective: "Create four variables — <code>name</code> (str), <code>age</code> (int), <code>height</code> (float), and <code>likes_python</code> (bool) — then print one sentence that uses them.",
+    content: [
+      { p: "Requirements checked by the grader:" },
+      { list: [
+        "<code>name</code> holds a string (your name)",
+        "<code>age</code> holds a whole number (an <code>int</code>, not a string!)",
+        "<code>height</code> holds a decimal number (a <code>float</code>, e.g. 1.75)",
+        "<code>likes_python</code> holds <code>True</code> or <code>False</code>",
+        "You print at least one line that includes your name and age (an f-string is perfect)"
+      ]}
+    ],
+    starter: "# Create the four variables\n\n\n# Print a sentence about yourself using them\n",
+    tests: `
+assert "name" in globals(), "Create a variable called name."
+assert isinstance(name, str) and len(name) > 0, "name should be a non-empty string (text in quotes)."
+assert "age" in globals(), "Create a variable called age."
+assert isinstance(age, int) and not isinstance(age, bool), "age should be an int — a number WITHOUT quotes, like 25."
+assert "height" in globals(), "Create a variable called height."
+assert isinstance(height, float), "height should be a float — a decimal number like 1.75."
+assert "likes_python" in globals(), "Create a variable called likes_python."
+assert isinstance(likes_python, bool), "likes_python should be True or False (no quotes, capitalized)."
+assert name in _stdout, "Print a sentence that includes your name variable."
+assert str(age) in _stdout, "Print a sentence that includes your age variable."
+`,
+    hints: [
+      "Strings need quotes: <code>name = \"Sam\"</code>. Numbers don't: <code>age = 25</code>.",
+      "A float needs a decimal point: <code>height = 1.75</code>. Booleans are <code>True</code>/<code>False</code> with a capital letter and no quotes.",
+      "Print with an f-string: <code>print(f\"I'm {name} and I'm {age}\")</code>."
+    ],
+    solution: "name = \"Sam\"\nage = 25\nheight = 1.75\nlikes_python = True\n\nprint(f\"I'm {name}, I'm {age} years old and {height}m tall.\")"
+  },
+  {
+    id: "m2l5",
+    type: "lab",
+    title: "Lab: Mad libs machine",
+    minutes: 6,
+    objective: "Use an f-string with the three given variables to print exactly: <code>The brave tiger loves to dance.</code>",
+    content: [
+      { p: "The three variables are already created for you in the starter code. Your job: <strong>one</strong> <code>print()</code> with <strong>one</strong> f-string that produces the sentence — then try changing the variable values and re-running to generate silly new sentences. That's the whole point of variables: change the data, not the sentence." }
+    ],
+    starter: "adjective = \"brave\"\nanimal = \"tiger\"\nverb = \"dance\"\n\n# Print: The brave tiger loves to dance.\n# (build it from the variables — don't type the words directly!)\n",
+    tests: `
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert "The brave tiger loves to dance." in _lines, "Expected the exact line: The brave tiger loves to dance. (check spacing and the final period)"
+assert 'f"' in _code or "f'" in _code, "Use an f-string (a quote with an f in front) rather than gluing strings together."
+assert "{adjective}" in _code and "{animal}" in _code and "{verb}" in _code, "Use all three variables inside the f-string braces: {adjective}, {animal}, {verb}."
+`,
+    hints: [
+      "Pattern: <code>print(f\"... {variable} ...\")</code>.",
+      "The sentence is: The <code>{adjective}</code> <code>{animal}</code> loves to <code>{verb}</code>. — mind the final period!"
+    ],
+    solution: "adjective = \"brave\"\nanimal = \"tiger\"\nverb = \"dance\"\n\nprint(f\"The {adjective} {animal} loves to {verb}.\")"
+  }
+  ]
+},
+
+// ================================================================
+// MODULE 3 — NUMBERS, MATH & INPUT
+// ================================================================
+{
+  id: "m3",
+  title: "Numbers, Math & Input",
+  blurb: "Do real calculations, meet every math operator, and ask the user questions.",
+  lessons: [
+  {
+    id: "m3l1",
+    type: "tutorial",
+    title: "Math operators",
+    minutes: 7,
+    content: [
+      { p: "Python is a spectacular calculator. Here's the full toolbox:" },
+      { run: "print(7 + 3)    # addition       -> 10\nprint(7 - 3)    # subtraction    -> 4\nprint(7 * 3)    # multiplication -> 21\nprint(7 / 3)    # division       -> 2.333... (always a float!)\nprint(7 // 3)   # floor division -> 2  (drops the remainder)\nprint(7 % 3)    # modulo         -> 1  (JUST the remainder)\nprint(7 ** 2)   # power          -> 49 (7 squared)" },
+      { h: "The two weird ones: // and %" },
+      { p: "<code>//</code> answers <em>\"how many whole times does it fit?\"</em> and <code>%</code> answers <em>\"what's left over?\"</em>. Together they're perfect for questions like \"135 minutes is how many hours and minutes?\":" },
+      { run: "total_minutes = 135\nhours = total_minutes // 60\nminutes = total_minutes % 60\nprint(f\"{hours} hours and {minutes} minutes\")" },
+      { tip: "<code>%</code> is also the classic even/odd test: a number is even when <code>number % 2</code> is <code>0</code> — dividing by 2 leaves no remainder." },
+      { h: "Order of operations" },
+      { p: "Python follows math rules (PEMDAS). Use parentheses to control — or just clarify — the order:" },
+      { run: "print(2 + 3 * 4)      # 14, not 20\nprint((2 + 3) * 4)    # 20" }
+    ]
+  },
+  {
+    id: "m3l2",
+    type: "tutorial",
+    title: "Updating values & rounding",
+    minutes: 6,
+    content: [
+      { h: "Shortcut operators" },
+      { p: "Updating a variable based on its current value is so common that Python has shortcuts: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>." },
+      { run: "score = 100\nscore += 20   # same as: score = score + 20\nprint(score)\n\nscore -= 50   # same as: score = score - 50\nprint(score)" },
+      { h: "Rounding" },
+      { p: "<code>round()</code> rounds a number. Give it a second value to say how many decimal places to keep:" },
+      { run: "print(round(3.14159))      # -> 3\nprint(round(3.14159, 2))   # -> 3.14\nprint(round(2.5 * 3.3, 1)) # you can round any expression" },
+      { tip: "Remember from Module 2: for <em>display</em> purposes, f-strings can format too — <code>f\"{price:.2f}\"</code> always shows two decimals, even trailing zeros like <code>7.50</code>." }
+    ]
+  },
+  {
+    id: "m3l3",
+    type: "tutorial",
+    title: "Asking the user: input()",
+    minutes: 6,
+    content: [
+      { p: "Programs get interesting when they react to a person. <code>input()</code> pauses the program, asks the user a question, and hands you whatever they typed." },
+      { p: "On this site, <code>input()</code> opens a small popup box in your browser. Run this and answer the question:" },
+      { run: "name = input(\"What is your name? \")\nprint(f\"Nice to meet you, {name}!\")" },
+      { h: "input() always gives you a string" },
+      { p: "Even if the user types <code>21</code>, you receive the <em>string</em> <code>\"21\"</code>. Convert it with <code>int()</code> or <code>float()</code> before doing math:" },
+      { run: "age = input(\"How old are you? \")\nage = int(age)   # convert the text to a real number\nprint(f\"Next year you will be {age + 1}!\")" },
+      { warn: "If you forget the conversion, <code>age + 1</code> crashes with a <code>TypeError</code> — Python won't add a number to text. This is one of the most common beginner bugs in existence. 🐛" },
+      { p: "Because our automated lab checker can't type into popups, <strong>labs on this site give you variables instead of using input()</strong> — but everything you build would work the same way with real user input." }
+    ]
+  },
+  {
+    id: "m3l4",
+    type: "lab",
+    title: "Lab: Tip calculator",
+    minutes: 8,
+    objective: "Split the bill! Compute the total with tip, then the amount per person, and print the per-person amount formatted to 2 decimal places.",
+    content: [
+      { p: "Using the given variables, calculate:" },
+      { list: [
+        "<code>total</code> — the bill plus the tip. (18% tip means multiplying the bill by <code>1.18</code>, or adding <code>bill * 0.18</code>.)",
+        "<code>per_person</code> — the total split evenly between the people.",
+        "Print a line containing the per-person amount rounded/formatted to 2 decimals — it should contain <code>24.93</code>."
+      ]}
+    ],
+    starter: "bill = 84.50\ntip_percent = 18\npeople = 4\n\n# 1) total = bill plus the tip\n\n# 2) per_person = total split between people\n\n# 3) print it, formatted to 2 decimal places\n",
+    tests: `
+import math
+assert "total" in globals(), "Create a variable called total."
+assert math.isclose(total, 99.71, rel_tol=1e-9), f"total should be 99.71 (84.50 plus 18%), but yours is {total}."
+assert "per_person" in globals(), "Create a variable called per_person."
+assert math.isclose(per_person, 24.9275, rel_tol=1e-9), f"per_person should be total / people = 24.9275, but yours is {per_person}."
+assert "24.93" in _stdout, "Print the per-person amount with 2 decimal places (24.93). Try an f-string with :.2f"
+`,
+    hints: [
+      "Tip as a fraction: <code>tip_percent / 100</code>. So <code>total = bill * (1 + tip_percent / 100)</code>.",
+      "<code>per_person = total / people</code>.",
+      "Format with <code>print(f\"Each person pays ${per_person:.2f}\")</code>."
+    ],
+    solution: "bill = 84.50\ntip_percent = 18\npeople = 4\n\ntotal = bill * (1 + tip_percent / 100)\nper_person = total / people\n\nprint(f\"Each person pays ${per_person:.2f}\")"
+  },
+  {
+    id: "m3l5",
+    type: "lab",
+    title: "Lab: The time splitter",
+    minutes: 7,
+    objective: "Convert <code>total_minutes</code> into hours and leftover minutes using <code>//</code> and <code>%</code>, then print the result.",
+    content: [
+      { p: "A movie is <code>total_minutes = 347</code> minutes long. Create:" },
+      { list: [
+        "<code>hours</code> — how many <em>whole</em> hours fit into 347 minutes",
+        "<code>minutes</code> — the minutes left over",
+        "Print a sentence containing both, e.g. <code>5 hours and 47 minutes</code>"
+      ]},
+      { p: "No calculators allowed — make Python do the work with <code>//</code> and <code>%</code>. 😉" }
+    ],
+    starter: "total_minutes = 347\n\n# hours = ?\n# minutes = ?\n\n# print the result\n",
+    tests: `
+assert "hours" in globals(), "Create a variable called hours."
+assert hours == 5, f"hours should be 5 (use total_minutes // 60), but yours is {hours}."
+assert "minutes" in globals(), "Create a variable called minutes."
+assert minutes == 47, f"minutes should be 47 (use total_minutes % 60), but yours is {minutes}."
+assert "//" in _code, "Use floor division // to get the whole hours."
+assert "%" in _code, "Use the modulo operator % to get the leftover minutes."
+assert "5" in _stdout and "47" in _stdout, "Print a sentence that includes both numbers."
+`,
+    hints: [
+      "<code>//</code> tells you how many whole 60s fit: <code>347 // 60</code> ➜ 5.",
+      "<code>%</code> tells you what's left: <code>347 % 60</code> ➜ 47.",
+      "Finish with <code>print(f\"{hours} hours and {minutes} minutes\")</code>."
+    ],
+    solution: "total_minutes = 347\n\nhours = total_minutes // 60\nminutes = total_minutes % 60\n\nprint(f\"{hours} hours and {minutes} minutes\")"
+  }
+  ]
+},
+
+// ================================================================
+// MODULE 4 — MAKING DECISIONS
+// ================================================================
+{
+  id: "m4",
+  title: "Making Decisions",
+  blurb: "Teach your programs to choose: if, elif, else, and combining conditions.",
+  lessons: [
+  {
+    id: "m4l1",
+    type: "tutorial",
+    title: "if, elif, else",
+    minutes: 9,
+    content: [
+      { p: "So far your programs run every line, always. Real programs <em>decide</em>: <strong>if</strong> the password is right, log in; <strong>otherwise</strong>, show an error. In Python that's the <code>if</code> statement." },
+      { run: "temperature = 35\n\nif temperature > 30:\n    print(\"It's hot today! 🥵\")\n\nprint(\"This line always runs\")" },
+      { h: "The rules of the block" },
+      { list: [
+        "The <code>if</code> line ends with a colon <code>:</code>",
+        "The lines that belong to the <code>if</code> are <strong>indented 4 spaces</strong>. Indentation is not decoration in Python — it's how Python knows what's inside the if.",
+        "When the condition is <code>False</code>, the indented block is skipped entirely."
+      ]},
+      { p: "Change <code>temperature</code> to <code>20</code> above and re-run — the hot message disappears, the last line still prints." },
+      { h: "else — the \"otherwise\" branch" },
+      { run: "age = 15\n\nif age >= 18:\n    print(\"You can vote!\")\nelse:\n    print(f\"Not yet — come back in {18 - age} years.\")" },
+      { h: "elif — checking several possibilities" },
+      { p: "<code>elif</code> (\"else if\") lets you test conditions in order. Python runs the <em>first</em> branch that matches and skips the rest:" },
+      { run: "score = 87\n\nif score >= 90:\n    print(\"Grade: A\")\nelif score >= 80:\n    print(\"Grade: B\")\nelif score >= 70:\n    print(\"Grade: C\")\nelse:\n    print(\"Grade: F\")" },
+      { h: "Comparison operators" },
+      { list: [
+        "<code>==</code> equal to &nbsp;(two equals signs — <code>=</code> alone means assign!)",
+        "<code>!=</code> not equal to",
+        "<code>&gt;</code> greater than, <code>&lt;</code> less than",
+        "<code>&gt;=</code> greater or equal, <code>&lt;=</code> less or equal"
+      ]},
+      { warn: "Writing <code>if score = 90:</code> (one equals sign) is a syntax error. Comparing always uses <code>==</code>." }
+    ]
+  },
+  {
+    id: "m4l2",
+    type: "tutorial",
+    title: "Combining conditions: and, or, not",
+    minutes: 7,
+    content: [
+      { p: "Conditions can be combined with plain English words:" },
+      { list: [
+        "<code>and</code> — both sides must be True",
+        "<code>or</code> — at least one side must be True",
+        "<code>not</code> — flips True to False and back"
+      ]},
+      { run: "age = 22\nhas_ticket = True\n\nif age >= 18 and has_ticket:\n    print(\"Welcome to the concert!\")\nelse:\n    print(\"Sorry, no entry.\")" },
+      { run: "day = \"saturday\"\n\nif day == \"saturday\" or day == \"sunday\":\n    print(\"It's the weekend! 🎉\")\nelse:\n    print(\"Back to work.\")" },
+      { h: "Conditions are just bool values" },
+      { p: "A comparison like <code>age >= 18</code> <em>evaluates</em> to <code>True</code> or <code>False</code> — the same <code>bool</code> type from Module 2. You can print them or store them in variables:" },
+      { run: "age = 22\nis_adult = age >= 18\nprint(is_adult)\nprint(not is_adult)\nprint(10 > 5 and 3 > 7)" },
+      { tip: "Since <code>has_ticket</code> is already <code>True</code>/<code>False</code>, write <code>if has_ticket:</code> — not <code>if has_ticket == True:</code>. Both work, but the first reads like English." }
+    ]
+  },
+  {
+    id: "m4l3",
+    type: "lab",
+    title: "Lab: Grade assigner",
+    minutes: 8,
+    objective: "Use <code>if</code>/<code>elif</code>/<code>else</code> to print the letter grade for <code>score</code>: 90+ → A, 80–89 → B, 70–79 → C, 60–69 → D, below 60 → F.",
+    content: [
+      { p: "Print <strong>exactly one line</strong> in the format <code>Grade: B</code>. The starter sets <code>score = 87</code>, so the correct output is <code>Grade: B</code> — but your code must work for <em>any</em> score. After it passes, change the score to 95, 73, 60, 12 and re-run to convince yourself. (The checker also re-runs your logic with different scores — hardcoding won't fool it! 😄)" }
+    ],
+    starter: "score = 87\n\n# your if / elif / else chain here\n",
+    tests: `
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert "Grade: B" in _lines, f"With score = 87 your program should print 'Grade: B'. Your output was: {_lines}"
+assert "elif" in _code, "Use elif to chain the checks (if / elif / elif / ... / else)."
+import re as _re
+_m = _re.search(r"score\\s*=\\s*87", _code)
+assert _m, "Keep the line 'score = 87' at the top so the checker can test your logic."
+_reruns = {95: "A", 73: "C", 65: "D", 12: "F"}
+for _s, _expected in _reruns.items():
+    _test_code = _re.sub(r"score\\s*=\\s*87", f"score = {_s}", _code, count=1)
+    _g = {}
+    import io as _io, contextlib as _cl
+    _buf = _io.StringIO()
+    with _cl.redirect_stdout(_buf):
+        exec(_test_code, _g)
+    _out = _buf.getvalue()
+    assert f"Grade: {_expected}" in _out, f"With score = {_s}, expected 'Grade: {_expected}' but your program printed: {_out.strip()!r}"
+`,
+    hints: [
+      "Start from the top grade and work down: <code>if score >= 90:</code> ... <code>elif score >= 80:</code> ...",
+      "Because elif only runs when earlier checks failed, <code>elif score >= 80:</code> already means \"between 80 and 89\".",
+      "Each branch prints one thing: <code>print(\"Grade: B\")</code>. End with a plain <code>else:</code> for F."
+    ],
+    solution: "score = 87\n\nif score >= 90:\n    print(\"Grade: A\")\nelif score >= 80:\n    print(\"Grade: B\")\nelif score >= 70:\n    print(\"Grade: C\")\nelif score >= 60:\n    print(\"Grade: D\")\nelse:\n    print(\"Grade: F\")"
+  },
+  {
+    id: "m4l4",
+    type: "lab",
+    title: "Lab: The bouncer bot",
+    minutes: 8,
+    objective: "Combine conditions with <code>and</code>/<code>or</code> to decide who gets into the club.",
+    content: [
+      { p: "The rules of Club Python:" },
+      { list: [
+        "A person gets in if they are <strong>18 or older AND have an ID</strong> — print <code>Welcome in!</code>",
+        "…they also get in, regardless of anything, if they are <strong>on the VIP list</strong> — print <code>Welcome in!</code>",
+        "Everyone else: print <code>Sorry, not tonight.</code>"
+      ]},
+      { p: "With the starter values (age 17, has ID, not VIP) the correct output is <code>Sorry, not tonight.</code> The checker will re-run your logic with other combinations, so express the <em>rules</em>, don't hardcode the answer." }
+    ],
+    starter: "age = 17\nhas_id = True\nis_vip = False\n\n# your decision logic here\n",
+    tests: `
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert "Sorry, not tonight." in _lines, f"With age=17, has_id=True, is_vip=False the output should be 'Sorry, not tonight.' — your output: {_lines}"
+assert "and" in _code, "Use the 'and' keyword to require BOTH age >= 18 AND has_id."
+assert "or" in _code, "Use the 'or' keyword to let VIPs in no matter what."
+import io as _io, contextlib as _cl, re as _re
+_cases = [
+    (20, True,  False, "Welcome in!"),
+    (17, True,  True,  "Welcome in!"),
+    (30, False, False, "Sorry, not tonight."),
+    (16, False, False, "Sorry, not tonight."),
+]
+for _a, _h, _v, _expected in _cases:
+    _test_code = _re.sub(r"age\\s*=\\s*17", f"age = {_a}", _code, count=1)
+    _test_code = _re.sub(r"has_id\\s*=\\s*True", f"has_id = {_h}", _test_code, count=1)
+    _test_code = _re.sub(r"is_vip\\s*=\\s*False", f"is_vip = {_v}", _test_code, count=1)
+    _g = {}
+    _buf = _io.StringIO()
+    with _cl.redirect_stdout(_buf):
+        exec(_test_code, _g)
+    _out = _buf.getvalue()
+    assert _expected in _out, f"With age={_a}, has_id={_h}, is_vip={_v}: expected '{_expected}' but got: {_out.strip()!r}"
+`,
+    hints: [
+      "The whole entry rule in one condition: <code>(age >= 18 and has_id) or is_vip</code>.",
+      "One <code>if</code> with that condition, one <code>else</code> — two prints total.",
+      "Keep the three starter variable lines unchanged so the checker can swap in test values."
+    ],
+    solution: "age = 17\nhas_id = True\nis_vip = False\n\nif (age >= 18 and has_id) or is_vip:\n    print(\"Welcome in!\")\nelse:\n    print(\"Sorry, not tonight.\")"
+  }
+  ]
+},
+
+// ================================================================
+// MODULE 5 — LOOPS
+// ================================================================
+{
+  id: "m5",
+  title: "Loops",
+  blurb: "Make the computer repeat work for you — for loops, while loops, and the accumulator pattern.",
+  lessons: [
+  {
+    id: "m5l1",
+    type: "tutorial",
+    title: "for loops & range()",
+    minutes: 9,
+    content: [
+      { p: "Computers shine at repetition. Instead of writing <code>print()</code> a hundred times, you write a <em>loop</em> once:" },
+      { run: "for i in range(5):\n    print(f\"Jump number {i}\")" },
+      { h: "How it works" },
+      { list: [
+        "<code>range(5)</code> produces the numbers <code>0, 1, 2, 3, 4</code> — it starts at 0 and <strong>stops before</strong> 5.",
+        "<code>i</code> is a normal variable that takes each value in turn (name it anything you like).",
+        "The indented block runs once per value — 5 times here."
+      ]},
+      { h: "Controlling the range" },
+      { run: "for n in range(1, 6):      # start at 1, stop before 6\n    print(n)\n\nfor n in range(0, 20, 5):  # third value = step size\n    print(n)" },
+      { h: "Looping over a string" },
+      { p: "<code>for</code> can walk through anything that has items — including the characters of a string:" },
+      { run: "for letter in \"Python\":\n    print(letter)" },
+      { tip: "Loop + f-string = instant times table: try <code>for i in range(1, 11): print(f\"7 x {i} = {7 * i}\")</code> in any editor on this page." }
+    ]
+  },
+  {
+    id: "m5l2",
+    type: "tutorial",
+    title: "while loops & the accumulator pattern",
+    minutes: 9,
+    content: [
+      { p: "A <code>for</code> loop repeats a known number of times. A <code>while</code> loop repeats <em>as long as a condition stays True</em> — \"keep going until something changes\":" },
+      { run: "battery = 100\n\nwhile battery > 0:\n    print(f\"Battery at {battery}%\")\n    battery -= 25\n\nprint(\"Battery dead! 🪫\")" },
+      { warn: "Inside a <code>while</code> loop, <em>something must change</em> or the condition never becomes False and the loop runs forever (freezing this page — if that happens, just reload it). The <code>battery -= 25</code> line is what saves us here." },
+      { h: "The accumulator pattern" },
+      { p: "The single most useful loop technique: create a variable <em>before</em> the loop, then update it <em>inside</em> the loop. This is how you sum, count, and build things up:" },
+      { run: "total = 0\n\nfor price in range(1, 6):   # pretend prices: 1, 2, 3, 4, 5\n    total += price\n    print(f\"After adding {price}, total is {total}\")\n\nprint(f\"Final total: {total}\")" },
+      { p: "Read it slowly: <code>total</code> starts at 0 and <em>accumulates</em> each value. You'll use this pattern in the labs — and for the rest of your programming life." },
+      { h: "break — the emergency exit" },
+      { run: "for n in range(1, 100):\n    if n * n > 50:\n        print(f\"{n} squared is {n * n} — that's over 50, stopping!\")\n        break\n    print(f\"{n} squared is {n * n}\")" }
+    ]
+  },
+  {
+    id: "m5l3",
+    type: "lab",
+    title: "Lab: Sum 1 to 100",
+    minutes: 7,
+    objective: "Use a loop and the accumulator pattern to add up every number from 1 to 100, storing the result in <code>total</code>.",
+    content: [
+      { p: "The mathematician Gauss famously did this in his head as a schoolboy. You have a computer — make it do the work:" },
+      { list: [
+        "Create <code>total = 0</code> before the loop",
+        "Loop over <code>range(1, 101)</code> (remember: the stop value is not included!)",
+        "Add each number to <code>total</code> inside the loop",
+        "Print the final total after the loop"
+      ]},
+      { p: "No fair using Python's built-in <code>sum()</code> or typing the answer directly — the checker is watching. 👀" }
+    ],
+    starter: "total = 0\n\n# your loop here\n\nprint(total)\n",
+    tests: `
+assert "total" in globals(), "Create a variable called total."
+assert total == 5050, f"total should end up as 5050, but yours is {total}. Check your range — range(1, 101) includes 100."
+assert "for" in _code or "while" in _code, "Use a loop (for or while) to do the adding."
+assert "sum(" not in _code, "No shortcuts! Build the total yourself with a loop instead of sum()."
+assert "5050" not in _code, "Don't hardcode 5050 — make the loop compute it."
+`,
+    hints: [
+      "Pattern: <code>for n in range(1, 101):</code> then indented <code>total += n</code>.",
+      "If you got 4950, your range stopped at 99 — use <code>range(1, 101)</code>.",
+      "<code>total += n</code> is shorthand for <code>total = total + n</code>."
+    ],
+    solution: "total = 0\n\nfor n in range(1, 101):\n    total += n\n\nprint(total)"
+  },
+  {
+    id: "m5l4",
+    type: "lab",
+    title: "Lab: FizzBuzz",
+    minutes: 10,
+    objective: "The most famous interview question in programming: print the numbers 1 to 30, but replace multiples of 3 with <code>Fizz</code>, multiples of 5 with <code>Buzz</code>, and multiples of both with <code>FizzBuzz</code>.",
+    content: [
+      { p: "One line of output per number. The start of the correct output looks like:" },
+      { code: "1\n2\nFizz\n4\nBuzz\nFizz\n7\n..." },
+      { p: "Two tools from earlier modules crack it: <code>%</code> (a number <code>n</code> is a multiple of 3 when <code>n % 3 == 0</code>) and the if/elif chain. <strong>Order matters:</strong> check \"both\" first — otherwise plain Fizz or Buzz will win before FizzBuzz gets a chance." }
+    ],
+    starter: "for n in range(1, 31):\n    # your if / elif / else here\n    pass  # delete this line when you start\n",
+    tests: `
+_expected = []
+for _n in range(1, 31):
+    if _n % 15 == 0:
+        _expected.append("FizzBuzz")
+    elif _n % 3 == 0:
+        _expected.append("Fizz")
+    elif _n % 5 == 0:
+        _expected.append("Buzz")
     else:
-        print("Sorry, you're too young for this ride")
-else:
-    print("You need to buy a ticket first!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Logical Operators</h2>
-<p>Combine conditions with <code>and</code>, <code>or</code>, and <code>not</code>:</p>
-
-<div class="code-block" data-example="d1l3_logical">
-<code>age = 25
-has_license = True
-
-# and - BOTH conditions must be true
-if age >= 16 and has_license:
-    print("You can drive!")
-
-# or - AT LEAST ONE condition must be true
-day = "Saturday"
-if day == "Saturday" or day == "Sunday":
-    print("It's the weekend!")
-
-# not - reverses a condition
-is_raining = False
-if not is_raining:
-    print("No umbrella needed!")
-
-# Combining multiple
-temperature = 72
-is_sunny = True
-if temperature > 60 and temperature < 85 and is_sunny:
-    print("Perfect weather for a walk!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The Modulo Operator for Even/Odd</h2>
-<p>The <code>%</code> (modulo) operator gives the remainder after division. It's perfect for checking even/odd:</p>
-
-<div class="code-block" data-example="d1l3_modulo">
-<code>number = 7
-
-if number % 2 == 0:
-    print(f"{number} is even")
-else:
-    print(f"{number} is odd")
-
-# Modulo is also great for checking divisibility
-year = 2024
-if year % 4 == 0:
-    print(f"{year} might be a leap year!")
-
-# Check if a number is divisible by 5
-num = 25
-if num % 5 == 0:
-    print(f"{num} is divisible by 5")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Use <code>if</code> for single checks, <code>elif</code> for multiple exclusive options, and <code>else</code> as a catch-all. Remember: <code>=</code> assigns, <code>==</code> compares. Use <code>and</code>, <code>or</code>, <code>not</code> to combine conditions.
-</div>
-`
-            },
-
-            // --- LAB 1: Band Name Generator (Day 1 Project) ---
-            {
-                id: 'day1-lab1',
-                type: 'lab',
-                title: 'Project: Band Name Generator',
-                objective: 'Build a program that creates a band name by combining the user\'s city and pet name - your first real Python project!',
-                instructions: `
-<h3>The Project (from Udemy Day 1)</h3>
-<p>Create a band name generator that:</p>
-<ol>
-    <li>Stores a city name in a variable called <code>city</code></li>
-    <li>Stores a pet name in a variable called <code>pet_name</code></li>
-    <li>Combines them into a band name with a space between</li>
-    <li>Stores the result in a variable called <code>band_name</code></li>
-    <li>Prints: <code>Your band name is: [band_name]</code></li>
-</ol>
-<p><strong>PyCharm Tip:</strong> In PyCharm, replace the hardcoded values with <code>input("Which city did you grow up in? ")</code> and <code>input("What is your pet's name? ")</code></p>
+        _expected.append(str(_n))
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert len(_lines) == 30, f"Expected 30 lines of output (one per number), got {len(_lines)}."
+for _i, (_got, _want) in enumerate(zip(_lines, _expected), start=1):
+    assert _got == _want, f"Line {_i} should be '{_want}' but yours is '{_got}'."
 `,
-                starterCode: `# Band Name Generator - Day 1 Project
-# In PyCharm, use input() instead of hardcoded values
-
-# Step 1: Store the city name
-city = ""  # Put a city name here (or use input() in PyCharm)
-
-# Step 2: Store the pet name
-pet_name = ""  # Put a pet name here (or use input() in PyCharm)
-
-# Step 3: Combine them into a band name
-band_name = ""  # Combine city and pet_name with a space
-
-# Step 4: Print the result
-# print(f"Your band name is: {band_name}")
+    hints: [
+      "A multiple of both 3 and 5 is a multiple of 15: check <code>n % 15 == 0</code> FIRST.",
+      "Chain: <code>if n % 15 == 0:</code> → <code>elif n % 3 == 0:</code> → <code>elif n % 5 == 0:</code> → <code>else: print(n)</code>.",
+      "If your Fizz shows where FizzBuzz should be, your checks are in the wrong order."
+    ],
+    solution: "for n in range(1, 31):\n    if n % 15 == 0:\n        print(\"FizzBuzz\")\n    elif n % 3 == 0:\n        print(\"Fizz\")\n    elif n % 5 == 0:\n        print(\"Buzz\")\n    else:\n        print(n)"
+  },
+  {
+    id: "m5l5",
+    type: "lab",
+    title: "Lab: Rocket countdown",
+    minutes: 6,
+    objective: "Use a <code>while</code> loop to count down from 5 to 1, then print <code>Liftoff!</code>",
+    content: [
+      { p: "Expected output, exactly:" },
+      { code: "5\n4\n3\n2\n1\nLiftoff!" },
+      { p: "Requirements: use a <code>while</code> loop (not <code>for</code>), and remember to change your counter inside the loop — or the rocket never launches and the page freezes. 🚀" }
+    ],
+    starter: "count = 5\n\n# while loop here\n\n# then the liftoff print\n",
+    tests: `
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert _lines == ["5", "4", "3", "2", "1", "Liftoff!"], f"Expected the lines 5,4,3,2,1,Liftoff! — your output was: {_lines}"
+assert "while" in _code, "Use a while loop for this one."
 `,
-                tests: [
-                    { name: 'city is a non-empty string', test: `assert isinstance(city, str) and len(city) > 0, "city should be a non-empty string"` },
-                    { name: 'pet_name is a non-empty string', test: `assert isinstance(pet_name, str) and len(pet_name) > 0, "pet_name should be a non-empty string"` },
-                    { name: 'band_name combines city and pet_name', test: `assert city in band_name and pet_name in band_name, f"band_name should contain both city and pet_name"` },
-                    { name: 'Output contains the band name', test: `assert band_name in __captured_output__, "Output should contain your band name"` }
-                ],
-                hints: [
-                    'Set <code>city</code> to any city: <code>city = "Tokyo"</code>',
-                    'Set <code>pet_name</code> to any name: <code>pet_name = "Rex"</code>',
-                    'Combine with: <code>band_name = city + " " + pet_name</code>',
-                    'Or use an f-string: <code>band_name = f"{city} {pet_name}"</code>'
-                ]
-            },
+    hints: [
+      "Condition: <code>while count > 0:</code>",
+      "Inside the loop: print the count, then <code>count -= 1</code>.",
+      "<code>print(\"Liftoff!\")</code> goes <em>after</em> the loop — unindented."
+    ],
+    solution: "count = 5\n\nwhile count > 0:\n    print(count)\n    count -= 1\n\nprint(\"Liftoff!\")"
+  }
+  ]
+},
 
-            // --- LAB 2: Tip Calculator (Day 2 Project) ---
-            {
-                id: 'day1-lab2',
-                type: 'lab',
-                title: 'Project: Tip Calculator',
-                objective: 'Build a tip calculator that splits a restaurant bill between friends, including a tip percentage.',
-                instructions: `
-<h3>The Project (from Udemy Day 2)</h3>
-<p>Create a tip calculator that:</p>
-<ol>
-    <li>Has a total bill amount in <code>bill</code> (float)</li>
-    <li>Has a tip percentage in <code>tip_percent</code> (int: 10, 12, or 15)</li>
-    <li>Has the number of people splitting in <code>people</code> (int)</li>
-    <li>Calculates the tip amount: <code>tip = bill * (tip_percent / 100)</code></li>
-    <li>Calculates total with tip: <code>total = bill + tip</code></li>
-    <li>Calculates each person's share: <code>per_person = total / people</code></li>
-    <li>Rounds <code>per_person</code> to 2 decimal places</li>
-    <li>Prints: <code>Each person should pay: $XX.XX</code></li>
-</ol>
-<p><strong>PyCharm Tip:</strong> Use <code>bill = float(input("What was the total bill? $"))</code></p>
+// ================================================================
+// MODULE 6 — LISTS
+// ================================================================
+{
+  id: "m6",
+  title: "Lists & Dictionaries",
+  blurb: "Python's two workhorse data structures: ordered lists and labeled dictionaries.",
+  lessons: [
+  {
+    id: "m6l1",
+    type: "tutorial",
+    title: "Creating & using lists",
+    minutes: 8,
+    content: [
+      { p: "So far each variable held <em>one</em> value. A <code>list</code> holds many, in order, inside square brackets:" },
+      { run: "colors = [\"red\", \"green\", \"blue\"]\nprint(colors)\nprint(len(colors))   # len() counts the items" },
+      { h: "Grabbing items by position" },
+      { p: "Each item has an <em>index</em> — its position, <strong>counting from 0</strong>:" },
+      { run: "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])    # first item\nprint(colors[1])    # second item\nprint(colors[-1])   # negative = count from the end: last item" },
+      { warn: "Asking for an index that doesn't exist (<code>colors[3]</code> here) raises an <code>IndexError</code>. With 3 items, valid indexes are 0, 1, 2." },
+      { h: "Lists can change" },
+      { run: "todo = [\"eat\", \"sleep\"]\ntodo.append(\"learn Python\")   # add to the end\nprint(todo)\n\ntodo[0] = \"eat healthy\"       # replace an item\nprint(todo)" },
+      { h: "Loop over a list" },
+      { p: "The prettiest way to process a list — <code>for item in list</code> visits each item in order:" },
+      { run: "scores = [82, 95, 71, 88]\n\nfor score in scores:\n    print(f\"Score: {score}\")" }
+    ]
+  },
+  {
+    id: "m6l2",
+    type: "lab",
+    title: "Lab: Shopping cart total",
+    minutes: 7,
+    objective: "Loop over the list of prices, accumulate the sum into <code>total</code>, and print it formatted to 2 decimals.",
+    content: [
+      { p: "This is the accumulator pattern from Module 5, applied to a real list. The expected total for the starter cart is <code>27.93</code>. No <code>sum()</code> — build it yourself!" }
+    ],
+    starter: "prices = [4.99, 12.50, 3.75, 6.69]\n\ntotal = 0\n\n# loop over prices, adding each to total\n\n# print the total with 2 decimal places\n",
+    tests: `
+import math
+assert "total" in globals(), "Create a variable called total."
+assert math.isclose(total, 27.93, abs_tol=1e-9), f"total should be 27.93 but yours is {round(total, 4)}."
+assert "for" in _code, "Use a for loop over the prices list."
+assert "sum(" not in _code, "Build the total with a loop instead of sum()."
+assert "27.93" in _stdout, "Print the total formatted to 2 decimals (should show 27.93)."
 `,
-                starterCode: `# Tip Calculator - Day 2 Project
-# In PyCharm, use input() for all three values
-
-bill = 124.56       # In PyCharm: float(input("What was the total bill? $"))
-tip_percent = 15    # In PyCharm: int(input("What tip percentage? 10, 12, or 15? "))
-people = 4          # In PyCharm: int(input("How many people to split the bill? "))
-
-# Calculate tip amount
-# tip = ...
-
-# Calculate total bill with tip
-# total = ...
-
-# Calculate each person's share (round to 2 decimals)
-# per_person = ...
-
-# Print the result
-# print(f"Each person should pay: " + "$" + str(per_person))
+    hints: [
+      "<code>for price in prices:</code> then <code>total += price</code>.",
+      "Format the output: <code>print(f\"Total: ${total:.2f}\")</code>."
+    ],
+    solution: "prices = [4.99, 12.50, 3.75, 6.69]\n\ntotal = 0\nfor price in prices:\n    total += price\n\nprint(f\"Total: ${total:.2f}\")"
+  },
+  {
+    id: "m6l3",
+    type: "lab",
+    title: "Lab: Find the champion",
+    minutes: 8,
+    objective: "Find the biggest number in the list <em>with a loop</em> — no <code>max()</code> allowed — and store it in <code>biggest</code>.",
+    content: [
+      { p: "The classic \"king of the hill\" algorithm:" },
+      { list: [
+        "Start by assuming the first item is the biggest: <code>biggest = scores[0]</code>",
+        "Loop through the list; whenever an item is greater than <code>biggest</code>, it becomes the new <code>biggest</code>",
+        "After the loop, print the winner"
+      ]},
+      { p: "This combines a loop <em>and</em> an if — your first real algorithm. 💪" }
+    ],
+    starter: "scores = [72, 95, 44, 88, 61, 93]\n\nbiggest = scores[0]\n\n# loop and compare\n\nprint(biggest)\n",
+    tests: `
+assert "biggest" in globals(), "Create a variable called biggest."
+assert biggest == 95, f"biggest should be 95 but yours is {biggest}."
+assert "max(" not in _code, "No max() — that's the point of the exercise! Use a loop and an if."
+assert "for" in _code, "Use a for loop to visit each score."
+assert "if" in _code, "Use an if to compare each score against biggest."
+_code_no_list = "\\n".join(l for l in _code.split("\\n") if not l.strip().startswith("scores"))
+assert "95" not in _code_no_list, "Don't hardcode 95 — let the loop find it."
 `,
-                tests: [
-                    { name: 'tip is calculated correctly', test: `expected_tip = bill * (tip_percent / 100); assert abs(tip - expected_tip) < 0.01, f"tip should be {expected_tip}, got {tip}"` },
-                    { name: 'total includes bill + tip', test: `assert abs(total - (bill + tip)) < 0.01, f"total should be bill + tip = {bill + tip}, got {total}"` },
-                    { name: 'per_person is total / people, rounded', test: `expected = round((bill + bill * (tip_percent / 100)) / people, 2); assert abs(per_person - expected) < 0.01, f"per_person should be {expected}, got {per_person}"` },
-                    { name: 'Output shows the per-person amount', test: `assert str(per_person) in __captured_output__, "Output should contain the per-person amount"` }
-                ],
-                hints: [
-                    'Calculate tip: <code>tip = bill * (tip_percent / 100)</code>',
-                    'Calculate total: <code>total = bill + tip</code>',
-                    'Calculate per person: <code>per_person = round(total / people, 2)</code>',
-                    'Print it: <code>print("Each person should pay: $" + str(per_person))</code>'
-                ]
-            },
-
-            // --- LAB 3: Treasure Island (Day 3 Project) ---
-            {
-                id: 'day1-lab3',
-                type: 'lab',
-                title: 'Project: Treasure Island',
-                objective: 'Build a text-based choose-your-own-adventure game using if/elif/else - Treasure Island!',
-                instructions: `
-<h3>The Project (from Udemy Day 3)</h3>
-<p>Create a Treasure Island adventure game! The player makes 3 choices:</p>
-<ol>
-    <li><strong>Crossroads:</strong> Set <code>choice1</code> to <code>"left"</code> or <code>"right"</code>
-        <ul><li>If <code>"right"</code> -> print <code>"You fell into a hole. Game Over."</code> and set <code>game_over = True</code></li></ul>
-    </li>
-    <li><strong>Lake:</strong> Set <code>choice2</code> to <code>"swim"</code> or <code>"wait"</code>
-        <ul><li>If <code>"swim"</code> -> print <code>"Attacked by trout. Game Over."</code></li></ul>
-    </li>
-    <li><strong>Doors:</strong> Set <code>choice3</code> to <code>"red"</code>, <code>"blue"</code>, or <code>"yellow"</code>
-        <ul>
-            <li><code>"red"</code> -> print <code>"Burned by fire. Game Over."</code></li>
-            <li><code>"blue"</code> -> print <code>"Eaten by beasts. Game Over."</code></li>
-            <li><code>"yellow"</code> -> print <code>"You Win!"</code></li>
-        </ul>
-    </li>
-</ol>
-<p>Store the final result message in a variable called <code>result</code>. The winning path is: left -> wait -> yellow.</p>
+    hints: [
+      "Inside the loop: <code>if score > biggest:</code>",
+      "…and inside that if: <code>biggest = score</code>.",
+      "Change some numbers in the list afterwards and re-run — it should always find the largest."
+    ],
+    solution: "scores = [72, 95, 44, 88, 61, 93]\n\nbiggest = scores[0]\nfor score in scores:\n    if score > biggest:\n        biggest = score\n\nprint(biggest)"
+  },
+  {
+    id: "m6l4",
+    type: "tutorial",
+    title: "Using dictionaries: data with labels",
+    minutes: 8,
+    content: [
+      { p: "A list finds things by <em>position</em> (0, 1, 2…). A <code>dict</code> — dictionary — finds things by <em>label</em>. Each entry is a <strong>key</strong> pointing to a <strong>value</strong>, wrapped in curly braces:" },
+      { run: "player = {\"name\": \"Nova\", \"score\": 1200, \"power\": \"stealth\"}\n\nprint(player[\"name\"])    # look up by KEY, not position\nprint(player[\"score\"])\nprint(len(player))       # number of key:value pairs" },
+      { list: [
+        "Keys are usually strings (in quotes); values can be any type — strings, numbers, bools, even lists.",
+        "Look up a value with square brackets and the key: <code>player[\"name\"]</code>.",
+        "Think of it as a real dictionary: you look up a <em>word</em> (key) to get its <em>definition</em> (value)."
+      ]},
+      { warn: "Asking for a key that doesn't exist raises a <code>KeyError</code>. Try adding <code>print(player[\"speed\"])</code> above — then read the explanation under the error. Keys are case-sensitive: <code>\"Name\"</code> and <code>\"name\"</code> are different keys!" },
+      { h: "Safe lookups: .get() and in" },
+      { run: "player = {\"name\": \"Nova\", \"score\": 1200}\n\nprint(player.get(\"speed\"))        # missing key -> None (no crash)\nprint(player.get(\"speed\", 0))     # or give a default value\n\nif \"score\" in player:             # check before you look\n    print(\"Score is recorded!\")" }
+    ]
+  },
+  {
+    id: "m6l5",
+    type: "tutorial",
+    title: "Modifying dictionaries & looping",
+    minutes: 8,
+    content: [
+      { p: "Dictionaries are fully changeable. The same bracket syntax that reads a value also <em>writes</em> one — it updates the key if it exists, or creates it if it doesn't:" },
+      { run: "inventory = {\"apples\": 3, \"bread\": 1}\n\ninventory[\"apples\"] = 5      # update an existing key\ninventory[\"milk\"] = 2        # brand new key -> created!\ninventory[\"apples\"] += 1     # math shortcuts work too\n\nprint(inventory)" },
+      { h: "Removing entries" },
+      { run: "inventory = {\"apples\": 3, \"bread\": 1, \"expired_yogurt\": 4}\n\ndel inventory[\"expired_yogurt\"]\nprint(inventory)" },
+      { h: "Looping over a dictionary" },
+      { p: "A <code>for</code> loop visits each <strong>key</strong>; use the key to grab its value:" },
+      { run: "scores = {\"Ada\": 95, \"Leo\": 82, \"Maya\": 88}\n\nfor name in scores:\n    print(f\"{name} scored {scores[name]}\")" },
+      { tip: "You'll also see <code>for name, score in scores.items():</code> — a shortcut that hands you both at once. Try rewriting the loop above with it!" }
+    ]
+  },
+  {
+    id: "m6l6",
+    type: "lab",
+    title: "Lab: The player profile",
+    minutes: 8,
+    objective: "Read, update, and extend a dictionary: print the player's name, add 50 to their score, and add a brand-new <code>\"level\"</code> key.",
+    content: [
+      { p: "Using the <code>player</code> dictionary in the starter:" },
+      { list: [
+        "Print the player's name by looking it up <strong>with its key</strong>",
+        "Add 50 to the score (update the existing value — don't retype the number!)",
+        "Add a new key <code>\"level\"</code> with the value <code>2</code>",
+        "Print the whole dictionary at the end"
+      ]}
+    ],
+    starter: "player = {\"name\": \"Nova\", \"score\": 1200, \"power\": \"stealth\"}\n\n# 1) print the player's name (look it up by key)\n\n# 2) add 50 to the player's score\n\n# 3) add a new key \"level\" with the value 2\n\n# 4) print the whole dictionary\n",
+    tests: `
+assert "player" in globals() and isinstance(player, dict), "Keep the player dictionary from the starter."
+assert player.get("name") == "Nova", "Don't change the player's name."
+assert player.get("score") == 1250, f'player["score"] should be 1250 after adding 50 — yours is {player.get("score")}.'
+assert "1250" not in _code, "Don't type 1250 directly — ADD 50 to the existing score (try +=)."
+assert player.get("level") == 2, 'Add a new key "level" with the value 2 — creating a key looks just like updating one.'
+assert "Nova" in _stdout, "Print the player's name (look it up with player[...])."
+assert "level" in _stdout, "Print the whole dictionary at the end — you should see the new level key in the output."
 `,
-                starterCode: `# Treasure Island - Day 3 Project
-print("Welcome to Treasure Island!")
-print("Your mission is to find the treasure.\\n")
-
-# Set to True if the player dies
-game_over = False
-result = ""
-
-# Choice 1: Crossroads
-choice1 = "left"  # In PyCharm: input("You're at a crossroads. Go 'left' or 'right'? ").lower()
-
-if choice1 == "right":
-    result = "You fell into a hole. Game Over."
-    game_over = True
-    # Fill in: set result and game_over
-
-# Choice 2: The Lake (only if still alive)
-choice2 = "wait"  # In PyCharm: input("You come to a lake. 'swim' or 'wait' for a boat? ").lower()
-
-# Write your if/else for choice2 here
-# If swim -> "Attacked by trout. Game Over."
-# Only check if game_over is still False!
-
-
-# Choice 3: The Doors (only if still alive)
-choice3 = "yellow"  # In PyCharm: input("You see 3 doors: 'red', 'blue', 'yellow'. Which one? ").lower()
-
-# Write your if/elif/else for choice3 here
-# red -> "Burned by fire. Game Over."
-# blue -> "Eaten by beasts. Game Over."
-# yellow -> "You Win!"
-# Only check if game_over is still False!
-
-
-print(result)
+    hints: [
+      "Look up the name: <code>print(player[\"name\"])</code>.",
+      "Update in place: <code>player[\"score\"] += 50</code>.",
+      "New keys are created by assigning: <code>player[\"level\"] = 2</code>."
+    ],
+    solution: "player = {\"name\": \"Nova\", \"score\": 1200, \"power\": \"stealth\"}\n\nprint(player[\"name\"])\n\nplayer[\"score\"] += 50\n\nplayer[\"level\"] = 2\n\nprint(player)"
+  },
+  {
+    id: "m6l7",
+    type: "lab",
+    title: "Lab: The vote counter",
+    minutes: 10,
+    objective: "Loop over the list of votes and build a dictionary that counts how many times each option was chosen.",
+    content: [
+      { p: "This combines the whole module — a <strong>list</strong> feeding a <strong>dictionary</strong> through a loop. It's also one of the most common real-world patterns in programming (counting things!)." },
+      { p: "For each vote in the list: if the option is already a key in <code>counts</code>, add 1 to it; otherwise create it with the value 1. Expected final result:" },
+      { code: "{'pizza': 3, 'sushi': 2, 'tacos': 1}" }
+    ],
+    starter: "votes = [\"pizza\", \"sushi\", \"pizza\", \"tacos\", \"pizza\", \"sushi\"]\n\ncounts = {}\n\n# loop over votes, counting each option in the counts dictionary\n\nprint(counts)\n",
+    tests: `
+import re as _re
+assert "counts" in globals() and isinstance(counts, dict), "Build your tallies in the counts dictionary."
+assert counts == {"pizza": 3, "sushi": 2, "tacos": 1}, f"counts should be {{'pizza': 3, 'sushi': 2, 'tacos': 1}} but yours is {counts}."
+assert "for" in _code, "Use a for loop over the votes list."
+assert not _re.search(r"pizza[\\"\\']\\s*:\\s*3", _code), "Don't hardcode the totals — make the loop count them."
+assert "Counter" not in _code and ".count(" not in _code, "Count manually with your loop — no Counter or .count() shortcuts here."
 `,
-                tests: [
-                    { name: 'Left + wait + yellow = You Win', test: `
-choice1 = "left"; choice2 = "wait"; choice3 = "yellow"
-game_over = False; result = ""
-if choice1 == "right": game_over = True; result = "You fell into a hole. Game Over."
-if not game_over and choice2 == "swim": game_over = True; result = "Attacked by trout. Game Over."
-if not game_over:
-    if choice3 == "red": result = "Burned by fire. Game Over."
-    elif choice3 == "blue": result = "Eaten by beasts. Game Over."
-    elif choice3 == "yellow": result = "You Win!"
-assert "Win" in __captured_output__ or "win" in __captured_output__, "left + wait + yellow should result in winning"
-` },
-                    { name: 'result variable is set', test: `assert len(result) > 0, "result should contain the outcome message"` },
-                    { name: 'game_over is a boolean', test: `assert isinstance(game_over, bool), "game_over should be True or False"` }
-                ],
-                hints: [
-                    'For choice2, wrap it in <code>if not game_over:</code> so it only runs if the player is still alive',
-                    'Choice2: <code>if choice2 == "swim": result = "Attacked by trout. Game Over."; game_over = True</code>',
-                    'For choice3, use <code>if/elif/else</code> inside another <code>if not game_over:</code> block',
-                    'The winning path: <code>if choice3 == "yellow": result = "You Win!"</code>'
-                ]
-            }
-        ]
-    },
+    hints: [
+      "Inside the loop: <code>if vote in counts:</code> … <code>else:</code> …",
+      "Already seen? <code>counts[vote] += 1</code>. First time? <code>counts[vote] = 1</code>.",
+      "Change the votes list afterwards and re-run — your counter should adapt automatically."
+    ],
+    solution: "votes = [\"pizza\", \"sushi\", \"pizza\", \"tacos\", \"pizza\", \"sushi\"]\n\ncounts = {}\n\nfor vote in votes:\n    if vote in counts:\n        counts[vote] += 1\n    else:\n        counts[vote] = 1\n\nprint(counts)"
+  }
+  ]
+},
 
-    // =====================================================================
-    // DAY 2: LISTS, LOOPS & FUNCTIONS (Udemy Days 4, 5, 6 & 7)
-    // =====================================================================
-    {
-        id: 'day2',
-        title: 'Day 2: Lists, Loops & Functions',
-        description: 'Work with lists, generate random values, repeat actions with loops, and organize code into functions.',
-        items: [
-            // --- LESSON 1: Randomisation & Lists ---
-            {
-                id: 'day2-lesson1',
-                type: 'lesson',
-                title: 'Randomisation & Lists',
-                content: `
-<h1>Randomisation & Lists</h1>
-<p>Randomness makes programs unpredictable (great for games!), and lists let you store collections of related items.</p>
+// ================================================================
+// MODULE 7 — FUNCTIONS I: YOUR FIRST FUNCTIONS
+// ================================================================
+{
+  id: "m7",
+  title: "Functions I: Your First Functions",
+  blurb: "The heart of this course — package code into named, reusable commands.",
+  lessons: [
+  {
+    id: "m7l1",
+    type: "tutorial",
+    title: "Why functions? def, call, repeat",
+    minutes: 10,
+    content: [
+      { p: "You've been <em>using</em> functions since your very first line — <code>print()</code>, <code>len()</code>, <code>round()</code>, <code>type()</code>. Now you learn to <strong>write your own</strong>. This is the single biggest step in becoming a programmer." },
+      { h: "The problem functions solve" },
+      { p: "Imagine printing a welcome banner in three places in your program. Copy-pasting the same 3 lines three times means: 3× the typing, and 3 places to fix every time the banner changes. Instead — write it once, <em>name</em> it, and reuse it:" },
+      { run: "def welcome():\n    print(\"====================\")\n    print(\" WELCOME TO THE APP \")\n    print(\"====================\")\n\nwelcome()\nprint(\"...doing some work...\")\nwelcome()" },
+      { h: "Anatomy of a function" },
+      { code: "def welcome():        # def = \"define\". Then the name, parentheses, and a colon\n    print(\"...\")      # the BODY: indented 4 spaces, just like if/for blocks\n    print(\"...\")      # every indented line belongs to the function\n\nwelcome()             # a CALL: name + parentheses = \"run it now\"" },
+      { list: [
+        "<code>def</code> <strong>defines</strong> the function — Python memorizes the recipe but does <em>not</em> cook it yet.",
+        "The function only runs when you <strong>call</strong> it: <code>welcome()</code>.",
+        "No parentheses, no run: <code>welcome</code> alone just refers to the function without calling it."
+      ]},
+      { h: "Prove it to yourself" },
+      { p: "Run this — notice the body's print never appears, because the function is defined but never called. Then add <code>greet()</code> at the bottom and run again:" },
+      { run: "def greet():\n    print(\"Hello there!\")\n\nprint(\"Script finished.\")\n# add a call to greet() above this comment, then re-run" },
+      { warn: "Define <em>before</em> you call. Python reads top to bottom — calling <code>greet()</code> on line 1 and defining it on line 5 gives a <code>NameError</code>." }
+    ]
+  },
+  {
+    id: "m7l2",
+    type: "tutorial",
+    title: "Functions, parameters & arguments",
+    minutes: 10,
+    content: [
+      { p: "A function that always does the exact same thing is a one-trick pony. <em>Parameters</em> let you pass information in, so one function handles endless variations:" },
+      { run: "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ada\")\ngreet(\"Grace\")\ngreet(\"Alan\")" },
+      { h: "Parameter vs argument — learn the vocabulary" },
+      { p: "These two words get mixed up constantly, including in job interviews. The distinction:" },
+      { list: [
+        "A <strong>parameter</strong> is the variable named in the <code>def</code> line — the <em>placeholder</em>. Here: <code>name</code>.",
+        "An <strong>argument</strong> is the actual value you send in a <em>call</em>. Here: <code>\"Ada\"</code>, <code>\"Grace\"</code>, <code>\"Alan\"</code>.",
+        "Memory hook: the <em>parameter</em> is the <em>parking spot</em>; the <em>argument</em> is the car that parks in it. Each call, a new argument parks in the same spot."
+      ]},
+      { h: "Arguments can be more than literals" },
+      { p: "Anything that produces a value can be an argument — a variable, an expression, even another function call:" },
+      { run: "def greet(name):\n    print(f\"Hello, {name}!\")\n\nbest_friend = \"Sam\"\ngreet(best_friend)          # a variable as the argument\ngreet(\"a\" + \"my\")           # an expression as the argument\ngreet(best_friend.upper())  # a function call's RESULT as the argument" },
+      { h: "Multiple parameters" },
+      { p: "Separate them with commas. Arguments match parameters <strong>by position</strong> — first to first, second to second:" },
+      { run: "def introduce(name, age, city):\n    print(f\"{name} is {age} years old and lives in {city}.\")\n\nintroduce(\"Maya\", 29, \"Denver\")\nintroduce(\"Leo\", 41, \"Miami\")" },
+      { p: "Swap <code>\"Maya\"</code> and <code>29</code> in the first call and run again — the sentence turns to nonsense. Position matters! (Arguments passed this way are called <em>positional arguments</em>. In Module 9 you'll meet <em>keyword arguments</em>, which are matched by name instead.)" },
+      { warn: "Calling with the wrong number of arguments is an instant <code>TypeError</code> — try <code>introduce(\"Maya\", 29)</code>. Python tells you exactly which parameter is missing. These are <em>good</em> errors: they catch bugs at the front door." },
+      { tip: "Parameters make functions <em>testable</em> — this is why our labs prefer them over <code>input()</code>. Data goes in through the parentheses, and (next lesson) results come out through <code>return</code>." }
+    ]
+  },
+  {
+    id: "m7l3",
+    type: "lab",
+    title: "Lab: greet(name)",
+    minutes: 7,
+    objective: "Write a function <code>greet(name)</code> that prints <code>Hello, NAME!</code> — then call it at least twice with different names.",
+    content: [
+      { p: "Exact behavior required: <code>greet(\"Ada\")</code> must print exactly <code>Hello, Ada!</code> (capital H, comma + space, exclamation mark)." },
+      { list: [
+        "Define the function with <code>def greet(name):</code>",
+        "One indented line in the body: an f-string print",
+        "Below the function, call it at least twice with different names"
+      ]}
+    ],
+    starter: "# define greet(name) here\n\n\n# call it at least twice with different names\n",
+    tests: `
+import io as _io, contextlib as _cl
+assert "greet" in globals(), "Define a function called greet."
+assert callable(greet), "greet should be a function — use def greet(name):"
+_buf = _io.StringIO()
+with _cl.redirect_stdout(_buf):
+    greet("Ada")
+_out = _buf.getvalue().strip()
+assert _out == "Hello, Ada!", f'greet("Ada") should print exactly: Hello, Ada!  — yours printed: {_out!r}'
+_buf = _io.StringIO()
+with _cl.redirect_stdout(_buf):
+    greet("Zoe")
+_out = _buf.getvalue().strip()
+assert _out == "Hello, Zoe!", f'greet("Zoe") should print exactly: Hello, Zoe!  — is your function using the name parameter, or is a name hardcoded?'
+assert _code.count("greet(") >= 3, "After defining greet, call it at least twice (the def line plus 2+ calls)."
+`,
+    hints: [
+      "Skeleton: <code>def greet(name):</code> newline, then indented <code>print(...)</code>.",
+      "The body: <code>print(f\"Hello, {name}!\")</code> — use the parameter, don't hardcode a name.",
+      "Calls (not indented!): <code>greet(\"Ada\")</code> and <code>greet(\"Zoe\")</code>."
+    ],
+    solution: "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ada\")\ngreet(\"Zoe\")"
+  },
+  {
+    id: "m7l4",
+    type: "lab",
+    title: "Lab: The badge printer",
+    minutes: 9,
+    objective: "Write <code>badge(name, role)</code> that prints a 3-line conference badge, then print badges for two different people.",
+    content: [
+      { p: "<code>badge(\"Sam\", \"Chef\")</code> must print exactly these 3 lines:" },
+      { code: "----------\nSam\nRole: Chef\n----------" },
+      { p: "Wait — that's 4 lines! Correct 😄 — a dashed line (10 dashes), the name, <code>Role: </code> + the role, and another dashed line. This lab shows the real power move: <strong>change once, fix everywhere</strong>. When your function passes, try making the dashed line longer — every badge updates instantly." }
+    ],
+    starter: "# define badge(name, role) here\n\n\n# print badges for two different people\n",
+    tests: `
+import io as _io, contextlib as _cl
+assert "badge" in globals(), "Define a function called badge."
+assert callable(badge), "badge should be a function — use def badge(name, role):"
+_buf = _io.StringIO()
+with _cl.redirect_stdout(_buf):
+    badge("Sam", "Chef")
+_lines = [l for l in _buf.getvalue().strip().split("\\n")]
+assert len(_lines) == 4, f"badge() should print exactly 4 lines (dashes, name, role, dashes) — yours printed {len(_lines)}."
+assert set(_lines[0]) == {"-"}, "Line 1 should be a row of dashes like ----------"
+assert _lines[1] == "Sam", f"Line 2 should be just the name — yours is {_lines[1]!r}. Use the name parameter!"
+assert _lines[2] == "Role: Chef", f"Line 3 should be 'Role: Chef' — yours is {_lines[2]!r}."
+assert set(_lines[3]) == {"-"}, "Line 4 should be a row of dashes like ----------"
+_buf = _io.StringIO()
+with _cl.redirect_stdout(_buf):
+    badge("Ana", "Pilot")
+assert "Ana" in _buf.getvalue() and "Role: Pilot" in _buf.getvalue(), "The badge must adapt to whatever name and role are passed in — no hardcoding!"
+assert _code.count("badge(") >= 3, "Call badge() at least twice below the definition."
+`,
+    hints: [
+      "Four prints inside the function — two of them identical dash rows.",
+      "Line 3 pattern: <code>print(f\"Role: {role}\")</code>.",
+      "Don't forget two calls below the def, e.g. <code>badge(\"Sam\", \"Chef\")</code> and <code>badge(\"Ana\", \"Pilot\")</code>."
+    ],
+    solution: "def badge(name, role):\n    print(\"-\" * 10)\n    print(name)\n    print(f\"Role: {role}\")\n    print(\"-\" * 10)\n\nbadge(\"Sam\", \"Chef\")\nbadge(\"Ana\", \"Pilot\")"
+  }
+  ]
+},
 
-<h2>The <code>random</code> Module</h2>
-<p>Python's <code>random</code> module gives you tools for generating random values. You must import it first:</p>
+// ================================================================
+// MODULE 8 — FUNCTIONS II: RETURN VALUES
+// ================================================================
+{
+  id: "m8",
+  title: "Functions II: return",
+  blurb: "Make functions hand results back — the difference between printing and producing.",
+  lessons: [
+  {
+    id: "m8l1",
+    type: "tutorial",
+    title: "return vs print — the big idea",
+    minutes: 10,
+    content: [
+      { p: "This is the concept that separates people who <em>know about</em> functions from people who can <em>use</em> them. So far our functions printed things — useful for humans, useless for the rest of the program. <code>return</code> makes a function <strong>hand a value back</strong> to whoever called it:" },
+      { run: "def add(a, b):\n    return a + b\n\nresult = add(2, 3)     # the returned 5 lands in the variable\nprint(result)\nprint(add(10, 20) * 2) # returned values plug into ANY expression" },
+      { h: "print shows. return gives." },
+      { list: [
+        "<code>print()</code> paints characters on the screen. The program itself can't use them.",
+        "<code>return</code> sends a value back into the program — to store, compare, do more math with, or pass to another function.",
+        "A function call with a return value is like an expression: <code>add(2, 3)</code> <em>becomes</em> <code>5</code> wherever it's written."
+      ]},
+      { h: "See the difference" },
+      { run: "def add_print(a, b):\n    print(a + b)       # shows 5, returns nothing\n\ndef add_return(a, b):\n    return a + b       # silent, hands back 5\n\nx = add_print(2, 3)\ny = add_return(2, 3)\nprint(f\"x is {x}\")     # x is None — print gave us nothing to keep!\nprint(f\"y is {y}\")" },
+      { p: "<code>None</code> is Python's word for \"nothing here\". A function without a <code>return</code> statement returns <code>None</code> automatically. If you ever see <code>None</code> where you expected a number — you probably printed instead of returned. 🎯" },
+      { h: "return exits immediately" },
+      { run: "def check(n):\n    if n < 0:\n        return \"negative\"\n    return \"positive or zero\"   # only reached when the if didn't return\n\nprint(check(-5))\nprint(check(99))" },
+      { warn: "Code after a <code>return</code> in the same path never runs — returning is leaving. This \"early return\" style is a clean way to handle special cases first." }
+    ]
+  },
+  {
+    id: "m8l2",
+    type: "tutorial",
+    title: "Composing: results flowing into results",
+    minutes: 7,
+    content: [
+      { p: "Because returned values plug in anywhere, functions can <em>feed each other</em>. Small functions snap together like LEGO bricks:" },
+      { run: "def double(n):\n    return n * 2\n\ndef add_ten(n):\n    return n + 10\n\nprint(add_ten(double(5)))    # double(5) -> 10, add_ten(10) -> 20\nprint(double(add_ten(5)))    # inner first: add_ten(5) -> 15, double -> 30" },
+      { p: "Read nested calls from the <strong>inside out</strong> — the innermost function runs first, and its return value becomes the argument of the outer one." },
+      { h: "Store, then pass" },
+      { p: "Nesting deeply gets hard to read. It's often clearer to store intermediate results in named variables:" },
+      { run: "def area(width, height):\n    return width * height\n\ndef price_of_carpet(square_meters):\n    return square_meters * 12.5\n\nroom = area(4, 5)\ncost = price_of_carpet(room)\nprint(f\"Carpeting a {room} m² room costs ${cost:.2f}\")" },
+      { tip: "This is how real programs are built: many small functions, each doing one job well, passing results along. If a function is hard to name, it's probably doing too many jobs." }
+    ]
+  },
+  {
+    id: "m8l3",
+    type: "lab",
+    title: "Lab: add(a, b) — your first return",
+    minutes: 6,
+    objective: "Write <code>add(a, b)</code> that <strong>returns</strong> (not prints!) the sum of its two parameters.",
+    content: [
+      { p: "The checker will call your function with several different numbers and use the returned values — printing inside the function won't help it. One <code>def</code>, one <code>return</code> line. That's the whole lab. 🙂" }
+    ],
+    starter: "# define add(a, b) here\n\n\n# optional: try it out\n# print(add(2, 3))\n",
+    tests: `
+assert "add" in globals(), "Define a function called add."
+assert callable(add), "add should be a function — def add(a, b):"
+assert "return" in _code, "Use the return keyword — don't print inside the function."
+_r = add(2, 3)
+assert _r == 5, f"add(2, 3) should return 5, but returned {_r!r}." + (" (It returned None — are you printing instead of returning?)" if _r is None else "")
+assert add(-1, 1) == 0, "add(-1, 1) should return 0."
+assert add(0.5, 0.25) == 0.75, "add(0.5, 0.25) should return 0.75 — it must work for floats too."
+assert add(100, 250) == 350, "add(100, 250) should return 350."
+`,
+    hints: [
+      "Skeleton: <code>def add(a, b):</code> newline, indented <code>return a + b</code>.",
+      "If the checker says it returned None, you printed instead of returned."
+    ],
+    solution: "def add(a, b):\n    return a + b\n\nprint(add(2, 3))"
+  },
+  {
+    id: "m8l4",
+    type: "lab",
+    title: "Lab: Temperature converter",
+    minutes: 7,
+    objective: "Write <code>c_to_f(celsius)</code> that returns the Fahrenheit equivalent: multiply by 9/5, then add 32.",
+    content: [
+      { p: "Checkpoints: <code>c_to_f(0)</code> → <code>32</code>, <code>c_to_f(100)</code> → <code>212</code>, <code>c_to_f(37)</code> → <code>98.6</code>." },
+      { p: "The formula in Python: <code>celsius * 9 / 5 + 32</code>. Return it — don't print it." }
+    ],
+    starter: "# define c_to_f(celsius) here\n\n\n# try it:\n# print(c_to_f(37))\n",
+    tests: `
+import math
+assert "c_to_f" in globals(), "Define a function called c_to_f."
+assert callable(c_to_f), "c_to_f should be a function."
+assert "return" in _code, "Return the result instead of printing it."
+_r = c_to_f(0)
+assert _r is not None, "c_to_f(0) returned None — use return, not print."
+assert math.isclose(_r, 32), f"c_to_f(0) should return 32, got {_r}."
+assert math.isclose(c_to_f(100), 212), f"c_to_f(100) should return 212, got {c_to_f(100)}."
+assert math.isclose(c_to_f(37), 98.6), f"c_to_f(37) should return 98.6, got {c_to_f(37)}."
+assert math.isclose(c_to_f(-40), -40), "Fun fact check failed: c_to_f(-40) should return -40 (the scales cross there!)."
+`,
+    hints: [
+      "One line body: <code>return celsius * 9 / 5 + 32</code>.",
+      "Order of operations handles this fine, but parentheses are okay too: <code>(celsius * 9 / 5) + 32</code>."
+    ],
+    solution: "def c_to_f(celsius):\n    return celsius * 9 / 5 + 32\n\nprint(c_to_f(37))"
+  },
+  {
+    id: "m8l5",
+    type: "lab",
+    title: "Lab: is_even(n) — returning True/False",
+    minutes: 7,
+    objective: "Write <code>is_even(n)</code> that returns <code>True</code> when <code>n</code> is even and <code>False</code> when it's odd.",
+    content: [
+      { p: "Functions that return a bool are called <em>predicates</em>, usually named <code>is_...</code> or <code>has_...</code> — and they plug straight into if statements: <code>if is_even(10):</code>." },
+      { p: "Remember Module 3: a number is even when dividing by 2 leaves no remainder. And remember that comparisons <em>already produce</em> True/False…" },
+      { tip: "The elegant one-liner: <code>return n % 2 == 0</code>. The comparison evaluates to True or False, and you return it directly. An if/else that returns True and False also works — but see how clean the direct way is." }
+    ],
+    starter: "# define is_even(n) here\n\n\n# try it:\n# print(is_even(10))\n# print(is_even(7))\n",
+    tests: `
+assert "is_even" in globals(), "Define a function called is_even."
+assert callable(is_even), "is_even should be a function."
+assert is_even(10) is True, f"is_even(10) should return True, got {is_even(10)!r}."
+assert is_even(7) is False, f"is_even(7) should return False, got {is_even(7)!r}."
+assert is_even(0) is True, "is_even(0) should return True (0 is even)."
+assert is_even(-3) is False, "is_even(-3) should return False."
+assert is_even(-8) is True, "is_even(-8) should return True."
+`,
+    hints: [
+      "Even test: <code>n % 2 == 0</code>.",
+      "That expression IS already True or False — return it: <code>return n % 2 == 0</code>."
+    ],
+    solution: "def is_even(n):\n    return n % 2 == 0\n\nprint(is_even(10))\nprint(is_even(7))"
+  },
+  {
+    id: "m8l6",
+    type: "lab",
+    title: "Lab: max_of_three(a, b, c)",
+    minutes: 9,
+    objective: "Write <code>max_of_three(a, b, c)</code> that returns the largest of three numbers — using your own if logic, not the built-in <code>max()</code>.",
+    content: [
+      { p: "This combines everything in the module: parameters in, comparisons inside, a value out. There are several correct approaches:" },
+      { list: [
+        "Chain of ifs: check <code>a >= b and a >= c</code>, then <code>b >= a and b >= c</code>, else it's c.",
+        "\"Champion\" style (like the list lab): start with <code>biggest = a</code>, challenge it with b, then with c, return the survivor.",
+        "Early returns: <code>if</code> a wins, return a immediately — no else needed!"
+      ]}
+    ],
+    starter: "# define max_of_three(a, b, c) here\n\n\n# try it:\n# print(max_of_three(3, 9, 5))\n",
+    tests: `
+assert "max_of_three" in globals(), "Define a function called max_of_three."
+assert callable(max_of_three), "max_of_three should be a function."
+assert "max(" not in _code.replace("max_of_three(", ""), "Use your own if logic — the built-in max() is off-limits here."
+assert max_of_three(3, 9, 5) == 9, f"max_of_three(3, 9, 5) should return 9, got {max_of_three(3, 9, 5)!r}."
+assert max_of_three(10, 2, 3) == 10, "max_of_three(10, 2, 3) should return 10 (first position must be able to win)."
+assert max_of_three(1, 2, 30) == 30, "max_of_three(1, 2, 30) should return 30 (last position must be able to win)."
+assert max_of_three(7, 7, 7) == 7, "max_of_three(7, 7, 7) should return 7 (ties are fine)."
+assert max_of_three(-5, -2, -9) == -2, "max_of_three(-5, -2, -9) should return -2 (works with negatives)."
+`,
+    hints: [
+      "Champion style: <code>biggest = a</code>, then <code>if b > biggest: biggest = b</code>, same for c, then <code>return biggest</code>.",
+      "Use <code>>=</code> rather than <code>></code> in the chained-if approach, or ties will slip through to the wrong branch.",
+      "Return inside an if ends the function immediately — later lines simply don't run."
+    ],
+    solution: "def max_of_three(a, b, c):\n    biggest = a\n    if b > biggest:\n        biggest = b\n    if c > biggest:\n        biggest = c\n    return biggest\n\nprint(max_of_three(3, 9, 5))"
+  }
+  ]
+},
 
-<div class="code-block" data-example="d2l1_random">
-<code>import random
+// ================================================================
+// MODULE 9 — FUNCTIONS III: DEFAULTS, SCOPE & TEAMWORK
+// ================================================================
+{
+  id: "m9",
+  title: "Functions III: Defaults, Scope & Teamwork",
+  blurb: "Default values, keyword arguments, variable scope, and functions calling functions.",
+  lessons: [
+  {
+    id: "m9l1",
+    type: "tutorial",
+    title: "Default values & keyword arguments",
+    minutes: 8,
+    content: [
+      { p: "Sometimes a parameter has an obvious usual value. Give it a <em>default</em> with <code>=</code> in the def line, and callers can skip it:" },
+      { run: "def power_up(base, exponent=2):\n    return base ** exponent\n\nprint(power_up(5))       # exponent not given -> uses 2 -> 25\nprint(power_up(5, 3))    # exponent given -> 125" },
+      { list: [
+        "Parameters <em>with</em> defaults must come after the ones without: <code>def f(a, b=1):</code> ✅, <code>def f(a=1, b):</code> ❌.",
+        "Defaults make functions friendly: easy calls for the common case, full control when needed."
+      ]},
+      { h: "Keyword arguments: name what you're passing" },
+      { p: "You can pass arguments by <em>name</em> instead of position. This reads better and lets you skip over defaults:" },
+      { run: "def make_coffee(size=\"medium\", milk=False, sugars=0):\n    print(f\"One {size} coffee, milk: {milk}, sugars: {sugars}\")\n\nmake_coffee()\nmake_coffee(size=\"large\", sugars=2)\nmake_coffee(milk=True)          # skipped size entirely!" },
+      { tip: "You've already used keyword arguments — <code>round(3.14159, 2)</code>'s cousin <code>print(\"a\", \"b\", sep=\"-\")</code>. Try it! Mixing styles is fine: positional first, keywords after." }
+    ]
+  },
+  {
+    id: "m9l2",
+    type: "tutorial",
+    title: "Scope: what happens in a function, stays in a function",
+    minutes: 8,
+    content: [
+      { p: "Variables created <em>inside</em> a function — including its parameters — are <strong>local</strong>: they exist only while the function runs, then vanish. This is a feature! Functions get a clean, private workspace." },
+      { run: "def mix_potion():\n    secret = \"dragon scales\"\n    print(f\"Mixing with {secret}...\")\n\nmix_potion()\nprint(secret)   # NameError! 'secret' only exists inside the function" },
+      { p: "Run it, enjoy the error, then delete the last line. 🙂" },
+      { h: "Same name, different boxes" },
+      { run: "count = 100          # global variable\n\ndef do_stuff():\n    count = 5        # a NEW local variable that just shares the name\n    print(f\"Inside: {count}\")\n\ndo_stuff()\nprint(f\"Outside: {count}\")   # the global one is untouched" },
+      { p: "Assigning inside a function creates a <em>local</em> — it doesn't overwrite the outside variable. The clean way to get information out of a function isn't touching globals… it's <code>return</code>, which you already know. 🎉" },
+      { h: "Docstrings: leave a note" },
+      { p: "A string right under the <code>def</code> line documents what the function does. Tools (and <code>help()</code>) can read it:" },
+      { run: "def c_to_f(celsius):\n    \"\"\"Convert a Celsius temperature to Fahrenheit.\"\"\"\n    return celsius * 9 / 5 + 32\n\nhelp(c_to_f)" }
+    ]
+  },
+  {
+    id: "m9l3",
+    type: "lab",
+    title: "Lab: power_up with a default",
+    minutes: 7,
+    objective: "Write <code>power_up(base, exponent=2)</code> that returns <code>base</code> raised to <code>exponent</code> — squaring by default.",
+    content: [
+      { p: "Required behavior:" },
+      { list: [
+        "<code>power_up(5)</code> → <code>25</code> (default exponent 2)",
+        "<code>power_up(2, 3)</code> → <code>8</code>",
+        "<code>power_up(base=3)</code> → <code>9</code> (works as a keyword call too — you get this for free!)"
+      ]}
+    ],
+    starter: "# define power_up(base, exponent=2) here\n\n\n# try it:\n# print(power_up(5))\n# print(power_up(2, 3))\n",
+    tests: `
+assert "power_up" in globals(), "Define a function called power_up."
+assert callable(power_up), "power_up should be a function."
+assert "exponent=2" in _code.replace(" ", ""), "Give exponent a default value of 2 in the def line: def power_up(base, exponent=2):"
+assert power_up(5) == 25, f"power_up(5) should return 25 using the default exponent, got {power_up(5)!r}."
+assert power_up(2, 3) == 8, f"power_up(2, 3) should return 8, got {power_up(2, 3)!r}."
+assert power_up(base=3) == 9, "power_up(base=3) should return 9 when called with a keyword argument."
+assert power_up(10, exponent=1) == 10, "power_up(10, exponent=1) should return 10."
+`,
+    hints: [
+      "The default goes in the def line: <code>def power_up(base, exponent=2):</code>",
+      "Power operator from Module 3: <code>**</code>. Body: <code>return base ** exponent</code>."
+    ],
+    solution: "def power_up(base, exponent=2):\n    return base ** exponent\n\nprint(power_up(5))\nprint(power_up(2, 3))"
+  },
+  {
+    id: "m9l4",
+    type: "lab",
+    title: "Lab: The checkout function",
+    minutes: 9,
+    objective: "Write <code>checkout(price, tax_rate=0.07, discount=0.0)</code> that returns the final price, rounded to 2 decimals.",
+    content: [
+      { p: "The math, in order:" },
+      { list: [
+        "Subtract the discount first: <code>price * (1 - discount)</code> (a discount of <code>0.2</code> means 20% off)",
+        "Then add tax: multiply by <code>(1 + tax_rate)</code>",
+        "Return the result rounded to 2 decimal places with <code>round(..., 2)</code>"
+      ]},
+      { p: "Checkpoints: <code>checkout(100)</code> → <code>107.0</code> · <code>checkout(100, 0.1)</code> → <code>110.0</code> · <code>checkout(100, 0.07, 0.5)</code> → <code>53.5</code> · <code>checkout(80, discount=0.25)</code> → <code>64.2</code>" }
+    ],
+    starter: "# define checkout(price, tax_rate=0.07, discount=0.0) here\n\n\n# try it:\n# print(checkout(100))\n",
+    tests: `
+import math
+assert "checkout" in globals(), "Define a function called checkout."
+assert callable(checkout), "checkout should be a function."
+assert math.isclose(checkout(100), 107.0), f"checkout(100) should return 107.0 (7% default tax), got {checkout(100)!r}."
+assert math.isclose(checkout(100, 0.1), 110.0), f"checkout(100, 0.1) should return 110.0, got {checkout(100, 0.1)!r}."
+assert math.isclose(checkout(100, 0.07, 0.5), 53.5, abs_tol=0.01), f"checkout(100, 0.07, 0.5) should return 53.5 (50% off THEN tax), got {checkout(100, 0.07, 0.5)!r}."
+assert math.isclose(checkout(80, discount=0.25), 64.2, abs_tol=0.01), f"checkout(80, discount=0.25) should return 64.2, got {checkout(80, discount=0.25)!r}."
+assert "round" in _code, "Round the result to 2 decimals with round(result, 2)."
+`,
+    hints: [
+      "Def line: <code>def checkout(price, tax_rate=0.07, discount=0.0):</code>",
+      "Body idea: <code>discounted = price * (1 - discount)</code>, then <code>total = discounted * (1 + tax_rate)</code>, then <code>return round(total, 2)</code>.",
+      "Getting 110.7 for the discount case? You added tax before the discount — apply the discount first."
+    ],
+    solution: "def checkout(price, tax_rate=0.07, discount=0.0):\n    discounted = price * (1 - discount)\n    total = discounted * (1 + tax_rate)\n    return round(total, 2)\n\nprint(checkout(100))\nprint(checkout(100, 0.07, 0.5))"
+  },
+  {
+    id: "m9l5",
+    type: "lab",
+    title: "Lab: Functions calling functions",
+    minutes: 10,
+    objective: "Build a tiny pipeline: <code>clean_name(name)</code> tidies up messy text, and <code>make_email(first, last)</code> uses it to build an email address.",
+    content: [
+      { p: "Two functions, where the second <strong>calls the first</strong>:" },
+      { list: [
+        "<code>clean_name(name)</code> — returns the name with surrounding spaces removed and the first letter capitalized. Python gives you both for free: <code>name.strip()</code> removes outer spaces, and <code>.title()</code> capitalizes. Chain them: <code>name.strip().title()</code>.",
+        "<code>make_email(first, last)</code> — cleans both names <em>by calling clean_name</em>, then returns <code>first.last@pythonlab.dev</code> in all lowercase (<code>.lower()</code>)."
+      ]},
+      { p: "Checkpoint: <code>make_email(\"  aDa \", \"LOVELACE\")</code> → <code>\"ada.lovelace@pythonlab.dev\"</code>" }
+    ],
+    starter: "# define clean_name(name) here\n\n\n# define make_email(first, last) here — it must call clean_name\n\n\n# try it:\n# print(make_email(\"  aDa \", \"LOVELACE\"))\n",
+    tests: `
+assert "clean_name" in globals() and callable(clean_name), "Define a function called clean_name."
+assert "make_email" in globals() and callable(make_email), "Define a function called make_email."
+assert clean_name("  aDa ") == "Ada", f'clean_name("  aDa ") should return "Ada", got {clean_name("  aDa ")!r}. Chain .strip().title()'
+assert clean_name("LOVELACE") == "Lovelace", f'clean_name("LOVELACE") should return "Lovelace", got {clean_name("LOVELACE")!r}.'
+_r = make_email("  aDa ", "LOVELACE")
+assert _r == "ada.lovelace@pythonlab.dev", f'make_email("  aDa ", "LOVELACE") should return "ada.lovelace@pythonlab.dev", got {_r!r}.'
+_r2 = make_email("Grace", "Hopper")
+assert _r2 == "grace.hopper@pythonlab.dev", f'make_email("Grace", "Hopper") should return "grace.hopper@pythonlab.dev", got {_r2!r}.'
+import re as _re
+_body = _re.search(r"def\\s+make_email[\\s\\S]*", _code).group(0)
+assert "clean_name(" in _body, "make_email should call clean_name to do the tidying — don't repeat the strip/title logic."
+`,
+    hints: [
+      "clean_name body: <code>return name.strip().title()</code>.",
+      "Inside make_email: <code>first = clean_name(first)</code> and same for last.",
+      "Build the address with an f-string, then lowercase the whole thing: <code>f\"{first}.{last}@pythonlab.dev\".lower()</code>."
+    ],
+    solution: "def clean_name(name):\n    return name.strip().title()\n\ndef make_email(first, last):\n    first = clean_name(first)\n    last = clean_name(last)\n    return f\"{first}.{last}@pythonlab.dev\".lower()\n\nprint(make_email(\"  aDa \", \"LOVELACE\"))"
+  }
+  ]
+},
 
-# Random integer between a and b (inclusive)
-dice_roll = random.randint(1, 6)
-print(f"You rolled: {dice_roll}")
+// ================================================================
+// MODULE — WORKING WITH STRINGS
+// ================================================================
+{
+  id: "m11",
+  title: "Working with Strings",
+  blurb: "Compare, slice, search, split and join text — the data type you'll touch most.",
+  lessons: [
+  {
+    id: "m11l1",
+    type: "tutorial",
+    title: "Comparing & transforming text",
+    minutes: 8,
+    content: [
+      { p: "More real-world data is text than anything else — names, emails, messages, files. Python strings come with a toolbox of built-in <em>methods</em> you call with a dot. First, comparison:" },
+      { run: "print(\"hello\" == \"hello\")   # exact match -> True\nprint(\"Hello\" == \"hello\")   # case matters! -> False\nprint(\"hello\" != \"goodbye\") # not equal -> True" },
+      { h: "Changing case & trimming" },
+      { run: "shout = \"PYTHON IS FUN\"\nprint(shout.lower())            # all lowercase\nprint(\"quiet\".upper())          # ALL UPPERCASE\nprint(\"ada lovelace\".title())   # First Letters Capitalized\nprint(\"   spaced out   \".strip() + \"!\")  # trims outer spaces" },
+      { warn: "Strings are <em>immutable</em> — methods don't change the original, they <strong>return a new string</strong>. <code>name.upper()</code> alone does nothing you can see; you must use the result: <code>loud = name.upper()</code> or print it directly." },
+      { h: "The classic pattern: case-insensitive comparison" },
+      { p: "Is <code>\"YES\"</code> the same answer as <code>\"yes\"</code>? To a human, sure — to <code>==</code>, no. The fix: lowercase <em>both sides</em> before comparing:" },
+      { run: "answer = \"  YES \"\n\nif answer.strip().lower() == \"yes\":\n    print(\"They agreed!\")" },
+      { tip: "Chaining methods like <code>answer.strip().lower()</code> runs left to right: strip first, then lowercase the result. You used this in the functions module — now you know the whole family." }
+    ]
+  },
+  {
+    id: "m11l2",
+    type: "lab",
+    title: "Lab: Username gatekeeper",
+    minutes: 8,
+    objective: "Write <code>normalize(username)</code> (trim + lowercase) and <code>same_user(a, b)</code>, which returns <code>True</code> when two messy usernames are really the same person.",
+    content: [
+      { list: [
+        "<code>normalize(username)</code> — returns the username with outer spaces removed and all letters lowercase. <code>normalize(\"  MegaCoder99 \")</code> → <code>\"megacoder99\"</code>",
+        "<code>same_user(a, b)</code> — normalizes <em>both</em> arguments (by calling your first function!) and returns whether they're equal. <code>same_user(\" ADA \", \"ada\")</code> → <code>True</code>"
+      ]}
+    ],
+    starter: "# define normalize(username) here\n\n\n# define same_user(a, b) here — it should call normalize\n\n\n# try them:\n# print(normalize(\"  MegaCoder99 \"))\n# print(same_user(\" ADA \", \"ada\"))\n",
+    tests: `
+import re as _re
+assert "normalize" in globals() and callable(normalize), "Define a function called normalize."
+assert "same_user" in globals() and callable(same_user), "Define a function called same_user."
+assert normalize("  MegaCoder99 ") == "megacoder99", f'normalize("  MegaCoder99 ") should return "megacoder99", got {normalize("  MegaCoder99 ")!r}. Chain .strip().lower()'
+assert normalize("ADA") == "ada", f'normalize("ADA") should return "ada", got {normalize("ADA")!r}.'
+assert same_user(" ADA ", "ada") is True, 'same_user(" ADA ", "ada") should return True.'
+assert same_user("MegaCoder99", "  megacoder99 ") is True, 'same_user("MegaCoder99", "  megacoder99 ") should return True.'
+assert same_user("ada", "grace") is False, 'same_user("ada", "grace") should return False.'
+_body = _re.search(r"def\\s+same_user[\\s\\S]*", _code).group(0)
+assert "normalize(" in _body, "same_user should CALL normalize on both arguments — don't repeat the strip/lower logic."
+`,
+    hints: [
+      "normalize body: <code>return username.strip().lower()</code>.",
+      "same_user body: <code>return normalize(a) == normalize(b)</code> — the comparison already produces True/False."
+    ],
+    solution: "def normalize(username):\n    return username.strip().lower()\n\n\ndef same_user(a, b):\n    return normalize(a) == normalize(b)\n\n\nprint(same_user(\" ADA \", \"ada\"))"
+  },
+  {
+    id: "m11l3",
+    type: "tutorial",
+    title: "Slicing strings",
+    minutes: 8,
+    content: [
+      { p: "You already know single-character indexing from the lists module — it works on strings too: <code>word[0]</code> is the first letter, <code>word[-1]</code> the last. <em>Slicing</em> grabs a whole range at once:" },
+      { run: "word = \"programming\"\n\nprint(word[0:3])    # positions 0,1,2 -> \"pro\" (the stop is NOT included)\nprint(word[3:7])    # \"gram\"" },
+      { h: "Shortcuts: leave an end open" },
+      { run: "phone = \"614-555-0199\"\n\nprint(phone[:3])     # from the start -> \"614\"\nprint(phone[4:])     # to the end -> \"555-0199\"\nprint(phone[-4:])    # last 4 characters -> \"0199\"" },
+      { list: [
+        "<code>s[start:stop]</code> — characters from <code>start</code> up to <strong>but not including</strong> <code>stop</code>",
+        "<code>s[:n]</code> — the first n characters &nbsp;·&nbsp; <code>s[n:]</code> — everything from position n",
+        "<code>s[-n:]</code> — the last n characters (negative counts from the end)"
+      ]},
+      { h: "Party tricks with a step" },
+      { run: "secret = \"pxyxtxhxoxn\"\nprint(secret[::2])    # every 2nd character\nprint(\"stressed\"[::-1])  # step -1 walks backwards: reverse!" },
+      { tip: "Unlike single indexing, slicing never crashes: <code>\"hi\"[0:99]</code> just gives <code>\"hi\"</code>. Slices also work identically on lists: <code>scores[:3]</code> is the first three scores." }
+    ]
+  },
+  {
+    id: "m11l4",
+    type: "lab",
+    title: "Lab: Slice the phone number",
+    minutes: 7,
+    objective: "Write <code>area_code(phone)</code> and <code>line_number(phone)</code> using slices — no loops needed.",
+    content: [
+      { p: "Phone numbers arrive as strings like <code>\"614-555-0199\"</code>:" },
+      { list: [
+        "<code>area_code(phone)</code> — returns the first 3 characters: <code>\"614\"</code>",
+        "<code>line_number(phone)</code> — returns the last 4 characters: <code>\"0199\"</code> (use a negative slice so it works for any length!)"
+      ]}
+    ],
+    starter: "# define area_code(phone) here\n\n\n# define line_number(phone) here\n\n\n# try them:\n# print(area_code(\"614-555-0199\"))\n# print(line_number(\"614-555-0199\"))\n",
+    tests: `
+assert "area_code" in globals() and callable(area_code), "Define a function called area_code."
+assert "line_number" in globals() and callable(line_number), "Define a function called line_number."
+assert area_code("614-555-0199") == "614", f'area_code("614-555-0199") should return "614", got {area_code("614-555-0199")!r}.'
+assert area_code("212-867-5309") == "212", f'area_code("212-867-5309") should return "212", got {area_code("212-867-5309")!r}.'
+assert line_number("614-555-0199") == "0199", f'line_number("614-555-0199") should return "0199", got {line_number("614-555-0199")!r}.'
+assert line_number("+1-212-867-5309") == "5309", 'line_number should grab the LAST 4 characters even for longer strings — use a negative slice like [-4:].'
+assert "[" in _code and ":" in _code, "Use slice syntax with square brackets and a colon, like phone[:3]."
+`,
+    hints: [
+      "First three characters: <code>phone[:3]</code>.",
+      "Last four characters, any length: <code>phone[-4:]</code>."
+    ],
+    solution: "def area_code(phone):\n    return phone[:3]\n\n\ndef line_number(phone):\n    return phone[-4:]\n\n\nprint(area_code(\"614-555-0199\"))\nprint(line_number(\"614-555-0199\"))"
+  },
+  {
+    id: "m11l5",
+    type: "tutorial",
+    title: "Searching & replacing",
+    minutes: 8,
+    content: [
+      { p: "Four everyday questions about text, and their Python answers:" },
+      { run: "message = \"the quick brown fox jumps over the lazy dog\"\n\nprint(\"fox\" in message)          # is it in there? -> True/False\nprint(message.count(\"the\"))      # how many times?\nprint(message.find(\"brown\"))     # WHERE? -> position 10 (or -1 if absent)\nprint(message.find(\"cat\"))       # not found -> -1 (no crash!)" },
+      { h: "Starts and ends" },
+      { run: "filename = \"report_2026.pdf\"\n\nprint(filename.endswith(\".pdf\"))     # great for checking file types\nprint(filename.startswith(\"report\")) # ...or prefixes" },
+      { h: "Replacing" },
+      { p: "<code>.replace(old, new)</code> swaps <em>every</em> occurrence — and like all string methods, returns a <strong>new</strong> string:" },
+      { run: "draft = \"I luv Python. Python is luvly.\"\n\nfinal = draft.replace(\"luv\", \"love\")\nprint(final)\nprint(draft)   # the original is untouched!" },
+      { tip: "<code>in</code> gives you a bool, so it plugs straight into ifs: <code>if \"@\" in email:</code> is the world's simplest email sanity check." }
+    ]
+  },
+  {
+    id: "m11l6",
+    type: "tutorial",
+    title: "Split & join",
+    minutes: 8,
+    content: [
+      { p: "The bridge between strings and lists. <code>.split()</code> chops a string into a list; <code>.join()</code> glues a list back into a string." },
+      { run: "sentence = \"learn python by writing python\"\nwords = sentence.split()      # splits on spaces\nprint(words)\nprint(len(words))" },
+      { h: "Splitting on other separators" },
+      { run: "csv_row = \"Ada,Lovelace,1815,London\"\nfields = csv_row.split(\",\")\nprint(fields)\nprint(fields[0])   # it's a normal list — index it, loop it, anything" },
+      { h: "Joining" },
+      { p: "<code>.join()</code> reads backwards at first: you call it on the <em>separator</em>, and pass the list:" },
+      { run: "tags = [\"python\", \"beginner\", \"labs\"]\n\nprint(\" | \".join(tags))\nprint(\"-\".join(tags))\nprint(\", \".join(tags))" },
+      { tip: "Split and join are how the capstone word-counter works, and they're the heart of endless real tasks: parsing CSV files, cleaning up names, building URLs. Master this pair and text data stops being scary." }
+    ]
+  },
+  {
+    id: "m11l7",
+    type: "lab",
+    title: "Lab: The text toolkit",
+    minutes: 12,
+    objective: "Build three tiny text utilities: <code>censor</code>, <code>make_slug</code>, and <code>first_word</code>.",
+    content: [
+      { p: "Each is 1–2 lines with the right method:" },
+      { list: [
+        "<code>censor(text, word)</code> — returns the text with every occurrence of <code>word</code> replaced by <code>\"***\"</code>. <code>censor(\"the secret plan is secret\", \"secret\")</code> → <code>\"the *** plan is ***\"</code>",
+        "<code>make_slug(title)</code> — turns a blog title into a URL slug: trim outer spaces, lowercase everything, replace the remaining spaces with hyphens. <code>make_slug(\"  My First Blog Post \")</code> → <code>\"my-first-blog-post\"</code>",
+        "<code>first_word(text)</code> — returns just the first word. <code>first_word(\"hello brave world\")</code> → <code>\"hello\"</code> (split it, then index!)"
+      ]}
+    ],
+    starter: "# define censor(text, word) here\n\n\n# define make_slug(title) here\n\n\n# define first_word(text) here\n\n\n# try them:\n# print(censor(\"the secret plan is secret\", \"secret\"))\n# print(make_slug(\"  My First Blog Post \"))\n# print(first_word(\"hello brave world\"))\n",
+    tests: `
+for _fn in ("censor", "make_slug", "first_word"):
+    assert _fn in globals() and callable(globals()[_fn]), f"Define a function called {_fn}."
+assert censor("the secret plan is secret", "secret") == "the *** plan is ***", f'censor(...) should replace EVERY occurrence: expected "the *** plan is ***", got {censor("the secret plan is secret", "secret")!r}.'
+assert censor("all good here", "bad") == "all good here", "censor should leave text unchanged when the word is absent."
+assert make_slug("  My First Blog Post ") == "my-first-blog-post", f'make_slug("  My First Blog Post ") should return "my-first-blog-post", got {make_slug("  My First Blog Post ")!r}. Order matters: strip FIRST, then lowercase, then replace spaces.'
+assert make_slug("Python Rocks") == "python-rocks", f'make_slug("Python Rocks") should return "python-rocks", got {make_slug("Python Rocks")!r}.'
+assert first_word("hello brave world") == "hello", f'first_word("hello brave world") should return "hello", got {first_word("hello brave world")!r}.'
+assert first_word("solo") == "solo", 'first_word("solo") should return "solo".'
+assert ".replace(" in _code, "Use .replace() for censor and make_slug."
+assert ".split(" in _code, "Use .split() for first_word."
+`,
+    hints: [
+      "censor: <code>return text.replace(word, \"***\")</code>.",
+      "make_slug: chain it — <code>title.strip().lower().replace(\" \", \"-\")</code>.",
+      "first_word: <code>text.split()</code> gives a list; return item <code>[0]</code>."
+    ],
+    solution: "def censor(text, word):\n    return text.replace(word, \"***\")\n\n\ndef make_slug(title):\n    return title.strip().lower().replace(\" \", \"-\")\n\n\ndef first_word(text):\n    return text.split()[0]\n\n\nprint(censor(\"the secret plan is secret\", \"secret\"))\nprint(make_slug(\"  My First Blog Post \"))\nprint(first_word(\"hello brave world\"))"
+  }
+  ]
+},
 
-# Random float between 0 and 1
-coin = random.random()
-print(f"Random float: {coin}")
-if coin > 0.5:
-    print("Heads!")
-else:
-    print("Tails!")
-
-# Random choice from a list
-meals = ["pizza", "sushi", "tacos", "salad", "burger"]
-dinner = random.choice(meals)
-print(f"Tonight's dinner: {dinner}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Creating Lists</h2>
-<p>Lists store multiple items in order, using square brackets <code>[]</code>:</p>
-
-<div class="code-block" data-example="d2l1_lists">
-<code>fruits = ["apple", "banana", "cherry", "date"]
-numbers = [10, 20, 30, 40, 50]
-mixed = [1, "hello", 3.14, True]
-empty = []
-
-print(fruits)
-print(f"Number of fruits: {len(fruits)}")
-print(f"Number list: {numbers}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Accessing List Items</h2>
-<p>Items are numbered starting from <strong>0</strong>. You can also count backwards with negative indices:</p>
-
-<div class="code-block" data-example="d2l1_index">
-<code>fruits = ["apple", "banana", "cherry", "date"]
-
-print(fruits[0])    # apple (first item)
-print(fruits[1])    # banana (second item)
-print(fruits[-1])   # date (last item)
-print(fruits[-2])   # cherry (second to last)
-
-# Change an item
-fruits[1] = "blueberry"
-print(fruits)  # ['apple', 'blueberry', 'cherry', 'date']</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>IndexError!</strong>
-If you try to access an index that doesn't exist (like <code>fruits[10]</code> when the list only has 4 items), Python will crash with an <code>IndexError</code>. Always check <code>len()</code> if unsure!
-</div>
-
-<h2>List Methods - Adding & Removing</h2>
-<div class="code-block" data-example="d2l1_methods">
-<code>fruits = ["apple", "banana"]
-
-# Adding items
-fruits.append("cherry")         # Add to end
-fruits.insert(0, "avocado")     # Insert at position 0
-fruits.extend(["date", "elderberry"])  # Add multiple items
-print("After adding:", fruits)
-
-# Removing items
-fruits.remove("banana")         # Remove by value
-last = fruits.pop()             # Remove & return last item
-print(f"Popped: {last}")
-del fruits[0]                   # Delete by index
-print("After removing:", fruits)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>List Slicing</h2>
-<div class="code-block" data-example="d2l1_slice">
-<code>numbers = [10, 20, 30, 40, 50, 60, 70]
-
-print(numbers[1:4])    # [20, 30, 40]
-print(numbers[:3])     # [10, 20, 30] (first 3)
-print(numbers[4:])     # [50, 60, 70] (from index 4 on)
-print(numbers[::2])    # [10, 30, 50, 70] (every 2nd)
-print(numbers[::-1])   # [70, 60, 50, 40, 30, 20, 10] (reversed)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Nested Lists</h2>
-<p>A list can contain other lists - this creates a 2D structure:</p>
-
-<div class="code-block" data-example="d2l1_nested">
-<code># A 3x3 grid (like tic-tac-toe)
-grid = [
-    ["X", "O", "X"],
-    ["O", "X", "O"],
-    ["O", "X", "X"]
+// ================================================================
+// MODULE — DEBUGGING PYTHON
+// ================================================================
+{
+  id: "m12",
+  title: "Debugging Python",
+  blurb: "Read tracebacks like a pro, learn a repeatable troubleshooting process, and fix six classic bug types.",
+  lessons: [
+  {
+    id: "m12l1",
+    type: "tutorial",
+    title: "Reading tracebacks: errors are maps",
+    minutes: 10,
+    content: [
+      { p: "Every programmer's code breaks — daily. What separates beginners from professionals is what happens next: pros <em>read the error</em>. A Python error message (a <strong>traceback</strong>) is not an insult; it's a map to the bug." },
+      { h: "How to read a traceback" },
+      { list: [
+        "<strong>Read the bottom line first</strong> — it names the error type and describes the problem, e.g. <code>NameError: name 'totl' is not defined</code>.",
+        "<strong>Then find the line number</strong> — the lines above show exactly where Python was when it gave up.",
+        "On this site, a 💡 box under every error explains what that error type means in plain English — use it!"
+      ]},
+      { p: "Try it — run this, then read the traceback bottom-up before fixing the typo:" },
+      { run: "total = 10 + 5\nprint(totl)   # oops — read the error, then fix the name" },
+      { h: "The error hall of fame" },
+      { p: "You'll meet these eight constantly. Knowing what each one <em>usually</em> means cuts your debugging time in half:" },
+      { list: [
+        "<code>SyntaxError</code> — Python can't read the line: missing colon, quote, comma, or parenthesis.",
+        "<code>IndentationError</code> — the spacing at the start of a line doesn't match its block.",
+        "<code>NameError</code> — a variable or function name is misspelled or not created yet.",
+        "<code>TypeError</code> — wrong type: adding text to numbers, or calling a function with the wrong number of arguments.",
+        "<code>ValueError</code> — right type, unusable value: <code>int(\"hello\")</code>.",
+        "<code>IndexError</code> — a list/string position that doesn't exist (remember: last item is <code>len(x) - 1</code>).",
+        "<code>KeyError</code> — a dictionary key that doesn't exist (check spelling and capitalization).",
+        "<code>ZeroDivisionError</code> — dividing by zero, often via a variable that unexpectedly became 0."
+      ]},
+      { h: "The troubleshooting process" },
+      { p: "When something breaks — or runs but gives the wrong answer — work this loop:" },
+      { list: [
+        "<strong>1. Reproduce</strong> — run it again; make the failure reliable.",
+        "<strong>2. Read</strong> — bottom line of the traceback, then the line number. No error? Compare expected vs actual output precisely.",
+        "<strong>3. Isolate</strong> — narrow down which line or value is wrong (the next lesson gives you tools for this).",
+        "<strong>4. Fix ONE thing</strong> — smallest change that addresses the evidence.",
+        "<strong>5. Re-run</strong> — confirm the fix, and that nothing else broke. Repeat."
+      ]},
+      { tip: "Fix one bug at a time. Python only reports the <em>first</em> problem it hits — fixing it often reveals the next one. That's progress, not failure!" }
+    ]
+  },
+  {
+    id: "m12l2",
+    type: "tutorial",
+    title: "Debugging techniques",
+    minutes: 9,
+    content: [
+      { p: "The hardest bugs raise no error at all — the code runs and simply gives the wrong answer (a <em>logic error</em>). You can't read a traceback that doesn't exist, so you need investigation techniques." },
+      { h: "Technique 1: print debugging" },
+      { p: "The oldest trick in the book: print your variables mid-program to <em>see</em> what's actually happening instead of guessing. This program should average the scores but doesn't — the spy print inside the loop exposes the bug:" },
+      { run: "scores = [80, 90, 100]\n\nfor score in scores:\n    total = 0\n    total += score\n    print(f\"DEBUG: score={score}, total={total}\")   # spy print\n\nprint(f\"Average: {total / len(scores)}\")" },
+      { p: "Read the DEBUG lines: the total keeps <em>resetting</em>! The <code>total = 0</code> line is inside the loop, so every lap starts over. Move it above the loop, re-run, and watch the debug lines tell a healthy story. (Then delete the spy print — they're scaffolding, not furniture.)" },
+      { h: "Technique 2: comment code out" },
+      { p: "Not sure which section is guilty? Put <code>#</code> in front of suspect lines to disable them and re-run. When the problem disappears, you've found the neighborhood of the bug." },
+      { h: "Technique 3: test tiny pieces" },
+      { p: "Suspicious of one expression? Run it alone with a known answer. If <code>round(2.675, 2)</code> doesn't do what you expect, you found a fact — no guessing required. This is why functions are so debuggable: you can call them directly with easy inputs." },
+      { h: "Technique 4: explain it out loud" },
+      { p: "Describe your code line by line — to a colleague, or famously to a rubber duck. 🦆 Saying \"…and this loop runs while count is greater than… oh. OH.\" is a rite of passage. The bug hides in the gap between what you <em>meant</em> and what you <em>wrote</em>; explaining exposes the gap." },
+      { tip: "The six labs ahead are a debugging gym: each starter is broken with a classic bug type. Use the process — reproduce, read, isolate, fix one thing, re-run." }
+    ]
+  },
+  {
+    id: "m12l3",
+    type: "lab",
+    title: "Fix it: calculation errors",
+    minutes: 8,
+    objective: "The <code>average_of</code> function returns nonsense because of an <strong>order-of-operations</strong> bug. Find it and fix it.",
+    content: [
+      { p: "<code>average_of(10, 20)</code> should return <code>15</code> — but run it and see what you get. No error is raised: the math itself is legal, just <em>wrong</em>. Check how Python's operator precedence (Module 3!) is reading that return line differently than the author intended." }
+    ],
+    starter: "def average_of(a, b):\n    return a + b / 2\n\n\nprint(average_of(10, 20))   # should print 15.0\nprint(average_of(8, 4))     # should print 6.0\n",
+    tests: `
+import math
+assert "average_of" in globals() and callable(average_of), "Keep the average_of function."
+assert math.isclose(average_of(10, 20), 15.0), f"average_of(10, 20) should return 15.0, got {average_of(10, 20)!r}. Division happens BEFORE addition — force the addition first."
+assert math.isclose(average_of(8, 4), 6.0), f"average_of(8, 4) should return 6.0, got {average_of(8, 4)!r}."
+assert math.isclose(average_of(0, 10), 5.0), f"average_of(0, 10) should return 5.0, got {average_of(0, 10)!r}."
+assert "(" in _code.split("return")[1].split("\\n")[0], "The fix uses parentheses in the return line."
+`,
+    hints: [
+      "Python reads <code>a + b / 2</code> as <code>a + (b / 2)</code> — division binds tighter than addition.",
+      "Parentheses override precedence: <code>(a + b) / 2</code>."
+    ],
+    solution: "def average_of(a, b):\n    return (a + b) / 2\n\n\nprint(average_of(10, 20))\nprint(average_of(8, 4))"
+  },
+  {
+    id: "m12l4",
+    type: "lab",
+    title: "Fix it: logic errors",
+    minutes: 10,
+    objective: "The ticket-pricing function runs without errors but charges the wrong people. Fix its <strong>two logic bugs</strong>.",
+    content: [
+      { p: "The pricing rule the cinema <em>wants</em>: a discounted $8 ticket for anyone <strong>under 18</strong>, <strong>OR</strong> a student, <strong>OR</strong> <strong>65 and older</strong>. Everyone else pays $12." },
+      { p: "The code below gets several cases wrong. Test it against the rule: a 16-year-old non-student should pay 8 (do they?). A 65-year-old should pay 8 (do they?). Compare each condition to the rule, word by word." }
+    ],
+    starter: "def ticket_price(age, is_student):\n    if age < 18 and is_student:\n        return 8\n    elif age > 65:\n        return 8\n    else:\n        return 12\n\n\nprint(ticket_price(16, False))   # should be 8 (under 18)\nprint(ticket_price(65, False))   # should be 8 (65 and older)\nprint(ticket_price(30, True))    # should be 8 (student)\nprint(ticket_price(30, False))   # should be 12\n",
+    tests: `
+assert "ticket_price" in globals() and callable(ticket_price), "Keep the ticket_price function."
+_cases = [
+    (16, False, 8, "a 16-year-old non-student is under 18, so they get the discount — check your and/or"),
+    (65, False, 8, "65 counts as '65 and older' — check > vs >="),
+    (30, True, 8, "a 30-year-old student gets the discount"),
+    (30, False, 12, "a 30-year-old non-student pays full price"),
+    (70, False, 8, "seniors get the discount"),
+    (17, True, 8, "young students get the discount"),
 ]
+for _age, _stu, _want, _why in _cases:
+    _got = ticket_price(_age, _stu)
+    assert _got == _want, f"ticket_price({_age}, {_stu}) should return {_want} but returned {_got} — {_why}."
+`,
+    hints: [
+      "\"Under 18 OR a student\" — but the code says <code>and</code>, which wrongly requires BOTH.",
+      "\"65 and older\" includes 65 itself — <code>age > 65</code> excludes it. Which operator includes it?",
+      "You can even merge everything into one condition with two <code>or</code>s."
+    ],
+    solution: "def ticket_price(age, is_student):\n    if age < 18 or is_student:\n        return 8\n    elif age >= 65:\n        return 8\n    else:\n        return 12\n\n\nprint(ticket_price(16, False))\nprint(ticket_price(65, False))\nprint(ticket_price(30, True))\nprint(ticket_price(30, False))"
+  },
+  {
+    id: "m12l5",
+    type: "lab",
+    title: "Fix it: off-by-one errors",
+    minutes: 10,
+    objective: "Two functions, each wrong by exactly one — the most common bug in all of programming.",
+    content: [
+      { p: "Off-by-one errors come from forgetting two facts you already know:" },
+      { list: [
+        "<code>range(a, b)</code> stops <strong>before</strong> b — so <code>sum_first(5)</code> below quietly sums 1 to 4.",
+        "List positions start at 0 — so the last item lives at <code>len(items) - 1</code>, and asking for <code>items[len(items)]</code> is one step past the edge (run it: <code>IndexError</code>, and read the 💡 explanation)."
+      ]}
+    ],
+    starter: "def sum_first(n):\n    total = 0\n    for i in range(1, n):\n        total += i\n    return total\n\n\ndef last_item(items):\n    return items[len(items)]\n\n\nprint(sum_first(5))              # should print 15 (1+2+3+4+5)\nprint(last_item([\"a\", \"b\", \"c\"]))  # should print c\n",
+    tests: `
+assert "sum_first" in globals() and callable(sum_first), "Keep the sum_first function."
+assert "last_item" in globals() and callable(last_item), "Keep the last_item function."
+assert sum_first(5) == 15, f"sum_first(5) should return 15 (1+2+3+4+5), got {sum_first(5)!r}. Is 5 itself included in your range?"
+assert sum_first(1) == 1, f"sum_first(1) should return 1, got {sum_first(1)!r}."
+assert sum_first(100) == 5050, f"sum_first(100) should return 5050, got {sum_first(100)!r}."
+assert last_item(["a", "b", "c"]) == "c", f'last_item(["a", "b", "c"]) should return "c", got {last_item(["a", "b", "c"])!r}.'
+assert last_item([42]) == 42, "last_item([42]) should return 42."
+`,
+    hints: [
+      "To include n itself: <code>range(1, n + 1)</code>.",
+      "The last valid index is <code>len(items) - 1</code> — or skip the math entirely with <code>items[-1]</code>."
+    ],
+    solution: "def sum_first(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total\n\n\ndef last_item(items):\n    return items[-1]\n\n\nprint(sum_first(5))\nprint(last_item([\"a\", \"b\", \"c\"]))"
+  },
+  {
+    id: "m12l6",
+    type: "lab",
+    title: "Fix it: loop errors",
+    minutes: 9,
+    objective: "The cart total comes out wrong because something is happening on <strong>every lap of the loop</strong> that should happen only once. Use print debugging to catch it in the act.",
+    content: [
+      { p: "<code>cart_total([2.0, 3.0, 5.0])</code> should return <code>10.0</code> — run it and see what you actually get. Before fixing anything, add a spy print inside the loop (<code>print(f\"DEBUG: {total}\")</code>) and watch the total on each lap. You saw this disease in the techniques lesson — now cure it yourself." },
+      { warn: "The other classic loop error is the <em>infinite</em> while loop — a condition that never becomes False because nothing inside changes it. This site's page will freeze if you build one (just reload the tab). Always ask: <em>what line moves this loop toward stopping?</em>" }
+    ],
+    starter: "def cart_total(prices):\n    for price in prices:\n        total = 0\n        total += price\n    return total\n\n\nprint(cart_total([2.0, 3.0, 5.0]))   # should print 10.0\n",
+    tests: `
+import math
+assert "cart_total" in globals() and callable(cart_total), "Keep the cart_total function."
+assert math.isclose(cart_total([2.0, 3.0, 5.0]), 10.0), f"cart_total([2.0, 3.0, 5.0]) should return 10.0, got {cart_total([2.0, 3.0, 5.0])!r}. Watch WHERE total gets set to 0."
+assert math.isclose(cart_total([7.5]), 7.5), "cart_total([7.5]) should return 7.5."
+assert math.isclose(cart_total([1.0, 1.0, 1.0, 1.0]), 4.0), f"cart_total([1.0, 1.0, 1.0, 1.0]) should return 4.0, got {cart_total([1.0, 1.0, 1.0, 1.0])!r}."
+assert "for" in _code, "Keep the for loop — the bug isn't the loop itself."
+`,
+    hints: [
+      "Add <code>print(f\"DEBUG: {total}\")</code> inside the loop and run — the total resets every lap!",
+      "The accumulator must start at 0 exactly ONCE, before the loop: move <code>total = 0</code> up and un-indent it."
+    ],
+    solution: "def cart_total(prices):\n    total = 0\n    for price in prices:\n        total += price\n    return total\n\n\nprint(cart_total([2.0, 3.0, 5.0]))"
+  },
+  {
+    id: "m12l7",
+    type: "lab",
+    title: "Fix it: function errors",
+    minutes: 9,
+    objective: "This program crashes with a <code>TypeError</code>-family classic: a function that <strong>prints instead of returns</strong>. Fix the function, not the caller.",
+    content: [
+      { p: "Run the starter and read the traceback + the 💡 explanation: <code>'NoneType' object has no attribute 'upper'</code>. Translation: <code>tag</code> is <code>None</code>. Why? Because <code>make_tag</code> shows the text on screen but hands <strong>nothing</strong> back to the caller — and a function with no <code>return</code> returns <code>None</code> (Module 8!)." },
+      { p: "The caller code at the bottom is correct and must not change — repair the function so it <em>returns</em> the tag string." }
+    ],
+    starter: "def make_tag(name, role):\n    print(f\"{name} | {role}\")\n\n\n# --- don't change the caller code below ---\ntag = make_tag(\"Ada\", \"Engineer\")\nprint(tag.upper())\n",
+    tests: `
+import io as _io, contextlib as _cl
+assert "make_tag" in globals() and callable(make_tag), "Keep the make_tag function."
+_r = make_tag("Ada", "Engineer")
+assert _r == "Ada | Engineer", f'make_tag("Ada", "Engineer") should RETURN "Ada | Engineer", got {_r!r}.' + (" It returned None — swap the print for a return!" if _r is None else "")
+assert make_tag("Sam", "Chef") == "Sam | Chef", "make_tag must build the tag from its parameters — no hardcoding."
+assert "ADA | ENGINEER" in _stdout, "The caller's print(tag.upper()) should work and print ADA | ENGINEER."
+assert "tag = make_tag(" in _code, "Keep the caller code (tag = make_tag(...)) unchanged."
+`,
+    hints: [
+      "Inside the function, replace <code>print(...)</code> with <code>return ...</code> — same f-string.",
+      "After the fix, the caller receives the string, and <code>tag.upper()</code> has something real to work on."
+    ],
+    solution: "def make_tag(name, role):\n    return f\"{name} | {role}\"\n\n\n# --- don't change the caller code below ---\ntag = make_tag(\"Ada\", \"Engineer\")\nprint(tag.upper())"
+  },
+  {
+    id: "m12l8",
+    type: "lab",
+    title: "Fix it: syntax errors",
+    minutes: 10,
+    objective: "Four separate syntax bugs stand between you and a working program. Fix them <strong>one at a time</strong>, re-running after each fix.",
+    content: [
+      { p: "Remember: Python only shows the <em>first</em> syntax error it finds — fix it, run again, and the next one appears. That's the game. The four bugs, in no particular order:" },
+      { list: [
+        "a missing colon at the end of a block-starting line",
+        "a single <code>=</code> where a comparison belongs (and the rule is \"60 or higher passes\")",
+        "a line indented wrong inside its block",
+        "a missing closing parenthesis"
+      ]},
+      { p: "When everything is fixed, the program prints <code>True</code> then <code>False</code>." }
+    ],
+    starter: "def is_passing(score)\n    if score = 60:\n        return True\n    else:\n    return False\n\n\nprint(is_passing(75)\nprint(is_passing(42))\n",
+    tests: `
+assert "is_passing" in globals() and callable(is_passing), "Keep the is_passing function."
+assert is_passing(60) is True, f"is_passing(60) should return True (60 or higher passes) — got {is_passing(60)!r}. Check your comparison operator."
+assert is_passing(75) is True, "is_passing(75) should return True."
+assert is_passing(59) is False, f"is_passing(59) should return False, got {is_passing(59)!r}."
+assert ">=" in _code, "The passing rule is '60 or higher' — use >= 60."
+_lines = [l.strip() for l in _stdout.split("\\n") if l.strip()]
+assert _lines == ["True", "False"], f"The program should print True then False — your output: {_lines}"
+`,
+    hints: [
+      "Bug hunt order = whatever error Python shows first. <code>def is_passing(score)</code> needs a <code>:</code>.",
+      "<code>if score = 60:</code> — assignment isn't comparison, and the rule is 60 <em>or higher</em>: <code>if score >= 60:</code>.",
+      "<code>return False</code> must be indented 4 spaces deeper than its <code>else:</code>.",
+      "Count the parentheses on the first print line."
+    ],
+    solution: "def is_passing(score):\n    if score >= 60:\n        return True\n    else:\n        return False\n\n\nprint(is_passing(75))\nprint(is_passing(42))"
+  }
+  ]
+},
 
-# Access: grid[row][column]
-print(grid[0])      # First row: ['X', 'O', 'X']
-print(grid[0][2])   # First row, third column: 'X'
-print(grid[2][0])   # Third row, first column: 'O'
-
-# Dirty dozen & clean fifteen example
-fruits = [
-    ["Strawberries", "Spinach", "Kale"],     # Dirty
-    ["Avocados", "Sweet Corn", "Pineapple"]  # Clean
+// ================================================================
+// MODULE 10 — CAPSTONE LABS
+// ================================================================
+{
+  id: "m10",
+  title: "Capstone Labs",
+  blurb: "No new concepts — four real challenges that combine everything you've learned.",
+  lessons: [
+  {
+    id: "m10l1",
+    type: "lab",
+    title: "Capstone: Password strength checker",
+    minutes: 12,
+    objective: "Write <code>check_password(password)</code> that returns <code>\"weak\"</code>, <code>\"medium\"</code>, or <code>\"strong\"</code>.",
+    content: [
+      { p: "The rules:" },
+      { list: [
+        "<code>\"weak\"</code> — fewer than 8 characters",
+        "<code>\"medium\"</code> — 8+ characters, but letters only or digits only",
+        "<code>\"strong\"</code> — 8+ characters containing at least one letter AND at least one digit"
+      ]},
+      { p: "Useful tools: <code>len(password)</code>, and looping over the string (Module 5!) with <code>ch.isdigit()</code> / <code>ch.isalpha()</code> to detect what it contains. Two boolean accumulator variables (<code>has_letter</code>, <code>has_digit</code>) starting as <code>False</code> work beautifully." },
+      { tip: "Sketch the skeleton first: the length check can return \"weak\" immediately (early return!), and only then do you need the loop." }
+    ],
+    starter: "def check_password(password):\n    # 1) too short? return \"weak\" right away\n    # 2) scan the characters: any letters? any digits?\n    # 3) both kinds -> \"strong\", otherwise -> \"medium\"\n    pass  # replace with your code\n\n\n# try it:\n# print(check_password(\"cat\"))\n# print(check_password(\"password\"))\n# print(check_password(\"blue42sky9\"))\n",
+    tests: `
+assert "check_password" in globals() and callable(check_password), "Define a function called check_password."
+_cases = [
+    ("cat", "weak"), ("1234567", "weak"), ("", "weak"),
+    ("password", "medium"), ("12345678", "medium"), ("ABCDEFGHIJ", "medium"),
+    ("blue42sky9", "strong"), ("a1b2c3d4", "strong"), ("PASSWORD9", "strong"),
 ]
-print(f"Dirty: {fruits[0]}")
-print(f"Clean: {fruits[1]}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Lists are ordered, changeable collections. Use <code>random.choice()</code> to pick a random item, <code>.append()</code> to add, <code>.pop()</code> to remove. Indexing starts at 0.
-</div>
-`
-            },
-
-            // --- LESSON 2: For Loops & Range ---
-            {
-                id: 'day2-lesson2',
-                type: 'lesson',
-                title: 'For Loops & Range',
-                content: `
-<h1>For Loops & Range</h1>
-<p>Loops let you repeat code. The <code>for</code> loop walks through each item in a sequence, one at a time.</p>
-
-<h2>Looping Through a List</h2>
-<div class="code-block" data-example="d2l2_forlist">
-<code>fruits = ["apple", "banana", "cherry"]
-
-for fruit in fruits:
-    print(f"I love {fruit}")
-
-print("---")
-
-# The variable name is up to you
-students = ["Alice", "Bob", "Carol"]
-for student in students:
-    print(f"Hello, {student}!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The <code>range()</code> Function</h2>
-<p><code>range()</code> generates a sequence of numbers - perfect for counting loops:</p>
-
-<div class="code-block" data-example="d2l2_range">
-<code># range(stop) - from 0 to stop-1
-for i in range(5):
-    print(i, end=" ")  # 0 1 2 3 4
-print()
-
-# range(start, stop) - from start to stop-1
-for i in range(1, 6):
-    print(i, end=" ")  # 1 2 3 4 5
-print()
-
-# range(start, stop, step)
-for i in range(0, 30, 5):
-    print(i, end=" ")  # 0 5 10 15 20 25
-print()
-
-# Counting backwards
-for i in range(5, 0, -1):
-    print(i, end=" ")  # 5 4 3 2 1
-print("Go!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The Accumulator Pattern</h2>
-<p>One of the most common loop patterns - build up a result as you go:</p>
-
-<div class="code-block" data-example="d2l2_accumulator">
-<code># Sum all numbers
-numbers = [14, 7, 23, 42, 8]
-total = 0
-for num in numbers:
-    total += num
-print(f"Sum: {total}")
-
-# Find the largest number
-largest = numbers[0]
-for num in numbers:
-    if num > largest:
-        largest = num
-print(f"Largest: {largest}")
-
-# Count how many are even
-even_count = 0
-for num in numbers:
-    if num % 2 == 0:
-        even_count += 1
-print(f"Even numbers: {even_count}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Looping Through Strings</h2>
-<p>Strings are sequences too - you can loop through each character:</p>
-
-<div class="code-block" data-example="d2l2_strloop">
-<code>name = "Python"
-
-for letter in name:
-    print(letter, end=" ")
-print()
-
-# Count vowels
-word = "beautiful"
-vowel_count = 0
-for char in word:
-    if char.lower() in "aeiou":
-        vowel_count += 1
-print(f"'{word}' has {vowel_count} vowels")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Common Patterns with <code>for</code> Loops</h2>
-<div class="code-block" data-example="d2l2_patterns">
-<code># Calculate average
-scores = [85, 92, 78, 90, 88]
-total = 0
-for score in scores:
-    total += score
-average = total / len(scores)
-print(f"Average score: {average}")
-
-# Build a new list from an existing one
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-even_numbers = []
-for num in numbers:
-    if num % 2 == 0:
-        even_numbers.append(num)
-print(f"Even: {even_numbers}")
-
-# Add up a total with range
-total = 0
-for i in range(1, 101):
-    total += i
-print(f"Sum of 1 to 100: {total}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Use <code>for item in list</code> to process each item. Use <code>for i in range(n)</code> when you need a counter. The accumulator pattern (start with 0 or [], add as you go) solves most loop problems.
-</div>
-`
-            },
-
-            // --- LESSON 3: Functions & While Loops ---
-            {
-                id: 'day2-lesson3',
-                type: 'lesson',
-                title: 'Functions & While Loops',
-                content: `
-<h1>Functions & While Loops</h1>
-<p>Functions are reusable blocks of code, and <code>while</code> loops repeat until a condition changes.</p>
-
-<h2>Defining Functions</h2>
-<p>Use <code>def</code> to create a function. Indent the body:</p>
-
-<div class="code-block" data-example="d2l3_func">
-<code>def greet():
-    print("Hello!")
-    print("Welcome to Python!")
-
-# Call the function
-greet()
-greet()  # Call it as many times as you want</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>Indentation!</strong>
-Everything inside the function must be indented by 4 spaces. The function ends when the indentation goes back to the original level. This is the same rule as <code>if</code>, <code>for</code>, and <code>while</code>.
-</div>
-
-<h2>Functions with Inputs</h2>
-<p>Parameters let you pass data into functions:</p>
-
-<div class="code-block" data-example="d2l3_params">
-<code>def greet(name):
-    print(f"Hello, {name}!")
-
-greet("Alice")
-greet("Bob")
-
-# Multiple parameters
-def add(a, b):
-    print(f"{a} + {b} = {a + b}")
-
-add(3, 5)
-add(100, 200)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The <code>while</code> Loop</h2>
-<p>A <code>while</code> loop repeats as long as its condition is <code>True</code>:</p>
-
-<div class="code-block" data-example="d2l3_while">
-<code># Count from 1 to 5
-count = 1
-while count <= 5:
-    print(count, end=" ")
-    count += 1
-print("Done!")
-
-# Countdown
-seconds = 5
-while seconds > 0:
-    print(f"{seconds}...")
-    seconds -= 1
-print("Liftoff!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>Avoid Infinite Loops!</strong>
-If the condition never becomes <code>False</code>, the loop runs forever. Always make sure something inside the loop changes the condition.
-</div>
-
-<h2>Using Flags with <code>while</code></h2>
-<p>A common pattern is to use a boolean "flag" variable to control the loop:</p>
-
-<div class="code-block" data-example="d2l3_flag">
-<code>game_over = False
-lives = 3
-score = 0
-
-while not game_over:
-    score += 10
-    lives -= 1
-    print(f"Score: {score}, Lives: {lives}")
-    
-    if lives == 0:
-        game_over = True
-
-print(f"Game Over! Final score: {score}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2><code>break</code> and <code>continue</code></h2>
-<p><code>break</code> exits the loop immediately. <code>continue</code> skips to the next iteration:</p>
-
-<div class="code-block" data-example="d2l3_break">
-<code># break - exit the loop
-for num in range(1, 20):
-    if num > 5:
-        break
-    print(num, end=" ")
-print("\\nLoop ended early!")
-
-# continue - skip this iteration
-print("Odd numbers only:")
-for num in range(1, 11):
-    if num % 2 == 0:
-        continue
-    print(num, end=" ")
-print()</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Combining <code>while</code> with Functions</h2>
-<div class="code-block" data-example="d2l3_combo">
-<code>import random
-
-def roll_dice():
-    return random.randint(1, 6)
-
-def play_round():
-    roll = roll_dice()
-    print(f"You rolled: {roll}")
-    return roll
-
-# Keep rolling until you get a 6
-attempts = 0
-result = 0
-while result != 6:
-    result = play_round()
-    attempts += 1
-
-print(f"Got a 6 after {attempts} attempts!")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Functions make code reusable and organized. Use <code>while</code> when you don't know how many iterations you need. Use <code>for</code> when iterating over a collection or counting. <code>break</code> exits a loop, <code>continue</code> skips one iteration.
-</div>
-`
-            },
-
-            // --- LAB 1: Rock Paper Scissors (Day 4 Project) ---
-            {
-                id: 'day2-lab1',
-                type: 'lab',
-                title: 'Project: Rock Paper Scissors',
-                objective: 'Build a Rock Paper Scissors game where the player competes against the computer using random choice!',
-                instructions: `
-<h3>The Project (from Udemy Day 4)</h3>
-<ol>
-    <li>Create a list called <code>choices</code> containing <code>"rock"</code>, <code>"paper"</code>, <code>"scissors"</code></li>
-    <li>Set <code>player_choice</code> to one of the three options</li>
-    <li>Use <code>random.choice()</code> to pick the computer's choice, store in <code>computer_choice</code></li>
-    <li>Print both choices</li>
-    <li>Determine the winner using if/elif/else and store the result in <code>result</code>:
-        <ul>
-            <li>Same choice -> <code>"draw"</code></li>
-            <li>Rock beats Scissors, Scissors beats Paper, Paper beats Rock</li>
-            <li>Player wins -> <code>"win"</code>, Computer wins -> <code>"lose"</code></li>
-        </ul>
-    </li>
-    <li>Print the result message</li>
-</ol>
+for _pw, _want in _cases:
+    _got = check_password(_pw)
+    assert _got == _want, f'check_password("{_pw}") should return "{_want}", got {_got!r}.'
 `,
-                starterCode: `import random
-
-# The three choices
-choices = ["rock", "paper", "scissors"]
-
-# Player's choice (in PyCharm: input("Rock, paper, or scissors? ").lower())
-player_choice = "rock"
-
-# Computer's random choice
-computer_choice = random.choice(choices)
-
-# Print both choices
-print(f"You chose: {player_choice}")
-print(f"Computer chose: {computer_choice}")
-
-# Determine the winner
-result = ""
-
-# Write your if/elif/else logic here
-# Draw if same, then check who wins
-
-
-# Print the result
-# print(...)
+    hints: [
+      "Start with: <code>if len(password) < 8: return \"weak\"</code>.",
+      "Scan: <code>for ch in password:</code> with <code>if ch.isalpha(): has_letter = True</code> and <code>if ch.isdigit(): has_digit = True</code>.",
+      "Finish: <code>if has_letter and has_digit: return \"strong\"</code> else <code>return \"medium\"</code>."
+    ],
+    solution: "def check_password(password):\n    if len(password) < 8:\n        return \"weak\"\n\n    has_letter = False\n    has_digit = False\n    for ch in password:\n        if ch.isalpha():\n            has_letter = True\n        if ch.isdigit():\n            has_digit = True\n\n    if has_letter and has_digit:\n        return \"strong\"\n    return \"medium\"\n\nprint(check_password(\"cat\"))\nprint(check_password(\"password\"))\nprint(check_password(\"blue42sky9\"))"
+  },
+  {
+    id: "m10l2",
+    type: "lab",
+    title: "Capstone: Word tools",
+    minutes: 12,
+    objective: "Write two text utilities: <code>count_words(text)</code> and <code>longest_word(text)</code>.",
+    content: [
+      { p: "You already own every tool this needs: <code>text.split()</code> from the Strings module chops the text into a <strong>list of words</strong>, and from there it's loop-and-accumulator territory:" },
+      { list: [
+        "<code>count_words(text)</code> — returns how many words the text contains. (A list + <code>len()</code>… that's it.)",
+        "<code>longest_word(text)</code> — returns the longest word. It's the \"champion\" algorithm from the lists module, but comparing <code>len(word)</code> instead of the values themselves. If there's a tie, keep the <em>first</em> longest."
+      ]},
+      { p: "Checkpoints: <code>count_words(\"I love writing Python functions\")</code> → <code>5</code> · <code>longest_word(\"I love writing Python functions\")</code> → <code>\"functions\"</code>" }
+    ],
+    starter: "def count_words(text):\n    pass  # replace with your code\n\n\ndef longest_word(text):\n    pass  # replace with your code\n\n\n# try them:\n# print(count_words(\"I love writing Python functions\"))\n# print(longest_word(\"I love writing Python functions\"))\n",
+    tests: `
+assert "count_words" in globals() and callable(count_words), "Define a function called count_words."
+assert "longest_word" in globals() and callable(longest_word), "Define a function called longest_word."
+assert count_words("I love writing Python functions") == 5, f'count_words("I love writing Python functions") should return 5, got {count_words("I love writing Python functions")!r}.'
+assert count_words("hello") == 1, 'count_words("hello") should return 1.'
+assert count_words("a b c d e f g") == 7, 'count_words("a b c d e f g") should return 7.'
+assert longest_word("I love writing Python functions") == "functions", f'longest_word(...) should return "functions", got {longest_word("I love writing Python functions")!r}.'
+assert longest_word("hi there") == "there", 'longest_word("hi there") should return "there".'
+assert longest_word("cat dog fox") == "cat", 'longest_word("cat dog fox") should return "cat" (first of the tied longest).'
 `,
-                tests: [
-                    { name: 'player_choice is valid', test: `assert player_choice in ["rock", "paper", "scissors"], f"player_choice must be rock, paper, or scissors, got {player_choice}"` },
-                    { name: 'computer_choice is valid', test: `assert computer_choice in ["rock", "paper", "scissors"], f"computer_choice must be rock, paper, or scissors"` },
-                    { name: 'result is win, lose, or draw', test: `assert result in ["win", "lose", "draw"], f"result must be 'win', 'lose', or 'draw', got '{result}'"` },
-                    { name: 'Logic is correct for draw', test: `
-p, c = "rock", "rock"
-if p == c: r = "draw"
-elif (p=="rock" and c=="scissors") or (p=="scissors" and c=="paper") or (p=="paper" and c=="rock"): r = "win"
-else: r = "lose"
-assert r == "draw", "Same choice should be a draw"
-` },
-                    { name: 'Logic is correct for win', test: `
-p, c = "rock", "scissors"
-if p == c: r = "draw"
-elif (p=="rock" and c=="scissors") or (p=="scissors" and c=="paper") or (p=="paper" and c=="rock"): r = "win"
-else: r = "lose"
-assert r == "win", "Rock vs Scissors should be win"
-` }
-                ],
-                hints: [
-                    'Start with: <code>if player_choice == computer_choice: result = "draw"</code>',
-                    'Player wins when: rock beats scissors, scissors beats paper, paper beats rock',
-                    'Use <code>elif</code>: <code>elif player_choice == "rock" and computer_choice == "scissors": result = "win"</code>',
-                    'You can combine win conditions with <code>or</code>, then use <code>else: result = "lose"</code>'
-                ]
-            },
-
-            // --- LAB 2: Password Generator (Day 5 Project) ---
-            {
-                id: 'day2-lab2',
-                type: 'lab',
-                title: 'Project: Password Generator',
-                objective: 'Build a password generator that creates random passwords with letters, numbers, and symbols!',
-                instructions: `
-<h3>The Project (from Udemy Day 5)</h3>
-<ol>
-    <li>Define lists of characters:
-        <ul>
-            <li><code>letters</code> - lowercase + uppercase letters</li>
-            <li><code>numbers</code> - digits 0-9 as strings</li>
-            <li><code>symbols</code> - special characters like !@#$%</li>
-        </ul>
-    </li>
-    <li>Set how many of each: <code>nr_letters = 6</code>, <code>nr_numbers = 3</code>, <code>nr_symbols = 2</code></li>
-    <li>Use a <code>for</code> loop + <code>random.choice()</code> to pick random characters and build a <code>password_list</code></li>
-    <li>Shuffle the list with <code>random.shuffle()</code> so letters/numbers/symbols are mixed up</li>
-    <li>Join the list into a string: <code>password = "".join(password_list)</code></li>
-    <li>Print the password</li>
-</ol>
+    hints: [
+      "<code>words = text.split()</code> gives you a list. <code>count_words</code> is just <code>return len(words)</code>.",
+      "Champion pattern: <code>longest = words[0]</code>, then <code>for word in words:</code> with <code>if len(word) > len(longest):</code>.",
+      "Use <code>&gt;</code> (not <code>&gt;=</code>) so the FIRST longest word wins ties."
+    ],
+    solution: "def count_words(text):\n    words = text.split()\n    return len(words)\n\n\ndef longest_word(text):\n    words = text.split()\n    longest = words[0]\n    for word in words:\n        if len(word) > len(longest):\n            longest = word\n    return longest\n\n\nprint(count_words(\"I love writing Python functions\"))\nprint(longest_word(\"I love writing Python functions\"))"
+  },
+  {
+    id: "m10l3",
+    type: "lab",
+    title: "Capstone: Secret messages (Caesar cipher)",
+    minutes: 15,
+    objective: "Write <code>encrypt(message, shift)</code> that shifts every lowercase letter forward through the alphabet, wrapping around after z.",
+    content: [
+      { p: "The cipher Julius Caesar actually used. With <code>shift=3</code>: a→d, b→e, … x→a, y→b, z→c. Spaces and anything that isn't a lowercase letter pass through unchanged." },
+      { p: "Checkpoint: <code>encrypt(\"attack at dawn\", 3)</code> → <code>\"dwwdfn dw gdzq\"</code>" },
+      { h: "The tools" },
+      { list: [
+        "The alphabet as a string constant: <code>alphabet = \"abcdefghijklmnopqrstuvwxyz\"</code>",
+        "<code>alphabet.index(ch)</code> — a letter's position (a=0 … z=25). (<code>.index()</code> works on strings and lists alike.)",
+        "The wrap-around is the modulo trick from Module 3: <code>(position + shift) % 26</code>",
+        "Build the result with a string accumulator: start with <code>result = \"\"</code> and add each translated character with <code>+=</code>"
+      ]},
+      { tip: "Structure: loop over each <code>ch</code> in the message → <code>if ch in alphabet:</code> translate it, <code>else:</code> keep it as-is. Return the accumulated result at the end." }
+    ],
+    starter: "def encrypt(message, shift):\n    alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    result = \"\"\n    # loop over message, translating letters and keeping everything else\n    return result\n\n\n# try it:\n# print(encrypt(\"attack at dawn\", 3))\n",
+    tests: `
+assert "encrypt" in globals() and callable(encrypt), "Define a function called encrypt."
+_r = encrypt("attack at dawn", 3)
+assert _r == "dwwdfn dw gdzq", f'encrypt("attack at dawn", 3) should return "dwwdfn dw gdzq", got {_r!r}.'
+assert encrypt("abc", 1) == "bcd", f'encrypt("abc", 1) should return "bcd", got {encrypt("abc", 1)!r}.'
+assert encrypt("xyz", 3) == "abc", f'encrypt("xyz", 3) should return "abc" (wrap around!), got {encrypt("xyz", 3)!r}.'
+assert encrypt("hello world", 0) == "hello world", 'encrypt("hello world", 0) should return the message unchanged.'
+assert encrypt("z", 26) == "z", 'encrypt("z", 26) should return "z" (a full-alphabet shift lands where it started).'
+assert encrypt("hi there!", 5) == "mn ymjwj!", f'Punctuation passes through: encrypt("hi there!", 5) should return "mn ymjwj!", got {encrypt("hi there!", 5)!r}.'
 `,
-                starterCode: `import random
-
-letters = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-numbers = list("0123456789")
-symbols = list("!@#$%^&*()_+-=")
-
-# How many of each (in PyCharm: use int(input(...)))
-nr_letters = 6
-nr_numbers = 3
-nr_symbols = 2
-
-password_list = []
-
-# Add random letters
-# Use a for loop with range(nr_letters) and random.choice(letters)
-
-
-# Add random numbers
-# Use a for loop with range(nr_numbers) and random.choice(numbers)
-
-
-# Add random symbols
-# Use a for loop with range(nr_symbols) and random.choice(symbols)
-
-
-# Shuffle the list so characters are mixed up
-# random.shuffle(password_list)
-
-# Join into a string
-# password = "".join(password_list)
-
-# Print it
-# print(f"Your password: {password}")
+    hints: [
+      "Inside the loop: <code>if ch in alphabet:</code> → find its spot: <code>pos = alphabet.index(ch)</code>.",
+      "New letter: <code>alphabet[(pos + shift) % 26]</code>. Add it: <code>result += ...</code>.",
+      "The else branch is one line: <code>result += ch</code> — spaces and punctuation survive untouched.",
+      "Bonus after passing: decryption is just <code>encrypt(secret, 26 - shift)</code>. Try round-tripping a message!"
+    ],
+    solution: "def encrypt(message, shift):\n    alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    result = \"\"\n    for ch in message:\n        if ch in alphabet:\n            pos = alphabet.index(ch)\n            result += alphabet[(pos + shift) % 26]\n        else:\n            result += ch\n    return result\n\n\nprint(encrypt(\"attack at dawn\", 3))"
+  },
+  {
+    id: "m10l4",
+    type: "lab",
+    title: "Capstone: The grade book",
+    minutes: 15,
+    objective: "Three functions working as a team: <code>average(scores)</code>, <code>letter_grade(avg)</code>, and <code>report(name, scores)</code>.",
+    content: [
+      { p: "Your final challenge — a complete miniature program, structured the way real software is:" },
+      { list: [
+        "<code>average(scores)</code> — takes a <em>list</em> of numbers, returns their average. Loop + accumulator (no <code>sum()</code>!), divided by <code>len(scores)</code>.",
+        "<code>letter_grade(avg)</code> — returns <code>\"A\"</code> (90+), <code>\"B\"</code> (80+), <code>\"C\"</code> (70+), <code>\"D\"</code> (60+), or <code>\"F\"</code>. You wrote this logic in Module 4 — now it returns instead of prints.",
+        "<code>report(name, scores)</code> — calls <em>both</em> functions and returns the string: <code>NAME: average AVG, grade LETTER</code> with the average rounded to 1 decimal via an f-string's <code>{avg:.1f}</code>."
+      ]},
+      { p: "Checkpoint: <code>report(\"Ada\", [95, 88, 92])</code> → <code>\"Ada: average 91.7, grade A\"</code>" },
+      { p: "When this passes, take a second to appreciate what you built: data flows in through parameters, gets transformed by small single-purpose functions, and flows out through returns. That's software. 🧠" }
+    ],
+    starter: "def average(scores):\n    pass  # loop + accumulator, then divide\n\n\ndef letter_grade(avg):\n    pass  # if/elif chain that RETURNS the letter\n\n\ndef report(name, scores):\n    pass  # call average() and letter_grade(), return the sentence\n\n\n# try it:\n# print(report(\"Ada\", [95, 88, 92]))\n",
+    tests: `
+import math
+for _fn in ("average", "letter_grade", "report"):
+    assert _fn in globals() and callable(globals()[_fn]), f"Define a function called {_fn}."
+assert "sum(" not in _code, "Build the average with your own loop instead of sum()."
+assert math.isclose(average([95, 88, 92]), 91.666666, rel_tol=1e-4), f"average([95, 88, 92]) should be about 91.67, got {average([95, 88, 92])!r}."
+assert math.isclose(average([70, 80]), 75.0), f"average([70, 80]) should be 75.0, got {average([70, 80])!r}."
+assert math.isclose(average([100]), 100.0), "average([100]) should be 100.0."
+for _avg, _want in [(95, "A"), (90, "A"), (85, "B"), (72, "C"), (65, "D"), (40, "F")]:
+    assert letter_grade(_avg) == _want, f'letter_grade({_avg}) should return "{_want}", got {letter_grade(_avg)!r}.'
+_r = report("Ada", [95, 88, 92])
+assert _r == "Ada: average 91.7, grade A", f'report("Ada", [95, 88, 92]) should return "Ada: average 91.7, grade A", got {_r!r}.'
+_r2 = report("Rex", [60, 70, 65])
+assert _r2 == "Rex: average 65.0, grade D", f'report("Rex", [60, 70, 65]) should return "Rex: average 65.0, grade D", got {_r2!r}.'
+import re as _re
+_body = _re.search(r"def\\s+report[\\s\\S]*", _code).group(0)
+assert "average(" in _body and "letter_grade(" in _body, "report() should CALL average() and letter_grade() — teamwork, not copy-paste!"
 `,
-                tests: [
-                    { name: 'password_list has correct length', test: `assert len(password_list) == nr_letters + nr_numbers + nr_symbols, f"password_list should have {nr_letters + nr_numbers + nr_symbols} characters, got {len(password_list)}"` },
-                    { name: 'password is a string', test: `assert isinstance(password, str), "password should be a string"` },
-                    { name: 'password has correct length', test: `assert len(password) == nr_letters + nr_numbers + nr_symbols, f"password should have {nr_letters + nr_numbers + nr_symbols} characters, got {len(password)}"` },
-                    { name: 'password contains letters', test: `assert any(c.isalpha() for c in password), "password should contain letters"` },
-                    { name: 'password contains digits', test: `assert any(c.isdigit() for c in password), "password should contain digits"` }
-                ],
-                hints: [
-                    'Add letters: <code>for _ in range(nr_letters): password_list.append(random.choice(letters))</code>',
-                    'Do the same for numbers and symbols with their respective lists',
-                    'Shuffle: <code>random.shuffle(password_list)</code> (modifies the list in place)',
-                    'Join: <code>password = "".join(password_list)</code> turns the list into a single string'
-                ]
-            },
-
-            // --- LAB 3: Hangman (Day 7 Capstone) ---
-            {
-                id: 'day2-lab3',
-                type: 'lab',
-                title: 'Project: Hangman (Capstone)',
-                objective: 'Build the classic Hangman game - combining lists, loops, functions, and conditionals! This is the Day 7 capstone project.',
-                instructions: `
-<h3>The Capstone Project (from Udemy Day 7)</h3>
-<p>Build a Hangman game step by step:</p>
-<ol>
-    <li>Write a function <code>choose_word()</code> that picks a random word from <code>word_list</code> and returns it</li>
-    <li>Write a function <code>create_display(word, guessed_letters)</code> that returns a list showing guessed letters and <code>"_"</code> for unguessed ones. Example: if word is "apple" and guessed is ["a","p"], return <code>["a", "p", "p", "_", "_"]</code></li>
-    <li>Write a function <code>check_game_won(display)</code> that returns <code>True</code> if there are no more underscores</li>
-    <li>Write a function <code>play_hangman()</code> that uses the above functions to run the game:
-        <ul>
-            <li>Pick a word, set <code>lives = 6</code></li>
-            <li>Loop: show the display, take a guess, check if correct</li>
-            <li>Wrong guess -> lose a life. Repeat guess -> tell the player</li>
-            <li>End when lives run out or word is guessed</li>
-        </ul>
-    </li>
-</ol>
-<p>The functions are tested individually, so make sure each one works on its own!</p>
-`,
-                starterCode: `import random
-
-word_list = ["python", "programming", "hangman", "computer", "keyboard",
-             "developer", "algorithm", "variable", "function", "boolean"]
-
-def choose_word():
-    """Pick and return a random word from word_list."""
-    pass  # Replace with your code
-
-def create_display(word, guessed_letters):
-    """Return a list with guessed letters shown and '_' for unguessed.
-    Example: create_display("apple", ["a", "p"]) -> ["a", "p", "p", "_", "_"]
-    """
-    pass  # Replace with your code
-
-def check_game_won(display):
-    """Return True if there are no '_' in the display list."""
-    pass  # Replace with your code
-
-def play_hangman():
-    """Run the hangman game."""
-    word = choose_word()
-    guessed_letters = []
-    lives = 6
-    game_over = False
-
-    print("Welcome to Hangman!")
-    print(f"The word has {len(word)} letters.")
-
-    while not game_over:
-        display = create_display(word, guessed_letters)
-        print(" ".join(display))
-        print(f"Lives: {lives}")
-
-        # Simulate guesses (in PyCharm: guess = input("Guess a letter: ").lower())
-        # For testing, we'll just show the setup works
-        break  # Remove this break when playing for real in PyCharm
-
-    return word, guessed_letters, lives
-
-# Test the individual functions
-test_word = choose_word()
-print(f"Random word: {test_word}")
-
-display = create_display("python", ["p", "t", "o"])
-print(f"Display: {display}")
-
-print(f"Won? {check_game_won(['p', '_', 't', 'h', 'o', 'n'])}")
-print(f"Won? {check_game_won(['p', 'y', 't', 'h', 'o', 'n'])}")
-`,
-                tests: [
-                    { name: 'choose_word returns a word from the list', test: `word = choose_word(); assert word in word_list, f"'{word}' should be from word_list"` },
-                    { name: 'create_display shows guessed letters', test: `
-d = create_display("apple", ["a", "p"])
-assert d == ["a", "p", "p", "_", "_"], f"Expected ['a', 'p', 'p', '_', '_'], got {d}"
-` },
-                    { name: 'create_display with no guesses shows all blanks', test: `
-d = create_display("cat", [])
-assert d == ["_", "_", "_"], f"Expected ['_', '_', '_'], got {d}"
-` },
-                    { name: 'create_display with all letters guessed', test: `
-d = create_display("hi", ["h", "i"])
-assert d == ["h", "i"], f"Expected ['h', 'i'], got {d}"
-` },
-                    { name: 'check_game_won returns False when blanks remain', test: `assert check_game_won(["h", "_", "l", "l", "_"]) == False` },
-                    { name: 'check_game_won returns True when complete', test: `assert check_game_won(["h", "e", "l", "l", "o"]) == True` }
-                ],
-                hints: [
-                    '<code>choose_word</code>: just <code>return random.choice(word_list)</code>',
-                    '<code>create_display</code>: loop through each letter in the word. If the letter is in guessed_letters, add it. Otherwise add "_".',
-                    'Build display: <code>display = []; for letter in word: if letter in guessed_letters: display.append(letter) else: display.append("_")</code>',
-                    '<code>check_game_won</code>: <code>return "_" not in display</code>'
-                ]
-            }
-        ]
-    },
-
-    // =====================================================================
-    // DAY 3: ADVANCED PYTHON (Udemy Days 8, 9, 10, 11 & 12)
-    // =====================================================================
-    {
-        id: 'day3',
-        title: 'Day 3: Advanced Python',
-        description: 'Master function parameters, dictionaries, nesting, return values, scope, and build real projects like Caesar Cipher and Blackjack.',
-        items: [
-            // --- LESSON 1: Function Parameters & Arguments ---
-            {
-                id: 'day3-lesson1',
-                type: 'lesson',
-                title: 'Function Parameters & Arguments',
-                content: `
-<h1>Function Parameters & Arguments</h1>
-<p>Functions become truly powerful when they accept inputs (parameters) and produce outputs (return values). Let's master how to pass data into functions.</p>
-
-<h2>Parameters vs Arguments</h2>
-<p>A <strong>parameter</strong> is the variable in the function definition. An <strong>argument</strong> is the value you pass when calling.</p>
-
-<div class="code-block" data-example="d3l1_params">
-<code>def greet(name, greeting):      # name and greeting are PARAMETERS
-    print(f"{greeting}, {name}!")
-
-greet("Alice", "Hello")          # "Alice" and "Hello" are ARGUMENTS
-greet("Bob", "Hey")
-greet("Carol", "Good morning")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Positional vs Keyword Arguments</h2>
-<p>You can pass arguments by position or by name:</p>
-
-<div class="code-block" data-example="d3l1_kwargs">
-<code>def describe_pet(animal, name):
-    print(f"I have a {animal} named {name}")
-
-# Positional - order matters!
-describe_pet("dog", "Rex")
-
-# Keyword - order doesn't matter!
-describe_pet(name="Whiskers", animal="cat")
-
-# Mix: positional first, then keyword
-describe_pet("hamster", name="Fuzzy")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Default Parameter Values</h2>
-<p>Give parameters default values to make them optional:</p>
-
-<div class="code-block" data-example="d3l1_defaults">
-<code>def make_coffee(size="medium", sugar=1, milk=True):
-    order = f"{size} coffee"
-    order += f", {sugar} sugar" if sugar else ", no sugar"
-    order += ", with milk" if milk else ", black"
-    print(order)
-
-make_coffee()                           # All defaults
-make_coffee("large")                    # Override size only
-make_coffee("small", 0, False)          # Override all
-make_coffee(sugar=3)                    # Just change sugar
-make_coffee(size="large", milk=False)   # Named overrides</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Functions Calling Functions</h2>
-<p>Functions can call other functions - this is how you build complex programs from simple pieces:</p>
-
-<div class="code-block" data-example="d3l1_compose">
-<code>def is_leap_year(year):
-    if year % 400 == 0:
-        return True
-    if year % 100 == 0:
-        return False
-    if year % 4 == 0:
-        return True
-    return False
-
-def days_in_month(year, month):
-    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    if month == 2 and is_leap_year(year):
-        return 29
-    return days[month - 1]
-
-# Test it
-print(f"Feb 2024: {days_in_month(2024, 2)} days")
-print(f"Feb 2023: {days_in_month(2023, 2)} days")
-print(f"Jan 2024: {days_in_month(2024, 1)} days")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>The Caesar Cipher Concept</h2>
-<p>The Caesar Cipher shifts each letter by a fixed number. Here's how shifting works:</p>
-
-<div class="code-block" data-example="d3l1_caesar">
-<code>alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-def shift_letter(letter, shift):
-    if letter not in alphabet:
-        return letter
-    position = alphabet.index(letter)
-    new_position = (position + shift) % 26
-    return alphabet[new_position]
-
-# Shift 'a' by 3 -> 'd'
-print(shift_letter("a", 3))  # d
-print(shift_letter("x", 3))  # a (wraps around!)
-print(shift_letter("z", 1))  # a
-
-# Try a word
-word = "hello"
-shifted = ""
-for char in word:
-    shifted += shift_letter(char, 5)
-print(f"'{word}' shifted by 5 = '{shifted}'")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Positional arguments must be in order. Keyword arguments can be in any order and make code more readable. Default values make parameters optional. Functions can call other functions to build complex behavior from simple parts.
-</div>
-`
-            },
-
-            // --- LESSON 2: Dictionaries & Nesting ---
-            {
-                id: 'day3-lesson2',
-                type: 'lesson',
-                title: 'Dictionaries & Nesting',
-                content: `
-<h1>Dictionaries & Nesting</h1>
-<p>Dictionaries store <strong>key-value pairs</strong>. Think of them like a real dictionary: you look up a word (key) to find its definition (value).</p>
-
-<h2>Creating Dictionaries</h2>
-<div class="code-block" data-example="d3l2_create">
-<code># Key: Value pairs inside curly braces
-student = {
-    "name": "Alice",
-    "age": 20,
-    "major": "Computer Science",
-    "gpa": 3.8
+    hints: [
+      "average: <code>total = 0</code>, loop <code>for s in scores: total += s</code>, then <code>return total / len(scores)</code>.",
+      "letter_grade returns: <code>if avg >= 90: return \"A\"</code> … chain downward, ending with <code>return \"F\"</code>.",
+      "report: <code>avg = average(scores)</code>, <code>grade = letter_grade(avg)</code>, then <code>return f\"{name}: average {avg:.1f}, grade {grade}\"</code>."
+    ],
+    solution: "def average(scores):\n    total = 0\n    for s in scores:\n        total += s\n    return total / len(scores)\n\n\ndef letter_grade(avg):\n    if avg >= 90:\n        return \"A\"\n    elif avg >= 80:\n        return \"B\"\n    elif avg >= 70:\n        return \"C\"\n    elif avg >= 60:\n        return \"D\"\n    else:\n        return \"F\"\n\n\ndef report(name, scores):\n    avg = average(scores)\n    grade = letter_grade(avg)\n    return f\"{name}: average {avg:.1f}, grade {grade}\"\n\n\nprint(report(\"Ada\", [95, 88, 92]))"
+  }
+  ]
 }
 
-print(student)
-print(student["name"])       # Alice
-print(student["gpa"])        # 3.8</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Adding, Updating & Removing</h2>
-<div class="code-block" data-example="d3l2_modify">
-<code>student = {"name": "Alice", "age": 20}
-
-# Add a new key-value pair
-student["email"] = "alice@email.com"
-print(student)
-
-# Update an existing value
-student["age"] = 21
-print(f"Updated age: {student['age']}")
-
-# Remove a key
-del student["email"]
-print(student)
-
-# Create an empty dict and build it up
-scores = {}
-scores["Alice"] = 95
-scores["Bob"] = 87
-scores["Carol"] = 92
-print(scores)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Looping Through Dictionaries</h2>
-<div class="code-block" data-example="d3l2_loop">
-<code>scores = {"Alice": 95, "Bob": 87, "Carol": 92, "Dave": 78}
-
-# Loop through keys
-for name in scores:
-    print(f"{name}: {scores[name]}")
-
-print("---")
-
-# Loop through key-value pairs (preferred)
-for name, score in scores.items():
-    if score >= 90:
-        print(f"{name}: {score}  Honor Roll")
-    else:
-        print(f"{name}: {score}")
-
-# Get just keys or just values
-print(f"Students: {list(scores.keys())}")
-print(f"Scores: {list(scores.values())}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Safe Access with <code>.get()</code></h2>
-<div class="code-block" data-example="d3l2_get">
-<code>student = {"name": "Alice", "age": 20}
-
-# Direct access crashes if key doesn't exist
-# print(student["phone"])  # KeyError!
-
-# .get() returns None (or a default) instead of crashing
-print(student.get("phone"))            # None
-print(student.get("phone", "N/A"))     # N/A
-print(student.get("name", "Unknown"))  # Alice (key exists)</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Nesting - Dictionaries in Lists</h2>
-<p>Store a list of dictionaries for structured data (like a database of records):</p>
-
-<div class="code-block" data-example="d3l2_dictlist">
-<code>travel_log = [
-    {
-        "country": "France",
-        "cities_visited": ["Paris", "Lyon", "Nice"],
-        "visits": 3
-    },
-    {
-        "country": "Japan",
-        "cities_visited": ["Tokyo", "Osaka"],
-        "visits": 1
-    }
-]
-
-# Access nested data
-print(travel_log[0]["country"])              # France
-print(travel_log[0]["cities_visited"][0])     # Paris
-print(travel_log[1]["visits"])               # 1
-
-# Loop through
-for entry in travel_log:
-    print(f"{entry['country']}: {', '.join(entry['cities_visited'])}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Nesting - Lists & Dicts in Dicts</h2>
-<div class="code-block" data-example="d3l2_deepnest">
-<code># Dictionary inside a dictionary
-family = {
-    "parents": {
-        "mom": "Sarah",
-        "dad": "James"
-    },
-    "children": ["Alice", "Bob"],
-    "pets": {
-        "dog": "Rex",
-        "cat": "Whiskers"
-    }
-}
-
-print(family["parents"]["mom"])     # Sarah
-print(family["children"][0])        # Alice
-print(family["pets"]["dog"])        # Rex
-
-# Modify nested data
-family["children"].append("Carol")
-print(family["children"])  # ['Alice', 'Bob', 'Carol']</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Dictionaries map keys to values. Use <code>.get()</code> for safe access, <code>.items()</code> for looping, and nesting for complex data structures. Think of dicts as the Python equivalent of JSON objects.
-</div>
-`
-            },
-
-            // --- LESSON 3: Return Values, Scope & Constants ---
-            {
-                id: 'day3-lesson3',
-                type: 'lesson',
-                title: 'Return Values, Scope & Constants',
-                content: `
-<h1>Return Values, Scope & Constants</h1>
-<p>Functions become truly powerful when they <em>return</em> data. Understanding scope helps you avoid confusing bugs. Constants keep your code clean.</p>
-
-<h2>The <code>return</code> Statement</h2>
-<p><code>return</code> sends a value back from the function. This is more useful than printing because you can use the result in other code:</p>
-
-<div class="code-block" data-example="d3l3_return">
-<code>def add(a, b):
-    return a + b
-
-def is_even(number):
-    return number % 2 == 0
-
-# Use returned values
-result = add(10, 20)
-print(f"Sum: {result}")
-
-print(f"Is 7 even? {is_even(7)}")
-print(f"Is 8 even? {is_even(8)}")
-
-# Chain function calls
-total = add(add(1, 2), add(3, 4))
-print(f"(1+2) + (3+4) = {total}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Return vs Print</h2>
-<div class="code-block" data-example="d3l3_retvsprint">
-<code># This function PRINTS - the result can't be reused
-def add_and_print(a, b):
-    print(a + b)
-
-# This function RETURNS - the result can be reused
-def add_and_return(a, b):
-    return a + b
-
-# You can't do math with a print function
-x = add_and_print(3, 5)     # Prints 8
-print(f"x = {x}")           # x = None (print doesn't return!)
-
-# But you CAN with a return function
-y = add_and_return(3, 5)    # Returns 8
-print(f"y = {y}")           # y = 8
-print(f"y * 2 = {y * 2}")   # y * 2 = 16</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Early Return</h2>
-<p><code>return</code> immediately exits the function. Code after it won't run:</p>
-
-<div class="code-block" data-example="d3l3_early">
-<code>def check_age(age):
-    if age < 0:
-        return "Invalid age"
-    if age < 13:
-        return "Child"
-    if age < 18:
-        return "Teenager"
-    return "Adult"
-
-print(check_age(8))    # Child
-print(check_age(15))   # Teenager
-print(check_age(25))   # Adult
-print(check_age(-1))   # Invalid age</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Multiple Return Values</h2>
-<div class="code-block" data-example="d3l3_multiret">
-<code>def analyze_numbers(numbers):
-    total = sum(numbers)
-    average = total / len(numbers)
-    largest = max(numbers)
-    smallest = min(numbers)
-    return total, average, largest, smallest
-
-nums = [10, 20, 30, 40, 50]
-total, avg, big, small = analyze_numbers(nums)
-print(f"Total: {total}, Average: {avg}")
-print(f"Largest: {big}, Smallest: {small}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Docstrings</h2>
-<p>Document what your functions do with a triple-quoted string right after <code>def</code>:</p>
-
-<div class="code-block" data-example="d3l3_docstring">
-<code>def calculate_bmi(weight_kg, height_m):
-    """Calculate Body Mass Index.
-
-    Args:
-        weight_kg: Weight in kilograms
-        height_m: Height in meters
-
-    Returns:
-        BMI as a float, rounded to 1 decimal place
-    """
-    bmi = weight_kg / (height_m ** 2)
-    return round(bmi, 1)
-
-result = calculate_bmi(70, 1.75)
-print(f"BMI: {result}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Variable Scope - Local vs Global</h2>
-<p>Where you create a variable determines where it's accessible:</p>
-
-<div class="code-block" data-example="d3l3_scope">
-<code># Global variable - accessible everywhere
-player_name = "Alice"
-
-def print_score(score):
-    # Local variable - only exists inside this function
-    message = f"{player_name} scored {score}"
-    print(message)
-
-print_score(100)
-print(player_name)      # Works - it's global
-
-# print(message)  # ERROR! 'message' is local to print_score
-# print(score)    # ERROR! 'score' is local to print_score</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<h2>Scope Rules in Detail</h2>
-<div class="code-block" data-example="d3l3_scoperules">
-<code>enemies = 1  # Global
-
-def increase_enemies():
-    # This creates a NEW local variable, doesn't change the global!
-    enemies = 2
-    print(f"Inside function: enemies = {enemies}")
-
-increase_enemies()
-print(f"Outside function: enemies = {enemies}")  # Still 1!
-
-# To modify a global variable inside a function, use the 'global' keyword
-lives = 3
-
-def lose_life():
-    global lives
-    lives -= 1
-    print(f"Lost a life! Lives remaining: {lives}")
-
-lose_life()
-print(f"Global lives: {lives}")  # Now 2</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-warning">
-<strong>Avoid <code>global</code> When Possible!</strong>
-Using <code>global</code> makes code harder to debug. It's better to pass values as parameters and return results. The <code>global</code> keyword exists, but use it sparingly.
-</div>
-
-<h2>Constants</h2>
-<p>Constants are variables that should never change. Python uses <code>ALL_CAPS</code> naming as a convention:</p>
-
-<div class="code-block" data-example="d3l3_constants">
-<code>PI = 3.14159
-MAX_LIVES = 6
-WINNING_SCORE = 21
-DIRECTIONS = ["north", "south", "east", "west"]
-
-def circle_area(radius):
-    return PI * radius ** 2
-
-print(f"Area of circle (r=5): {circle_area(5):.2f}")
-print(f"Max lives in game: {MAX_LIVES}")
-print(f"Blackjack target: {WINNING_SCORE}")</code>
-<button class="try-btn" onclick="app.openExample(this)">Try it</button>
-</div>
-
-<div class="callout callout-tip">
-<strong>Key Takeaway</strong>
-Always prefer <code>return</code> over <code>print</code> in functions - it makes them composable. Variables inside functions are local. Use ALL_CAPS for constants. Avoid <code>global</code> when you can use parameters and returns instead.
-</div>
-`
-            },
-
-            // --- LAB 1: Caesar Cipher (Day 8 Project) ---
-            {
-                id: 'day3-lab1',
-                type: 'lab',
-                title: 'Project: Caesar Cipher',
-                objective: 'Build a Caesar Cipher program that can encrypt and decrypt messages by shifting letters!',
-                instructions: `
-<h3>The Project (from Udemy Day 8)</h3>
-<ol>
-    <li>Create the <code>alphabet</code> string: all 26 lowercase letters</li>
-    <li>Write a function <code>caesar(text, shift, direction)</code> that:
-        <ul>
-            <li>Takes a text string, a shift amount, and direction (<code>"encode"</code> or <code>"decode"</code>)</li>
-            <li>If decoding, reverse the shift (negate it)</li>
-            <li>Loops through each character in the text</li>
-            <li>If the character is a letter, shift it using the modulo trick: <code>(position + shift) % 26</code></li>
-            <li>If the character is NOT a letter (space, number, punctuation), keep it as-is</li>
-            <li>Returns the new string</li>
-        </ul>
-    </li>
-    <li>Test encoding "hello" with shift 5 -> "mjqqt"</li>
-    <li>Test decoding "mjqqt" with shift 5 -> "hello"</li>
-</ol>
-`,
-                starterCode: `alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-def caesar(text, shift, direction):
-    """Encrypt or decrypt text using the Caesar Cipher.
-
-    Args:
-        text: The message to encode/decode
-        shift: How many positions to shift each letter
-        direction: "encode" to encrypt, "decode" to decrypt
-
-    Returns:
-        The encoded or decoded string
-    """
-    result = ""
-
-    # If decoding, reverse the shift
-    # if direction == "decode":
-    #     shift *= -1
-
-    # Loop through each character
-    # for char in text.lower():
-    #     if char in alphabet:
-    #         position = alphabet.index(char)
-    #         new_position = (position + shift) % 26
-    #         result += alphabet[new_position]
-    #     else:
-    #         result += char  # Keep non-letters as-is
-
-    return result
-
-# Test
-encoded = caesar("hello", 5, "encode")
-print(f"Encoded: {encoded}")  # Should be: mjqqt
-
-decoded = caesar("mjqqt", 5, "decode")
-print(f"Decoded: {decoded}")  # Should be: hello
-
-# Test with spaces and punctuation
-encoded2 = caesar("hello world!", 3, "encode")
-print(f"Encoded: {encoded2}")  # khoor zruog!
-
-decoded2 = caesar(encoded2, 3, "decode")
-print(f"Decoded: {decoded2}")  # hello world!
-`,
-                tests: [
-                    { name: 'Encoding "hello" with shift 5', test: `assert caesar("hello", 5, "encode") == "mjqqt", f"Expected 'mjqqt', got '{caesar('hello', 5, 'encode')}'"` },
-                    { name: 'Decoding "mjqqt" with shift 5', test: `assert caesar("mjqqt", 5, "decode") == "hello", f"Expected 'hello', got '{caesar('mjqqt', 5, 'decode')}'"` },
-                    { name: 'Handles spaces and punctuation', test: `result = caesar("hello world!", 3, "encode"); assert " " in result and "!" in result, "Should keep spaces and punctuation"` },
-                    { name: 'Wraps around the alphabet', test: `assert caesar("xyz", 3, "encode") == "abc", f"Expected 'abc', got '{caesar('xyz', 3, 'encode')}'"` },
-                    { name: 'Encode then decode returns original', test: `
-original = "test message"
-encoded = caesar(original, 7, "encode")
-decoded = caesar(encoded, 7, "decode")
-assert decoded == original, f"Expected '{original}', got '{decoded}'"
-` }
-                ],
-                hints: [
-                    'Start by reversing the shift for decode: <code>if direction == "decode": shift *= -1</code>',
-                    'Loop through characters: <code>for char in text.lower():</code>',
-                    'For letters: find position with <code>alphabet.index(char)</code>, shift with <code>(position + shift) % 26</code>',
-                    'For non-letters, just append them unchanged: <code>result += char</code>'
-                ]
-            },
-
-            // --- LAB 2: Blind Auction (Day 9 Project) ---
-            {
-                id: 'day3-lab2',
-                type: 'lab',
-                title: 'Project: Blind Auction',
-                objective: 'Build a blind auction program using dictionaries - bidders submit bids without seeing others\' bids, then the highest bidder wins!',
-                instructions: `
-<h3>The Project (from Udemy Day 9)</h3>
-<ol>
-    <li>Create a dictionary called <code>bids</code> with at least 3 bidders (name -> bid amount)</li>
-    <li>Write a function <code>find_highest_bidder(bids_dict)</code> that:
-        <ul>
-            <li>Loops through all the bids</li>
-            <li>Finds the person with the highest bid</li>
-            <li>Returns a dictionary: <code>{"name": winner_name, "bid": highest_bid}</code></li>
-        </ul>
-    </li>
-    <li>Call the function and print: <code>The winner is [name] with a bid of $[amount]</code></li>
-</ol>
-<p><strong>PyCharm Tip:</strong> In PyCharm, you'd use a <code>while</code> loop to keep asking for bidders until no one else wants to bid.</p>
-`,
-                starterCode: `# Blind Auction - Day 9 Project
-
-# Simulated bids (in PyCharm, you'd collect these with input() in a loop)
-bids = {
-    "Alice": 120,
-    "Bob": 250,
-    "Carol": 175,
-    "Dave": 300,
-    "Eve": 225
-}
-
-def find_highest_bidder(bids_dict):
-    """Find and return the highest bidder.
-
-    Args:
-        bids_dict: Dictionary of {name: bid_amount}
-
-    Returns:
-        Dictionary with "name" and "bid" of the winner
-    """
-    pass  # Replace with your code
-
-# Find the winner
-winner = find_highest_bidder(bids)
-# print("The winner is " + winner["name"] + " with a bid of $" + str(winner["bid"]))
-`,
-                tests: [
-                    { name: 'find_highest_bidder returns a dictionary', test: `result = find_highest_bidder(bids); assert isinstance(result, dict), "Should return a dictionary"` },
-                    { name: 'Result has name and bid keys', test: `result = find_highest_bidder(bids); assert "name" in result and "bid" in result, "Should have 'name' and 'bid' keys"` },
-                    { name: 'Finds the correct winner', test: `
-result = find_highest_bidder({"A": 10, "B": 50, "C": 30})
-assert result["name"] == "B" and result["bid"] == 50, f"Expected B with 50, got {result}"
-` },
-                    { name: 'Works with the given bids (Dave wins)', test: `
-result = find_highest_bidder(bids)
-assert result["name"] == "Dave", f"Expected Dave, got {result['name']}"
-assert result["bid"] == 300, f"Expected 300, got {result['bid']}"
-` }
-                ],
-                hints: [
-                    'Start with: <code>highest_bid = 0</code> and <code>winner = ""</code>',
-                    'Loop: <code>for name, bid in bids_dict.items():</code>',
-                    'Inside the loop: <code>if bid > highest_bid: highest_bid = bid; winner = name</code>',
-                    'Return: <code>return {"name": winner, "bid": highest_bid}</code>'
-                ]
-            },
-
-            // --- LAB 3: Calculator (Day 10 Project) ---
-            {
-                id: 'day3-lab3',
-                type: 'lab',
-                title: 'Project: Calculator',
-                objective: 'Build a calculator that performs operations and can continue calculating with the previous result!',
-                instructions: `
-<h3>The Project (from Udemy Day 10)</h3>
-<ol>
-    <li>Write four functions: <code>add(n1, n2)</code>, <code>subtract(n1, n2)</code>, <code>multiply(n1, n2)</code>, <code>divide(n1, n2)</code></li>
-    <li>Each should <strong>return</strong> the result (not print it)</li>
-    <li><code>divide</code> should return <code>0</code> if n2 is 0 (avoid division error)</li>
-    <li>Create a dictionary called <code>operations</code> that maps symbols to functions:
-        <code>{"+": add, "-": subtract, "*": multiply, "/": divide}</code></li>
-    <li>Write a function <code>calculate(n1, operator, n2)</code> that looks up the operator in the dictionary, calls the function, and returns the result</li>
-    <li>Test all operations and print the results</li>
-</ol>
-<p><strong>Cool concept:</strong> You can store functions in a dictionary and call them dynamically!</p>
-`,
-                starterCode: `# Calculator - Day 10 Project
-
-def add(n1, n2):
-    """Return n1 + n2"""
-    pass
-
-def subtract(n1, n2):
-    """Return n1 - n2"""
-    pass
-
-def multiply(n1, n2):
-    """Return n1 * n2"""
-    pass
-
-def divide(n1, n2):
-    """Return n1 / n2, or 0 if n2 is 0"""
-    pass
-
-# Dictionary mapping operators to functions
-operations = {
-    "+": add,
-    "-": subtract,
-    "*": multiply,
-    "/": divide,
-}
-
-def calculate(n1, operator, n2):
-    """Look up the operator function and return the result."""
-    pass
-
-# Test all operations
-# print(f"10 + 5 = {calculate(10, '+', 5)}")
-# print(f"10 - 5 = {calculate(10, '-', 5)}")
-# print(f"10 * 5 = {calculate(10, '*', 5)}")
-# print(f"10 / 5 = {calculate(10, '/', 5)}")
-# print(f"10 / 0 = {calculate(10, '/', 0)}")
-
-# Continuous calculation example
-# result = calculate(10, "+", 5)       # 15
-# result = calculate(result, "*", 2)    # 30
-# result = calculate(result, "-", 6)    # 24
-# print(f"Final result: {result}")
-`,
-                tests: [
-                    { name: 'add(10, 5) returns 15', test: `assert add(10, 5) == 15, f"Expected 15, got {add(10, 5)}"` },
-                    { name: 'subtract(10, 5) returns 5', test: `assert subtract(10, 5) == 5, f"Expected 5, got {subtract(10, 5)}"` },
-                    { name: 'multiply(10, 5) returns 50', test: `assert multiply(10, 5) == 50, f"Expected 50, got {multiply(10, 5)}"` },
-                    { name: 'divide(10, 5) returns 2.0', test: `assert divide(10, 5) == 2.0, f"Expected 2.0, got {divide(10, 5)}"` },
-                    { name: 'divide(10, 0) returns 0 (safe)', test: `assert divide(10, 0) == 0, f"divide by zero should return 0, got {divide(10, 0)}"` },
-                    { name: 'operations dict maps symbols to functions', test: `assert operations["+"] == add and operations["-"] == subtract, "operations dict should map '+' to add, '-' to subtract, etc."` },
-                    { name: 'calculate uses the operations dict', test: `assert calculate(10, "+", 5) == 15, f"calculate(10, '+', 5) should be 15, got {calculate(10, '+', 5)}"` }
-                ],
-                hints: [
-                    'Each function is simple: <code>def add(n1, n2): return n1 + n2</code>',
-                    'For divide: <code>if n2 == 0: return 0</code> then <code>return n1 / n2</code>',
-                    'The operations dict stores functions as values: <code>{"+": add, "-": subtract, ...}</code>',
-                    'calculate: <code>func = operations[operator]; return func(n1, n2)</code>'
-                ]
-            },
-
-            // --- LAB 4: Number Guessing Game (Day 12 Project) ---
-            {
-                id: 'day3-lab4',
-                type: 'lab',
-                title: 'Project: Number Guessing Game',
-                objective: 'Build a number guessing game with difficulty levels using scope, constants, and all the skills you\'ve learned!',
-                instructions: `
-<h3>The Project (from Udemy Day 12)</h3>
-<ol>
-    <li>Define constants: <code>EASY_ATTEMPTS = 10</code>, <code>HARD_ATTEMPTS = 5</code></li>
-    <li>Write <code>set_difficulty(level)</code> that returns the right number of attempts based on the level ("easy" or "hard")</li>
-    <li>Write <code>check_guess(guess, answer)</code> that:
-        <ul>
-            <li>Returns <code>"correct"</code> if guess equals answer</li>
-            <li>Returns <code>"too_high"</code> if guess is higher</li>
-            <li>Returns <code>"too_low"</code> if guess is lower</li>
-        </ul>
-    </li>
-    <li>Write <code>play_game(answer, attempts)</code> that simulates a series of guesses:
-        <ul>
-            <li>Takes the answer and number of attempts</li>
-            <li>Uses a list of <code>guesses</code> (simulated)</li>
-            <li>Returns <code>True</code> if the player guessed correctly within the attempts, <code>False</code> otherwise</li>
-        </ul>
-    </li>
-</ol>
-`,
-                starterCode: `import random
-
-# Constants
-EASY_ATTEMPTS = 10
-HARD_ATTEMPTS = 5
-
-def set_difficulty(level):
-    """Return the number of attempts based on difficulty level.
-
-    Args:
-        level: "easy" or "hard"
-
-    Returns:
-        Number of attempts (int)
-    """
-    pass  # Replace with your code
-
-def check_guess(guess, answer):
-    """Compare guess to answer.
-
-    Returns:
-        "correct", "too_high", or "too_low"
-    """
-    pass  # Replace with your code
-
-def play_game(answer, attempts, guesses):
-    """Play the guessing game with a list of simulated guesses.
-
-    Args:
-        answer: The correct number
-        attempts: Max attempts allowed
-        guesses: List of guesses to try
-
-    Returns:
-        True if correct guess was made within attempts, False otherwise
-    """
-    pass  # Replace with your code
-
-# Test set_difficulty
-print(f"Easy mode: {set_difficulty('easy')} attempts")
-print(f"Hard mode: {set_difficulty('hard')} attempts")
-
-# Test check_guess
-print(f"Guess 50 vs answer 75: {check_guess(50, 75)}")
-print(f"Guess 90 vs answer 75: {check_guess(90, 75)}")
-print(f"Guess 75 vs answer 75: {check_guess(75, 75)}")
-
-# Test play_game with simulated guesses
-won = play_game(75, 5, [50, 80, 70, 75])
-print(f"Won the game? {won}")
-
-lost = play_game(75, 3, [50, 80, 70])
-print(f"Won the game? {lost}")
-`,
-                tests: [
-                    { name: 'set_difficulty("easy") returns 10', test: `assert set_difficulty("easy") == EASY_ATTEMPTS, f"Expected {EASY_ATTEMPTS}, got {set_difficulty('easy')}"` },
-                    { name: 'set_difficulty("hard") returns 5', test: `assert set_difficulty("hard") == HARD_ATTEMPTS, f"Expected {HARD_ATTEMPTS}, got {set_difficulty('hard')}"` },
-                    { name: 'check_guess returns "too_low"', test: `assert check_guess(50, 75) == "too_low", f"Expected 'too_low', got '{check_guess(50, 75)}'"` },
-                    { name: 'check_guess returns "too_high"', test: `assert check_guess(90, 75) == "too_high", f"Expected 'too_high', got '{check_guess(90, 75)}'"` },
-                    { name: 'check_guess returns "correct"', test: `assert check_guess(75, 75) == "correct", f"Expected 'correct', got '{check_guess(75, 75)}'"` },
-                    { name: 'play_game returns True when correct guess is within attempts', test: `assert play_game(75, 5, [50, 80, 70, 75]) == True, "Should win when guessing correctly within attempt limit"` },
-                    { name: 'play_game returns False when running out of attempts', test: `assert play_game(75, 2, [50, 80, 70, 75]) == False, "Should lose when attempts run out before correct guess"` }
-                ],
-                hints: [
-                    '<code>set_difficulty</code>: <code>if level == "easy": return EASY_ATTEMPTS</code> else return HARD_ATTEMPTS',
-                    '<code>check_guess</code>: use if/elif/else comparing guess to answer',
-                    '<code>play_game</code>: loop through guesses with a counter. If counter exceeds attempts, return False. If guess is correct, return True.',
-                    'Loop: <code>for i, guess in enumerate(guesses): if i >= attempts: return False; if check_guess(guess, answer) == "correct": return True</code>'
-                ]
-            },
-
-            // --- LAB 5: Blackjack (Day 11 Capstone) ---
-            {
-                id: 'day3-lab5',
-                type: 'lab',
-                title: 'Project: Blackjack (Capstone)',
-                objective: 'Build a simplified Blackjack card game - the ultimate capstone combining everything from Days 1-12!',
-                instructions: `
-<h3>The Capstone Project (from Udemy Day 11)</h3>
-<p>Build the core functions for a Blackjack game:</p>
-<ol>
-    <li><code>deal_card()</code> - Returns a random card value from a deck. Cards 2-10 are face value, J/Q/K = 10, Ace = 11</li>
-    <li><code>calculate_score(cards)</code> - Takes a list of card values and returns the total. Special rules:
-        <ul>
-            <li>If the total is over 21 and there's an 11 (Ace), change the 11 to a 1</li>
-            <li>If the hand is [11, 10] or [10, 11] (natural blackjack), return <strong>0</strong> (special score meaning instant win)</li>
-        </ul>
-    </li>
-    <li><code>compare(player_score, computer_score)</code> - Returns the result string:
-        <ul>
-            <li>Player blackjack (0) -> <code>"Blackjack! You win!"</code></li>
-            <li>Computer blackjack (0) -> <code>"Computer has Blackjack. You lose!"</code></li>
-            <li>Player over 21 -> <code>"You went over. You lose!"</code></li>
-            <li>Computer over 21 -> <code>"Computer went over. You win!"</code></li>
-            <li>Player score higher -> <code>"You win!"</code></li>
-            <li>Equal -> <code>"It's a draw!"</code></li>
-            <li>Otherwise -> <code>"You lose!"</code></li>
-        </ul>
-    </li>
-</ol>
-<p>Build and test each function individually. The game logic ties them together!</p>
-`,
-                starterCode: `import random
-
-def deal_card():
-    """Return a random card value.
-    Cards: 2-10 face value, J/Q/K = 10, Ace = 11
-    """
-    cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-    return random.choice(cards)
-
-def calculate_score(cards):
-    """Calculate the score of a hand.
-    - Blackjack (Ace + 10) returns 0 (special value)
-    - If over 21 and there's an 11, change 11 to 1
-    """
-    pass  # Replace with your code
-
-def compare(player_score, computer_score):
-    """Compare scores and return result message."""
-    pass  # Replace with your code
-
-# Test deal_card
-card = deal_card()
-print(f"Dealt: {card}")
-
-# Test calculate_score
-print(f"Score of [10, 5, 6]: {calculate_score([10, 5, 6])}")     # 21
-print(f"Score of [11, 10]: {calculate_score([11, 10])}")          # 0 (Blackjack!)
-print(f"Score of [11, 5, 7]: {calculate_score([11, 5, 7])}")     # 23 -> 13 (Ace becomes 1)
-print(f"Score of [10, 8, 5]: {calculate_score([10, 8, 5])}")     # 23 (bust, no ace)
-
-# Test compare
-print(f"Player 21 vs Computer 19: {compare(21, 19)}")
-print(f"Player 0 vs Computer 19: {compare(0, 19)}")   # Blackjack!
-print(f"Player 25 vs Computer 19: {compare(25, 19)}")  # Bust
-print(f"Player 19 vs Computer 19: {compare(19, 19)}")  # Draw
-`,
-                tests: [
-                    { name: 'deal_card returns value between 2 and 11', test: `card = deal_card(); assert 2 <= card <= 11, f"Card should be 2-11, got {card}"` },
-                    { name: 'calculate_score returns correct total', test: `assert calculate_score([10, 5, 6]) == 21, f"Expected 21, got {calculate_score([10, 5, 6])}"` },
-                    { name: 'Blackjack (Ace + 10) returns 0', test: `assert calculate_score([11, 10]) == 0, f"Blackjack should return 0, got {calculate_score([11, 10])}"` },
-                    { name: 'Ace converts from 11 to 1 when over 21', test: `
-score = calculate_score([11, 5, 7])
-assert score == 13, f"[11, 5, 7] should be 13 (ace->1), got {score}"
-` },
-                    { name: 'No ace conversion when not over 21', test: `assert calculate_score([11, 5]) == 16, f"[11, 5] should be 16, got {calculate_score([11, 5])}"` },
-                    { name: 'compare: player wins', test: `assert "win" in compare(20, 18).lower() and "lose" not in compare(20, 18).lower(), "Player 20 vs 18 should win"` },
-                    { name: 'compare: player blackjack', test: `assert "blackjack" in compare(0, 18).lower() or "win" in compare(0, 18).lower(), "Player blackjack (0) should win"` },
-                    { name: 'compare: player busts', test: `assert "lose" in compare(25, 18).lower(), "Player 25 (bust) should lose"` },
-                    { name: 'compare: draw', test: `assert "draw" in compare(19, 19).lower(), "Equal scores should be a draw"` },
-                    { name: 'compare: computer busts', test: `assert "win" in compare(18, 25).lower(), "Computer bust (25) means player wins"` }
-                ],
-                hints: [
-                    '<code>calculate_score</code>: first check for blackjack: <code>if len(cards) == 2 and 11 in cards and 10 in cards: return 0</code>',
-                    'Then calculate total: <code>total = sum(cards)</code>. If <code>total > 21 and 11 in cards</code>, subtract 10 (changing ace from 11 to 1)',
-                    '<code>compare</code>: check for blackjack (0) first, then check for busts (>21), then compare scores',
-                    'Structure: <code>if player_score == 0: return "Blackjack! You win!"</code> then <code>elif computer_score == 0: ...</code> and so on'
-                ]
-            }
-        ]
-    }
 ];

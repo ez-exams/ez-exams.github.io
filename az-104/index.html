@@ -1,416 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Microsoft Azure Administrator AZ-104 Study Hub · EZ Exam</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230078d4'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial,sans-serif' font-size='13' font-weight='bold' fill='white'%3EAz%3C/text%3E%3C/svg%3E" />
-    <link rel="stylesheet" href="static/styles.css" />
-    <link rel="stylesheet" href="../assets/nocturne-theme.css" />
-      <style>
-      /* --- EZ Exam site + section navigation --- */
-      .ez-nav { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 14px;
-        flex-wrap: wrap; padding: 10px 28px; background: var(--bg-soft);
-        border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
-      .ez-nav-home { display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-        font-size: 0.92rem; font-weight: 700; color: #fff; background: var(--accent-strong);
-        border: 1px solid var(--accent-strong); border-radius: 10px; padding: 8px 16px;
-        transition: filter 0.15s ease, transform 0.15s ease; white-space: nowrap; }
-      .ez-nav-home:hover { filter: brightness(1.12); transform: translateY(-1px); }
-      .ez-nav-home .ez-house { font-size: 1.05rem; line-height: 1; }
-      .ez-nav-div { width: 1px; align-self: stretch; background: var(--border); margin: 0 2px; }
-      .ez-nav-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-        color: var(--text-muted); font-weight: 700; }
-      .ez-nav-sections { display: flex; gap: 8px; flex-wrap: wrap; }
-      .ez-nav-btn { font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
-        color: var(--text-muted); background: transparent; border: 1px solid var(--border);
-        border-radius: 999px; padding: 7px 15px; transition: all 0.15s ease; white-space: nowrap; }
-      .ez-nav-btn:hover { color: var(--text); border-color: var(--accent-strong); }
-      .ez-nav-btn.is-active { color: #fff; background: var(--accent-strong); border-color: var(--accent-strong); }
-      .ez-foot { text-align: center; padding: 34px 20px 40px; color: var(--text-muted);
-        font-size: 0.84rem; line-height: 1.6; border-top: 1px solid var(--border); margin-top: 48px; }
-      .ez-foot a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
-      .ez-foot a:hover { color: var(--accent-strong); }
-      @media (max-width: 640px) { .ez-nav { padding: 10px 14px; gap: 10px; } .ez-nav-label { display: none; } }
-    </style>
-    <script src="../assets/exam-mode.js" data-hub="az104" defer></script>
-    <script>(function(){var h=location.hostname;if(h!=="ez-exams.github.io"&&h!=="localhost"&&h!=="127.0.0.1"){document.documentElement.setAttribute("data-ez-standalone","")}})();</script>
-    <style>[data-ez-standalone] .ez-nav-home,[data-ez-standalone] .ez-nav-div,[data-ez-standalone] .ez-nav-label{display:none!important}</style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#161826" />
+  <title>Microsoft Azure Administrator AZ-104 Study Hub · EZ Exam</title>
+  <meta name="description" content="AZ-104 Azure Administrator study hub — practice exams with instant feedback, a timed live-exam simulation with PBQs, flashcards, and performance-based questions." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161826'/%3E%3Ctext x='32' y='42' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='26' text-anchor='middle' fill='%239184d9'%3EAZ%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/nocturne-ds.css" />
+  <script>
+    (function () {
+      var h = location.hostname;
+      if (h !== "ez-exams.github.io" && h !== "localhost" && h !== "127.0.0.1") {
+        document.documentElement.setAttribute("data-ez-standalone", "");
+      }
+    })();
+  </script>
+  <style>
+    html, body { margin: 0; background: #161826; color: #e9e9ed; -webkit-text-size-adjust: 100%; }
+    a { color: #9184d9; text-underline-offset: 3px; }
+    a:hover { color: #b5abfc; }
+    button { font-family: inherit; }
+  </style>
 </head>
-  <body>
-    <nav class="ez-nav" aria-label="Site and section navigation">
-      <a class="ez-nav-home" href="../"><span class="ez-house" aria-hidden="true">⌂</span> Home</a>
-      <span class="ez-nav-div"></span>
-      <span class="ez-nav-label">Sections</span>
-      <div class="ez-nav-sections"><button class="ez-nav-btn is-active" data-go="__menu__">Hub menu</button><button class="ez-nav-btn" data-go="mode-exam">Practice Exam</button><button class="ez-nav-btn" data-go="mode-exam-flash">Flashcards</button><button class="ez-nav-btn" data-go="mode-pbq-test">PBQ Test</button></div>
-    </nav>
-    <header class="topbar">
-      <button id="brand-home" class="brand brand-button" type="button" aria-label="Back to home">
-        <span class="brand-mark">AZ-104</span>
-        <span class="brand-name">Azure Administrator Study Hub</span>
+<body>
+  <div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:15px;line-height:1.55">
+    <header class="hub-header">
+      <a class="ez-nav-home" href="../">&#8962; Home</a>
+      <button class="hub-title" type="button" data-a="goHome">
+        <span class="hub-code">AZ-104</span>
+        <span class="hub-name">Azure Administrator Study Hub</span>
       </button>
-      <div id="session-stats" class="session-stats hidden">
-        <span><strong id="stat-progress">0 / 0</strong> <span id="stat-progress-label">answered</span></span>
-        <span><strong id="stat-correct">0</strong> <span id="stat-correct-label">correct</span></span>
-        <span id="stat-percent">0%</span>
-      </div>
+      <span id="hdr-timer" class="hub-timer" hidden></span>
+      <span id="hdr-progress" class="hub-progress" hidden></span>
+      <button id="hdr-exit" class="btn btn-secondary" type="button" data-a="askEnd" hidden></button>
     </header>
+    <main id="hub-main" class="hub-main"></main>
+    <div id="hub-dialog"></div>
+  </div>
 
-    <main id="app">
-      <!-- Home / mode-select screen -->
-      <section id="home-screen" class="card home">
-        <h1>How do you want to study?</h1>
-        <p class="lead">
-          Pick a mode below. Everything is built for the AZ-104 exam — from the
-          full multiple-choice pool to the hotspot and drag-and-drop questions.
-        </p>
-        <div class="mode-grid">
-          <button class="mode-btn" id="mode-exam" type="button">
-            <span class="mode-eyebrow">Test yourself</span>
-            <span class="mode-title">Practice Exam</span>
-            <span class="mode-desc">
-              A randomized multiple-choice quiz with instant feedback, scoring,
-              a per-section breakdown, and a missed-question review.
-            </span>
-            <span class="mode-arrow" aria-hidden="true">→</span>
-          </button>
-
-          <button class="mode-btn" id="mode-exam-flash" type="button">
-            <span class="mode-eyebrow">Drill the pool</span>
-            <span class="mode-title">Exam Flashcards</span>
-            <span class="mode-desc">
-              Flip through real questions from the exam pool — recall the answer,
-              then reveal it and grade yourself.
-            </span>
-            <span class="mode-arrow" aria-hidden="true">→</span>
-          </button>
-
-          <button class="mode-btn mode-btn-pbq" id="mode-pbq-test" type="button">
-            <span class="mode-eyebrow">Master the hard part</span>
-            <span class="mode-title">PBQ Practice Exam</span>
-            <span class="mode-desc">
-              Every HOTSPOT and DRAG DROP question from the pool, rebuilt as
-              interactive tasks — Yes/No statements, drag-and-drop, and
-              dropdown completion, with partial credit and a full review.
-            </span>
-            <span class="mode-arrow" aria-hidden="true">→</span>
-          </button>
-        </div>
-        <p id="home-loading" class="muted">Loading question bank…</p>
-      </section>
-
-      <!-- Practice Exam: setup -->
-      <section id="exam-setup" class="card setup hidden">
-        <button class="back-link" data-go-home type="button">‹ Back to modes</button>
-        <h1>Build your practice exam</h1>
-        <p class="lead">
-          Choose how many questions you want, and we'll randomly draw them from a
-          pool of <strong id="pool-size">…</strong> AZ-104 questions. Each
-          answer gives instant feedback so you can learn as you go.
-        </p>
-
-        <div class="control">
-          <label for="quiz-size">Number of questions</label>
-          <div class="slider-row">
-            <input type="range" id="quiz-size" min="10" max="90" step="1" value="50" />
-            <output id="quiz-size-value">50</output>
-          </div>
-        </div>
-
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" id="shuffle-options" />
-            <span>Shuffle answer choices within each question
-              <small class="hint">(off keeps explanations perfectly aligned with the displayed letters)</small>
-            </span>
-          </label>
-        </div>
-
-        <button id="start-btn" class="primary" disabled>Start Exam</button>
-        <p id="loading-msg" class="muted">Loading question bank…</p>
-      </section>
-
-      <!-- Practice Exam: question screen -->
-      <section id="exam-screen" class="card hidden">
-        <div class="question-meta">
-          <span id="q-number">Question 1 of 50</span>
-          <span id="q-source" class="muted"></span>
-        </div>
-        <h2 id="q-text" class="question-text">…</h2>
-
-        <pre id="q-context" class="q-context hidden"></pre>
-
-        <ul id="q-options" class="options"></ul>
-
-        <div id="q-feedback" class="feedback hidden">
-          <div class="feedback-header">
-            <span id="feedback-icon" class="feedback-icon">✓</span>
-            <span id="feedback-title" class="feedback-title">Correct!</span>
-          </div>
-          <div class="feedback-body">
-            <h3>Why?</h3>
-            <p id="feedback-explanation"></p>
-          </div>
-        </div>
-
-        <div class="quiz-actions">
-          <div class="action-group">
-            <button id="submit-btn" class="primary hidden">Submit</button>
-            <button id="next-btn" class="primary" disabled>Next question</button>
-          </div>
-          <button id="quit-btn" class="ghost">End exam</button>
-        </div>
-      </section>
-
-      <!-- Flashcards: setup (exam question decks) -->
-      <section id="flash-setup" class="card setup hidden">
-        <button class="back-link" data-go-home type="button">‹ Back to modes</button>
-        <h1 id="flash-setup-title">Build your flashcard set</h1>
-        <p class="lead" id="flash-setup-lead">…</p>
-
-        <div class="control">
-          <label for="deck-size">Number of cards</label>
-          <div class="slider-row">
-            <input type="range" id="deck-size" min="10" max="200" step="1" value="30" />
-            <output id="deck-size-value">30</output>
-          </div>
-        </div>
-
-        <button id="flash-start-btn" class="primary" disabled>Start Studying</button>
-        <p id="flash-loading-msg" class="muted">Loading deck…</p>
-      </section>
-
-      <!-- Flashcards: card screen -->
-      <section id="flash-screen" class="card hidden">
-        <div class="question-meta">
-          <span id="c-number">Card 1 of 30</span>
-          <span id="c-prompt-label" class="muted"></span>
-        </div>
-
-        <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flip card" aria-pressed="false">
-          <div class="flashcard-inner">
-            <div class="flashcard-face flashcard-face-front">
-              <span id="flashcard-kicker" class="flashcard-kicker"></span>
-              <span id="flashcard-front" class="flashcard-front">…</span>
-              <pre id="flashcard-context" class="q-context q-context-card hidden"></pre>
-              <ul id="flashcard-options" class="flashcard-options hidden"></ul>
-              <span id="flashcard-hint" class="flashcard-hint">Tap the card or press Space to flip</span>
-            </div>
-            <div class="flashcard-face flashcard-face-back">
-              <span id="flashcard-back-kicker" class="flashcard-kicker">Answer</span>
-              <span id="flashcard-back-title" class="flashcard-back-title"></span>
-              <ul id="flashcard-back-options" class="flashcard-options hidden"></ul>
-              <div id="flashcard-back-body" class="flashcard-back-body"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="quiz-actions">
-          <div class="action-group" id="reveal-group">
-            <button id="reveal-btn" class="primary">Reveal answer</button>
-          </div>
-          <div class="action-group hidden" id="grade-group">
-            <button id="missed-btn" class="grade grade-wrong">Didn't know it</button>
-            <button id="known-btn" class="grade grade-correct">I knew it</button>
-          </div>
-          <button id="flash-quit-btn" class="ghost">End session</button>
-        </div>
-      </section>
-
-      <!-- Results screen (shared by exam + flashcards) -->
-      <section id="results-screen" class="card hidden">
-        <span class="results-eyebrow" id="results-eyebrow">Complete</span>
-        <h1 class="results-headline" id="results-headline">
-          You got <span id="result-score">0</span> of
-          <span id="result-total">0</span> correct.
-        </h1>
-        <div class="results-bar" aria-hidden="true">
-          <div class="results-bar-fill" id="result-bar-fill"></div>
-        </div>
-        <p class="results-meta">
-          <span class="results-percent" id="result-percent">0%</span>
-          <span id="result-verdict"></span>
-        </p>
-
-        <section class="section-breakdown hidden" id="section-breakdown" aria-label="Results by exam section">
-          <h2 class="section-breakdown-title">How you did by section</h2>
-          <p class="section-focus hidden" id="section-focus"></p>
-          <div id="section-breakdown-list" class="section-breakdown-list"></div>
-        </section>
-
-        <details class="review" id="review-section">
-          <summary>
-            <span class="review-summary-text">
-              <span id="review-label">Review missed questions</span>
-              <span class="review-count" id="missed-count">0</span>
-            </span>
-            <span class="review-chevron" aria-hidden="true">›</span>
-          </summary>
-          <div id="missed-list" class="missed-list"></div>
-        </details>
-
-        <div class="quiz-actions center">
-          <button id="results-home-btn" class="ghost">‹ Back to modes</button>
-          <button id="restart-btn" class="primary">Take a new set</button>
-        </div>
-      </section>
-
-      <!-- PBQ Practice Exam: setup -->
-      <section id="pbq-setup" class="card setup hidden">
-        <button class="back-link" data-go-home type="button">‹ Back to modes</button>
-        <h1>Build your PBQ practice exam</h1>
-        <p class="lead">
-          Randomized performance-based questions drawn from a pool of
-          <strong id="pbq-pool-size">…</strong> real AZ-104 HOTSPOT and
-          DRAG DROP questions — with instant feedback, partial credit, and a
-          full review at the end. Pick a focus, or test across everything.
-        </p>
-        <div class="control">
-          <label>Focus area</label>
-          <div id="pbq-cat-grid" class="pbq-cat-grid">
-            <button type="button" class="pbq-cat is-active" data-cat="all">
-              <span class="pbq-cat-title">Mixed</span>
-              <span class="pbq-cat-sub">All PBQ styles</span>
-            </button>
-            <button type="button" class="pbq-cat" data-cat="yesno">
-              <span class="pbq-cat-title">Yes / No</span>
-              <span class="pbq-cat-sub">Judge each statement</span>
-            </button>
-            <button type="button" class="pbq-cat" data-cat="dropdown">
-              <span class="pbq-cat-title">Dropdown</span>
-              <span class="pbq-cat-sub">Complete the sentence</span>
-            </button>
-            <button type="button" class="pbq-cat" data-cat="dragdrop">
-              <span class="pbq-cat-title">Drag &amp; Drop</span>
-              <span class="pbq-cat-sub">Place the right options</span>
-            </button>
-          </div>
-        </div>
-        <div class="control">
-          <label>Number of questions</label>
-          <div id="pbq-size-grid" class="pbq-cat-grid pbq-size-grid">
-            <button type="button" class="pbq-cat" data-size="5">
-              <span class="pbq-cat-title">5</span>
-              <span class="pbq-cat-sub">Quick check</span>
-            </button>
-            <button type="button" class="pbq-cat is-active" data-size="10">
-              <span class="pbq-cat-title">10</span>
-              <span class="pbq-cat-sub">Standard run</span>
-            </button>
-            <button type="button" class="pbq-cat" data-size="15">
-              <span class="pbq-cat-title">15</span>
-              <span class="pbq-cat-sub">Deep drill</span>
-            </button>
-          </div>
-        </div>
-        <button id="pbq-start-btn" class="primary">Start PBQ exam</button>
-        <p id="pbq-loading-msg" class="muted">Loading PBQ pool…</p>
-      </section>
-
-      <!-- Interactive PBQ test runner -->
-      <section id="pbqx-screen" class="card hidden">
-        <div class="pbqx-chrome">
-          <button id="pbqx-exit" class="pbqx-chip-link" type="button">‹ Exit assessment</button>
-          <span id="pbqx-progress" class="pbqx-progress">Question 1 of 10</span>
-          <span id="pbqx-domain" class="pbqx-progress"></span>
-        </div>
-
-        <div class="pbqx-head">
-          <h2 id="pbqx-title">Question</h2>
-          <p id="pbqx-scenario" class="pbqx-scenario"></p>
-        </div>
-
-        <div id="pbqx-body" class="pbqx-body"></div>
-
-        <div id="pbqx-feedback" class="pbqx-feedback hidden">
-          <span id="pbqx-feedback-icon" class="pbqx-feedback-icon" aria-hidden="true"></span>
-          <div class="pbqx-feedback-main">
-            <div id="pbqx-feedback-title" class="pbqx-feedback-title"></div>
-            <p id="pbqx-feedback-text" class="pbqx-feedback-text"></p>
-          </div>
-        </div>
-
-        <div class="pbqx-actions">
-          <button id="pbqx-reset" class="ghost" type="button">Reset answers</button>
-          <div class="pbqx-actions-right">
-            <button id="pbqx-prev" class="ghost" type="button">‹ Previous</button>
-            <button id="pbqx-submit" class="primary" type="button">Submit answer</button>
-            <button id="pbqx-next" class="primary hidden" type="button">Next ›</button>
-          </div>
-        </div>
-      </section>
-
-      <section id="pbqx-results" class="card hidden">
-        <button id="pbqx-results-home" class="back-link" type="button">‹ Back to modes</button>
-        <p class="results-eyebrow">PBQ exam complete</p>
-        <div class="pbqx-result-top">
-          <div class="pbqx-result-score">
-            <span id="pbqx-result-score">0 / 10</span>
-            <span class="pbqx-result-score-label">tasks fully correct</span>
-          </div>
-          <div class="pbqx-result-meter">
-            <div class="pbqx-result-meter-head">
-              <span>Overall accuracy</span>
-              <span id="pbqx-result-percent">0%</span>
-            </div>
-            <div class="pbqx-bar"><div id="pbqx-result-bar" class="pbqx-bar-fill"></div></div>
-            <p id="pbqx-result-verdict" class="pbqx-result-verdict"></p>
-          </div>
-        </div>
-
-        <section class="section-breakdown hidden" id="pbqx-section-breakdown" aria-label="PBQ results by exam section">
-          <h2 class="section-breakdown-title">How you did by section</h2>
-          <p class="section-focus hidden" id="pbqx-section-focus"></p>
-          <div id="pbqx-section-breakdown-list" class="section-breakdown-list"></div>
-        </section>
-
-        <div id="pbqx-review" class="pbqx-review"></div>
-        <div class="pbqx-actions">
-          <button id="pbqx-results-restart" class="primary" type="button">New PBQ exam</button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span>Built for AZ-104 · Questions from the public community pool · v1</span>
-    </footer>
-
-    <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div class="modal">
-        <h3 id="modal-title">End session?</h3>
-        <p id="modal-body" class="modal-body">
-          You'll see your results so far. The items you haven't reached
-          will be skipped.
-        </p>
-        <div class="modal-actions">
-          <button id="modal-cancel" class="ghost">Keep going</button>
-          <button id="modal-confirm" class="primary">End session</button>
-        </div>
-      </div>
-    </div>
-
-    <script src="static/app.js"></script>
-    <script src="static/pbq-data.js"></script>
-    <script src="static/pbq.js"></script>
-    <footer class="ez-foot">Question pools are sourced from the <a href="https://www.examtopics.com/" target="_blank" rel="noopener noreferrer">ExamTopics</a> community dumps, with explanations drawn from the highest-voted discussion on each item.<br>EZ Exam is an independent study tool and is not affiliated with or endorsed by CompTIA or Microsoft.</footer>
-    <script>
-      (function () {
-        var nav = document.querySelector('.ez-nav');
-        if (!nav) return;
-        var btns = [].slice.call(nav.querySelectorAll('.ez-nav-btn'));
-        function activate(btn) {
-          btns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
-        }
-        btns.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var target = btn.dataset.go;
-            if (target === '__menu__') { var h=document.getElementById('brand-home'); if(h) h.click(); }
-            else { var el = document.getElementById(target); if (el) el.click(); }
-            activate(btn);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+  <script src="static/pbq-data.js"></script>
+  <script src="../assets/hub-engine.js"></script>
+  <script>
+    EZHub.init({
+      eyebrow: "Microsoft Certified · Associate",
+      blurb: 'Every question is drawn from the AZ-104 pool and tagged to its <b style="color:var(--color-text);font-weight:500">Skills at a glance</b> section, so your results tell you what to study next.',
+      footer: "Question pool sourced from public community dumps. Independent study tool — not affiliated with or endorsed by Microsoft.",
+      storageKey: "az104hub.exam.v1",
+      sections: [
+        { n: 1, num: "§1", name: "Manage Azure identities and governance", weight: "20–25%" },
+        { n: 2, num: "§2", name: "Implement and manage storage", weight: "15–20%" },
+        { n: 3, num: "§3", name: "Deploy and manage Azure compute resources", weight: "20–25%" },
+        { n: 4, num: "§4", name: "Implement and manage virtual networking", weight: "15–20%" },
+        { n: 5, num: "§5", name: "Monitor and maintain Azure resources", weight: "10–15%" }
+      ],
+      exam: { minutes: 100, total: 54, pass: 70, weight: 3 },
+      practice: { min: 10, max: 90, def: 50 },
+      pbqBlurb: "Every HOTSPOT and DRAG DROP item from the pool, rebuilt as interactive tasks — Yes/No, dropdown completion, and drag &amp; drop, with partial credit.",
+      pbqCats: [
+        ["all", "Mixed", "All PBQ styles"],
+        ["yesno", "Yes / No", "Judge each statement"],
+        ["dropdown", "Dropdown", "Complete the sentence"],
+        ["dragdrop", "Drag &amp; drop", "Place the right options"]
+      ],
+      /* the AZ-104 pool stores domain as a string — coerce so section
+         scoring and the per-section breakdown match on number */
+      loadPool: function () {
+        return fetch("data/questions.json").then(function (r) { return r.json(); })
+          .then(function (list) {
+            return list.map(function (q) { q.domain = +q.domain || 1; return q; });
           });
-        });
-      })();
-    </script>
-  </body>
+      },
+      loadPbqs: function () {
+        return (window.PBQ_TEST || []).map(function (p) { p.domain = +p.domain || 1; return p; });
+      }
+    });
+  </script>
+</body>
 </html>
