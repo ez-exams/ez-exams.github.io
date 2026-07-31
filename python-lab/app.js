@@ -234,6 +234,24 @@
         },
       },
     });
+
+    /* CodeMirror measures its gutter when it is constructed. Lesson panes are
+       built while still hidden, so that measurement comes back as zero and the
+       line numbers end up painted on top of the code. Re-measure once the
+       editor is genuinely on screen, and again when the mono webfont lands. */
+    const remeasure = () => cm.refresh();
+    requestAnimationFrame(remeasure);
+    setTimeout(remeasure, 80);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+    if (typeof IntersectionObserver !== "undefined") {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { cm.refresh(); io.disconnect(); }
+        });
+      });
+      io.observe(cm.getWrapperElement());
+    }
+
     return cm;
   }
 
