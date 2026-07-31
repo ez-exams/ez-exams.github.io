@@ -610,6 +610,67 @@
         route();
       }
     });
+
+    /* Header reset. Same job as the sidebar's "Reset my progress", but always
+       reachable. Two-step instead of a confirm() dialog so a stray click can
+       never wipe someone's progress. */
+    (function addHeaderReset() {
+      const bar = document.querySelector(".top-progress");
+      if (!bar || !bar.parentElement) return;
+
+      const css = document.createElement("style");
+      css.textContent =
+        ".progress-reset{display:inline-flex;align-items:center;gap:6px;margin-left:14px;padding:5px 11px;" +
+        "font:inherit;font-size:12px;line-height:1;color:#8fa3c4;background:transparent;cursor:pointer;" +
+        "border:1px solid rgba(255,255,255,.15);border-radius:999px;white-space:nowrap;" +
+        "transition:color .15s ease,border-color .15s ease,background .15s ease}" +
+        ".progress-reset:hover{color:#eaf1fb;border-color:rgba(255,255,255,.36)}" +
+        ".progress-reset .ico{font-size:13px;line-height:1;display:inline-block}" +
+        ".progress-reset.armed{color:#ffb3b3;border-color:#b45}" +
+        ".progress-reset.armed:hover{background:rgba(190,60,70,.18)}" +
+        ".progress-reset.done{color:#8ee39b;border-color:#3a7}" +
+        "@media (max-width:720px){.progress-reset .lbl{display:none}.progress-reset{margin-left:8px;padding:5px 8px}}";
+      document.head.appendChild(css);
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "progress-reset";
+      let armed = false, timer = null;
+
+      function idle() {
+        armed = false;
+        clearTimeout(timer);
+        btn.className = "progress-reset";
+        btn.title = "Clear every completed lesson on this device";
+        btn.innerHTML = '<span class="ico">\u21bb</span><span class="lbl">Reset progress</span>';
+      }
+      function arm() {
+        armed = true;
+        btn.className = "progress-reset armed";
+        btn.title = "Click again to erase your progress";
+        btn.innerHTML = '<span class="ico">\u21bb</span><span class="lbl">Erase all progress? Click again</span>';
+        timer = setTimeout(idle, 4000);
+      }
+      function cleared() {
+        clearTimeout(timer);
+        btn.className = "progress-reset done";
+        btn.innerHTML = '<span class="ico">\u2713</span><span class="lbl">Progress cleared</span>';
+        timer = setTimeout(idle, 2000);
+      }
+
+      btn.addEventListener("click", () => {
+        if (!armed) { arm(); return; }
+        armed = false;
+        progress = {};
+        saveProgress(progress);
+        route();
+        refreshProgressUI();
+        cleared();
+      });
+
+      idle();
+      bar.parentElement.insertBefore(btn, bar.nextSibling);
+    })();
     window.addEventListener("hashchange", route);
     route();
     initPyodide();

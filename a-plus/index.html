@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#161826" />
+  <title>CompTIA A+ Study Hub · EZ Exam</title>
+  <meta name="description" content="CompTIA A+ study hub — Core 1 (220-1201) and Core 2 (220-1202) practice exams with instant feedback, a timed live-exam simulation, flashcards, and a per-domain score breakdown." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161826'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='28' text-anchor='middle' fill='%239184d9'%3EA%2B%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/nocturne-ds.css" />
+  <script>
+    (function () {
+      var h = location.hostname;
+      if (h !== "ez-exams.github.io" && h !== "localhost" && h !== "127.0.0.1") {
+        document.documentElement.setAttribute("data-ez-standalone", "");
+      }
+    })();
+  </script>
+  <style>
+    html, body { margin: 0; background: #161826; color: #e9e9ed; -webkit-text-size-adjust: 100%; }
+    a { color: #9184d9; text-underline-offset: 3px; }
+    a:hover { color: #b5abfc; }
+    button { font-family: inherit; }
+
+    /* Core 1 / Core 2 switch — A+ is two separate exams, so the hub is too. */
+    .core-switch { display: inline-flex; border: 1px solid var(--color-divider); border-radius: 999px; overflow: hidden; margin-left: 4px; }
+    .core-switch a {
+      display: inline-flex; align-items: center; text-decoration: none; white-space: nowrap;
+      font-size: 12px; font-weight: 500; letter-spacing: .02em;
+      padding: 6px 13px; color: var(--color-neutral-400);
+    }
+    .core-switch a + a { border-left: 1px solid var(--color-divider); }
+    .core-switch a:hover { color: var(--color-text); background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+    .core-switch a[aria-current="true"] { color: var(--color-bg); background: var(--color-accent); }
+    @media (max-width: 640px) { .hub-name { display: none; } }
+  </style>
+</head>
+<body>
+  <div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:15px;line-height:1.55">
+    <header class="hub-header">
+      <a class="ez-nav-home" href="../">&#8962; Home</a>
+      <button class="hub-title" type="button" data-a="goHome">
+        <span class="hub-code" id="core-code">220-1201</span>
+        <span class="hub-name" id="core-name">A+ Core 1 Study Hub</span>
+      </button>
+      <nav class="core-switch" aria-label="Choose exam">
+        <a id="core-1-link" href="?core=1">Core 1</a>
+        <a id="core-2-link" href="?core=2">Core 2</a>
+      </nav>
+      <span id="hdr-timer" class="hub-timer" hidden></span>
+      <span id="hdr-progress" class="hub-progress" hidden></span>
+      <button id="hdr-exit" class="btn btn-secondary" type="button" data-a="askEnd" hidden></button>
+    </header>
+    <main id="hub-main" class="hub-main"></main>
+    <div id="hub-dialog"></div>
+  </div>
+
+  <script src="../assets/hub-engine.js"></script>
+  <script>
+    /* A+ is two separate exams with different domains, timing and pass marks.
+       The core is carried in the URL so a link always lands on the right one
+       and the switch is a plain navigation — no extra state to get wrong. */
+    var CORES = {
+      1: {
+        code: "220-1201",
+        name: "A+ Core 1 Study Hub",
+        eyebrow: "CompTIA Certified · Core 1",
+        file: "data/core1.json",
+        storageKey: "aplus1201hub.exam.v1",
+        exam: { minutes: 90, total: 90, pass: 75, weight: 1 },
+        sections: [
+          { n: 1, num: "1.0", name: "Mobile Devices", weight: "13%" },
+          { n: 2, num: "2.0", name: "Networking", weight: "23%" },
+          { n: 3, num: "3.0", name: "Hardware", weight: "25%" },
+          { n: 4, num: "4.0", name: "Virtualization and Cloud Computing", weight: "11%" },
+          { n: 5, num: "5.0", name: "Hardware and Network Troubleshooting", weight: "28%" }
+        ]
+      },
+      2: {
+        code: "220-1202",
+        name: "A+ Core 2 Study Hub",
+        eyebrow: "CompTIA Certified · Core 2",
+        file: "data/core2.json",
+        storageKey: "aplus1202hub.exam.v1",
+        exam: { minutes: 90, total: 90, pass: 78, weight: 1 },
+        sections: [
+          { n: 1, num: "1.0", name: "Operating Systems", weight: "28%" },
+          { n: 2, num: "2.0", name: "Security", weight: "28%" },
+          { n: 3, num: "3.0", name: "Software Troubleshooting", weight: "23%" },
+          { n: 4, num: "4.0", name: "Operational Procedures", weight: "21%" }
+        ]
+      }
+    };
+
+    var which = /core=2/.test(location.search) ? 2 : 1;
+    var C = CORES[which];
+
+    document.getElementById("core-code").textContent = C.code;
+    document.getElementById("core-name").textContent = C.name;
+    document.getElementById("core-" + which + "-link").setAttribute("aria-current", "true");
+    document.title = "CompTIA A+ " + C.code + " Study Hub · EZ Exam";
+
+    EZHub.init({
+      eyebrow: C.eyebrow,
+      blurb: 'Every question is drawn from the ' + C.code + ' pool and tagged to its exam domain, so your results tell you what to study next. ' +
+             'A+ is two exams — use the switch up top to move between Core 1 and Core 2.',
+      footer: "Question pool sourced from public community dumps. Where the dump's printed answer conflicts with the highest-voted community discussion, the community answer is used and the disagreement is noted in the explanation. Independent study tool — not affiliated with or endorsed by CompTIA.",
+      storageKey: C.storageKey,
+      sectionsHeading: "Exam domains",
+      sections: C.sections,
+      exam: C.exam,
+      practice: { min: 10, max: 90, def: 50 },
+      deck: { min: 10, max: 120, step: 5, def: 30 },
+      hasPbqs: false,
+      loadPool: function () {
+        return fetch(C.file).then(function (r) { return r.json(); })
+          .then(function (list) {
+            return list.map(function (q) { q.domain = +q.domain || 1; return q; });
+          });
+      }
+    });
+  </script>
+</body>
+</html>

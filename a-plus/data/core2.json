@@ -1,0 +1,2468 @@
+[
+{
+"id": "C2-Q2",
+"domain": 4,
+"question": "A technician needs to provide remote support for a legacy Linux-based operating system from their Windows laptop. The solution needs to allow\n the technician to see what the user is doing and provide the ability to interact with the user's session. Which of the following remote access\n technologies would support the use case?",
+"options": {
+"A": "VPN",
+"B": "VNC",
+"C": "SSH",
+"D": "RDP"
+},
+"correct": [
+"B"
+],
+"explanation": "  Syd1990 5 days, 9 hours ago"
+},
+{
+"id": "C2-Q3",
+"domain": 1,
+"question": "A technician is attempting to join a workstation to a domain but is receiving an error message stating the domain cannot be found. However, the\ntechnician is able to ping the server and access the internet. Given the following information:\nWhich of the following should the technician do to fix the issue?",
+"options": {
+"A": "Change the DNS settings.",
+"B": "Assign a static IP address.",
+"C": "Configure a subnet mask.",
+"D": "Update the default gateway."
+},
+"correct": [
+"A"
+],
+"explanation": "  dandyrandy 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q4",
+"domain": 4,
+"question": "A network technician notices that most of the company's network switches are now end-of-life and need to be upgraded. Which of the following\n should the technician do first?",
+"options": {
+"A": "Implement the change.",
+"B": "Approve the change.",
+"C": "Propose the change.",
+"D": "Schedule the change."
+},
+"correct": [
+"C"
+],
+"explanation": "  CYBERDisciple29 3 months, 3 weeks ago"
+},
+{
+"id": "C2-Q5",
+"domain": 3,
+"question": "MFA for a custom web application on a user's smartphone is no longer working. The last time the user remembered it working was before taking a\n vacation to another country. Which of the following should the technician do first?",
+"options": {
+"A": "Verify the date and time settings.",
+"B": "Apply mobile OS patches.",
+"C": "Uninstall and reinstall the application.",
+"D": "Escalate to the website developer."
+},
+"correct": [
+"A"
+],
+"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+},
+{
+"id": "C2-Q6",
+"domain": 4,
+"question": "Which of the following is found in an MSDS sheet for a battery backup?",
+"options": {
+"A": "Installation instructions",
+"B": "Emergency procedures",
+"C": "Configuration steps",
+"D": "Voltage specifications"
+},
+"correct": [
+"B"
+],
+"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+},
+{
+"id": "C2-Q7",
+"domain": 3,
+"question": "The screen of a previously working computer repeatedly displays an OS Not Found error message when the computer is started. Only a USB drive,\n a keyboard, and a mouse are plugged into the computer. Which of the following should a technician do first?",
+"options": {
+"A": "Run data recovery tools on the disk.",
+"B": "Partition the disk using the GPT format.",
+"C": "Check boot options.",
+"D": "Switch from UEFI to BIOS."
+},
+"correct": [
+"C"
+],
+"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+},
+{
+"id": "C2-Q8",
+"domain": 2,
+"question": "A security administrator teaches all of an organization's staff members to use BitLocker To Go. Which of the following best describes the reason\n for this training?",
+"options": {
+"A": "To ensure that all removable media is password protected in case of loss or theft",
+"B": "To enable Secure Boot and a BIOS-level password to prevent configuration changes",
+"C": "To enforce VPN connectivity to be encrypted by hardware modules",
+"D": "To configure all laptops to use the TPM as an encryption factor for hard drives"
+},
+"correct": [
+"A"
+],
+"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+},
+{
+"id": "C2-Q9",
+"domain": 2,
+"question": "Which of the following is used to detect and record access to restricted areas?",
+"options": {
+"A": "Bollards",
+"B": "Video surveillance",
+"C": "Badge readers",
+"D": "Fence"
+},
+"correct": [
+"B"
+],
+"explanation": "  0fa26f8 1 month, 3 weeks ago (Note: the dump prints C as the answer, but the highest-voted community discussion says B — we go with the community.)"
+},
+{
+"id": "C2-Q10",
+"domain": 1,
+"question": "An administrator received an email stating that the OS they are currently supporting will no longer be issued security updates and patches. Which\n of the following is most likely the reason the administrator received this message?",
+"options": {
+"A": "Support from the computer’s manufacturer is expiring.",
+"B": "The OS will be considered end of life.",
+"C": "The built-in security software is being removed from the next OS version.",
+"D": "A new version of the OS will be released soon."
+},
+"correct": [
+"B"
+],
+"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+},
+{
+"id": "C2-Q11",
+"domain": 1,
+"question": "Which of the following is the best way to distribute custom images to 800 devices that include four device vendor classes with two types of user\n groups?",
+"options": {
+"A": "Use xcopy to clone the hard drives from one to another.",
+"B": "Use robocopy to move the files to each device.",
+"C": "Use a local image deployment tool for each device.",
+"D": "Use a network-based remote installation tool."
+},
+"correct": [
+"D"
+],
+"explanation": "  5e16c9c 1 month, 3 weeks ago"
+},
+{
+"id": "C2-Q12",
+"domain": 2,
+"question": "Which of the following types of social engineering attacks sends an unsolicited text message to a user's mobile device?",
+"options": {
+"A": "Impersonation",
+"B": "Vishing",
+"C": "Spear phishing",
+"D": "Smishing"
+},
+"correct": [
+"D"
+],
+"explanation": "  PeterPerfect 3 months, 3 weeks ago"
+},
+{
+"id": "C2-Q13",
+"domain": 3,
+"question": "A user reports some single sign-on errors to a help desk technician. Currently, the user is able to sign in to the company's application portal but\n cannot access a specific SaaS-based tool. Which of the following would the technician most likely suggest as a next step?",
+"options": {
+"A": "Reenroll the user's mobile device to be used as an MFA token.",
+"B": "Use a private browsing window to avoid local session conflicts.",
+"C": "Bypass single sign-on by directly authenticating to the application.",
+"D": "Reset the device being used to factory defaults."
+},
+"correct": [
+"B"
+],
+"explanation": "  JeanAlex 3 weeks, 5 days ago"
+},
+{
+"id": "C2-Q14",
+"domain": 3,
+"question": "A technician verifies that a malware incident occurred on some computers in a small office. Which of the following should the technician do next?",
+"options": {
+"A": "Quarantine the infected systems.",
+"B": "Educate the end users.",
+"C": "Disable System Restore.",
+"D": "Update the anti-malware and scan the computers."
+},
+"correct": [
+"A"
+],
+"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+},
+{
+"id": "C2-Q15",
+"domain": 1,
+"question": "Which of the following is a Linux command that is used for administrative purposes?",
+"options": {
+"A": "runas",
+"B": "cmcl",
+"C": "net user",
+"D": "su"
+},
+"correct": [
+"D"
+],
+"explanation": "  angellorv 4 months, 1 week ago"
+},
+{
+"id": "C2-Q16",
+"domain": 1,
+"question": "A user recently installed an application that accesses a database from a local server. When launching the application, it does not populate any\n information. Which of the following command-line tools is the best to troubleshoot the issue?",
+"options": {
+"A": "ipconfig",
+"B": "nslookup",
+"C": "netstat",
+"D": "curl"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q17",
+"domain": 3,
+"question": "A small office reported a phishing attack that resulted in a malware infection. A technician is investigating the incident and has verified the\n following:\n All endpoints are updated and have the newest EDR signatures.\n Logs confirm that the malware was quarantined by EDR on one system.\n The potentially infected machine was reimaged.\n Which of the following actions should the technician take next?",
+"options": {
+"A": "Install network security tools to prevent downloading infected files from the internet.",
+"B": "Discuss the cause of the issue and educate the end user about security hygiene.",
+"C": "Flash the firmware of the router to ensure the integrity of network traffic.",
+"D": "Suggest alternate preventative controls that would include more advanced security software."
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q18",
+"domain": 2,
+"question": "Which of the following describes a vulnerability that has been exploited before a patch or remediation is available?",
+"options": {
+"A": "Spoofing",
+"B": "Brute-force",
+"C": "DoS",
+"D": "Zero-day"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q20",
+"domain": 1,
+"question": "A help desk technician is setting up speech recognition on a Windows system. Which of the following settings should the technician use?",
+"options": {
+"A": "Time and Language",
+"B": "Personalization",
+"C": "System",
+"D": "Ease of Access"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q21",
+"domain": 3,
+"question": "A user receives a new personal computer but is unable to run an application. An error displays saying that .NET Framework 3.5 is required and not\n found. Which of the following actions is the best way to resolve this issue?",
+"options": {
+"A": "Resolve the dependency through the \"Turn Windows features on or off\" menu.",
+"B": "Download the dependency via a third-party repository.",
+"C": "Ignore the dependency and install the latest version 4 instead.",
+"D": "Forward the trouble ticket to the SOC team because the issue poses a great security risk."
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q22",
+"domain": 3,
+"question": "An employee is using a photo editing program. Certain features are disabled and require a log-in, which the employee does not have. Which of the\n following is a way to resolve this issue?",
+"options": {
+"A": "License assignment",
+"B": "VPN connection",
+"C": "Application repair",
+"D": "Program reinstallation"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q23",
+"domain": 2,
+"question": "A technician is deploying mobile devices and needs to prevent access to sensitive data if the devices are lost. Which of the following is the best\n way to prevent unauthorized access if the user is unaware that the phone is lost?",
+"options": {
+"A": "Encryption",
+"B": "Remote wipe",
+"C": "Geofencing",
+"D": "Facial recognition"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q24",
+"domain": 1,
+"question": "Which of the following is the quickest way to move from Windows 10 to Windows 11 without losing data?",
+"options": {
+"A": "Using gpupdate",
+"B": "Image deployment",
+"C": "Clean install",
+"D": "In-place upgrade"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q25",
+"domain": 4,
+"question": "Technicians are failing to document user contact information, device asset tags, and a clear description of each issue in the ticketing system.\n Which of the following should a help desk management team implement for technicians to use on every call?",
+"options": {
+"A": "Service-level agreements",
+"B": "Call categories",
+"C": "Standard operating procedures",
+"D": "Knowledge base articles"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q26",
+"domain": 3,
+"question": "An application's performance is degrading over time. The application is slowing, but it never gives an error and does not crash. Which of the\n following tools should a technician use to start troubleshooting?",
+"options": {
+"A": "Reliability history",
+"B": "Computer management",
+"C": "Resource monitor",
+"D": "Disk defragment"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q27",
+"domain": 1,
+"question": "Which of the following filesystem types does the Linux OS use?",
+"options": {
+"A": "exFAT",
+"B": "APFS",
+"C": "ext4",
+"D": "NTFS"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q28",
+"domain": 2,
+"question": "Which of the following methods would make data unrecoverable but allow the drive to be repurposed?",
+"options": {
+"A": "Deleting the partitions",
+"B": "Implementing EFS",
+"C": "Performing a low-level format",
+"D": "Degaussing the device"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q29",
+"domain": 3,
+"question": "After a recent mobile OS upgrade to a smartphone, a user attempts to access their corporate email, but the application does not open. A\n technician restarts the smartphone, but the issue persists. Which of the following is the most likely way to resolve the issue?",
+"options": {
+"A": "Updating the failed software",
+"B": "Registering the smartphone with an MDM solution",
+"C": "Installing a third-party client",
+"D": "Clearing the cache partition"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q30",
+"domain": 2,
+"question": "Users are reporting that an unsecured network is broadcasting with the same name as the normal wireless network. They are able to access the\n internet but cannot connect to the file share servers. Which of the following best describes this issue?",
+"options": {
+"A": "Unreachable DNS server",
+"B": "Virtual local area network misconfiguration",
+"C": "Incorrect IP address",
+"D": "Rogue wireless access point"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q31",
+"domain": 2,
+"question": "A computer technician is implementing a solution to support a new internet browsing policy for a customer's business. The policy prohibits users\n from accessing unauthorized websites based on categorization. Which of the following should the technician configure on the SOHO router?",
+"options": {
+"A": "Secure management access",
+"B": "Group Policy Editor",
+"C": "Content filtering",
+"D": "Firewall"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q32",
+"domain": 2,
+"question": "Recently, the number of users sharing smartphone passcodes has increased. The management team wants a technician to deploy a more secure\n screen lock method. Which of the following technologies should the technician use?",
+"options": {
+"A": "Pattern lock",
+"B": "Facial recognition",
+"C": "Device encryption",
+"D": "Multifactor authentication"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q33",
+"domain": 4,
+"question": "An end user's laptop is having network drive connectivity issues in the office. The end user submits a help desk ticket, and a support technician is\n able to establish a remote connection and fix the issue. The following day, however, the network drive is disconnected again. Which of the\n following should the technician do next?",
+"options": {
+"A": "Connect remotely to the user’s computer to see whether the network drive is still connected.",
+"B": "Send documentation about how to fix the issue in case it reoccurs.",
+"C": "Escalate the ticket to the next level.",
+"D": "Keep the ticket open until next day, then close the ticket."
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q34",
+"domain": 4,
+"question": "Which of the following provides information to employees, such as permitted activities when using the organization's resources?",
+"options": {
+"A": "AUP",
+"B": "MNDA",
+"C": "DRM",
+"D": "EULA"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q35",
+"domain": 1,
+"question": "A technician needs to install an operating system on a large number of workstations. Which of the following is the fastest method?",
+"options": {
+"A": "Physical media",
+"B": "Mountable ISO",
+"C": "Manual installation",
+"D": "Image deployment"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q36",
+"domain": 4,
+"question": "A user is working from home and is unable to access work files on a company laptop. Which of the following should a technician configure to fix\n the network access issue?",
+"options": {
+"A": "Wide-area network",
+"B": "Wireless network",
+"C": "Proxy network settings",
+"D": "Virtual private network"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q37",
+"domain": 3,
+"question": "A technician is troubleshooting an issue in which a service runs momentarily and stops at certain points in the process. The technician needs to\n determine the root cause of this issue. Which of the following tools should the technician use?",
+"options": {
+"A": "Event Viewer",
+"B": "Task Manager",
+"C": "Internet Options",
+"D": "Process Explorer"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q38",
+"domain": 2,
+"question": "Which of the following is an example of an application publisher including undisclosed additional software in an installation package?",
+"options": {
+"A": "Virus",
+"B": "Ransomware",
+"C": "Potentially unwanted program",
+"D": "Trojan"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q39",
+"domain": 1,
+"question": "A technician needs to map a shared drive from a command-line interface. Which of the following commands should the technician use?",
+"options": {
+"A": "pathping",
+"B": "nslookup",
+"C": "net use",
+"D": "tracert"
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q40",
+"domain": 2,
+"question": "A help desk team was alerted that a company-owned cell phone has an unrecognized password-cracking application. Which of the following\n should the help desk team do to prevent further unauthorized installations from occurring?",
+"options": {
+"A": "Configure Group Policy.",
+"B": "Implement PAM.",
+"C": "Install anti-malware software.",
+"D": "Deploy MDM."
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q41",
+"domain": 2,
+"question": "Which of the following is used in addition to a password to implement MFA?",
+"options": {
+"A": "Sending a code to the user's phone",
+"B": "Verifying the user's date of birth",
+"C": "Prompting the user to solve a simple math problem",
+"D": "Requiring the user to enter a PIN"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q42",
+"domain": 4,
+"question": "A technician is preparing to replace the batteries in rack-mounted UPS system. After ensuring the power is turned off and the batteries are fully\n discharged, the technician needs to remove the battery modules from the bottom of the rack. Which of the following steps should the technician\n take?",
+"options": {
+"A": "Ensure the fire suppression system is ready to be activated.",
+"B": "Use appropriate lifting techniques and guidelines.",
+"C": "Place the removed batteries in an antistatic bag.",
+"D": "Wear a face mask to filter out any harmful fumes."
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q43",
+"domain": 2,
+"question": "A technician is setting up a surveillance system for a customer. The customer wants access to the system's web interface on the LAN via the\n system’s IP address. Which of the following should the technician use to prevent external log-in attempts from the internet?",
+"options": {
+"A": "Port mapping",
+"B": "Subnetting",
+"C": "Static IP",
+"D": "Content filtering"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q44",
+"domain": 2,
+"question": "A technician needs to configure laptops so that only administrators can enable virtualization technology if needed. Which of the following should\n the technician configure?",
+"options": {
+"A": "BIOS password",
+"B": "Guest account",
+"C": "Screen lock",
+"D": "AutoRun setting"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q45",
+"domain": 4,
+"question": "Which of the following file types would a desktop support technician most likely use to automate tasks for a Windows user log-in?",
+"options": {
+"A": ".bat",
+"B": ".sh",
+"C": ".py",
+"D": ".js"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q46",
+"domain": 4,
+"question": "A technician uses AI to draft a proposal about the benefits of new software. When reading the draft, the technician notices that the draft contains\n factually incorrect information. Which of the following best describes this scenario?",
+"options": {
+"A": "Data privacy",
+"B": "Hallucinations",
+"C": "Appropriate use",
+"D": "Plagiarism"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q47",
+"domain": 2,
+"question": "Which of the following describes an attack in which an attacker sets up a rogue AP that tricks users into connecting to the rogue AP instead of the\n legitimate network?",
+"options": {
+"A": "Stalkerware",
+"B": "Evil twin",
+"C": "Tailgating",
+"D": "Shoulder surfing"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q48",
+"domain": 1,
+"question": "A user is experiencing issues with outdated images while browsing websites. Which of the following settings should a technician use to correct\n this issue?",
+"options": {
+"A": "Administrative Tools",
+"B": "Windows Defender Firewall",
+"C": "Internet Options",
+"D": "Ease of Access"
+},
+"correct": [
+"C"
+],
+"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+},
+{
+"id": "C2-Q49",
+"domain": 3,
+"question": "Every time a user loads a specific spreadsheet, their computer is temporarily unresponsive. The user also notices that the title bar indicates the\n applications are not responding. Which of the following would a technician most likely inspect?",
+"options": {
+"A": "Anti-malware logs",
+"B": "Workstation repair options",
+"C": "Bandwidth status as reported in the Task Manager",
+"D": "File size and related memory utilization"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q50",
+"domain": 2,
+"question": "A user frequently misplaces their Windows laptop and is concerned about it being stolen. The user would like additional security controls on their\n laptop. Which of the following is a built-in technology that a technician can use to enable full drive encryption?",
+"options": {
+"A": "Active Directory",
+"B": "New Technology File System",
+"C": "Encrypting File System",
+"D": "BitLocker"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q51",
+"domain": 1,
+"question": "Which of the following is used to apply corporate restrictions on an Apple device?",
+"options": {
+"A": "App Store",
+"B": "VPN configuration",
+"C": "Apple ID",
+"D": "Management profile"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q52",
+"domain": 3,
+"question": "A user's new smartphone is not staying charged throughout the day. The smartphone charges fully every night. Which of the following should a\n technician review first to troubleshoot the issue?",
+"options": {
+"A": "Storage usage",
+"B": "End of software support",
+"C": "Charger wattage",
+"D": "Background applications"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q53",
+"domain": 2,
+"question": "A customer is unable to open some files on their system. Each time the customer attempts to open a file, the customer receives a message that\n the file is encrypted. Which of the following best describes this issue?",
+"options": {
+"A": "Keylogger",
+"B": "Ransomware",
+"C": "Phishing",
+"D": "Cryptominer"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q54",
+"domain": 2,
+"question": "An organization is experiencing an increased number of issues. A technician notices applications that are not installed by default. Users are\n reporting an increased number of system prompts for software licensing. Which of the following would the security team most likely do to\n remediate the root cause?",
+"options": {
+"A": "Deploy an internal PKI to filter encrypted web traffic.",
+"B": "Remove users from the local admin group.",
+"C": "Implement stronger controls to block suspicious websites.",
+"D": "Enable stricter UAC settings on Windows."
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q55",
+"domain": 1,
+"question": "A support specialist needs to decide whether to install a 32-bit or 64-bit OS architecture on a new computer. Which of the following specifications\n will help the specialist determine which OS architecture to use?",
+"options": {
+"A": "16GB RAM",
+"B": "Intel i7 CPU",
+"C": "500GB HDD",
+"D": "1Gbps Ethernet"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago (Note: the dump prints B as the answer, but the highest-voted community discussion says A — we go with the community.)"
+},
+{
+"id": "C2-Q56",
+"domain": 2,
+"question": "Which of the following prevents forced entry into a building?",
+"options": {
+"A": "PIV card",
+"B": "Motion-activated lighting",
+"C": "Video surveillance",
+"D": "Bollard"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q57",
+"domain": 4,
+"question": "A technician is assigned to offboard a user. Which of the following are common tasks on an offboarding checklist? (Choose two.)",
+"options": {
+"A": "Quarantine the hard drive in the user's laptop.",
+"B": "Deactivate the user's key fobs for door access.",
+"C": "Purge all PII associated with the user.",
+"D": "Suspend the user's email account.",
+"E": "Turn off the network ports underneath the user’s desk.",
+"F": "Add the MAC address of the user's computer to a blocklist."
+},
+"correct": [
+"B",
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q58",
+"domain": 1,
+"question": "A company would like to deploy baseline images to new computers as they are started up on the network. Which of the following boot processes\n should the company use for this task?",
+"options": {
+"A": "ISO",
+"B": "Secure",
+"C": "USB",
+"D": "PXE"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q59",
+"domain": 3,
+"question": "A user has been adding data to the same spreadsheet for several years. After adding a significant amount of data, they are now unable to open\n the file. Which of the following should a technician do to resolve the issue?",
+"options": {
+"A": "Revert the spreadsheet to the last restore point.",
+"B": "Increase the amount of RAM.",
+"C": "Defragment the storage drive.",
+"D": "Upgrade the network connection speed."
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q60",
+"domain": 3,
+"question": "A technician installs VPN client software that has a software bug from the vendor. After the vendor releases an update to the software, the\n technician attempts to reinstall the software but keeps getting an error message that the network adapter for the VPN already exists. Which of the\n following should the technician do next to mitigate this issue?",
+"options": {
+"A": "Run the latest OS security updates.",
+"B": "Map the network adapter to the new software.",
+"C": "Update the network adapter's firmware.",
+"D": "Delete hidden network adapters."
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q61",
+"domain": 1,
+"question": "Which of the following is the best reason for a network engineering team to provide a help desk technician with IP addressing information to use\n on workstations being deployed in a secure network segment?",
+"options": {
+"A": "Only specific DNS servers are allowed outbound access.",
+"B": "The network allow list is set to a specific address.",
+"C": "DHCP services are not enabled for this subnet.",
+"D": "NAC servers only allow for security updates to be installed."
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q62",
+"domain": 2,
+"question": "A technician is using a credential manager to safeguard a large number of credentials. Which of the following is important for using this\n application?",
+"options": {
+"A": "Restricted log-in times",
+"B": "Secure master password",
+"C": "TPM module",
+"D": "Windows lock screen"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q63",
+"domain": 2,
+"question": "Which of the following methods involves requesting a user's approval via a push notification to verify the user's identity?",
+"options": {
+"A": "Call",
+"B": "Authenticator",
+"C": "Hardware token",
+"D": "SMS"
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q64",
+"domain": 4,
+"question": "A customer wants to be able to work from home but does not want to be responsible for bringing company equipment back and forth. Which of\n the following would allow the user to remotely access and use a Windows PC at the main office? (Choose two.)",
+"options": {
+"A": "SPICE",
+"B": "SSH",
+"C": "RDP",
+"D": "VPN",
+"E": "RMM",
+"F": "WinRM"
+},
+"correct": [
+"C",
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q65",
+"domain": 1,
+"question": "A company wants to use a single operating system for its workstation and servers and avoid licensing fees. Which of the following operating\n systems would the company most likely select?",
+"options": {
+"A": "Linux",
+"B": "Windows",
+"C": "macOS",
+"D": "Chrome OS"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q66",
+"domain": 3,
+"question": "A user is attempting to open on a mobile phone a HD video that is hosted on a popular media streaming website. The user is receiving connection\n timeout errors. The mobile reception icon area is showing two bars next to 3G. Which of the following is the most likely cause of the issue?",
+"options": {
+"A": "The user does not have Wi-Fi enabled.",
+"B": "The website's subscription has run out.",
+"C": "The bandwidth is not fast enough.",
+"D": "The mobile device storage is full."
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q67",
+"domain": 4,
+"question": "A technician notices that the weekly backup is taking too long to complete. The daily backups are incremental. Which of the following would most\n likely resolve the issue?",
+"options": {
+"A": "Changing the backup window",
+"B": "Performing incremental weekly backups",
+"C": "Increasing the backup storage",
+"D": "Running synthetic full weekly backups"
+},
+"correct": [
+"D"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q68",
+"domain": 4,
+"question": "A help desk technician needs to remove RAM from retired workstations and upgrade other workstations that have applications that use more\n memory with this RAM. Which of the following actions would the technician most likely take?",
+"options": {
+"A": "Demagnetize memory for security.",
+"B": "Use antistatic bags for storage and transport.",
+"C": "Plug in the power supply to ground each workstation.",
+"D": "Install memory in identical pairs."
+},
+"correct": [
+"B"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q69",
+"domain": 4,
+"question": "A customer’s computer does not have an active connection to the network. A technician goes through a few troubleshooting steps but is unable to\n resolve the issue. The technician has exhausted their knowledge. The customer expresses frustration at the time taken to resolve this issue.\n Which of the following should the technician do?",
+"options": {
+"A": "Escalate the issue to a senior team member and provide next steps to the customer.",
+"B": "Dismiss the customer and reschedule another troubleshooting session at a later date.",
+"C": "Interrupt the customer and express that troubleshooting support tickets can take time.",
+"D": "Maintain a positive attitude and continue to ask questions regarding the scope of the issue."
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q70",
+"domain": 3,
+"question": "A company executive is currently attending a major music festival with a large number of attendees and is having trouble accessing a work email\n account. The email application is not downloading emails and also appears to become stuck during connection attempts. Which of the following\n is most likely causing the disruption?",
+"options": {
+"A": "The phone has no storage space available.",
+"B": "Company firewalls are configured to block remote access to email resources.",
+"C": "Too many devices in the same area are trying to connect to the mobile network.",
+"D": "The festival organizer prohibits internet usage during the event and has blocked the internet signal."
+},
+"correct": [
+"C"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q71",
+"domain": 2,
+"question": "A company recently transitioned to a cloud-based productivity suite and wants to secure the environment from external threat actors. Which of the\n following is the most effective method?",
+"options": {
+"A": "Multifactor authentication",
+"B": "Encryption",
+"C": "Backups",
+"D": "Strong passwords"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q73",
+"domain": 3,
+"question": "A user reports getting a BSOD error on their computer at least twice a day. Which of the following should the technician use to determine the\n cause?",
+"options": {
+"A": "Event Viewer",
+"B": "Performance Monitor",
+"C": "System Information",
+"D": "Device Manager"
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q74",
+"domain": 1,
+"question": "A technician is setting up a Windows server to allow remote desktop connections for multiple users. Which of the following should the technician\n configure on the workstation?",
+"options": {
+"A": "Firewall",
+"B": "Computer Management",
+"C": "User Accounts",
+"D": "Ease of Access"
+},
+"correct": [
+"C"
+],
+"explanation": "  5e16c9c 1 month, 3 weeks ago (Note: the dump prints A as the answer, but the highest-voted community discussion says C — we go with the community.)"
+},
+{
+"id": "C2-Q75",
+"domain": 2,
+"question": "A technician thinks that an application a user downloaded from the internet may not be the legitimate one, even though the name is the same. The\n technician needs to confirm whether the application is legitimate. Which of the following should the technician do?",
+"options": {
+"A": "Compare the hash value from the vendor.",
+"B": "Run Task Manager and compare the process ID.",
+"C": "Run the application in safe mode.",
+"D": "Verify the file name is correct."
+},
+"correct": [
+"A"
+],
+"explanation": "  ishan94 3 months, 1 week ago"
+},
+{
+"id": "C2-Q77",
+"domain": 4,
+"question": "A technician must map a network drive on a piece of legacy equipment running an end-of-life OS. Which of the following is the best script to map\n the drive using simple Windows commands?",
+"options": {
+"A": "Shell",
+"B": "Batch",
+"C": "VB",
+"D": "Java"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q78",
+"domain": 3,
+"question": "After clicking on an advertisement, a user reports that their browser is slow. A technician looks at the network connections for the machine and\n notices a large number of outbound connections. Which of the following actions should the technician take next?",
+"options": {
+"A": "Enable the firewall.",
+"B": "Run antivirus scans.",
+"C": "Reboot the computer.",
+"D": "Quarantine the system."
+},
+"correct": [
+"D"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q79",
+"domain": 1,
+"question": "Various alerts on a user’s Windows 11 laptop are continually interrupting the user during videoconference calls. Which of the following should a\n support technician recommend to best solve the issue?",
+"options": {
+"A": "Use multiple sound output devices for the various source applications.",
+"B": "Disable all notifications in different applications in the order they appear.",
+"C": "Configure the Sounds option in Control Panel to be set to No Sounds.",
+"D": "Set Windows Notifications settings to Do Not Disturb."
+},
+"correct": [
+"D"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q80",
+"domain": 1,
+"question": "Company employees do not have assigned workspaces and regularly work at different computers and physical locations. Which of the following\n should the company implement to maintain data security and minimize the amount of user data that needs to be transferred?",
+"options": {
+"A": "Centralized certificate storage",
+"B": "Cloud email",
+"C": "Portable drives",
+"D": "Roaming profiles"
+},
+"correct": [
+"D"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q81",
+"domain": 2,
+"question": "A user downloads an application with a plug-in that is designed to automatically prompt for an OTP when the user browses to a specific website.\n The plug-in installs without any warnings or errors. The first time the user goes to the site, the prompt does not open, and the user cannot access\n the site. Which of the following browser settings should the user configure?",
+"options": {
+"A": "Extensions/add-ins",
+"B": "Certificate validity",
+"C": "Proxy settings",
+"D": "Trusted sources"
+},
+"correct": [
+"A"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q82",
+"domain": 2,
+"question": "A technician needs to install a home wireless router for a customer who wants to limit connections made to the network from the internet. Which\n of the following should the technician do?",
+"options": {
+"A": "Use content filtering.",
+"B": "Change the default password.",
+"C": "Configure the SSID settings.",
+"D": "Disable UPnP."
+},
+"correct": [
+"D"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q83",
+"domain": 3,
+"question": "A technician is installing a cloud-based productivity suite and keeps getting an error message stating that the installation is unavailable. Which of\n the following troubleshooting steps should the technician try first?",
+"options": {
+"A": "Reinstalling the productivity suite",
+"B": "Downloading an open-source alternative",
+"C": "Checking the license device limit",
+"D": "Updating the device OS"
+},
+"correct": [
+"C"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q84",
+"domain": 2,
+"question": "A user wants to dispose of a failed hard drive in a way that ensures the data is unrecoverable. Which of the following is the best at-home method?",
+"options": {
+"A": "Standard formatting",
+"B": "Low-level formatting",
+"C": "Shredding",
+"D": "Degaussing",
+"E": "Drilling"
+},
+"correct": [
+"E"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q85",
+"domain": 4,
+"question": "A customer's laptop will not turn on. The customer is distraught and panicking because the laptop contains family pictures that can never be\n replaced. Which of the following communication techniques is most important for the technician to demonstrate in this situation?",
+"options": {
+"A": "The technician should provide the customer with the appropriate SLA agreement.",
+"B": "The technician should inform the customer about replacement options for an increased cost.",
+"C": "The technician should project confidence and maintain a positive attitude.",
+"D": "The technician should be dressed in appropriate business casual attire to project expertise."
+},
+"correct": [
+"C"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q86",
+"domain": 2,
+"question": "Which of the following security technologies is designed to enable security visibility and respond to traffic outside of the host and at the network\n level?",
+"options": {
+"A": "RADIUS",
+"B": "UAC",
+"C": "XDR",
+"D": "Antivirus"
+},
+"correct": [
+"C"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q87",
+"domain": 3,
+"question": "A technician completes the installation of an OS that appears to be successful. However, when the technician removes the USB drive that was\n used for the installation and restarts the system, the following error appears:\n No OS found.\n Which of the following should the technician do next to resolve the issue?",
+"options": {
+"A": "Reinstall the OS from a new ISO image.",
+"B": "Enable UEFI devices in the BIOS.",
+"C": "Restart in recovery mode and troubleshoot.",
+"D": "Install the storage drivers for the motherboard.",
+"E": "Reseat the SATA cable."
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q88",
+"domain": 3,
+"question": "An employee is trying to connect their company laptop to an airport’s Wi-Fi during a business trip. Once the network is connected, a pop-up\n window appears with the airport logo, which the employee quickly closes. The internet connection is not working properly, and the employee\n cannot access any websites. Which of the following should a help desk technician suggest to the employee?",
+"options": {
+"A": "Look for a wall socket with RJ45 and try to connect the laptop to it.",
+"B": "Contact the airport IT department.",
+"C": "Tell the employee that company policy prohibits connection to public Wi-Fi.",
+"D": "Reconnect to the network and read the pop-up carefully."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q89",
+"domain": 1,
+"question": "A technician installs a Bluetooth headset for a user. During testing, the sound is still coming from the speaker on the computer. The technician\n verifies the headset shows up in Device Manager. Which of the following would the technician most likely do to fix this issue?",
+"options": {
+"A": "Update the drivers for the wireless headset.",
+"B": "Replace the battery on the headset, and try again later.",
+"C": "Verify that the sound is not muted in the control panel.",
+"D": "Change the headset as the default device in sound settings."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q90",
+"domain": 2,
+"question": "Which of the following is a protocol that provides AAA for network services?",
+"options": {
+"A": "RADIUS",
+"B": "Kerberos",
+"C": "TKIP",
+"D": "WPA3"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q91",
+"domain": 1,
+"question": "A user's application only works with a legacy version of the OS. The OS is reaching its end of life date. For security reasons, the company is\n migrating to the current version of the OS. Which of the following is the most efficient way to complete the migration while maintaining\n accessibility to the application?",
+"options": {
+"A": "Terminal server",
+"B": "Bare-metal server",
+"C": "Multiboot",
+"D": "Virtualization"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q92",
+"domain": 2,
+"question": "A technician needs to disable guest log-ins on domain-joined desktop machines. Which of the following should the technician use?",
+"options": {
+"A": "Group Policy",
+"B": "Firewall",
+"C": "Microsoft Management Control",
+"D": "MSConfig"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q93",
+"domain": 3,
+"question": "After using a third-party disk optimization software package, a technician restarts a laptop and receives the message No operating system found.\n The technician verifies that the BIOS properly recognizes the SSD. Which of the following should the technician do next?",
+"options": {
+"A": "Update BitLocker settings in the BIOS.",
+"B": "Replace the CMOS battery.",
+"C": "Turn on from installation media and repair the MBR",
+"D": "Isolate the system from the corporate network."
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q94",
+"domain": 2,
+"question": "A user reports that their corporate mobile phone is lost. Which of the following protects the data locally on the phone from unauthorized access?",
+"options": {
+"A": "Password manager",
+"B": "Degaussing",
+"C": "Remote wipe",
+"D": "Antivirus"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q95",
+"domain": 2,
+"question": "A user receives a push notification to approve or deny a log-in request when using MFA. Which of the following describes this security measure?",
+"options": {
+"A": "One-time password",
+"B": "Zero Trust model",
+"C": "Authenticator application",
+"D": "Privileged access management"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q96",
+"domain": 4,
+"question": "An administrator is investigating a technical outage. The management team wants information that includes the summary of the outage and\n actions taken. Which of the following documentation should the administrator provide to the management team?",
+"options": {
+"A": "Knowledge base article",
+"B": "Non-disclosure agreement",
+"C": "Incident report",
+"D": "Standard operating procedure"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q97",
+"domain": 3,
+"question": "A technician is troubleshooting a print spooler that repeatedly fails to start on a Windows 11 desktop computer. The technician determines the\n root cause is required dependencies are failing to run. Which of the following tools is the technician using?",
+"options": {
+"A": "Processes",
+"B": "Services",
+"C": "Startup",
+"D": "Performance"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q98",
+"domain": 3,
+"question": "A user’s computer is running slowly. Web pages take several seconds to open, and applications are slow responding to user input. A technician\n opens the Windows Task Manager and sees the following information:\n Disk: 2%\n Network: 12%\n GPU: 15%\n CPU: 70%\n Memory: 97%\n Which of the following would a technician most likely do to resolve the issue?",
+"options": {
+"A": "Clear browser cached data.",
+"B": "Upgrade the network connection.",
+"C": "Close unnecessary programs.",
+"D": "Delete temporary files."
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q99",
+"domain": 2,
+"question": "A malicious actor uses multiple endpoints that are spread across multiple locations to target a single endpoint. Which of the following describes\n this threat?",
+"options": {
+"A": "On-path attack",
+"B": "Structured Query Language injection",
+"C": "Brute-force attack",
+"D": "Distributed denial of service"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q100",
+"domain": 1,
+"question": "A user decides to switch to Windows from Linux and is trying to migrate data using an external USB hard disk. However, when the user connects\n the cable to the Windows machine, an error message appears stating the device must be formatted before it can be used. The hard disk works as\n expected when connected to the Linux machine. Which of the following should the user do to resolve this issue?",
+"options": {
+"A": "Configure Windows firewall to allow data from Linux systems.",
+"B": "Replace the cable with Windows-supported hardware.",
+"C": "Apply a firmware update from the PC manufacturer.",
+"D": "Update the file allocation system to exFAT."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q101",
+"domain": 3,
+"question": "An end user discovers a virus on their computer. A technician quarantines the computer, scans for viruses, and remediates the infection. Which of\n the following is the next step the technician should take?",
+"options": {
+"A": "Perform a secondary antivirus scan.",
+"B": "Educate the end user.",
+"C": "Reimage the computer.",
+"D": "Review system logs."
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q102",
+"domain": 4,
+"question": "An administrator requires information about a server to identify the product owner and whether it has any business-critical services. Which of the\n following can the administrator refer to in order to find this information?",
+"options": {
+"A": "CMDB",
+"B": "SLA",
+"C": "SOP",
+"D": "EULA"
+},
+"correct": [
+"A"
+],
+"explanation": "  6b7911d 2 months, 2 weeks ago"
+},
+{
+"id": "C2-Q103",
+"domain": 1,
+"question": "An administrator must rename the administrator account on a Windows desktop. Which of the following tools is best for this task?",
+"options": {
+"A": "lusrmgr.msc",
+"B": "devmgmt.msc",
+"C": "gpedit.msc",
+"D": "eventvwr.msc"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q104",
+"domain": 2,
+"question": "Which of the following malware types typically has very high computing resource usage?",
+"options": {
+"A": "Rootkit",
+"B": "Cryptominer",
+"C": "Boot sector virus",
+"D": "Trojan"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q105",
+"domain": 3,
+"question": "The battery on a user’s smartphone discharges quickly when the user travels. The smartphone was replaced two weeks ago. Which of the\n following should a technician do first?",
+"options": {
+"A": "Replace the battery with a higher capacity option.",
+"B": "Provide an external battery to extend the usage time.",
+"C": "Ensure that the charging port is working as expected.",
+"D": "Look for applications that are reporting the highest utilization."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q106",
+"domain": 2,
+"question": "A technician is securing a newly deployed workstation that only assigned users can access. Which of the following techniques should the\n technician do to prevent unauthorized users from accessing the workstation? (Choose two.)",
+"options": {
+"A": "Defragment the hard drive.",
+"B": "Enable SSH.",
+"C": "Enable screensaver locks.",
+"D": "Disable iCloud integration.",
+"E": "Enable the firewall.",
+"F": "Apply the BIOS password."
+},
+"correct": [
+"C",
+"F"
+],
+"explanation": "Correct answer: C, F."
+},
+{
+"id": "C2-Q107",
+"domain": 2,
+"question": "An international traveler is concerned about others accessing the contents of their smartphone if it is lost or stolen. The traveler has enabled\n biometrics. Which of the following additional security measures further reduces the risk of unauthorized data access?",
+"options": {
+"A": "Remote backups",
+"B": "Location tracking",
+"C": "PIN code screen lock",
+"D": "Device encryption"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q108",
+"domain": 4,
+"question": "A small town’s clerk wants to work from home on a town-issued laptop. The clerk needs to be able to access documents on the town hall server.\n Which of the following solutions does a technician need to set up for the clerk?",
+"options": {
+"A": "VNC",
+"B": "RDP",
+"C": "VPN",
+"D": "SSH"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q109",
+"domain": 4,
+"question": "A company is implementing the 3-2-1 backup rule. Which of the following should the company do?",
+"options": {
+"A": "Perform both full and differential backups.",
+"B": "Test the backup integrity every three weeks.",
+"C": "Keep all backup media on site for fast recovery.",
+"D": "Use at least two different types of media."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q110",
+"domain": 3,
+"question": "A team member provides a link to an online slide deck presentation so other team members can add to the presentation. The link does not work\n for any of the other team members. Which of the following should the team check first?",
+"options": {
+"A": "Version history",
+"B": "Web browser compatibility",
+"C": "Viewing and sharing permissions",
+"D": "License management"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q111",
+"domain": 3,
+"question": "A support technician receives a computer with a non-responsive touch pad. The touch pad does not appear to be physically damaged. Which of\n the following tools should the technician use to check the touch pad driver?",
+"options": {
+"A": "System Configuration",
+"B": "Device Manager",
+"C": "Event Viewer",
+"D": "Local Users and Groups"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q112",
+"domain": 1,
+"question": "A user is renaming a .txt file to a .xml file. After renaming the file. Windows Explorer shows the filename as Document.xml. However, the\n document properties shows the type of file as: Text Document(.txt). Which of the following controls enables the user to correctly change the file\n type?",
+"options": {
+"A": "Indexing options",
+"B": "Format command",
+"C": "Personalization",
+"D": "Hide extensions"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q113",
+"domain": 1,
+"question": "A technician is unable to upgrade a desktop computer from Windows 10 to Windows 11. Which of the following is most likely preventing the\n upgrade?",
+"options": {
+"A": "Missing TPM module",
+"B": "Slow HDD spindle speed",
+"C": "Low refresh rate",
+"D": "High RAM latency"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q114",
+"domain": 3,
+"question": "A user is unable to upload files to the corporate servers from their mobile phone when outside the office, but uploading files works without issue\n when they are in the office. The user briefly saw an error notification but dismissed the error before reading it. Which of the following should a\n technician do to determine the root cause?",
+"options": {
+"A": "Check the data usage limit.",
+"B": "Enable airplane mode.",
+"C": "Verify the last device reboot.",
+"D": "Enable Bluetooth connectivity."
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q115",
+"domain": 1,
+"question": "A desktop technician is mapping a remote windows share \\\\WinNAS\\shared as a local disk z:. Which of the following commands should the\n technician run?",
+"options": {
+"A": "nslookup -opt Z: \\\\WinNAS\\shared",
+"B": "net use Z: \\\\WinNAS\\shared",
+"C": "chkdsk /R Z: \\\\WinNAS\\shared",
+"D": "sfc /offwindir Z: \\\\WinNAS\\shared"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q116",
+"domain": 1,
+"question": "A technician needs to change hibernation settings on a Windows computer by applying a batch file. Domain policies are unavailable. Which of the\n following is the best way to achieve this goal?",
+"options": {
+"A": "Update Power Options in the Control Panel.",
+"B": "Update the computer’s firmware.",
+"C": "Run gpupdate from a command prompt.",
+"D": "Use the powercfg command in PowerShell."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q117",
+"domain": 3,
+"question": "A client reports that their browser’s home page changed. Every time they run an internet search, the results returned are from unfamiliar websites.\n Which of the following actions should a technician take first to resolve the issue? (Choose two.)",
+"options": {
+"A": "Clear the browsing history.",
+"B": "Run operating system updates.",
+"C": "Check the system date and time.",
+"D": "Uninstall malicious extensions.",
+"E": "Reset the browser startup page.",
+"F": "Restart the user’s machine."
+},
+"correct": [
+"D",
+"E"
+],
+"explanation": "Correct answer: D, E."
+},
+{
+"id": "C2-Q118",
+"domain": 1,
+"question": "A Windows user is having trouble accessing a fileshare. The technician would like to confirm the username that the machine is currently logged in\n to. Which of the following should the technician use?",
+"options": {
+"A": "net user",
+"B": "tracert",
+"C": "whoami",
+"D": "hostname"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q119",
+"domain": 3,
+"question": "A technician follows the proper procedure for malware removal on an infected computer. However, the technician is unable to remove all the\n malware and decides to reload the OS. Which of the following should the technician select?",
+"options": {
+"A": "Version upgrade",
+"B": "System restore",
+"C": "OS repair",
+"D": "Clean install"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q120",
+"domain": 4,
+"question": "A technician is 3-D printing high strength, carbon fiber-based filament parts for a customer order. Which of the following is the most important for\n the technician to use?",
+"options": {
+"A": "Steel-toed boots",
+"B": "Air filter mask",
+"C": "ESD mat",
+"D": "Antistatic bags"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q121",
+"domain": 4,
+"question": "Which of the following concepts should a technician consider when discussing confidential work projects with individuals outside the company?",
+"options": {
+"A": "EULA",
+"B": "EOL",
+"C": "SLA",
+"D": "NDA"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q122",
+"domain": 2,
+"question": "A technician is reviewing an organization's current incident management policy. The organization uses a third-party vendor to protect the\n organization's assets with multiple tools. Which of the following service types is the organization using?",
+"options": {
+"A": "PaaS",
+"B": "EDR",
+"C": "MDR",
+"D": "XDR"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q123",
+"domain": 1,
+"question": "Which of the following commands can a technician use to view the contents of a single file on a Linux terminal?",
+"options": {
+"A": "chmod",
+"B": "cat",
+"C": "ls",
+"D": "sudo"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q124",
+"domain": 4,
+"question": "A Chief Executive Officer wants to meet with remote employees in a way that will allow for collaboration and training. Which of the following\n software technologies is the best for this situation?",
+"options": {
+"A": "Videoconferencing",
+"B": "Screen sharing",
+"C": "Remote Desktop Protocol",
+"D": "Virtual desktop infrastructure"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q125",
+"domain": 1,
+"question": "Which of the following filesystems supports read and write operations for Windows, macOS, and Linux?",
+"options": {
+"A": "exFAT",
+"B": "ReFS",
+"C": "NTFS",
+"D": "APFS",
+"E": "ext4"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q126",
+"domain": 3,
+"question": "A technician recently installed a program that uses several anti-piracy technologies. When the program is launched, it briefly opens and then\n closes. Which of the following is most likely the reason?",
+"options": {
+"A": "32-bit program on a 64-bit computer",
+"B": "CPU incompatibility",
+"C": "Outdated video card drivers",
+"D": "USB key not plugged in"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q127",
+"domain": 3,
+"question": "A computer frequently crashes after an OS patch. Which of the following actions should a technician take to prevent further crashes and look into\n the issue?",
+"options": {
+"A": "Perform a System Restore.",
+"B": "Roll back the updates.",
+"C": "Apply the optional patches.",
+"D": "Change the startup sequence."
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q128",
+"domain": 3,
+"question": "After a user installs a mobile application from an advertisement, the phone’s battery dies a few hours later, and it is hot to touch, even when not in\n use. Which of the following should a technician do first?",
+"options": {
+"A": "Check for unauthorized device administrators.",
+"B": "Contact the software developer.",
+"C": "Run a mobile malware scan on the phone.",
+"D": "Ensure appropriate MDM policies are applied."
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q129",
+"domain": 3,
+"question": "After new device software for a webcam is installed, a Windows PC is experiencing BSOD. The BSOD occurs during a videoconference call. Which\n of the following should the technician do next?",
+"options": {
+"A": "Update the anti-malware signatures and scan the system.",
+"B": "File a warranty claim with the manufacturer.",
+"C": "Start in safe mode and roll back the device driver.",
+"D": "Reconnect the webcam to the computer."
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q130",
+"domain": 1,
+"question": "A technician is setting up a computer for a new user. A requirement is that the user’s documents are stored on a network location and not locally\n on the computer. Which of the following should the technician configure?",
+"options": {
+"A": "File attributes",
+"B": "User Account Control",
+"C": "Security groups",
+"D": "Folder redirection"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q131",
+"domain": 1,
+"question": "An end user wants to have a sales printer added to their computer. The printer is on the domain. Which of the following is the best method for the\n technician to add the printer?",
+"options": {
+"A": "Go to the print server and select the printer name.",
+"B": "Connect the laptop to the printer via USB.",
+"C": "Connect to the printer via Bluetooth.",
+"D": "Go to Local User and Groups to add the printer."
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q132",
+"domain": 2,
+"question": "Which of the following authentication methods is the best way to prevent users from frequently entering their credentials?",
+"options": {
+"A": "Access control list",
+"B": "Single sign-on",
+"C": "Multifactor authentication",
+"D": "One-time password"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q133",
+"domain": 2,
+"question": "A secretary receives an email from the company's chief executive officer with a request to pay a vendor immediately. After the payment is made,\n the chief executive officer tells the secretary that they never sent that email. Which of the following social engineering tactics best describes this\n type of attack?",
+"options": {
+"A": "Evil twin",
+"B": "Impersonation",
+"C": "Whaling",
+"D": "Spear phishing"
+},
+"correct": [
+"C"
+],
+"explanation": "  ROTHERMEL01 2 months, 2 weeks ago (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.)"
+},
+{
+"id": "C2-Q134",
+"domain": 3,
+"question": "Performance on a user's smartphone is degrading. Applications take a long time to start, and switching between windows also takes a long time.\n Which of the following diagnostic steps should a mobile technician take first?",
+"options": {
+"A": "Restore the phone to factory settings.",
+"B": "Restart the phone.",
+"C": "Check the phone's battery state.",
+"D": "Uninstall unneeded applications."
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q135",
+"domain": 3,
+"question": "A user is unable to use the latest version of an application on a legacy, personal tablet. Which of the following is most likely the reason?",
+"options": {
+"A": "The OS is end-of-life.",
+"B": "Storage space is inadequate.",
+"C": "MDM is blocking updates.",
+"D": "The tablet is infected with malware."
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q136",
+"domain": 1,
+"question": "Which of the following is used to store passwords in macOS?",
+"options": {
+"A": "FileVault",
+"B": "Keychain",
+"C": "Accessibility",
+"D": "Mission Control"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q137",
+"domain": 3,
+"question": "A user logs in to a computer each morning and tries to print a daily report, but it will not print. The user calls the help desk, they change a setting,\n and the user is able to print that day but the same issue happens again the next day. Because the issue occurs every day, the issue gets escalated.\n Which of the following does the technician need to do so the user does not have to report the issue every day? (Choose two.)",
+"options": {
+"A": "Set the print spooler to have no dependencies.",
+"B": "Set the print spooler recovery to take no action.",
+"C": "Start the printer extensions and notifications service.",
+"D": "Start the print spooler service.",
+"E": "Set the print spooler to Automatic.",
+"F": "Set the print spooler log-on to the user’s account."
+},
+"correct": [
+"D",
+"E"
+],
+"explanation": "Correct answer: D, E."
+},
+{
+"id": "C2-Q138",
+"domain": 3,
+"question": "A user’s computer is able to access resources on the corporate network but is unable to access internet web pages with a browser. Which of the\n following is most likely the reason?",
+"options": {
+"A": "IP address conflict",
+"B": "Missing proxy settings",
+"C": "Incorrect subnet mask",
+"D": "Disconnected Ethernet cable"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q139",
+"domain": 2,
+"question": "A technician needs to download and install a new web browser on a desktop computer. Which of the following should the technician use to verify\n the installer is an authentic version?",
+"options": {
+"A": "Date",
+"B": "Hash",
+"C": "Size",
+"D": "Name"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q140",
+"domain": 2,
+"question": "A Microsoft OS laptop user requests an alternative log-in authentication method because they have forgotten their password multiple times.\n Which of the following should a technician enable to satisfy this request?",
+"options": {
+"A": "Single sign-on",
+"B": "Windows Hello",
+"C": "BitLocker",
+"D": "User Account Control"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q141",
+"domain": 3,
+"question": "A Windows 11 Home device is receiving constant pop-ups about an urgent need to update antivirus software in order to remove a detected threat.\n The user has been clicking the \"X\" button in the window frame, but it always reappears. The pop-up includes an \"OK\" button to install the update\n and remove the threat. Which of the following should the user do next?",
+"options": {
+"A": "Click the \"OK\" button to install the update.",
+"B": "Reinstall the Windows Operating System.",
+"C": "Run System File Checker.",
+"D": "Verify the current status and settings of protection measures."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q142",
+"domain": 3,
+"question": "A customer reports that a computer is displaying pop-ups and making unexpected sounds. Which of the following should a technician do before\n remediating this issue?",
+"options": {
+"A": "Back up the customer's data.",
+"B": "Update the OS.",
+"C": "Reimage the workstation.",
+"D": "Quarantine the machine."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q143",
+"domain": 2,
+"question": "A company wants to use its directory database to authenticate users to its wireless network. Which of the following should the company use to\n accomplish this task?",
+"options": {
+"A": "MFA",
+"B": "WPA3",
+"C": "RADIUS",
+"D": "LDAP"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q145",
+"domain": 3,
+"question": "A user takes an iOS-based smartphone that is performing slowly to a repair shop. A shop technician finds the following information:\n Battery charge: 25%\n Battery health: 90%\n Hotspot: On -\n Mobile reception: |||\n Roaming: Off -\n Used space: 63.76GB/64GB -\n Which of the following is the cause of the issue?",
+"options": {
+"A": "The device is running out of free space",
+"B": "The battery health is low.",
+"C": "The phone is not sufficiently charged.",
+"D": "The hotspot is degrading the performance.",
+"E": "Too many applications are open."
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q146",
+"domain": 2,
+"question": "Which of the following controls access to certain services to ensure that administrators are not automatically given elevated permissions?",
+"options": {
+"A": "РАМ",
+"B": "MFA",
+"C": "DLP",
+"D": "SSO"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q147",
+"domain": 1,
+"question": "Which of the following filesystems is a successor to NTFS?",
+"options": {
+"A": "ReFS",
+"B": "XFS",
+"C": "APFS",
+"D": "exFAT"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q148",
+"domain": 2,
+"question": "A technician needs to configure settings for password complexity and failed log-in attempts before a user is locked out. These settings cannot be\n changed by standard users. Which of the following MMC snap-ins should the technician use?",
+"options": {
+"A": "taskschd",
+"B": "lusrmgr",
+"C": "perfmon",
+"D": "gpsdit"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q149",
+"domain": 1,
+"question": "A customer is upgrading their workstation from Windows 10 to Windows 11. They perform a clean installation from a USB drive. After the system\n restarts, the installer loads again. Which of the following should the user do to complete the installation?",
+"options": {
+"A": "Run chkdsk from the USB.",
+"B": "Turn off TPM.",
+"C": "Change MBR to UEFI.",
+"D": "Remove the USB drive."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q150",
+"domain": 1,
+"question": "A user called the help desk to report an issue with the internet connection speed on a laptop. The technician thinks that background services may\n be using extra bandwidth. Which of the following tools should the technician use to investigate connections on the laptop?",
+"options": {
+"A": "nslookup",
+"B": "net use",
+"C": "netstat",
+"D": "net user"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q151",
+"domain": 3,
+"question": "A user is unable to log in to the network. The network uses 802.1X with EAP-TLS to authenticate on the wired network. The user has been on an\n extended leave and has not logged in to the computer in several months. Which of the following is causing the login issue?",
+"options": {
+"A": "Expired certificate",
+"B": "OS update failure",
+"C": "Service not started",
+"D": "Application crash",
+"E": "Profile rebuild needed"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q152",
+"domain": 2,
+"question": "Which of the following authentication methods is token-based?",
+"options": {
+"A": "Kerberos",
+"B": "TACACS+",
+"C": "Passwords",
+"D": "TKIP"
+},
+"correct": [
+"D"
+],
+"explanation": "  JOBAERALI 1 day, 12 hours ago (Note: the dump prints B as the answer, but the highest-voted community discussion says D — we go with the community.)"
+},
+{
+"id": "C2-Q153",
+"domain": 2,
+"question": "Which of the following is the most secure method of preventing someone from accessing a cell phone?",
+"options": {
+"A": "PIN",
+"B": "Swipe",
+"C": "Passphrase",
+"D": "Pattern"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q154",
+"domain": 3,
+"question": "When a user is in the office, web pages are loading slowly on the user's phone. Which of the following best explains this issue?",
+"options": {
+"A": "Exceeded the data usage limit",
+"B": "Sluggish response time",
+"C": "Degraded network service",
+"D": "Low storage space"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q155",
+"domain": 3,
+"question": "A user calls the help desk to report potential malware on a computer. The anomalous activity began after the user clicked a link to a free gift card\n in a recent email. The technician asks the user to describe any unusual activity, such as slow performance, excessive pop-ups, and browser\n redirections.\n Which of the following should the technician do next?",
+"options": {
+"A": "Advise the user to run a complete system scan using the OS anti-malware application.",
+"B": "Guide the user to reboot the machine into safe mode and verify whether the anomalous activities are still present.",
+"C": "Have the user check for recently installed applications and outline those installed since the link in the email was clicked.",
+"D": "Instruct the user to disconnect the Ethernet connection to the corporate network."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q158",
+"domain": 1,
+"question": "A technician is installing a new business application on a user's desktop computer. The machine is running Windows 10 Enterprise 32-bit\n operating system. Which of the following files should the technician execute in order to complete the installation?",
+"options": {
+"A": "Installer_x64.exe",
+"B": "Installer_Files.zip",
+"C": "Installer_32.msi",
+"D": "Installer_x86.exe",
+"E": "Installer_Win10Enterprise.dmg"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q159",
+"domain": 1,
+"question": "A user created a file on a shared drive and wants to prevent its data from being accidentally deleted by others. Which of the following applications\n should the technician use to assist the user with hiding the file?",
+"options": {
+"A": "Device Manager",
+"B": "Indexing Options",
+"C": "File Explorer",
+"D": "Administrative Tools"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q160",
+"domain": 1,
+"question": "A technician is performing an in-place upgrade on a user's laptop. Which of the following is the most effective method of upgrading the\n workstation to the latest OS?",
+"options": {
+"A": "Utilize the latest version of the .iso file.",
+"B": "Back up data and perform a fresh installation.",
+"C": "Enter the BIOS and enable USB access.",
+"D": "Use the System Update utility."
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q161",
+"domain": 4,
+"question": "Which of the following is used to identify potential issues with a proposed change prior to implementation?",
+"options": {
+"A": "Request form",
+"B": "Rollback plan",
+"C": "End-user acceptance",
+"D": "Sandbox testing"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q162",
+"domain": 3,
+"question": "Each time a user tries to go to the selected web search provider, a different website opens. Which of the following should the technician check\n first?",
+"options": {
+"A": "System time",
+"B": "IP address",
+"C": "DNS servers",
+"D": "Windows updates"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q163",
+"domain": 3,
+"question": "A user receives a notification indicating the antivirus protection on a company laptop is out of date. A technician is able to ping the user’s laptop.\n The technician checks the antivirus parent servers and sees the latest signatures have been installed. The technician then checks the user's\n laptop and finds the antivirus engine and definitions are current. Which of the following has most likely occurred?",
+"options": {
+"A": "Ransomware",
+"B": "Failed OS updates",
+"C": "Adware",
+"D": "Missing system files"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q164",
+"domain": 4,
+"question": "Which of the following would an administrator most likely use to automate a repetitive task via a Linux command line?",
+"options": {
+"A": "JavaScript file",
+"B": "Shell script",
+"C": "Visual Basic utilities",
+"D": "Batch file"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q165",
+"domain": 1,
+"question": "Which of the following is used to determine how many active users are currently logged in to the Remote Desktop Services?",
+"options": {
+"A": "Local Users and Groups",
+"B": "System Information",
+"C": "Group Policy Editor",
+"D": "Task Manager"
+},
+"correct": [
+"D"
+],
+"explanation": "Correct answer: D."
+},
+{
+"id": "C2-Q166",
+"domain": 2,
+"question": "Which of the following grants a user the minimum level of permissions necessary to perform duties?",
+"options": {
+"A": "Least privilege",
+"B": "Zero Trust",
+"C": "SSO",
+"D": "MFA"
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q167",
+"domain": 2,
+"question": "A technician is creating an MDM policy using hardening techniques that are unique to each user. Which of the following techniques is the\n technician using?",
+"options": {
+"A": "A drawn pattern",
+"B": "A fingerprint",
+"C": "A password",
+"D": "A PIV card"
+},
+"correct": [
+"B"
+],
+"explanation": "Correct answer: B."
+},
+{
+"id": "C2-Q168",
+"domain": 1,
+"question": "Which of the following operating systems is used to join a domain?",
+"options": {
+"A": "Windows 10 Home",
+"B": "Windows 11 Home",
+"C": "Windows 11 Pro",
+"D": "Windows 11 SE"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+},
+{
+"id": "C2-Q169",
+"domain": 3,
+"question": "When a user navigates to comptiaa.org, pop-up messages indicate that the computer is infected with adware. A technician scans the computer\n for malware and does not find an infection. Which of the following should the technician do before returning the computer to the user?",
+"options": {
+"A": "Clear the browser's cached data and recent history.",
+"B": "Sign in to the company's cloud workspace application.",
+"C": "Install corporate DNS security software",
+"D": "Enable private mode for using the internet."
+},
+"correct": [
+"A"
+],
+"explanation": "Correct answer: A."
+},
+{
+"id": "C2-Q170",
+"domain": 1,
+"question": "A technician must add an external web address as a trusted site. Which of the following settings should the technician configure?",
+"options": {
+"A": "System",
+"B": "Network and Sharing Center",
+"C": "Internet Options",
+"D": "Administrative Tools"
+},
+"correct": [
+"C"
+],
+"explanation": "Correct answer: C."
+}
+]
