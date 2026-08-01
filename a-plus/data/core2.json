@@ -1068,7 +1068,7 @@
 "correct": [
 "C"
 ],
-"explanation": "C (User Accounts) is correct because allowing several people to connect requires adding each of them to the Remote Desktop Users group; without that membership the connection is refused even with the service running. A (Firewall) rules for TCP 3389 are opened automatically when Remote Desktop is enabled. B (Computer Management) is a console that contains other tools rather than the setting itself, and D (Ease of Access) covers accessibility options. (Note: the dump prints A as the answer, but the highest-voted community discussion says C — we go with the community.)"
+"explanation": "C (User Accounts) is correct because allowing several people to connect requires adding each of them to the Remote Desktop Users group; without that membership the connection is refused even with the service running. A (Firewall) rules for TCP 3389 are opened automatically when Remote Desktop is enabled. B (Computer Management) is a console that contains other tools rather than the setting itself, and D (Ease of Access) covers accessibility options. (Note: the dump prints A as the answer, but the highest-voted community discussion says C — we go with the community.) Worth flagging: B (Computer Management) has a real claim, since adding several users to the Remote Desktop Users group is done through the Local Users and Groups snap-in."
 },
 {
 "id": "C2-Q75",
@@ -1945,9 +1945,9 @@
 "D": "Spear phishing"
 },
 "correct": [
-"C"
+"B"
 ],
-"explanation": "Whaling is phishing built around an organization's biggest fish, and this fraudulent payment request trades entirely on the chief executive's authority and identity, which is what marks it out from ordinary targeted phishing. D (Spear phishing) is the generic targeted-email case without that executive angle, B (Impersonation) names the underlying tactic of posing as someone trusted rather than this email-borne attack, and A (Evil twin) is a rogue wireless access point. (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.)"
+"explanation": "B (Impersonation) fits, because the attacker is posing as the CEO to make a trusted request the secretary will act on — the tactic commonly called CEO fraud or business email compromise. C (Whaling) means the executive is the intended victim, not the mask being worn. D (Spear phishing) describes a targeted email built on researched details, and A (Evil twin) is a rogue wireless access point, not an email tactic. Some sources do key an item like this as whaling because an executive is involved at all, so expect to see it argued both ways."
 },
 {
 "id": "C2-Q134",
@@ -2220,9 +2220,9 @@
 "D": "TKIP"
 },
 "correct": [
-"D"
+"A"
 ],
-"explanation": "TKIP is the option built on rotating key material rather than a static secret: it mixes a base key with a per-packet sequence value so each frame is protected by a fresh, single-use value instead of a reusable credential. C (Passwords) are static knowledge factors typed in by the user, A (Kerberos) is a KDC-based single sign-on protocol for domain logons, and B (TACACS+) is an AAA protocol that centralizes administrative access to network devices. (Note: the dump prints B as the answer, but the highest-voted community discussion says D — we go with the community.)"
+"explanation": "A (Kerberos) is the token-based method: after authenticating, the client receives a ticket-granting ticket and then per-service tickets, so the token rather than the password is presented to each resource. D (TKIP) is not an authentication method at all — it is the encryption protocol WPA wrapped around RC4. B (TACACS+) is an AAA protocol that carries credentials to a central server, and C (Passwords) are a knowledge factor with no token involved."
 },
 {
 "id": "C2-Q153",
@@ -2356,9 +2356,9 @@
 "D": "Missing system files"
 },
 "correct": [
-"D"
+"C"
 ],
-"explanation": "Signatures on the parent servers are current and the laptop's engine and definitions match them, so the product is healthy but reporting its own status incorrectly, which points to corrupted or missing system files, making sfc /scannow the natural follow-up. A (Ransomware) would encrypt data and demand payment, and C (Adware) generates advertising pop-ups, neither of which fits an up-to-date antivirus flagging itself as out of date."
+"explanation": "C (Adware) is the culprit: the parent servers show current signatures and the laptop is reachable, so the antivirus really is up to date and the out-of-date warning is a fake pop-up planted to push the user toward a bogus product. D (Missing system files) would produce application or boot errors, not a targeted antivirus notice. A (Ransomware) announces itself with encrypted files and a demand, and B (Failed OS updates) would surface in Windows Update rather than as an antivirus alert."
 },
 {
 "id": "C2-Q164",

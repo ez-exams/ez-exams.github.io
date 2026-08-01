@@ -585,7 +585,7 @@
 "correct": [
 "A"
 ],
-"explanation": "A 169.254 address means the client asked for DHCP, got no reply and fell back to APIPA; on a freshly configured SOHO router the usual cause is a DHCP service that did not start cleanly, so rebooting the router restarts it and clients pick up real leases. C (Static IP addresses) is a workaround that leaves DHCP broken. B (Shorten the lease time) and D (Increase the DHCP pool size) both assume the server is answering, which APIPA shows it is not."
+"explanation": "A 169.254 address means the client asked for DHCP, got no reply and fell back to APIPA; on a freshly configured SOHO router the usual cause is a DHCP service that did not start cleanly, so rebooting the router restarts it and clients pick up real leases. C (Static IP addresses) is a workaround that leaves DHCP broken. B (Shorten the lease time) and D (Increase the DHCP pool size) both assume the server is answering, which APIPA shows it is not. Worth flagging: D (Increase the DHCP pool size) has a real claim, since only several devices fell back to APIPA while others were served, which is the signature of an exhausted scope rather than a dead router."
 },
 {
 "id": "C1-Q40",
@@ -748,9 +748,9 @@
 "D": "VDI"
 },
 "correct": [
-"B"
+"C"
 ],
-"explanation": "Containers pack applications into isolated user spaces on shared hosts, consolidating the existing servers with far less overhead than full VMs, keeping everything in-house where the customer controls the data, with no monthly provider bill or per-VM OS licence. A (IaaS) moves workloads to a provider, hitting both the privacy and recurring cost concerns. D (VDI) delivers user desktops rather than consolidating servers, and C (Type 2 hypervisor) stacks guests on a full host OS, the least efficient option. (Note: the dump prints C as the answer, but the highest-voted community discussion says B — we go with the community.)"
+"explanation": "C (Type 2 hypervisor) is the only option that consolidates a mix of Windows, Linux and Unix onto one box while keeping the data on hardware the customer owns, and desktop-class hypervisors carry no recurring fee. B (Containers) share the host kernel, so they cannot run different operating system families side by side. A (IaaS) introduces exactly the recurring cost and third-party data custody the customer is worried about, and D (VDI) delivers desktops to users rather than consolidating servers."
 },
 {
 "id": "C1-Q51",
@@ -2756,9 +2756,9 @@
 "D": "Calibrate the alignment."
 },
 "correct": [
-"D"
+"B"
 ],
-"explanation": "Impact printing depends on the head striking the ribbon at the correct gap and position, so when output fades, setting the platen gap and realigning the head restores full strike force and returns characters to their intended density. A (Clean the printhead) addresses smeared or blotchy output caused by ink buildup rather than a gradual, uniform fade. C (Install a maintenance kit) is a laser printer procedure covering rollers and the fuser, components a dot matrix printer does not have. (Note: the dump prints B as the answer, but the highest-voted community discussion says D — we go with the community.)"
+"explanation": "B (Replace the ribbon) is the fix, because a dot matrix printer forms characters by striking pins through an inked ribbon, and output fades steadily as that ribbon wears out. D (Calibrate the alignment) changes where characters land on the page, not how dark they are. A (Clean the printhead) is an inkjet remedy, and C (Install a maintenance kit) applies to laser printers, which have no ribbon at all."
 },
 {
 "id": "C1-Q189",
@@ -2878,7 +2878,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Containers share the host's kernel and libraries, so one machine can spin up many isolated instances of different runtime environments with almost no hardware or licensing overhead, which is what makes it the least-expensive option. C (Type 2 hypervisor) also works but every VM needs a full guest OS with its own RAM and disk, costing far more. B (Dual boot) offers only one environment at a time and needs a reboot to switch, and D (Sandbox) isolates untrusted code rather than reproducing target environments. (Note: the dump prints C as the answer, but the highest-voted community discussion says A — we go with the community.)"
+"explanation": "Containers share the host's kernel and libraries, so one machine can spin up many isolated instances of different runtime environments with almost no hardware or licensing overhead, which is what makes it the least-expensive option. C (Type 2 hypervisor) also works but every VM needs a full guest OS with its own RAM and disk, costing far more. B (Dual boot) offers only one environment at a time and needs a reboot to switch, and D (Sandbox) isolates untrusted code rather than reproducing target environments. (Note: the dump prints C as the answer, but the highest-voted community discussion says A — we go with the community.) Worth flagging: C (Type 2 hypervisor) has a real claim here, since only full virtual machines give the complete experience of diverse target environments — containers share the host kernel. The key rests on containers being the cheapest option."
 },
 {
 "id": "C1-Q197",
@@ -2966,9 +2966,9 @@
 "D": "Coaxial"
 },
 "correct": [
-"D"
+"A"
 ],
-"explanation": "A coaxial connector has to be aligned so the solid center conductor slides into the socket's contact before the collar is threaded on, and the plug must be presented straight and turned the right way or the pin bends instead of seating. B (USB-C) and C (Lightning) are deliberately reversible and plug in either way up. A (HDMI) is keyed, but its trapezoidal shell physically will not enter the port incorrectly, so it needs no orientation judgment from the user. (Note: the dump prints A as the answer, but the highest-voted community discussion says D — we go with the community.)"
+"explanation": "A (HDMI) uses a keyed, asymmetric shell that physically fits only one way round, so orientation matters when you plug it in. D (Coaxial) is a threaded F-type barrel that screws on at any rotational position. B (USB-C) and C (Lightning) were both deliberately designed to be reversible, which is one of their headline features."
 },
 {
 "id": "C1-Q203",
@@ -4199,7 +4199,7 @@
 "correct": [
 "A"
 ],
-"explanation": "A (Verify that the correct paper type is loaded into the tray) is the first check, because a tray configured or loaded for a different form or size shifts where the printer starts the image, throwing the output off the preprinted fields. C (Check the orientation settings) would produce rotated or sideways output rather than a consistent downward shift. D (Pickup rollers) would cause skew, jams, or misfeeds, and B (PostScript drivers) affects rendering quality, not vertical registration. (Note: the dump prints C as the answer, but the highest-voted community discussion says A — we go with the community.)"
+"explanation": "A (Verify that the correct paper type is loaded into the tray) is the first check, because a tray configured or loaded for a different form or size shifts where the printer starts the image, throwing the output off the preprinted fields. C (Check the orientation settings) would produce rotated or sideways output rather than a consistent downward shift. D (Pickup rollers) would cause skew, jams, or misfeeds, and B (PostScript drivers) affects rendering quality, not vertical registration. (Note: the dump prints C as the answer, but the highest-voted community discussion says A — we go with the community.) Worth flagging: D (Ensure the pickup rollers are gripping the paper) has a real claim, since slipping rollers are the classic cause of output shifted down the page; paper type normally affects fusing rather than image position."
 },
 {
 "id": "C1-Q285",
@@ -5019,7 +5019,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Faded repeats of earlier pages are ghosting, caused when toner from the previous image is not fully released and cleared, so C (Inspect the transfer roller) targets the worn or contaminated roller that no longer holds a consistent charge. D (Clean the corona wire) is a follow-up that usually shows as overall faded or blotchy output, B (Adjust the fuser temperature) produces smearing or flaking rather than repeated images, and A (Reload the paper tray) has no bearing on image quality. (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.)"
+"explanation": "Faded repeats of earlier pages are ghosting, caused when toner from the previous image is not fully released and cleared, so C (Inspect the transfer roller) targets the worn or contaminated roller that no longer holds a consistent charge. D (Clean the corona wire) is a follow-up that usually shows as overall faded or blotchy output, B (Adjust the fuser temperature) produces smearing or flaking rather than repeated images, and A (Reload the paper tray) has no bearing on image quality. (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.) Worth flagging: D (Clean the corona wire) has a real claim, since ghosting from previous jobs is usually traced to a drum charging or erase failure rather than the transfer roller."
 },
 {
 "id": "C1-Q342",
@@ -6539,7 +6539,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Several buildings clustered in one small geographic area, all within the same postal code and joined by the organization's own leased links, describes a campus area network. B (MAN) spans an entire city or metropolitan region, well beyond a single postal code. D (WAN) covers large geographic distances between distant sites, and C (LAN) is confined to a single building or floor."
+"explanation": "Several buildings clustered in one small geographic area, all within the same postal code and joined by the organization's own leased links, describes a campus area network. B (MAN) spans an entire city or metropolitan region, well beyond a single postal code. D (WAN) covers large geographic distances between distant sites, and C (LAN) is confined to a single building or floor. Worth flagging: B (Metropolitan area network) has a real claim for branch offices joined by carrier leased lines; the key leans on all of them sitting inside the same postal code, which is campus scale."
 },
 {
 "id": "C1-Q445",
@@ -6584,7 +6584,7 @@
 "correct": [
 "B"
 ],
-"explanation": "B (Virtual machine) is the concept of a self-contained guest with its own virtual CPU, memory and disk, so several complete operating systems share one physical host and soak up otherwise idle capacity. C (Hypervisor) is the software layer that creates and schedules those VMs, not the concept being described. A (Containerization) shares the host's single kernel rather than running multiple OSes, and D (Microservices architecture) is an application design pattern."
+"explanation": "B (Virtual machine) is the concept of a self-contained guest with its own virtual CPU, memory and disk, so several complete operating systems share one physical host and soak up otherwise idle capacity. C (Hypervisor) is the software layer that creates and schedules those VMs, not the concept being described. A (Containerization) shares the host's single kernel rather than running multiple OSes, and D (Microservices architecture) is an application design pattern. Worth flagging: C (Hypervisor) has a real claim, since the hypervisor is the component that actually allows multiple operating systems to share one machine; the key treats the virtual machine as the concept being described."
 },
 {
 "id": "C1-Q448",
