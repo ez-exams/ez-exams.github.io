@@ -12,7 +12,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  Syd1990 5 days, 9 hours ago"
+"explanation": "B (VNC) is platform independent and shares the actual console session, so the technician on Windows can watch what the Linux user is doing and take control of the same screen. D (RDP) is Windows-oriented and normally opens a separate session rather than mirroring the user's. C (SSH) provides only a command-line shell, giving no view of the graphical session. A (VPN) simply tunnels network traffic and offers no remote control at all."
 },
 {
 "id": "C2-Q3",
@@ -27,7 +27,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  dandyrandy 2 months, 2 weeks ago"
+"explanation": "A (Change the DNS settings) is right because joining a domain depends on resolving the domain's SRV records to find a domain controller, and a wrong DNS server (for example a public resolver instead of the internal DC) breaks that lookup while leaving everything else working. Successful pings and internet access already prove the IP configuration and routing are sound, which rules out D (Default gateway) and C (Subnet mask). B (Static IP) addresses nothing here since connectivity is fine."
 },
 {
 "id": "C2-Q4",
@@ -42,7 +42,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  CYBERDisciple29 3 months, 3 weeks ago"
+"explanation": "C (Propose the change) comes first: the technician documents the scope, risk, rollback plan and business justification in a change request. Only then can the change advisory board weigh in. B (Approve the change) is the board's job and cannot happen without a submitted proposal, D (Schedule the change) follows approval so a maintenance window can be agreed, and A (Implement the change) is last. Acting out of order bypasses the risk assessment entirely."
 },
 {
 "id": "C2-Q5",
@@ -57,7 +57,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+"explanation": "A (Verify the date and time settings) is first because time-based one-time passwords are generated from a shared secret plus the current clock, so a phone whose time zone or clock shifted during international travel produces codes the server rejects. The timing of the failure points straight at this. C (Uninstall and reinstall) risks losing the enrolled token seed for no reason, B (Apply mobile OS patches) is unrelated to clock skew, and D (Escalate to the developer) skips the obvious local check."
 },
 {
 "id": "C2-Q6",
@@ -72,7 +72,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+"explanation": "B (Emergency procedures) belongs on a safety data sheet, which documents hazards, safe handling and storage, first aid, spill and leak cleanup, firefighting measures and disposal for the battery's chemicals. That is the sheet's whole purpose. A (Installation instructions) and C (Configuration steps) come from the product manual, and D (Voltage specifications) is on the spec sheet or the unit's label, not the SDS."
 },
 {
 "id": "C2-Q7",
@@ -87,7 +87,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+"explanation": "C (Check boot options) is the first and least invasive step, because a USB drive is plugged in and the firmware boot order has almost certainly put it ahead of the internal disk, so the system finds no operating system on it. B (Partition the disk using the GPT format) would wipe the user's data before the cause is even known. D (Switching from UEFI to BIOS) breaks a UEFI/GPT installation outright, and A (Data recovery tools) assumes a failed disk with no evidence yet."
 },
 {
 "id": "C2-Q8",
@@ -102,7 +102,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+"explanation": "A is correct because BitLocker To Go is the removable-media arm of BitLocker: it encrypts USB flash drives and external disks and demands a password or smart card to unlock them, so a drive left in a taxi is unreadable. D (TPM-based drive encryption) describes standard BitLocker on internal disks, which needs no user training on removable media. B (Secure Boot and BIOS passwords) and C (VPN encryption) are entirely different controls."
 },
 {
 "id": "C2-Q9",
@@ -117,7 +117,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  0fa26f8 1 month, 3 weeks ago (Note: the dump prints C as the answer, but the highest-voted community discussion says B — we go with the community.)"
+"explanation": "B (Video surveillance) both detects activity in a restricted area and keeps a recorded history of who entered and what they did, which is what the question asks for. C (Badge readers) authenticate and authorise entry and log the credential used, but they do not observe or record the area itself. A (Bollards) are vehicle barriers and D (Fence) is a perimeter deterrent, and neither detects or records anything. (Note: the dump prints C as the answer, but the highest-voted community discussion says B — we go with the community.)"
 },
 {
 "id": "C2-Q10",
@@ -132,7 +132,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  Dese_2point71 4 months, 4 weeks ago"
+"explanation": "B (The OS will be considered end of life) is exactly what such a notice means: the vendor has set a date after which no security updates, patches or fixes will be issued, and organisations must migrate or accept the risk. A (Manufacturer support expiring) covers hardware warranty and drivers, which is a separate lifecycle. D (A new version being released) does not by itself stop patching for the current one, and C (Built-in security software being removed) is not what a patch cutoff notice announces."
 },
 {
 "id": "C2-Q11",
@@ -147,7 +147,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  5e16c9c 1 month, 3 weeks ago"
+"explanation": "D (Use a network-based remote installation tool) is the only approach that scales, because a PXE or deployment-server solution can push different images to different hardware classes and user groups without a technician touching each of the 800 machines. A (xcopy) and B (robocopy) copy files but do not write partitions, boot records or a sysprepped system image. C (A local image deployment tool for each device) still requires visiting every workstation."
 },
 {
 "id": "C2-Q12",
@@ -162,7 +162,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  PeterPerfect 3 months, 3 weeks ago"
+"explanation": "D (Smishing) is phishing delivered over SMS, where the attacker texts a link or a pretext to the victim's phone, exactly as described. B (Vishing) is the voice equivalent, carried out over a phone call rather than a message. C (Spear phishing) is a targeted email aimed at a specific individual using researched details, and A (Impersonation) is the broader tactic of posing as someone trusted rather than a delivery channel."
 },
 {
 "id": "C2-Q13",
@@ -177,7 +177,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  JeanAlex 3 weeks, 5 days ago"
+"explanation": "B (Use a private browsing window) is the quick, non-destructive test: the portal login already works, so the identity provider and credentials are fine, and a stale cookie or cached token for that single SaaS application is the likely blocker. An incognito session starts with no cached state and proves it in seconds. C (Bypassing single sign-on) defeats the control and often is not even possible for a federated app. A (Reenrolling MFA) and D (Factory reset) are wildly disproportionate for one broken app."
 },
 {
 "id": "C2-Q14",
@@ -192,7 +192,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+"explanation": "A (Quarantine the infected systems) is next because the malware has already been verified, and isolating those machines from the network stops it spreading to the rest of the office. In the malware removal process, quarantine follows identification and precedes remediation. C (Disable System Restore) and D (Update the anti-malware and scan) come after isolation, once the systems can no longer infect others. B (Educate the end users) is the final step after everything is cleaned."
 },
 {
 "id": "C2-Q15",
@@ -207,7 +207,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  angellorv 4 months, 1 week ago"
+"explanation": "D (su) is the Linux substitute-user command, most often used to switch to root so administrative tasks can be carried out. A (runas) is its Windows counterpart for launching a program under another account, and C (net user) is the Windows command for creating and managing local accounts. B (cmcl) is not a real command in either operating system."
 },
 {
 "id": "C2-Q16",
@@ -222,7 +222,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (netstat) lists active connections and listening ports, so the technician can see whether the application actually opened a session to the database server's port or whether the connection is being refused or never attempted. That is the heart of a client that launches but returns no data. A (ipconfig) only reports local addressing, B (nslookup) tests DNS resolution alone, and D (curl) is aimed at HTTP endpoints rather than a database socket on a local server."
 },
 {
 "id": "C2-Q17",
@@ -237,7 +237,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Discuss the cause and educate the end user) is next because the technical work is already finished: the EDR quarantined the malware and the affected machine was reimaged, so what remains is addressing the phishing email that started it. End-user education is the closing step of the malware removal process. A (Network security tools) and D (More advanced security software) propose spending before the human root cause is addressed, and C (Flashing router firmware) has nothing to do with a phishing infection."
 },
 {
 "id": "C2-Q18",
@@ -252,7 +252,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Zero-day) describes a flaw attacked before the vendor has issued a fix, leaving defenders zero days of warning and no patch to apply. A (Spoofing) is faking an identity such as a source address, sender or MAC. B (Brute-force) is guessing credentials by exhaustive attempts against a known login, and C (DoS) floods a service to make it unavailable. None of those depend on an unpatched flaw being unknown."
 },
 {
 "id": "C2-Q20",
@@ -267,7 +267,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Ease of Access) is the accessibility hub in Windows Settings, holding Narrator, Magnifier, high contrast and speech recognition, which is where voice control is turned on and trained. A (Time and Language) covers region, keyboard layouts and the speech language and voice used for input, not the recognition feature itself. B (Personalization) handles themes, wallpaper and the taskbar, and C (System) holds display, sound, notifications and power."
 },
 {
 "id": "C2-Q21",
@@ -282,7 +282,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A is correct because .NET Framework 3.5 ships with Windows as an optional feature, so enabling it under Turn Windows features on or off installs it from Windows Update using Microsoft's own binaries. C (Installing version 4 instead) fails because 3.5 and 4.x install side by side and an application built for 3.5 will not run on 4 alone. B (A third-party repository) risks tampered files when the vendor supplies it natively, and D (Escalating to the SOC) treats a routine dependency as a security incident."
 },
 {
 "id": "C2-Q22",
@@ -297,7 +297,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (License assignment) is the fix, because the greyed-out features are premium capabilities gated behind an entitlement tied to a user account, so an administrator needs to assign a seat or licence to that employee. C (Application repair) and D (Program reinstallation) replace damaged files, but nothing is corrupt here, the software works and simply is not entitled. B (VPN connection) would only matter for reaching an internal licence server, which is not what the prompt describes."
 },
 {
 "id": "C2-Q23",
@@ -312,7 +312,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Encryption) is the answer because full-device encryption protects the data the moment the phone leaves the user's hands, with no action needed from anyone, which is essential when nobody yet knows the device is missing. B (Remote wipe) only works once the loss is reported and the phone is powered on and reachable. C (Geofencing) enforces location-based policy rather than protecting stored data, and D (Facial recognition) guards the lock screen but not the storage if the chip is read directly."
 },
 {
 "id": "C2-Q24",
@@ -327,7 +327,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (In-place upgrade) runs Windows 11 setup over the existing installation and keeps files, applications and settings intact, which is both the fastest and the only listed option that preserves data. C (Clean install) wipes the drive and forces you to reinstall everything, and B (Image deployment) likewise overwrites the disk with a prepared image and is aimed at bulk rollouts. A (gpupdate) simply refreshes Group Policy and has nothing to do with upgrading an OS."
 },
 {
 "id": "C2-Q25",
@@ -342,7 +342,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Standard operating procedures) define the step-by-step process every technician follows on every call, including which fields must be captured, so consistency stops depending on individual habits. B (Call categories) classify what a ticket is about but never enforce collecting contact details or asset tags. A (Service-level agreements) set response and resolution targets with the customer, and D (Knowledge base articles) document fixes for known issues rather than how to log a ticket."
 },
 {
 "id": "C2-Q26",
@@ -357,7 +357,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Resource monitor) shows live per-process CPU, memory, disk and network usage, which is where a gradual slowdown reveals itself as a memory leak, runaway handle count or disk saturation. A (Reliability history) charts crashes, hangs and error events, and the application produces none, so it has nothing to report. B (Computer management) is a console of administrative snap-ins rather than a performance tool, and D (Disk defragment) is a maintenance action taken after a cause is identified, not a diagnostic."
 },
 {
 "id": "C2-Q27",
@@ -372,7 +372,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (ext4) is the standard journaling filesystem for most Linux distributions, supporting large volumes, extents and journaling for crash recovery. D (NTFS) is the native Windows filesystem, readable on Linux but not its default. B (APFS) is Apple's filesystem for macOS and iOS, and A (exFAT) is a lightweight cross-platform format designed for flash media and large files, with no journaling or permissions."
 },
 {
 "id": "C2-Q28",
@@ -387,7 +387,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Performing a low-level format) rewrites every block on the drive, so the previous data cannot be recovered while the disk itself stays healthy and can be reissued. D (Degaussing the device) destroys the magnetic servo information along with the data, leaving a drive that can never be used again. A (Deleting the partitions) only clears the partition table, so file data remains and is trivially recoverable, and B (Implementing EFS) encrypts new files but leaves existing content in place."
 },
 {
 "id": "C2-Q29",
@@ -402,7 +402,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Updating the failed software) is most likely, because a mobile OS upgrade often breaks an older app build, and installing the current version from the app store restores compatibility with the new APIs. A restart has already ruled out a transient glitch. D (Clearing the cache partition) is an Android recovery procedure for boot and update problems, not one app. C (A third-party client) is a workaround that sidesteps the real fix, and B (MDM enrollment) does nothing about a version mismatch."
 },
 {
 "id": "C2-Q30",
@@ -417,7 +417,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Rogue wireless access point) fits precisely: an unauthorised AP is broadcasting the legitimate SSID, so clients associate with it, reach the internet through the attacker's own uplink, but have no route to the internal file servers. That split symptom is the giveaway. A (Unreachable DNS server) would break internet browsing too. B (VLAN misconfiguration) and C (Incorrect IP address) are internal faults and neither would create a second, unsecured network with the same name."
 },
 {
 "id": "C2-Q31",
@@ -432,7 +432,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Content filtering) is the SOHO router feature that blocks sites by category, matching requested URLs against lists such as gambling, social media or adult content, which is exactly how the policy is written. D (Firewall) filters on ports, protocols and addresses, so it cannot reason about site categories. B (Group Policy Editor) is a Windows domain tool with no presence on a router, and A (Secure management access) protects the router's own admin interface."
 },
 {
 "id": "C2-Q32",
@@ -447,7 +447,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Facial recognition) is biometric, so authentication is bound to the person and cannot simply be told to a colleague the way a passcode can, which directly stops the sharing problem. A (Pattern lock) is still a shared secret and is easy to shoulder surf or read from smudges on the screen. C (Device encryption) protects data at rest but is not a screen lock method, and D (Multifactor authentication) is not how a phone's lock screen is configured."
 },
 {
 "id": "C2-Q33",
@@ -462,7 +462,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Escalate the ticket to the next level) is right because the applied fix did not hold, which means the root cause is beyond what the first-line technician diagnosed and a higher tier needs to investigate. A (Reconnecting remotely to check the drive) simply repeats work already done and the user has already reported it disconnected. B (Sending documentation) pushes the problem onto the user instead of fixing it, and D (Holding the ticket then closing it) leaves an unresolved fault."
 },
 {
 "id": "C2-Q34",
@@ -477,7 +477,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (AUP) is the acceptable use policy, the document telling employees what they may and may not do with company computers, networks, email and internet access. D (EULA) is the licence agreement between a software vendor and whoever installs the product. B (MNDA) is a mutual non-disclosure agreement covering confidential information between parties, and C (DRM) is the technology that restricts copying and playback of protected content."
 },
 {
 "id": "C2-Q35",
@@ -492,7 +492,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Image deployment) is fastest at scale because a single prepared and sysprepped image is pushed to many machines at once, typically over the network, with no setup wizard to sit through on each one. A (Physical media) means walking a disc or USB stick round every workstation. B (Mountable ISO) still runs an attended installation per device, and C (Manual installation) is the slowest option of all."
 },
 {
 "id": "C2-Q36",
@@ -507,7 +507,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Virtual private network) builds an encrypted tunnel from the home laptop into the corporate network, so internal file shares and mapped drives resolve and authenticate as though the user were in the office. B (Wireless network) and A (Wide-area network) connectivity clearly already exists, since the laptop is online at home. C (Proxy network settings) direct web browsing through an intermediary and do nothing for access to internal SMB shares."
 },
 {
 "id": "C2-Q37",
@@ -522,7 +522,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Event Viewer) records service start, stop and failure entries with timestamps and error codes under the System and Application logs, so the technician can read back exactly why the service terminated after the fact. B (Task Manager) and D (Process Explorer) show only what is running at this instant, and a service that has already stopped has vanished from both. C (Internet Options) configures browser security zones and proxies and is irrelevant here."
 },
 {
 "id": "C2-Q38",
@@ -537,7 +537,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Potentially unwanted program) covers bundleware, the extra toolbars, trialware or search hijackers quietly packaged with a legitimate installer and buried in the fine print. It is unwanted rather than outright malicious. D (Trojan) disguises genuinely malicious code as a useful program, A (Virus) attaches to files and self-replicates, and B (Ransomware) encrypts data and demands payment. None of those describe a publisher legally bundling extras."
 },
 {
 "id": "C2-Q39",
@@ -552,7 +552,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (net use) is the Windows command that maps a drive letter to a network share, for example net use Z: \\\\server\\share, and it can also list or disconnect existing mappings. A (pathping) and D (tracert) trace the path to a destination and report latency or packet loss along the hops. B (nslookup) queries DNS to resolve names to addresses. All three are diagnostic and none of them attach a share."
 },
 {
 "id": "C2-Q40",
@@ -567,7 +567,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Deploy MDM) is the preventive control for mobile devices, since mobile device management can enforce app allow and block lists, restrict installation sources and remotely remove or wipe unapproved software from company-owned phones. A (Configure Group Policy) applies to domain-joined Windows machines, not smartphones. B (Implement PAM) governs privileged account usage rather than app installs, and C (Anti-malware software) might flag a tool after the fact but does not stop it being installed."
 },
 {
 "id": "C2-Q41",
@@ -582,7 +582,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Sending a code to the user's phone) adds something you have to the password's something you know, and two distinct factor types is what makes authentication multifactor. B (Date of birth) and D (PIN) are both knowledge factors, so pairing either with a password is still single-factor, just two secrets. C (Solving a math problem) is a bot check in the vein of CAPTCHA and proves nothing about who the user is."
 },
 {
 "id": "C2-Q42",
@@ -597,7 +597,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Use appropriate lifting techniques and guidelines) is the relevant safety step, because UPS battery modules are extremely heavy, and lifting from the bottom of a rack means bending, so the technician should lift with the legs and get help or a lift cart. C (Antistatic bags) protect circuit boards from ESD, which sealed batteries do not need. D (A face mask) matters only with a leaking or damaged cell, and A (Fire suppression) is not a step in a planned, powered-down swap."
 },
 {
 "id": "C2-Q43",
@@ -612,7 +612,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Port mapping) is the router setting that decides which internal services are published through the WAN interface, so leaving the camera system's web port unmapped means it stays reachable on the LAN only and the internet has no path to its login page. B (Subnetting) divides the internal network but does not govern inbound exposure. C (Static IP) just keeps the address consistent, and D (Content filtering) restricts what internal users can browse to, not what reaches them."
 },
 {
 "id": "C2-Q44",
@@ -627,7 +627,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (BIOS password) is correct because virtualization support, VT-x on Intel or AMD-V, is a firmware setting, and a supervisor password on BIOS/UEFI setup means only staff who know it can enter the menu and toggle it. B (Guest account), C (Screen lock) and D (AutoRun setting) all live inside the operating system and take effect long after firmware setup has run, so none of them can stop a user changing a BIOS option at boot."
 },
 {
 "id": "C2-Q45",
@@ -642,7 +642,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (.bat) is the batch file, interpreted natively by cmd.exe on every Windows installation, which makes it the standard choice for drive mappings, printer connections and other logon script tasks. B (.sh) is a shell script for Linux and macOS and will not execute on Windows without a compatibility layer. C (.py) requires the Python interpreter to be installed, and D (.js) is aimed at browsers or Node, neither of which is guaranteed on a corporate desktop."
 },
 {
 "id": "C2-Q46",
@@ -657,7 +657,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Hallucinations) is the term for a generative model producing confident but fabricated output, because it predicts plausible-sounding text rather than checking facts, which is why AI drafts always need verifying. D (Plagiarism) is presenting someone else's work as your own, a different failure. A (Data privacy) concerns feeding confidential material into the model, and C (Appropriate use) is the policy question of whether AI should be used for the task in the first place."
 },
 {
 "id": "C2-Q47",
@@ -672,7 +672,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Evil twin) is an attack in which a rogue access point advertises the same SSID as the real network, often with a stronger signal, so victims associate with it and the attacker can intercept or manipulate their traffic. D (Shoulder surfing) is watching someone type a password or PIN. C (Tailgating) is following an authorised person through a secured door, and A (Stalkerware) is monitoring software installed on a device to track its owner."
 },
 {
 "id": "C2-Q48",
@@ -687,7 +687,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  Dese_2point71 4 months, 2 weeks ago"
+"explanation": "C (Internet Options) is the Control Panel applet that controls Temporary Internet Files; deleting the browsing cache forces the browser to pull current images from the server instead of serving stale copies from disk. A (Administrative Tools) holds system consoles like Services and Event Viewer, and D (Ease of Access) covers accessibility. B (Windows Defender Firewall) filters traffic and would block pages entirely rather than show old versions of them."
 },
 {
 "id": "C2-Q49",
@@ -702,7 +702,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (File size and related memory utilization) is right because a workbook is loaded entirely into RAM; a spreadsheet that has grown large enough forces heavy paging to disk, which is what freezes the machine and produces the not responding title bar. A (Anti-malware logs) is unlikely when the hang reproduces only with one specific file. C misreads Task Manager, which reports network throughput, and a local spreadsheet does not depend on it."
 },
 {
 "id": "C2-Q50",
@@ -717,7 +717,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (BitLocker) is the encryption feature built into Windows Pro and Enterprise that encrypts the entire volume, usually sealed to the TPM, so a thief who removes the drive gets nothing readable. C (Encrypting File System) is also native but only encrypts selected files and folders, leaving the rest of the volume in the clear. B (NTFS) is the file system EFS relies on, and A (Active Directory) is a directory service, not encryption."
 },
 {
 "id": "C2-Q51",
@@ -732,7 +732,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Management profile) is the payload an MDM server pushes to an iPhone, iPad or Mac to enforce corporate settings such as passcode rules, restrictions and Wi-Fi or VPN configuration. C (Apple ID) is the user's personal account and cannot carry corporate policy. A (App Store) distributes software, and B (VPN configuration) only affects how traffic is routed; neither applies restrictions to the device."
 },
 {
 "id": "C2-Q52",
@@ -747,7 +747,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Background applications) is the first thing to check because apps that keep syncing, refreshing location or polling in the background drain a battery steadily through the day even though it started at full charge. A (Storage usage) hurts free space and performance, not runtime. C (Charger wattage) would show up as slow charging, but the phone already charges fully overnight, and B (End of software support) has no bearing on a new device."
 },
 {
 "id": "C2-Q53",
@@ -762,7 +762,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Ransomware) encrypts the victim's files and blocks access until a payment is made, which matches the encrypted-file message appearing every time a document is opened. D (Cryptominer) quietly consumes CPU and GPU cycles but leaves files usable. A (Keylogger) captures keystrokes, and C (Phishing) is a social engineering delivery method rather than the payload that locks the data."
 },
 {
 "id": "C2-Q54",
@@ -777,7 +777,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Remove users from the local admin group) attacks the root cause: unapproved applications and licensing prompts appear because users hold administrator rights and can install whatever they like. D (Enable stricter UAC settings) only adds a consent prompt that a local admin can approve anyway. C (Block suspicious websites) and A (Deploy an internal PKI) address one delivery path but leave the underlying install privilege intact."
 },
 {
 "id": "C2-Q55",
@@ -792,7 +792,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago (Note: the dump prints B as the answer, but the highest-voted community discussion says A — we go with the community.)"
+"explanation": "A (16GB RAM) is the deciding specification because a 32-bit operating system can address only about 4GB of memory, so 16GB installed can only be used by a 64-bit build. B (Intel i7 CPU) names a processor family but the amount of usable memory is what forces the decision here. C (500GB HDD) is storage capacity and D (1Gbps Ethernet) is network speed, neither of which has any relationship to OS architecture. (Note: the dump prints B as the answer, but the highest-voted community discussion says A — we go with the community.)"
 },
 {
 "id": "C2-Q56",
@@ -807,7 +807,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Bollard) is a solid post set into the ground that physically stops a vehicle from ramming a door or storefront, which is what prevents forced entry. B (Motion-activated lighting) and C (Video surveillance) are deterrent and detective controls that record or discourage an intruder but stop nothing. A (PIV card) authenticates an authorized person at a reader and does nothing against someone who forces the door."
 },
 {
 "id": "C2-Q57",
@@ -825,7 +825,7 @@
 "B",
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Deactivate the user's key fobs) removes physical building access the moment the person leaves, and D (Suspend the user's email account) blocks logon while preserving the mailbox for retention or a manager's access. A (Quarantine the hard drive) applies only to investigations or litigation holds, and C (Purge all PII) usually conflicts with retention requirements. E and F, disabling desk ports and blocklisting a MAC, are not standard offboarding items."
 },
 {
 "id": "C2-Q58",
@@ -840,7 +840,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (PXE) lets the network card request an address and download a boot image from a deployment server the moment the machine powers on, which is exactly how baseline images get pushed to new computers at scale. C (USB) requires a technician to walk to every machine with media. A (ISO) is an image file format rather than a boot process, and B (Secure boot) validates firmware signatures instead of delivering an image."
 },
 {
 "id": "C2-Q59",
@@ -855,7 +855,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Increase the amount of RAM) is right because the spreadsheet application has to load the whole workbook into memory, and years of added rows have pushed it past what the machine can hold, so the file simply will not open. C (Defragment the storage drive) speeds up mechanical seek times but does not create memory. A (Restore point) reverts the OS rather than repairing a file, and D (Network speed) is irrelevant to a local document."
 },
 {
 "id": "C2-Q60",
@@ -870,7 +870,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Delete hidden network adapters) is the fix because the old VPN install left its virtual adapter registered in the system; showing hidden devices in Device Manager and removing the ghost entry lets the new package create its own. C (Update the network adapter's firmware) targets the physical NIC, which is not the adapter causing the conflict. A (OS security updates) will not clear a stale device record, and there is no facility to remap an adapter as B suggests."
 },
 {
 "id": "C2-Q61",
@@ -885,7 +885,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (DHCP services are not enabled for this subnet) explains why the workstations need addressing details handed over manually: with no DHCP scope on the secure segment, each host must be configured with a static IP, mask, gateway and DNS. B (Network allow list) and A (DNS restrictions) control what traffic is permitted once a host is addressed, not how it obtains an address. D (NAC servers) governs admission and remediation, not IP assignment."
 },
 {
 "id": "C2-Q62",
@@ -900,7 +900,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Secure master password) matters most because the entire vault is encrypted with that one credential, so its strength determines whether every stored password is protected or exposed. C (TPM module) can add hardware-backed key storage but is not required by most credential managers. A (Restricted log-in times) and D (Windows lock screen) are operating system controls that do nothing to protect the vault file itself if it is copied elsewhere."
 },
 {
 "id": "C2-Q63",
@@ -915,7 +915,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Authenticator) apps such as Microsoft or Google Authenticator send a push to the enrolled phone that the user approves or denies, which is the method described. D (SMS) and A (Call) deliver a one-time code by text or voice that the user must type in, with no approval prompt. C (Hardware token) generates or stores a code on a physical device and has no data connection to receive a push."
 },
 {
 "id": "C2-Q64",
@@ -933,7 +933,7 @@
 "C",
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (VPN) puts the home laptop on the corporate network with an encrypted tunnel, and C (RDP) then opens an interactive session on the office Windows PC using port 3389, so the user works on company equipment without carrying it home. B (SSH) gives only a command line and is uncommon on Windows desktops, F (WinRM) is for remote management commands rather than a desktop, A (SPICE) targets virtual machines, and E (RMM) is an administrator's management platform."
 },
 {
 "id": "C2-Q65",
@@ -948,7 +948,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Linux) is free and open source with distributions built for both desktops and servers, so one operating system covers workstations and servers with no licensing cost. B (Windows) requires per-device and per-server client access licensing, and C (macOS) is licensed only for Apple hardware and has no current server platform. D (Chrome OS) is a lightweight client OS with no server edition at all."
 },
 {
 "id": "C2-Q66",
@@ -963,7 +963,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (The bandwidth is not fast enough) fits the symptoms: two bars on 3G cannot sustain the throughput an HD stream needs, so the connection stalls and times out. A (Wi-Fi not enabled) is not required since cellular data is clearly connected. D (Storage full) would produce a save or download error rather than a connection timeout, and B (Subscription ran out) would return an account or payment message from the site."
 },
 {
 "id": "C2-Q67",
@@ -978,7 +978,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "D (Running synthetic full weekly backups) solves it because the backup server merges the last full backup with the accumulated incrementals on the backup storage itself, producing a new full without re-reading everything from production. A (Changing the backup window) just moves the same long job. B (Weekly incrementals) would leave no full backup to restore from, and C (More storage) adds capacity without shortening the read time."
 },
 {
 "id": "C2-Q68",
@@ -993,7 +993,7 @@
 "correct": [
 "B"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "B (Use antistatic bags for storage and transport) is right because memory modules are highly susceptible to electrostatic discharge, and the shielded bag is what protects them between the retired machine and the target workstation. D (Install memory in identical pairs) matters when populating dual-channel slots but is not the handling action asked about. A (Demagnetize memory) does nothing to semiconductor chips, and C is unsafe advice; the system should be unplugged and the technician grounded with a strap."
 },
 {
 "id": "C2-Q69",
@@ -1008,7 +1008,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Escalate the issue and provide next steps) is correct because the technician has run out of technical options, and professional practice is to hand the ticket to someone with deeper knowledge while telling the frustrated customer exactly what happens next. B (Dismiss the customer) and C (Interrupt the customer) both break basic customer service rules about listening and not being dismissive. D (Keep asking scope questions) simply stalls when the technician already has nothing left to try."
 },
 {
 "id": "C2-Q70",
@@ -1023,7 +1023,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "C (Too many devices trying to connect to the mobile network) is the likely cause because a festival crowd saturates the local cell towers, so sessions stall part way through and the mail client never finishes syncing. A (No storage space) produces a specific storage warning rather than a hung connection. B (Company firewalls blocking remote access) would have broken email everywhere, not just at the venue, and D describes something festival organizers cannot legally do."
 },
 {
 "id": "C2-Q71",
@@ -1038,7 +1038,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Multifactor authentication) is the most effective control because external attacks on cloud suites almost always start with stolen or guessed credentials, and a second factor makes a harvested password useless. D (Strong passwords) still leaves a single factor that can be phished or reused. B (Encryption) protects data at rest and in transit but not an account an attacker logs into legitimately, and C (Backups) is a recovery measure after the fact."
 },
 {
 "id": "C2-Q73",
@@ -1053,7 +1053,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Event Viewer) is where Windows records the bug check stop code, the timestamp and often the faulting driver for each blue screen, which is what identifies the cause of a repeating crash. B (Performance Monitor) tracks live resource counters and will not tell you why the system halted. C (System Information) lists hardware and configuration details, and D (Device Manager) shows current device status but keeps no crash history."
 },
 {
 "id": "C2-Q74",
@@ -1068,7 +1068,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  5e16c9c 1 month, 3 weeks ago (Note: the dump prints A as the answer, but the highest-voted community discussion says C — we go with the community.)"
+"explanation": "C (User Accounts) is correct because allowing several people to connect requires adding each of them to the Remote Desktop Users group; without that membership the connection is refused even with the service running. A (Firewall) rules for TCP 3389 are opened automatically when Remote Desktop is enabled. B (Computer Management) is a console that contains other tools rather than the setting itself, and D (Ease of Access) covers accessibility options. (Note: the dump prints A as the answer, but the highest-voted community discussion says C — we go with the community.)"
 },
 {
 "id": "C2-Q75",
@@ -1083,7 +1083,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  ishan94 3 months, 1 week ago"
+"explanation": "A (Compare the hash value from the vendor) is the reliable check: running the downloaded file through SHA-256 or MD5 and matching it to the checksum the vendor publishes proves the bytes were not altered, since any tampering changes the digest. D (Verify the file name) is worthless because a name is trivially copied, which is the whole premise here. B (Compare the process ID) uses a number assigned at random each run, and C (Safe mode) proves nothing about authenticity."
 },
 {
 "id": "C2-Q77",
@@ -1098,7 +1098,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Batch) is the best fit because a .bat file runs native Windows commands such as net use directly from the command interpreter, and that interpreter exists on every Windows version including an end-of-life one, with no runtime to install. A (Shell) scripts are written for Unix and Linux shells. C (VB) script is heavier and being deprecated, and D (Java) requires a JRE the legacy machine probably does not have."
 },
 {
 "id": "C2-Q78",
@@ -1113,7 +1113,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "D (Quarantine the system) comes next because the heavy outbound connections after a malicious ad point to an active infection, and the incident response order is to contain the host before cleaning it, so it stops beaconing or spreading. B (Run antivirus scans) is the eradication step that follows quarantine. C (Reboot the computer) can destroy volatile evidence without stopping the traffic, and A (Enable the firewall) is far too late to help now."
 },
 {
 "id": "C2-Q79",
@@ -1128,7 +1128,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "D (Set Windows Notifications settings to Do Not Disturb) is the single Windows 11 setting that suppresses banners and their sounds during a call and can be scheduled or triggered automatically, then released afterwards. B (Disable notifications per application) means hunting through every app and still misses new ones. C (No Sounds scheme) silences audio but the pop-ups keep covering the screen, and A (Multiple sound output devices) has nothing to do with alerts."
 },
 {
 "id": "C2-Q80",
@@ -1143,7 +1143,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "D (Roaming profiles) stores the user's profile on a server and loads it wherever they log on, so settings and documents follow them between machines while the data stays centrally held and only the delta is copied. C (Portable drives) puts company data on removable media that is easily lost. A (Centralized certificate storage) handles authentication material only, and B (Cloud email) covers messaging but not the desktop profile or files."
 },
 {
 "id": "C2-Q81",
@@ -1158,7 +1158,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "A (Extensions/add-ins) is where a browser plug-in lives, and it must be enabled and granted permission for that site before it can hook the page and raise the OTP prompt; installing without error does not mean the browser activated it. B (Certificate validity) issues would show a security warning instead. C (Proxy settings) would break browsing generally, and D (Trusted sources) governs where installs may come from, which already succeeded."
 },
 {
 "id": "C2-Q82",
@@ -1173,7 +1173,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "D (Disable UPnP) is the right move because UPnP lets internal devices punch inbound port forwards through the router's firewall automatically, which is precisely how connections get opened from the internet side. B (Change the default password) protects the router's admin interface but leaves those automatic forwards in place. A (Content filtering) restricts which sites users reach outbound, and C (SSID settings) only affects the local wireless name and visibility."
 },
 {
 "id": "C2-Q83",
@@ -1188,7 +1188,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "C (Checking the license device limit) is the first check because subscription productivity suites cap how many devices one account may activate, and exceeding it returns exactly this kind of unavailable message. A (Reinstalling the suite) repeats the same activation call and the same error. D (Updating the device OS) is a plausible later step but not the first, and B (Downloading an open-source alternative) abandons the problem rather than troubleshooting it."
 },
 {
 "id": "C2-Q84",
@@ -1204,7 +1204,7 @@
 "correct": [
 "E"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "E (Drilling) is the practical at-home option: putting several holes through the platters or flash chips with an ordinary power drill makes the media physically unreadable. C (Shredding) and D (Degaussing) both destroy data effectively but need industrial equipment or a disposal service, so they are not at-home methods. A (Standard formatting) only clears the file table and B (Low-level formatting) requires a functioning drive, which this one is not."
 },
 {
 "id": "C2-Q85",
@@ -1219,7 +1219,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "C (Project confidence and maintain a positive attitude) is what the situation calls for, since the customer is panicking about irreplaceable photos and needs reassurance that the problem is being handled competently. A (Provide the SLA) answers a question nobody asked and sounds like deflection. B (Offer replacement options at increased cost) reads as an upsell at the worst moment, and D (Business casual attire) is a general professionalism point, not a communication technique for this exchange."
 },
 {
 "id": "C2-Q86",
@@ -1234,7 +1234,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "C (XDR) is extended detection and response, which correlates telemetry from endpoints, network sensors, email and cloud services into one view and can act on threats seen beyond a single host. D (Antivirus) inspects files and processes on the machine it runs on only. B (UAC) is a Windows privilege elevation prompt, and A (RADIUS) provides authentication, authorization and accounting for network access rather than threat detection."
 },
 {
 "id": "C2-Q87",
@@ -1250,7 +1250,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Enable UEFI devices in the BIOS) is next because the installation itself succeeded, so the drive holds a valid OS; the firmware is simply not set to boot the UEFI entry the installer created, leaving it with nothing bootable once the USB is gone. A (Reinstall from a new ISO) repeats work that already completed cleanly. D (Storage drivers) would have been needed during setup, and E (Reseat the SATA cable) is ruled out since the installer wrote to that disk."
 },
 {
 "id": "C2-Q88",
@@ -1265,7 +1265,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Reconnect to the network and read the pop-up carefully) is right because that window is the captive portal, and until the terms are accepted or the login is completed the network blocks all web traffic. A (Look for an RJ45 socket) is a workaround that rarely exists in a terminal. B (Contact the airport IT department) escalates something the user can fix in seconds, and C (Quote company policy) leaves the employee with no working connection at all."
 },
 {
 "id": "C2-Q89",
@@ -1280,7 +1280,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Change the headset as the default device in sound settings) is the fix because Windows keeps routing playback to the previous default output even after a new device pairs successfully. A (Update the drivers) is unnecessary since the headset already enumerates properly in Device Manager. B (Replace the battery) is contradicted by the device being paired and visible, and C (Check for mute) does not fit, as sound is audible, just from the wrong output."
 },
 {
 "id": "C2-Q90",
@@ -1295,7 +1295,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "A (RADIUS) provides authentication, authorization and accounting for network services, which is why it backs 802.1X wireless, VPN concentrators and switch port access, using UDP 1812 and 1813. B (Kerberos) authenticates users in a domain with tickets but offers no accounting layer. C (TKIP) is a legacy wireless encryption protocol, and D (WPA3) is a wireless security standard that can call on RADIUS in enterprise mode rather than providing AAA itself."
 },
 {
 "id": "C2-Q91",
@@ -1310,7 +1310,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Virtualization) is the efficient answer because the legacy OS runs as a guest VM on a current, patched host, so the application keeps working while the physical machine is migrated and secured. C (Multiboot) forces a reboot every time the user switches, so both environments are never available at once. A (Terminal server) still needs the old OS hosted somewhere, and B (Bare-metal server) dedicates whole hardware to one legacy instance."
 },
 {
 "id": "C2-Q92",
@@ -1325,7 +1325,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "A (Group Policy) is correct for domain-joined machines, since a single GPO linked to the OU pushes the guest account setting to every desktop and reapplies it automatically. D (MSConfig) manages boot options and startup items on one local machine and cannot disable an account. C (Microsoft Management Console) is only the shell that hosts snap-ins, and B (Firewall) filters network traffic rather than controlling local logon rights."
 },
 {
 "id": "C2-Q93",
@@ -1340,7 +1340,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Turn on from installation media and repair the MBR) is next because the optimization utility corrupted the boot record while the BIOS still sees the SSD, so the hardware is healthy and only the boot code needs rebuilding with bootrec or Startup Repair. B (Replace the CMOS battery) would show up as lost time and firmware settings. A (BitLocker settings) is not indicated by the symptom, and D (Isolate the system) is a malware containment step, not a boot repair."
 },
 {
 "id": "C2-Q94",
@@ -1355,7 +1355,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Remote wipe) is the control that protects the data sitting on a lost handset, because the MDM or find-my-device service issues a command that erases the device before anyone can get into it. A (Password manager) safeguards stored credentials but not the rest of the phone. B (Degaussing) needs physical possession and does not affect flash storage anyway, and D (Antivirus) only screens for malicious apps."
 },
 {
 "id": "C2-Q95",
@@ -1370,7 +1370,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Authenticator application) is the mechanism behind an approve-or-deny push, as the enrolled app receives the prompt and confirms possession of the registered device. A (One-time password) is a numeric code the user reads and types, with no push involved. B (Zero Trust model) is an overall architecture rather than a specific factor, and D (Privileged access management) controls how administrative accounts are checked out and used."
 },
 {
 "id": "C2-Q96",
@@ -1385,7 +1385,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Incident report) is the document management wants, since it captures the summary of what happened, the timeline, the impact and the actions taken to restore service. A (Knowledge base article) is written to help others resolve a recurring problem in future. D (Standard operating procedure) prescribes how routine work should be done, and B (Non-disclosure agreement) is a legal contract about confidentiality."
 },
 {
 "id": "C2-Q97",
@@ -1400,7 +1400,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Services) is the tool, because that is where each service's state, startup type and its dependency relationships are listed, so a spooler failing because a required dependency will not run is diagnosed there. A (Processes) shows executables and their resource usage without any dependency information. C (Startup) controls which apps launch at sign-in, and D (Performance) graphs CPU, memory and disk activity."
 },
 {
 "id": "C2-Q98",
@@ -1415,7 +1415,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Close unnecessary programs) is right because memory sits at 97 percent while disk, network and GPU are barely loaded, so the machine is starved of RAM and constantly paging, which is what makes every application sluggish. A (Clear cached browser data) and D (Delete temporary files) recover disk space, and disk usage is only 2 percent. B (Upgrade the network connection) does nothing when the network is at 12 percent."
 },
 {
 "id": "C2-Q99",
@@ -1430,7 +1430,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Distributed denial of service) matches exactly: many compromised endpoints in different locations flood one target so it cannot serve legitimate requests. C (Brute-force attack) hammers credentials rather than availability and is usually from one source. A (On-path attack) positions the attacker between two communicating parties to intercept traffic, and B (SQL injection) inserts crafted statements into a database query through an application."
 },
 {
 "id": "C2-Q100",
@@ -1445,7 +1445,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Update the file allocation system to exFAT) is the resolution because the disk carries a Linux file system such as ext4 that Windows cannot read, which is why it offers to format it; copying the data off on the Linux machine and reformatting to exFAT gives a volume both operating systems mount natively. A (Firewall rules) and C (Firmware update) have nothing to do with file systems, and B (Replace the cable) is ruled out since Windows already detects the drive."
 },
 {
 "id": "C2-Q101",
@@ -1460,7 +1460,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Educate the end user) is the final step of the malware removal process, because explaining how the infection arrived is what stops the same behaviour causing it again. A (Perform a secondary antivirus scan) belongs to the scanning and remediation phase that has already been completed. D (Review system logs) is part of identifying the symptoms earlier on, and C (Reimage the computer) is unnecessary once the infection has been successfully removed."
 },
 {
 "id": "C2-Q102",
@@ -1475,7 +1475,7 @@
 "correct": [
 "A"
 ],
-"explanation": "  6b7911d 2 months, 2 weeks ago"
+"explanation": "A (CMDB) is the configuration management database, which inventories assets and records their owners, dependencies and business criticality, so it answers both parts of the question. B (SLA) defines agreed uptime and response targets between provider and customer. C (SOP) documents how a task should be carried out, and D (EULA) is the licensing agreement governing software use, none of which track ownership of a specific server."
 },
 {
 "id": "C2-Q103",
@@ -1490,7 +1490,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "A (lusrmgr.msc) opens Local Users and Groups, the direct console for renaming, disabling or resetting local accounts including the built-in administrator. C (gpedit.msc) can enforce a rename through a security policy setting but is a broader policy editor rather than the right tool for a single desktop change. B (devmgmt.msc) is Device Manager for hardware and drivers, and D (eventvwr.msc) only reads logs."
 },
 {
 "id": "C2-Q104",
@@ -1505,7 +1505,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Cryptominer) is the malware that hammers CPU and GPU, since mining cryptocurrency is pure computation and the infected machine runs hot and slow while the attacker profits. A (Rootkit) works hard at staying hidden and deliberately keeps its footprint small. C (Boot sector virus) infects the MBR to load early in the boot process, and D (Trojan) describes disguised delivery rather than any particular resource profile."
 },
 {
 "id": "C2-Q105",
@@ -1520,7 +1520,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Look for applications reporting the highest utilization) is the first step because the phone is only two weeks old, so a rogue or location-hungry app draining power while travelling is far likelier than a hardware fault, and the battery usage screen names the culprit directly. A (Replace the battery) and B (Provide an external battery) treat the symptom without diagnosing it. C (Check the charging port) does not fit, since the problem is discharge speed, not an inability to charge."
 },
 {
 "id": "C2-Q106",
@@ -1538,7 +1538,7 @@
 "C",
 "F"
 ],
-"explanation": "Correct answer: C, F."
+"explanation": "C (Enable screensaver locks) forces re-authentication whenever the workstation is left idle, closing the easiest window for a passerby, and F (Apply the BIOS password) stops someone changing the boot order to start from external media and bypass Windows entirely. B (Enable SSH) would add a remote access path, which is the opposite of what is wanted. E (Enable the firewall) filters network traffic rather than local logon, A (Defragment) is maintenance, and D (Disable iCloud integration) is not a Windows workstation control."
 },
 {
 "id": "C2-Q107",
@@ -1553,7 +1553,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Device encryption) adds real protection beyond the lock screen, because encrypted storage stays unreadable even if the flash is removed or the device is attacked offline. C (PIN code screen lock) is simply another unlock method alongside the biometrics already enabled, so it adds little. A (Remote backups) protects against data loss rather than disclosure, and B (Location tracking) helps recover the handset but does nothing to keep its contents private."
 },
 {
 "id": "C2-Q108",
@@ -1568,7 +1568,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (VPN) is what the clerk needs, since it places the town-issued laptop on the town hall network over an encrypted tunnel so the mapped server shares and documents are reachable from home. B (RDP) and A (VNC) would remote-control another desktop, which is not what was described, and exposing either directly to the internet is bad practice. D (SSH) provides a command-line session and is not how Windows file shares are accessed."
 },
 {
 "id": "C2-Q109",
@@ -1583,7 +1583,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "D (Use at least two different types of media) is part of the rule, which calls for three copies of the data stored on two different media types with one copy kept off site. C (Keep all backup media on site) directly breaks the off-site requirement that protects against fire, flood or theft. A (Full and differential backups) describes a backup scheme, not the 3-2-1 rule, and B (Test integrity every three weeks) is sound practice but not one of the three numbers."
 },
 {
 "id": "C2-Q110",
@@ -1598,7 +1598,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "C (Viewing and sharing permissions) should be checked first, because cloud presentations default to owner-only access and the link fails for everyone until the file is shared with the team or the link is set to allow editing. A (Version history) shows past revisions of a file people cannot even open. B (Web browser compatibility) would not fail identically for every member, and D (License management) affects the owner's own ability to use the suite."
 },
 {
 "id": "C2-Q111",
@@ -1613,7 +1613,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "B (Device Manager) is the tool for driver work, showing the touch pad's status, error code and driver version, with options to update, roll back or reinstall it. A (System Configuration) controls boot options and startup services rather than devices. C (Event Viewer) may log a related error after the fact but does not expose the driver itself, and D (Local Users and Groups) manages accounts and has nothing to do with hardware."
 },
 {
 "id": "C2-Q112",
@@ -1628,7 +1628,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Windows hides known file extensions by default, so the user only renamed the visible part and the file is really Document.xml.txt, still registered as a text document. Turning off the hide-extensions setting in File Explorer's View options exposes the true extension so it can actually be changed. A (Indexing options) only affects search speed, B (Format command) wipes an entire volume, and C (Personalization) changes desktop appearance."
 },
 {
 "id": "C2-Q113",
@@ -1643,7 +1643,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Windows 11 requires TPM 2.0 alongside Secure Boot and UEFI, and the compatibility check fails outright without it, which is the classic blocker on otherwise capable Windows 10 hardware. B (Slow HDD spindle speed), C (Low refresh rate) and D (High RAM latency) are performance characteristics that appear nowhere in Microsoft's minimum requirements, so they may make the machine feel sluggish but will not stop the upgrade."
 },
 {
 "id": "C2-Q114",
@@ -1658,7 +1658,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Uploads succeed on office Wi-Fi but fail on cellular, which points at the mobile plan rather than the phone or the server; a carrier or on-device data cap throttles or blocks transfers and produces exactly that brief error notification. B (Enable airplane mode) kills every radio and makes things worse, C (Verify the last device reboot) reveals nothing about connectivity, and D (Bluetooth) is not the transport used to reach corporate servers."
 },
 {
 "id": "C2-Q115",
@@ -1673,7 +1673,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "net use maps a drive letter to a UNC path, so net use Z: \\\\WinNAS\\shared attaches the share as local disk Z:, with /persistent:yes to keep it across reboots. A (nslookup) only queries DNS records, C (chkdsk /R) scans a disk for bad sectors and attempts recovery, and D (sfc /offwindir) aims System File Checker at an offline Windows installation. None of those three create a drive mapping."
 },
 {
 "id": "C2-Q116",
@@ -1688,7 +1688,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "powercfg is the command-line power configuration tool, so a line such as powercfg /hibernate off drops straight into a batch file and runs without any policy infrastructure. A (Power Options in Control Panel) is a manual GUI change that cannot be scripted, B (firmware update) does not control Windows power states, and C (gpupdate) merely reapplies existing Group Policy, which the scenario says is unavailable."
 },
 {
 "id": "C2-Q117",
@@ -1706,7 +1706,7 @@
 "D",
 "E"
 ],
-"explanation": "Correct answer: D, E."
+"explanation": "A changed home page plus redirected search results is the signature of a browser hijacker riding in as an add-on, so D (Uninstall malicious extensions) removes the component doing the redirecting and E (Reset the browser startup page) undoes the setting it altered. Do both, or the extension simply re-applies the page. A (Clear the browsing history) deletes records rather than the hijacker, and B (Run OS updates) and F (Restart the machine) leave the malicious add-on installed."
 },
 {
 "id": "C2-Q118",
@@ -1721,7 +1721,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "whoami prints the domain and username of the account running the current session, which is exactly the confirmation needed before troubleshooting share permissions. A (net user) lists or edits account properties but does not report who is signed in right now, B (tracert) traces the network path to a remote host, and D (hostname) returns the computer's name instead of the user's."
 },
 {
 "id": "C2-Q119",
@@ -1736,7 +1736,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "A clean install wipes the drive and lays down a fresh OS, the only option that guarantees leftover malware and infected system files are gone. B (System restore) rolls back to a snapshot that may already be infected, and restore points are normally disabled during malware removal anyway. C (OS repair) preserves the existing installation and its files, and A (Version upgrade) just layers a newer release on top of a compromised system."
 },
 {
 "id": "C2-Q120",
@@ -1751,7 +1751,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Carbon-fiber composite filament sheds fine particulates and ultrafine plastic fumes as it is extruded, so respiratory protection with a properly rated filter mask, backed by good ventilation, is the priority. A (Steel-toed boots) guards against dropped heavy objects, while C (ESD mat) and D (Antistatic bags) protect electronic components from static discharge, which is not the hazard when printing filament parts."
 },
 {
 "id": "C2-Q121",
@@ -1766,7 +1766,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "A non-disclosure agreement is the contract that legally binds an outside party to keep project details confidential, so it must be signed before those discussions happen. A (EULA) governs how licensed software may be used, B (EOL) marks the end of a product's supported life, and C (SLA) sets uptime and response targets for a service. None of those three restrict what information can be shared."
 },
 {
 "id": "C2-Q122",
@@ -1781,7 +1781,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Managed detection and response means an outside provider supplies both the tooling and the analysts who monitor, investigate and respond on the organization's behalf, which matches a third-party vendor protecting assets with multiple tools. B (EDR) is endpoint-only software the company would operate itself, D (XDR) correlates telemetry across endpoints, network and cloud but is still a product rather than a managed service, and A (PaaS) is a cloud development platform."
 },
 {
 "id": "C2-Q123",
@@ -1796,7 +1796,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "cat concatenates a file to standard output, making it the fastest way to display the contents of a single file at the terminal. A (chmod) changes permission bits, C (ls) lists directory entries without revealing what is inside any file, and D (sudo) only runs another command with elevated privileges rather than displaying anything itself."
 },
 {
 "id": "C2-Q124",
@@ -1811,7 +1811,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Videoconferencing carries two-way audio and video among many participants, which is what makes live collaboration and training sessions work. B (Screen sharing) pushes one desktop's view and is normally just a feature inside a conferencing tool, while C (RDP) and D (VDI) give an individual remote control of a desktop or virtual machine, useful for working remotely but not for hosting a group meeting."
 },
 {
 "id": "C2-Q125",
@@ -1827,7 +1827,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "exFAT was designed as a cross-platform successor to FAT32 and has native read/write support on Windows, macOS and Linux, without FAT32's 4GB file size limit. C (NTFS) is read-only on macOS without third-party drivers, B (ReFS) is Windows-only, D (APFS) is Apple's own filesystem, and E (ext4) needs extra software before Windows or macOS can touch it."
 },
 {
 "id": "C2-Q126",
@@ -1842,7 +1842,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Many anti-piracy schemes depend on a hardware dongle, so with the USB key absent the licence check fails the instant the program starts and it closes itself. A (32-bit program on a 64-bit computer) runs happily under WoW64, B (CPU incompatibility) normally prevents launch with a specific error message, and C (Outdated video card drivers) causes graphical glitches or crashes during use rather than an immediate silent exit."
 },
 {
 "id": "C2-Q127",
@@ -1857,7 +1857,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Rolling back the update removes the specific patch that introduced the instability, keeps the machine usable while the cause is investigated, and the update can then be paused so it does not reinstall. A (System Restore) reverts far more than the patch and may not target it cleanly, C (Apply the optional patches) piles more change onto an unstable system, and D (Change the startup sequence) alters boot order, which has nothing to do with patching."
 },
 {
 "id": "C2-Q128",
@@ -1872,7 +1872,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Rapid battery drain and a hot device while idle, starting right after an app installed from an advert, are classic signs of malicious code running in the background, so a mobile anti-malware scan confirms it first. A (Check for unauthorized device administrators) is a sensible follow-up but narrower, B (Contact the software developer) assumes the app is legitimate, and D (MDM policies) is a preventive control that does nothing for an already infected phone."
 },
 {
 "id": "C2-Q129",
@@ -1887,7 +1887,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "The stop errors began immediately after new webcam software was installed, so the new driver is the prime suspect; safe mode loads a minimal driver set, keeping the system stable long enough to roll the driver back in Device Manager. A (anti-malware scan) chases an unrelated cause, B (warranty claim) is premature for a software fault, and D (Reconnect the webcam) does nothing about the faulty driver still loading at boot."
 },
 {
 "id": "C2-Q130",
@@ -1902,7 +1902,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Folder redirection points known folders such as Documents at a network share, so everything the user saves lands on the server rather than the local disk, transparently and without retraining the user. A (File attributes) sets flags like read-only or hidden, B (User Account Control) prompts for elevation, and C (Security groups) governs who may access a resource. None of them change where files are stored."
 },
 {
 "id": "C2-Q131",
@@ -1917,7 +1917,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "A domain printer is published through the print server, so browsing to the server and selecting the shared printer installs the correct driver and queue while keeping the printer centrally managed and updated. B (USB) and C (Bluetooth) create a local single-user connection that bypasses the shared queue and its drivers entirely, and D (Local Users and Groups) manages accounts, not printers."
 },
 {
 "id": "C2-Q132",
@@ -1932,7 +1932,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Single sign-on authenticates the user once and then issues a token that other trusted applications accept, so credentials are not retyped at every resource. C (Multifactor authentication) and D (One-time password) deliberately add steps to each login rather than removing them, and A (Access control list) is an authorization mechanism defining who may access an object, not an authentication method at all."
 },
 {
 "id": "C2-Q133",
@@ -1947,7 +1947,7 @@
 "correct": [
 "C"
 ],
-"explanation": "  ROTHERMEL01 2 months, 2 weeks ago (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.)"
+"explanation": "Whaling is phishing built around an organization's biggest fish, and this fraudulent payment request trades entirely on the chief executive's authority and identity, which is what marks it out from ordinary targeted phishing. D (Spear phishing) is the generic targeted-email case without that executive angle, B (Impersonation) names the underlying tactic of posing as someone trusted rather than this email-borne attack, and A (Evil twin) is a rogue wireless access point. (Note: the dump prints D as the answer, but the highest-voted community discussion says C — we go with the community.)"
 },
 {
 "id": "C2-Q134",
@@ -1962,7 +1962,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Phones accumulate stuck background processes and leaked memory, and a restart clears RAM and restarts services, making it the quickest and least destructive first step for general sluggishness. A (Restore to factory settings) destroys data and is a last resort, D (Uninstall unneeded applications) is worth doing later once a culprit is identified, and C (Check the battery state) better explains sudden shutdowns or throttling than slow app switching."
 },
 {
 "id": "C2-Q135",
@@ -1977,7 +1977,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Once a tablet's OS reaches end of life it stops receiving version updates, and current app builds target a newer minimum OS version, so the store refuses to install or run the latest release. B (Storage space) produces an explicit install error that is easily cleared, C (MDM) does not apply to a personal device, and D (malware) causes instability and pop-ups rather than one app cleanly refusing to run."
 },
 {
 "id": "C2-Q136",
@@ -1992,7 +1992,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Keychain is the macOS credential store that holds passwords, certificates and secure notes, unlocked by the account password and managed through Keychain Access. A (FileVault) provides full-disk encryption, C (Accessibility) covers assistive settings such as VoiceOver and zoom, and D (Mission Control) arranges windows, spaces and virtual desktops."
 },
 {
 "id": "C2-Q137",
@@ -2010,7 +2010,7 @@
 "D",
 "E"
 ],
-"explanation": "Correct answer: D, E."
+"explanation": "The print spooler is stopping between sessions and the help desk is simply starting it again each morning, so D (Start the print spooler service) restores printing now and E (Set the print spooler to Automatic) makes it start itself at every boot, which permanently ends the daily call. B (recovery set to take no action) would stop it restarting after a failure, and F (log-on as the user's account) breaks a service that must run as Local System."
 },
 {
 "id": "C2-Q138",
@@ -2025,7 +2025,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Internal resources still resolve and load, so the network stack is healthy; corporate internet access that is forced through a proxy fails when the browser is not pointed at that proxy or its script. A (IP address conflict) and C (Incorrect subnet mask) would disrupt local traffic as well, and D (Disconnected Ethernet cable) would cut off the corporate network too, not just web browsing."
 },
 {
 "id": "C2-Q139",
@@ -2040,7 +2040,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Vendors publish a checksum for their installers, so hashing the downloaded file and comparing the value proves the bytes match what the publisher released and catches tampering or a corrupt download. A (Date), C (Size) and D (Name) are metadata an attacker can trivially match while still altering the file's contents, so none of them establish authenticity."
 },
 {
 "id": "C2-Q140",
@@ -2055,7 +2055,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "Windows Hello provides alternative sign-in methods such as facial recognition, fingerprint or a device-bound PIN, letting a user who keeps forgetting the password authenticate without typing it. A (Single sign-on) reuses the same credentials across services, C (BitLocker) encrypts the drive, and D (User Account Control) prompts before elevated actions. None of them replaces the login method itself."
 },
 {
 "id": "C2-Q141",
@@ -2070,7 +2070,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "The pop-up is classic scareware, so the safe move is to ignore its buttons entirely and verify the machine's real protection status, confirming Windows Security is enabled and definitions are current before running a scan. A (Click OK) installs the rogue software the scam is selling, B (Reinstall Windows) is drastic with nothing yet confirmed, and C (System File Checker) repairs corrupt Windows files, which a browser pop-up does not indicate."
 },
 {
 "id": "C2-Q142",
@@ -2085,7 +2085,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Quarantine comes immediately after identifying and verifying symptoms in the malware removal process, so disconnecting the machine from the network stops the infection spreading or communicating out while it is worked on. A (Back up the customer's data) risks copying infected files off the system, B (Update the OS) belongs after remediation, and C (Reimage the workstation) is a last resort that destroys data and evidence."
 },
 {
 "id": "C2-Q143",
@@ -2100,7 +2100,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "RADIUS is the AAA server that sits between the wireless infrastructure and the directory: the access point passes 802.1X credentials to it, and it validates them against the existing user database. D (LDAP) is the protocol used to query that directory but cannot itself perform network access authentication, B (WPA3) is the encryption standard the WLAN runs, and A (MFA) adds a second factor rather than linking Wi-Fi to the directory."
 },
 {
 "id": "C2-Q145",
@@ -2116,7 +2116,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "With 63.76GB of 64GB consumed, the phone has essentially no room for caching, temporary files or app data, and iOS slows badly once free space runs out. B (Battery health) at 90% is perfectly healthy, C (25% charge) does not throttle the device unless low power mode is on, and D (Hotspot) consumes bandwidth and battery rather than slowing the interface."
 },
 {
 "id": "C2-Q146",
@@ -2131,7 +2131,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Privileged access management strips standing administrative rights and grants elevation only on request, for a limited window and to a defined service, so an admin account is not automatically powerful. B (MFA) strengthens how identity is proven, C (DLP) prevents sensitive data leaving the organization, and D (SSO) reduces repeated logins. None of those three limit what an administrator's account can reach."
 },
 {
 "id": "C2-Q147",
@@ -2146,7 +2146,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "ReFS, the Resilient File System, is Microsoft's next-generation filesystem intended to succeed NTFS, adding integrity streams, automatic error correction and support for far larger volumes and files in Storage Spaces. B (XFS) is a Linux filesystem, C (APFS) is Apple's replacement for HFS+, and D (exFAT) is a lightweight FAT successor aimed at removable media rather than enterprise storage."
 },
 {
 "id": "C2-Q148",
@@ -2161,7 +2161,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Password complexity, minimum length and account lockout thresholds live under Account Policies in Security Settings, edited through the Local Group Policy Editor (gpedit.msc), and they apply machine-wide beyond a standard user's reach. B (lusrmgr) manages individual accounts and group membership but exposes no policy settings, A (taskschd) schedules jobs, and C (perfmon) collects performance counters."
 },
 {
 "id": "C2-Q149",
@@ -2176,7 +2176,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "The firmware is still booting from the installation media, so setup launches all over again; removing the USB drive (or fixing the boot order) lets the system boot the freshly installed OS and finish out-of-box setup. B (Turn off TPM) removes a Windows 11 requirement, C (Change MBR to UEFI) addresses a partition-scheme error that would have blocked setup earlier, and A (chkdsk) does not influence boot order."
 },
 {
 "id": "C2-Q150",
@@ -2191,7 +2191,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "netstat lists active TCP and UDP connections plus listening ports, and with -b or -o it ties each connection to the owning process, exposing which background service is consuming bandwidth. A (nslookup) only resolves DNS names, B (net use) manages drive mappings, and D (net user) queries account information rather than network sessions."
 },
 {
 "id": "C2-Q151",
@@ -2207,7 +2207,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "EAP-TLS authenticates with client certificates that carry a fixed validity period, so after months away the machine or user certificate has expired without being renewed and the 802.1X exchange fails, leaving the switch port unauthorized. B (OS update failure), C (Service not started) and E (Profile rebuild needed) have no particular link to elapsed time, and D (Application crash) does not affect network-level authentication."
 },
 {
 "id": "C2-Q152",
@@ -2222,7 +2222,7 @@
 "correct": [
 "D"
 ],
-"explanation": "  JOBAERALI 1 day, 12 hours ago (Note: the dump prints B as the answer, but the highest-voted community discussion says D — we go with the community.)"
+"explanation": "TKIP is the option built on rotating key material rather than a static secret: it mixes a base key with a per-packet sequence value so each frame is protected by a fresh, single-use value instead of a reusable credential. C (Passwords) are static knowledge factors typed in by the user, A (Kerberos) is a KDC-based single sign-on protocol for domain logons, and B (TACACS+) is an AAA protocol that centralizes administrative access to network devices. (Note: the dump prints B as the answer, but the highest-voted community discussion says D — we go with the community.)"
 },
 {
 "id": "C2-Q153",
@@ -2237,7 +2237,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "A passphrase is the longest and most varied secret of the four, drawing many characters from a large character set, so brute-forcing it takes vastly more attempts. A (PIN) is normally only four to six digits, and B (Swipe) and D (Pattern) offer a small pool of practical combinations while leaving smudge trails on the screen that make them easy to reproduce."
 },
 {
 "id": "C2-Q154",
@@ -2252,7 +2252,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Slowness confined to one location points at the network serving that location, where congestion, weak signal or an overloaded access point degrades throughput for the phone while the device itself is fine. A (Exceeded the data usage limit) would follow the user everywhere rather than stopping at the office door, D (Low storage space) slows the whole device, and B (Sluggish response time) simply restates the symptom instead of explaining it."
 },
 {
 "id": "C2-Q155",
@@ -2267,7 +2267,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Symptoms have already been gathered, so the next step in the malware removal process is quarantine: pulling the Ethernet connection isolates the machine so nothing spreads laterally or exfiltrates data. A (Run a complete system scan) and B (Reboot into safe mode) are remediation and investigation steps that belong after isolation, and C (Check recently installed applications) leaves the compromised machine sitting on the corporate network."
 },
 {
 "id": "C2-Q158",
@@ -2283,7 +2283,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "x86 is the standard label for a 32-bit build, so Installer_x86.exe is the one that will actually run on 32-bit Windows 10 Enterprise. A (Installer_x64.exe) is a 64-bit binary that a 32-bit OS cannot execute, E (.dmg) is a macOS disk image, B (Installer_Files.zip) is only an archive with nothing to execute until extracted, and C (Installer_32.msi) is a Windows Installer package rather than the vendor's installer executable."
 },
 {
 "id": "C2-Q159",
@@ -2298,7 +2298,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "The Hidden attribute is set from the file's Properties dialog in File Explorer, which keeps the file out of ordinary folder views so it is far less likely to be deleted by accident. A (Device Manager) handles hardware and drivers, B (Indexing Options) tunes search behaviour, and D (Administrative Tools) is a folder of management consoles with no per-file attribute control."
 },
 {
 "id": "C2-Q160",
@@ -2313,7 +2313,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "An in-place upgrade preserves applications, settings and data, and the built-in System Update utility pulls the correct build, runs the compatibility checks and migrates everything automatically. B (Back up data and perform a fresh installation) is a clean install, the opposite of in place, C (enable USB access in BIOS) only concerns booting external media, and A (latest .iso) is a manual route that reaches the same upgrade path with more steps and more risk."
 },
 {
 "id": "C2-Q161",
@@ -2328,7 +2328,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Sandbox testing runs the proposed change in an isolated environment that mirrors production, so failures, conflicts and unwanted side effects surface before any user is affected. A (Request form) documents and justifies the change, B (Rollback plan) is the fallback used after a change goes wrong, and C (End-user acceptance) confirms the outcome is workable only once the change has already been applied."
 },
 {
 "id": "C2-Q162",
@@ -2343,7 +2343,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Searches landing on unintended sites usually means name resolution is being redirected, so check the adapter's configured DNS servers, and the hosts file, for entries the user did not set. A (System time) breaks certificate validation rather than sending traffic elsewhere, B (IP address) problems would stop connectivity altogether, and D (Windows updates) has no bearing on where a hostname resolves."
 },
 {
 "id": "C2-Q163",
@@ -2358,7 +2358,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Signatures on the parent servers are current and the laptop's engine and definitions match them, so the product is healthy but reporting its own status incorrectly, which points to corrupted or missing system files, making sfc /scannow the natural follow-up. A (Ransomware) would encrypt data and demand payment, and C (Adware) generates advertising pop-ups, neither of which fits an up-to-date antivirus flagging itself as out of date."
 },
 {
 "id": "C2-Q164",
@@ -2373,7 +2373,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "A shell script collects Linux commands into an executable file the shell runs in order, which is the native way to automate repetitive command-line work and hand it to cron for scheduling. D (Batch file) and C (Visual Basic utilities) are Windows scripting formats, and A (JavaScript file) requires a runtime such as Node and is not the standard tool for Linux system administration."
 },
 {
 "id": "C2-Q165",
@@ -2388,7 +2388,7 @@
 "correct": [
 "D"
 ],
-"explanation": "Correct answer: D."
+"explanation": "Task Manager's Users tab lists every session on the machine, including active and disconnected Remote Desktop sessions and the resources each one is consuming. A (Local Users and Groups) shows which accounts exist rather than who is connected, B (System Information) reports hardware and OS configuration, and C (Group Policy Editor) sets policy instead of reporting live session state."
 },
 {
 "id": "C2-Q166",
@@ -2403,7 +2403,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "Least privilege grants each account only the rights its role genuinely requires and nothing more, limiting the damage when an account is misused or compromised. B (Zero Trust) is the wider architecture of never trusting a request implicitly and verifying every one, while C (SSO) and D (MFA) concern how a user proves identity rather than what that identity is permitted to do."
 },
 {
 "id": "C2-Q167",
@@ -2418,7 +2418,7 @@
 "correct": [
 "B"
 ],
-"explanation": "Correct answer: B."
+"explanation": "A fingerprint is biometric, derived from the individual's own physical characteristics, so it is inherently unique to each user and cannot be shared, guessed or handed over. A (A drawn pattern), C (A password) and D (A PIV card) are things a user knows or holds, all of which can be copied, lent to a colleague or reused, so none of them is unique to the person."
 },
 {
 "id": "C2-Q168",
@@ -2433,7 +2433,7 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Domain join is a business feature reserved for the Pro, Enterprise and Education editions, so Windows 11 Pro is the one here that can be added to an Active Directory domain. A (Windows 10 Home) and B (Windows 11 Home) are limited to workgroups or a Microsoft account, and D (Windows 11 SE) is a locked-down education edition managed through Intune rather than a domain."
 },
 {
 "id": "C2-Q169",
@@ -2448,7 +2448,7 @@
 "correct": [
 "A"
 ],
-"explanation": "Correct answer: A."
+"explanation": "No infection is present, so the alerts came from the site itself, and clearing the browser's cache, cookies and history removes the stored scripts and entries that keep bringing them back. B (Sign in to the cloud workspace) is unrelated, D (Enable private mode) does nothing about data already saved in the profile, and C (Install corporate DNS security software) is a broader preventive measure rather than the cleanup this machine needs before handover."
 },
 {
 "id": "C2-Q170",
@@ -2463,6 +2463,6 @@
 "correct": [
 "C"
 ],
-"explanation": "Correct answer: C."
+"explanation": "Trusted sites are managed in Internet Options, on the Security tab, where the URL is added to the Trusted Sites zone and inherits that zone's relaxed restrictions. A (System) covers device name and performance settings, B (Network and Sharing Center) handles adapters and network profiles, and D (Administrative Tools) is a collection of management consoles with no browser zone configuration."
 }
 ]
