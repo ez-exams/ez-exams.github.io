@@ -72,7 +72,7 @@
   --border-color: var(--noc-border);
 
   /* — landing-page hub tints: one family, stepped through the accent ramp
-       so the four cards stay tellable apart without leaving the palette — */
+       so the six cards stay tellable apart without leaving the palette — */
   --secplus: #9184d9;
   --secplus-soft: #2b2741;
   --azure: #b5abfc;
@@ -81,6 +81,8 @@
   --az104-soft: #2e2947;
   --cysa: #8e8ac9;
   --cysa-soft: #282840;
+  --aplus: #7d76b8;
+  --aplus-soft: #242338;
   --pylab: #c4bdf2;
   --pylab-soft: #363159;
 
